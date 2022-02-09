@@ -1,4 +1,5 @@
 # DynamicFormApp
+This project is an implementation of dynamic forms using Angular on the client side
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
