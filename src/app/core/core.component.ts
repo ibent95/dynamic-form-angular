@@ -15,8 +15,8 @@ export class CoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeMap = this.router.url.split('/');
-    this.routeMap.shift();
-    console.log('routeMap', this.routeMap);
+
+    this.routeMap.shift(); // To remove empty string in first object
   }
 
 }

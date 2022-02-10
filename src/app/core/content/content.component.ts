@@ -22,19 +22,11 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.routeIsExists = this.isRouteExists(this.routeMap);
-
-    console.log('route', this.router.url, this.router);
   }
 
   ngAfterViewInit(): void {
     if (this.routeIsExists) {
-
-      console.log('routeConfig', this.dynamicRef, this.routeConfig['component'].name);
-
       const componentRef = this.dynamicRef?.createComponent<Component>(this.routeConfig['component']);
-      //componentRef.instance;
-
-      console.log('componentRef', componentRef);
     }
   }
 
