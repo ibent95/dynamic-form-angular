@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class SidebarComponent implements OnInit {
   @Input() routeMap!: string[];
   environment: any;
 
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.environment = environment;
+    console.log('load');
   }
 
 }
