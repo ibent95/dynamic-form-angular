@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ContentChild, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { MainComponent } from 'src/app/main/main.component';
 
 @Component({
   selector: 'app-content',
@@ -25,9 +26,19 @@ export class ContentComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.routeIsExists) {
-      const componentRef = this.dynamicRef?.createComponent<Component>(this.routeConfig['component']);
-    }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.routeMap = this.router.url.split('/');
+        this.routeMap.shift();
+
+        this.routeIsExists = this.isRouteExists(this.routeMap);
+
+        if (this.routeIsExists) {
+          this.dynamicRef?.remove();
+          this.dynamicRef?.createComponent((this.router.url === '/') ? MainComponent : this.routeConfig['component']);
+        }
+      }
+    });
   }
 
   private isRouteExists(routeMap: string[]): boolean {

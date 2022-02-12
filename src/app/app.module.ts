@@ -9,11 +9,13 @@ import { LoginComponent } from './module/login/login.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PageUnderConstructionComponent } from './shared/page-under-construction/page-under-construction.component';
 import { CoreComponent } from './core/core.component';
-import { FooterComponent } from './core/footer/footer.component';
+import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
 import { ContentComponent } from './core/content/content.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { CoreModule } from './core/core.module';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import { CoreModule } from './core/core.module';
     PageNotFoundComponent,
     PageUnderConstructionComponent,
     CoreComponent,
-    FooterComponent,
+    SidebarComponent,
     HeaderComponent,
     ContentComponent,
+    FooterComponent,
     PublicationComponent,
   ],
   imports: [
@@ -33,6 +36,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
+    MaterialModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'id' },

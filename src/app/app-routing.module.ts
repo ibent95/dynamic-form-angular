@@ -32,6 +32,20 @@ const routes: Routes = [
       }
     ],
   },
+  {
+    path: 'research',
+    component: PublicationComponent,
+    children: [
+      {
+        path: 'create',
+        component: PublicationComponent,
+      },
+      {
+        path: 'update',
+        component: PublicationComponent
+      }
+    ],
+  },
 ];
 
 @NgModule({

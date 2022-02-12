@@ -1,5 +1,14 @@
 <ng-container>
-	<app-header [routeMap]="routeMap"></app-header>
-	<app-content [routeMap]="routeMap"></app-content>
-	<app-footer [routeMap]="routeMap"></app-footer>
+	<mat-drawer-container class="drawer-container">
+		<mat-drawer mode="side" opened>
+			<app-sidebar [routeMap]="routeMap"></app-sidebar>
+		</mat-drawer>
+		<mat-drawer-content>
+			<app-header [routeMap]="routeMap"></app-header>
+
+			<app-content [routeMap]="routeMap"></app-content>
+
+			<app-footer [routeMap]="routeMap"></app-footer>
+		</mat-drawer-content>
+	</mat-drawer-container>
 </ng-container>
