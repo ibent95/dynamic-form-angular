@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ContentChild, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { MainComponent } from 'src/app/main/main.component';
+import { OverviewComponent } from 'src/app/module/overview/overview.component';
 
 @Component({
   selector: 'app-content',
@@ -35,7 +35,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
         if (this.routeIsExists) {
           this.dynamicRef?.remove();
-          this.dynamicRef?.createComponent((this.router.url === '/') ? MainComponent : this.routeConfig['component']);
+          this.dynamicRef?.createComponent((this.router.url === '/') ? OverviewComponent : this.routeConfig['component']);
         }
       }
     });

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './module/login/login.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
@@ -16,11 +15,11 @@ import { ContentComponent } from './core/content/content.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
+import { OverviewComponent } from './module/overview/overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     LoginComponent,
     PageNotFoundComponent,
     PageUnderConstructionComponent,
@@ -30,6 +29,7 @@ import { MaterialModule } from './material/material.module';
     ContentComponent,
     FooterComponent,
     PublicationComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,

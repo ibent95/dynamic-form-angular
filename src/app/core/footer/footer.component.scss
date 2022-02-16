@@ -1,4 +1,18 @@
 footer {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+::ng-deep .footer-content {
+	margin: 0;
+	padding: 5px 50px 5px;
+}
+
+::ng-deep .center-content {
+	justify-content: center;
+	display: flex;
 }

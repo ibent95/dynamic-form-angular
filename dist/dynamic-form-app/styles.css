@@ -14,5 +14,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+mat-card.container {
+  margin: 20px 20px 0;
+}
+mat-list-item.center-content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 
 /*# sourceMappingURL=styles.css.map*/
