@@ -39,24 +39,9 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		// Check if route is exist
 		this.isRouteExists = this.checkRouteExists(this.routeMap);
 		this.isRootRoute = (this.router.url === '/');
-		this.windowNavigation = <PerformanceNavigationTiming>window.performance.getEntriesByType("navigation")[0].;
-
-		// If route is exist
-		//if (this.isRouteExists) {
-
-			// Remove content in dynamic reference container
-			//this.dynamicRef?.remove();
-			//console.log('ngOnInit', this.router.url, this.dynamicRef);
-
-			// Add content in dynamic reference container if the route is not root route ('/')
-		//	if (this.dynamicRef && !this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
-		//}
 	}
 
 	ngAfterViewInit(): void {
-
-		console.log('ngAfterViewInit start');
-		console.log('windowNavigation', this.windowNavigation);
 
 		// Router event change detector
 		this.router.events
@@ -73,16 +58,28 @@ export class ContentComponent implements OnInit, AfterViewInit {
 			this.isRouteExists = this.checkRouteExists(this.routeMap);
 			this.isRootRoute = (this.router.url === '/');
 
-			// If route is exist
-			if (this.isRouteExists) {
-
-				// Remove content in dynamic reference container
-				this.dynamicRef?.remove();
-
-				// Add content in dynamic reference container if the route is not root route ('/')
-				if (!this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
-			}
+			Promise.resolve().then(() => this.setDynamicReferenceContainerContent(this.isRouteExists, this.isRootRoute));
 		});
+
+		// Other condition or browser is reloaded or refreshed
+		this.windowNavigation = <PerformanceNavigationTiming>window.performance.getEntriesByType("navigation")[0];
+
+		if (this.windowNavigation.type === 'reload') {
+			Promise.resolve().then(() => this.setDynamicReferenceContainerContent(this.isRouteExists, this.isRootRoute));
+		}
+	}
+
+	private setDynamicReferenceContainerContent(isRouteExists: boolean, isRootRoute: boolean, routeConfig?: any) {
+
+		// If route is exist
+		if (isRouteExists) {
+
+			// Remove content in dynamic reference container
+			this.dynamicRef?.remove();
+
+			// Add content in dynamic reference container if the route is not root route ('/')
+			if (!isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
+		}
 	}
 
 	private checkRouteExists(routeMap: string[]): boolean {
