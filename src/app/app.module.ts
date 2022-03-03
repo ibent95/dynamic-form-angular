@@ -17,6 +17,7 @@ import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
 import { OverviewComponent } from './module/overview/overview.component';
 import { PageBlankComponent } from './shared/page-blank/page-blank.component';
+import { PageComponentsComponent } from './shared/page-components/page-components.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PageBlankComponent } from './shared/page-blank/page-blank.component';
     PublicationComponent,
     OverviewComponent,
     PageBlankComponent,
+    PageComponentsComponent,
   ],
   imports: [
     BrowserModule,
