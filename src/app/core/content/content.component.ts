@@ -36,6 +36,10 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 
+		// Remove first slash (/) in route element
+		this.routeMap = this.router.url.split('/');
+		this.routeMap.shift();
+
 		// Check if route is exist
 		this.isRouteExists = this.checkRouteExists(this.routeMap);
 		this.isRootRoute = (this.router.url === '/');
@@ -47,8 +51,6 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		this.router.events
 		.pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
 		.subscribe((event: NavigationEnd) => {
-
-			console.log('url changed');
 
 			// Remove first slash (/) in route element
 			this.routeMap = this.router.url.split('/');
@@ -64,6 +66,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		// Other condition or browser is reloaded or refreshed
 		this.windowNavigation = <PerformanceNavigationTiming>window.performance.getEntriesByType("navigation")[0];
 
+		// If browser is browser is reloaded or refreshed
 		if (this.windowNavigation.type === 'reload') {
 			Promise.resolve().then(() => this.setDynamicReferenceContainerContent(this.isRouteExists, this.isRootRoute));
 		}

@@ -14,7 +14,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.environment = environment;
-    console.log('load');
   }
 
 }

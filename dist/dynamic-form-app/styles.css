@@ -382,20 +382,15 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 1536px;
   }
 }
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.m-7 {
+  margin: 1.75rem;
 }
-.font-bold {
-  font-weight: 700;
+.max-w-none {
+  max-width: none;
 }
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-.underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -406,9 +401,6 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-mat-card.container {
-  margin: 20px 20px 0;
 }
 mat-card-content {
   margin-top: 20px;

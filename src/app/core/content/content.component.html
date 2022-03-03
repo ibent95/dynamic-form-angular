@@ -5,7 +5,7 @@
 		<app-page-not-found></app-page-not-found>
 	</ng-container>
 
-	<!--<ng-container *ngIf="isRouteExists">-->
+	<ng-container *ngIf="isRouteExists">
 
 		<!-- Default content (home) -->
 		<app-overview *ngIf="isRootRoute"></app-overview>
@@ -13,8 +13,8 @@
 		<!-- Other content if route is exist -->
 		<ng-container #dynamicRef></ng-container>
 
-		<!--<app-page-blank></app-page-blank>-->
+		<app-page-blank></app-page-blank>
 
-	<!--</ng-container>-->
+	</ng-container>
 
 </ng-container>
