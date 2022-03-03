@@ -16,6 +16,7 @@ import { PublicationComponent } from './module/publication/publication.component
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material/material.module';
 import { OverviewComponent } from './module/overview/overview.component';
+import { PageBlankComponent } from './shared/page-blank/page-blank.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OverviewComponent } from './module/overview/overview.component';
     FooterComponent,
     PublicationComponent,
     OverviewComponent,
+    PageBlankComponent,
   ],
   imports: [
     BrowserModule,
