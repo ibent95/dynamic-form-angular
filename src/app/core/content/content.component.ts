@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, ContentChild, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { OverviewComponent } from 'src/app/module/overview/overview.component';
-import { CoreComponent } from '../core.component';
+import { filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-content',
@@ -26,6 +25,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
 	isRouteExists!: boolean;
 	isRootRoute!: boolean;
 
+	windowNavigation!: PerformanceNavigationTiming;
 	routeConfig!: { [key: string]: any };
 
 	@ViewChild('dynamicRef', { read: ViewContainerRef }) dynamicRef!: ViewContainerRef;
@@ -39,41 +39,48 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		// Check if route is exist
 		this.isRouteExists = this.checkRouteExists(this.routeMap);
 		this.isRootRoute = (this.router.url === '/');
+		this.windowNavigation = <PerformanceNavigationTiming>window.performance.getEntriesByType("navigation")[0].;
 
 		// If route is exist
-		if (this.isRouteExists) {
+		//if (this.isRouteExists) {
 
 			// Remove content in dynamic reference container
-			this.dynamicRef?.remove();
+			//this.dynamicRef?.remove();
+			//console.log('ngOnInit', this.router.url, this.dynamicRef);
 
 			// Add content in dynamic reference container if the route is not root route ('/')
-			if (!this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
-		}
+		//	if (this.dynamicRef && !this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
+		//}
 	}
 
 	ngAfterViewInit(): void {
 
+		console.log('ngAfterViewInit start');
+		console.log('windowNavigation', this.windowNavigation);
+
 		// Router event change detector
-		this.router.events.subscribe(event => {
-			if (event instanceof NavigationEnd) {
+		this.router.events
+		.pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+		.subscribe((event: NavigationEnd) => {
 
-				// Remove first slash (/) in route element
-				this.routeMap = this.router.url.split('/');
-				this.routeMap.shift();
+			console.log('url changed');
 
-				// Check if route is exist
-				this.isRouteExists = this.checkRouteExists(this.routeMap);
-				this.isRootRoute = (this.router.url === '/');
+			// Remove first slash (/) in route element
+			this.routeMap = this.router.url.split('/');
+			this.routeMap.shift();
 
-				// If route is exist
-				if (this.isRouteExists) {
+			// Check if route is exist
+			this.isRouteExists = this.checkRouteExists(this.routeMap);
+			this.isRootRoute = (this.router.url === '/');
 
-					// Remove content in dynamic reference container
-					this.dynamicRef?.remove();
+			// If route is exist
+			if (this.isRouteExists) {
 
-					// Add content in dynamic reference container if the route is not root route ('/')
-					if (!this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
-				}
+				// Remove content in dynamic reference container
+				this.dynamicRef?.remove();
+
+				// Add content in dynamic reference container if the route is not root route ('/')
+				if (!this.isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
 			}
 		});
 	}
