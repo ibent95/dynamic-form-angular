@@ -1,5 +1,5 @@
 {
-	"/api/*": {
+	"^/api": {
 		"target": "https://svc-dynamic-form-symfony.loc/api",
 		"secure": false,
 		"changeOrigin": true,
