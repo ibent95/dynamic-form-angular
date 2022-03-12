@@ -66,23 +66,23 @@ export class AppService {
   }
 
   listParam(serviceType: AppServiceType, params: string = ''): Observable<any> {
-    return this.http.get(this.getUrl(serviceType) + params);
+    return this.http.get(this.getUrl(serviceType) + params, { headers: this.HEADERS });
   }
 
   post(serviceType: AppServiceType, body: any): Observable<any> {
-    return this.http.post(this.getUrl(serviceType), body);
+    return this.http.post(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
   create(serviceType: AppServiceType, body: any, params: string = ''): Observable<any> {
-    return this.http.post(this.getUrl(serviceType) + params, body);
+    return this.http.post(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
   }
 
   put(serviceType: AppServiceType, body: any): Observable<any> {
-    return this.http.put(this.getUrl(serviceType), body);
+    return this.http.put(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
   update(serviceType: AppServiceType, body: any, params: string = ''): Observable<any> {
-    return this.http.put(this.getUrl(serviceType) + params, body);
+    return this.http.put(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
   }
 
 }

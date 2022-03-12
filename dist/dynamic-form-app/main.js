@@ -1391,19 +1391,19 @@ class AppService {
         return this.http.get(this.getUrl(serviceType), { headers: this.HEADERS });
     }
     listParam(serviceType, params = '') {
-        return this.http.get(this.getUrl(serviceType) + params);
+        return this.http.get(this.getUrl(serviceType) + params, { headers: this.HEADERS });
     }
     post(serviceType, body) {
-        return this.http.post(this.getUrl(serviceType), body);
+        return this.http.post(this.getUrl(serviceType), body, { headers: this.HEADERS });
     }
     create(serviceType, body, params = '') {
-        return this.http.post(this.getUrl(serviceType) + params, body);
+        return this.http.post(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
     }
     put(serviceType, body) {
-        return this.http.put(this.getUrl(serviceType), body);
+        return this.http.put(this.getUrl(serviceType), body, { headers: this.HEADERS });
     }
     update(serviceType, body, params = '') {
-        return this.http.put(this.getUrl(serviceType) + params, body);
+        return this.http.put(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
     }
 }
 AppService.ɵfac = function AppService_Factory(t) { return new (t || AppService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_app_config__WEBPACK_IMPORTED_MODULE_0__.ENV), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
