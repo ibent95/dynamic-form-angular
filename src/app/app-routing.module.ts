@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreComponent } from './core/core.component';
 import { LoginComponent } from './module/login/login.component';
+import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
@@ -24,11 +25,11 @@ const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: PublicationComponent,
+        component: PublicationFormComponent,
       },
       {
         path: 'update',
-        component: PublicationComponent
+        component: PublicationFormComponent
       }
     ],
   },
@@ -38,11 +39,11 @@ const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: PublicationComponent,
+        component: PublicationFormComponent,
       },
       {
         path: 'update',
-        component: PublicationComponent
+        component: PublicationFormComponent
       }
     ],
   },

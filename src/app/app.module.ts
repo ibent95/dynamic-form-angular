@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,13 @@ import { MaterialModule } from './material/material.module';
 import { OverviewComponent } from './module/overview/overview.component';
 import { PageBlankComponent } from './shared/page-blank/page-blank.component';
 import { PageComponentsComponent } from './shared/page-components/page-components.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
+import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
+import { CONFIG, ENV } from './app.config';
+import { AppService } from './service/app.service';
+import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,16 +41,23 @@ import { PageComponentsComponent } from './shared/page-components/page-component
     OverviewComponent,
     PageBlankComponent,
     PageComponentsComponent,
+    PublicationFormComponent,
+    PublicationDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'id' },
+    { provide: ENV, useValue: CONFIG },
+    AppService
   ],
   bootstrap: [AppComponent]
 })

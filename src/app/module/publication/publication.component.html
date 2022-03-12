@@ -1,10 +1,50 @@
 <mat-card class="max-w-none m-7">
-	<mat-card-title>Publication</mat-card-title>
-	<mat-card-subtitle>Subtitle</mat-card-subtitle>
+	<mat-card-title>Publication </mat-card-title>
+	<mat-card-subtitle>Overview information and table of publication`s data</mat-card-subtitle>
 
 	<mat-divider></mat-divider>
 
 	<mat-card-content>
-		<p>Publication</p>
+
+		<div class="grid grid-cols-2">
+			<div align="start">
+				<ng-container *ngIf="serverResponse">
+					Server messages:
+					date: {{ serverResponse.date }}
+					message: {{ serverResponse.message }}
+				</ng-container>
+			</div>
+			<div align="end">
+				<button mat-raised-button class="content-center" color="accent" (click)="onAddPublicationClick()">
+					<mat-icon>add</mat-icon>
+					Add
+				</button>
+			</div>
+		</div>
+
+		<!-- Table Start -->
+		<table mat-table [dataSource]="tableDataSource" class="mat-elevation-z10">
+
+			<!-- Columns -->
+			<ng-container *ngFor="let column of tableDisplayedColumns.label; let columnIndex = index;">
+
+				<ng-container matColumnDef="{{ tableDisplayedColumns.property[columnIndex] }}">
+					<th mat-header-cell *matHeaderCellDef>{{ tableDisplayedColumns.label[columnIndex] }}</th>
+					<td mat-cell *matCellDef="let element"> {{ element[tableDisplayedColumns.property[columnIndex]] }} </td>
+				</ng-container>
+
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="tableDisplayedColumns.property"></tr>
+			<tr mat-row *matRowDef="let row; columns: tableDisplayedColumns.property;"></tr>
+		</table>
+		<!-- Table End -->
+
+		<!--<div class="box-border h-32 w-100 p-4 border-4">
+			<p>Publication</p>
+		</div>-->
+
 	</mat-card-content>
 </mat-card>
+
+<app-page-components></app-page-components>

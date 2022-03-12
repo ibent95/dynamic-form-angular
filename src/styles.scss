@@ -6,13 +6,69 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button { margin-right: 10px; margin-bottom: 10px; }
 
-mat-card-content {
-	margin-top: 20px;
+// ============================== Angular Material Custom ============================== //
+
+// mat-button
+button.mat-button, a.mat-button {
+	margin-bottom: 10px;
+	mat-icon { margin-top: -3px; vertical-align: middle; }
 }
 
-mat-list-item.center-content {
-	display: flex;
-	justify-content: center;
-	text-align: center;
+// mat-raised-button
+button.mat-raised-button, a.mat-raised-button {
+	margin-bottom: 10px;
+	mat-icon { margin-top: -3px; vertical-align: middle; }
 }
+
+// mat-stroked-button
+button.mat-stroked-button, a.mat-stroked-button {
+	margin-bottom: 10px;
+	mat-icon { margin-top: -3px; vertical-align: middle; }
+}
+
+// mat-flat-button
+button.mat-flat-button, a.mat-flat-button {
+	margin-bottom: 10px;
+	mat-icon { margin-top: -3px; vertical-align: middle; }
+}
+
+// mat-icon-button, mat-fab, mat-mini-fab
+button.mat-icon-button, button.mat-fab, button.mat-mini-fab { margin-bottom: 10px; }
+
+// mat-input
+mat-form-field { width: 100%; }
+
+// mat-radio-button
+mat-radio-button { margin-right: 10px; }
+
+// mat-slider
+mat-slider { width: 100%; }
+
+// mat-list-item
+mat-list-item.center-content { display: flex; justify-content: center; text-align: center; }
+
+// mat-table
+table.mat-table { width: 100%; }
+
+// mat-chip
+mat-chip .mat-chip-remove { margin-top: 10px; }
+
+// mat-card
+mat-card {
+
+	// mat-card-subtitle
+	mat-card-subtitle { padding: 0 10px; }
+
+	// mat-card-title
+	mat-card-title { padding: 15px 10px; }
+
+	// mat-card-content
+	mat-card-content { margin-top: 20px; padding: 20px 10px; }
+
+}
+
+// ============================== Other Custom ============================== //
+
+.text-tile { margin-right: 10px; margin-bottom: 10px !important; }
