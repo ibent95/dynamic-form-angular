@@ -5,7 +5,11 @@ import { ENV } from '../app.config';
 
 export enum AppServiceType {
 
+  ROOT,
+
   PUBLICATION_MAIN,
+  PUBLICATIONS,
+  PUBLICATION_FORM_METADATA,
 
 }
 
@@ -42,10 +46,27 @@ export class AppService {
     let url: string;
 
     switch (serviceType) {
-      case AppServiceType.PUBLICATION_MAIN:
-        url = this.BASE_URL_API + '/api/v1';
-        //url = 'https://jsonplaceholder.typicode.com/todos/1';
+      case AppServiceType.ROOT:
+        url = this.BASE_URL_API + '/v1';
         break;
+
+      /** =============================== PUBLICATION =============================== */
+
+      case AppServiceType.PUBLICATION_MAIN:
+        url = this.BASE_URL_API + '/v1/publication';
+        break;
+
+      case AppServiceType.PUBLICATIONS:
+        url = this.BASE_URL_API + '/v1/publications';
+        break;
+
+      case AppServiceType.PUBLICATION_FORM_METADATA:
+        url = this.BASE_URL_API + '/v1/publication/form-metadata';
+        break;
+
+      /** ================================= RESEARCH ================================= */
+
+      /** ================================== DEFAULT ================================== */
 
       default:
         url = '';

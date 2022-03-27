@@ -481,5 +481,31 @@
 
 		</section>
 
+		<!-- Ghost component -->
+		<section class="mb-4">
+			<div class="mb-2">
+				<div class="text-title text-lg">Ghost component</div>
+				<mat-divider inset></mat-divider>
+			</div>
+
+			<div class="grid grid-cols-2 gap-4">
+
+				<div class="mb-3">
+					<div class="text-title text-sm mb-2">Ghost table (TailwindCSS`s grid style)</div>
+
+					<app-ghost-table [rowCount]="3" [columnCount]="4"></app-ghost-table>
+				</div>
+
+				<div class="mb-3">
+					<div class="text-title text-sm mb-2">Ghost table (Material`s grid style)</div>
+					<div class="mat-elevation-z8">
+						<p>Comming soon</p>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
 	</mat-card-content>
 </mat-card>

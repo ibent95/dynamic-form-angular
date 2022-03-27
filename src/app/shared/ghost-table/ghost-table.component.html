@@ -1,0 +1,33 @@
+<ng-container *ngIf="(gridType === 'material' && data.body.length > 0)">
+	<div class="ghost-element">
+		<ng-container *ngFor="let row of data.body; let rowsIndex = index;">
+			<div class="grid grid-cols-{{ row.column.length }} gap-2">
+				<ng-container *ngFor="let column of row.column; let columnIndex = index;">
+					<div class="line"></div>
+				</ng-container>
+			</div>
+		</ng-container>
+	</div>
+</ng-container>
+
+<ng-container *ngIf="(gridType === 'tailwind' && data.body.length > 0)">
+	<div class="ghost-element">
+		<!-- Header -->
+		<ng-container *ngFor="let row of data.header; let rowsIndex = index;">
+			<div class="grid grid-cols-{{ row.column.length }} gap-4 mb-4">
+				<ng-container *ngFor="let column of row.column; let columnIndex = index;">
+					<div class="header-line"></div>
+				</ng-container>
+			</div>
+		</ng-container>
+
+		<!-- Body -->
+		<ng-container *ngFor="let row of data.body; let rowsIndex = index;">
+			<div class="grid grid-cols-{{ row.column.length }} gap-4 mb-4">
+				<ng-container *ngFor="let column of row.column; let columnIndex = index;">
+					<div class="line"></div>
+				</ng-container>
+			</div>
+		</ng-container>
+	</div>
+</ng-container>

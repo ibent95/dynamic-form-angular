@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://svc-dynamic-form-symfony.loc'
+  apiUrl: 'https://svc-dynamic-form-symfony.loc/api'
 };
 
 /*

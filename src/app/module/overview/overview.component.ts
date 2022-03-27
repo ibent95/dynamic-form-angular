@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService, AppServiceType } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
+  serverResponse!: { message: string | null, date: string | null } | null;
+
+  constructor(
+    private appSvc: AppService,
+  ) { }
 
   ngOnInit(): void {
+    this.serverResponse = null;
+
+    this.getServerInfo();
+  }
+
+  private getServerInfo(): void {
+    this.appSvc.list(AppServiceType.ROOT).subscribe(response => {
+      this.serverResponse = response['data'];
+    });
   }
 
 }
