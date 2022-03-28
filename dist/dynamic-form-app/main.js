@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/common/http */ 8784);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/forms */ 587);
 /* harmony import */ var _angular_common_locales_id__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/locales/id */ 2606);
+/* harmony import */ var ngx_select_ex__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ngx-select-ex */ 150);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 158);
 /* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./material/material.module */ 898);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ 5041);
@@ -156,13 +157,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_page_components_page_components_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./shared/page-components/page-components.component */ 2588);
 /* harmony import */ var _shared_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./shared/page-not-found/page-not-found.component */ 5816);
 /* harmony import */ var _shared_page_under_construction_page_under_construction_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./shared/page-under-construction/page-under-construction.component */ 6569);
-/* harmony import */ var _module_login_login_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./module/login/login.component */ 2782);
-/* harmony import */ var _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./module/overview/overview.component */ 4579);
-/* harmony import */ var _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./module/publication/publication.component */ 824);
-/* harmony import */ var _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./module/publication/publication-form/publication-form.component */ 8727);
-/* harmony import */ var _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./module/publication/publication-detail/publication-detail.component */ 9901);
-/* harmony import */ var _shared_ghost_table_ghost_table_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shared/ghost-table/ghost-table.component */ 378);
+/* harmony import */ var _shared_ghost_table_ghost_table_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./shared/ghost-table/ghost-table.component */ 378);
+/* harmony import */ var _module_login_login_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./module/login/login.component */ 2782);
+/* harmony import */ var _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./module/overview/overview.component */ 4579);
+/* harmony import */ var _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./module/publication/publication.component */ 824);
+/* harmony import */ var _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./module/publication/publication-form/publication-form.component */ 8727);
+/* harmony import */ var _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./module/publication/publication-detail/publication-detail.component */ 9901);
 // Angular and other libraries
+
 
 
 
@@ -188,8 +190,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Module components
 
+// Module components
 
 
 
@@ -214,9 +216,10 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵ�
             _angular_forms__WEBPACK_IMPORTED_MODULE_26__.ReactiveFormsModule,
             _material_material_module__WEBPACK_IMPORTED_MODULE_2__.MaterialModule,
             _angular_common_http__WEBPACK_IMPORTED_MODULE_27__.HttpClientModule,
+            ngx_select_ex__WEBPACK_IMPORTED_MODULE_28__.NgxSelectModule,
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__.AppComponent,
-        _module_login_login_component__WEBPACK_IMPORTED_MODULE_16__.LoginComponent,
+        _module_login_login_component__WEBPACK_IMPORTED_MODULE_17__.LoginComponent,
         _shared_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_14__.PageNotFoundComponent,
         _shared_page_under_construction_page_under_construction_component__WEBPACK_IMPORTED_MODULE_15__.PageUnderConstructionComponent,
         _core_core_component__WEBPACK_IMPORTED_MODULE_7__.CoreComponent,
@@ -224,20 +227,21 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵ�
         _core_header_header_component__WEBPACK_IMPORTED_MODULE_8__.HeaderComponent,
         _core_content_content_component__WEBPACK_IMPORTED_MODULE_10__.ContentComponent,
         _core_footer_footer_component__WEBPACK_IMPORTED_MODULE_11__.FooterComponent,
-        _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_18__.PublicationComponent,
-        _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_17__.OverviewComponent,
+        _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_19__.PublicationComponent,
+        _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_18__.OverviewComponent,
         _shared_page_blank_page_blank_component__WEBPACK_IMPORTED_MODULE_12__.PageBlankComponent,
         _shared_page_components_page_components_component__WEBPACK_IMPORTED_MODULE_13__.PageComponentsComponent,
-        _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_19__.PublicationFormComponent,
-        _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_20__.PublicationDetailComponent,
-        _shared_ghost_table_ghost_table_component__WEBPACK_IMPORTED_MODULE_21__.GhostTableComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_24__.BrowserModule,
+        _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_20__.PublicationFormComponent,
+        _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_21__.PublicationDetailComponent,
+        _shared_ghost_table_ghost_table_component__WEBPACK_IMPORTED_MODULE_16__.GhostTableComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_24__.BrowserModule,
         _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_25__.BrowserAnimationsModule,
         _core_core_module__WEBPACK_IMPORTED_MODULE_6__.CoreModule,
         _angular_forms__WEBPACK_IMPORTED_MODULE_26__.FormsModule,
         _angular_forms__WEBPACK_IMPORTED_MODULE_26__.ReactiveFormsModule,
         _material_material_module__WEBPACK_IMPORTED_MODULE_2__.MaterialModule,
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_27__.HttpClientModule] }); })();
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_27__.HttpClientModule,
+        ngx_select_ex__WEBPACK_IMPORTED_MODULE_28__.NgxSelectModule] }); })();
 
 
 /***/ }),
@@ -1174,12 +1178,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PublicationFormComponent": () => (/* binding */ PublicationFormComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ 587);
 /* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2816);
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/card */ 1961);
 /* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/divider */ 9975);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var ngx_select_ex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-select-ex */ 150);
 
 
 
@@ -1188,6 +1194,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+function PublicationFormComponent_ng_container_7_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "No data");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerEnd"]();
+} }
+function PublicationFormComponent_ng_container_8_ng_container_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " Load data ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerEnd"]();
+} }
+function PublicationFormComponent_ng_container_8_ng_container_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainer"](0);
+} }
+function PublicationFormComponent_ng_container_8_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "form", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "ngx-select", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("selectionChanges", function PublicationFormComponent_ng_container_8_Template_ngx_select_selectionChanges_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r4.onPublicationTypeClick($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, PublicationFormComponent_ng_container_8_ng_container_3_Template, 2, 0, "ng-container", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, PublicationFormComponent_ng_container_8_ng_container_4_Template, 1, 0, "ng-container", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx_r1.forms);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControlName", "publication_type_uuid")("items", ctx_r1.selectOptions["publication_type"].items)("optionTextField", "publication_type_name")("optionValueField", "uuid")("defaultValue", ctx_r1.selectOptions["publication_type"].defaultValue);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.available.publication_type_selected && !ctx_r1.available.form_metadata);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.available.publication_type_selected && ctx_r1.available.form_metadata);
+} }
 class PublicationFormComponent {
     constructor(router, formBuilder, appSvc) {
         this.router = router;
@@ -1195,46 +1238,77 @@ class PublicationFormComponent {
         this.appSvc = appSvc;
     }
     ngOnInit() {
+        this.available = {
+            form_metadata: false,
+            form_builder: false,
+            publication_type_selected: false,
+            publication_form_metadata: false,
+            wizard: false,
+            wizard_count: 0,
+        };
         this.publicationTypeCode = 'JUR-1';
         this.formVersionCode = 'V1-JUR-1'; // V1-JUR-1
-        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormGroup({});
-        this.getFormMetadata();
+        this.forms = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroup({});
+        this.selectOptions = {
+            publication_type: {
+                items: [],
+                default_value: null
+            }
+        };
         this.initiateForm();
     }
-    getFormMetadata() {
-        let params = '/' + this.publicationTypeCode;
-        if (this.formVersionCode)
-            params += '?form-version-code=' + this.formVersionCode;
-        this.appSvc.listParam(src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.AppServiceType.PUBLICATION_FORM_METADATA, params).subscribe(response => {
-            this.publicationFormMetadata = response['data'];
+    getMasterdataPublicationType() {
+        this.appSvc.list(src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
+            this.selectOptions['publication_type'].items = response['data'];
         });
     }
     initiateForm() {
-        this.form = this.formBuilder.group({});
+        // Required masterdata
+        this.getMasterdataPublicationType();
+        this.forms = this.formBuilder.group({
+            publication_type_code: null,
+            publication_type_uuid: null,
+        });
+        this.available.form_builder = true;
+    }
+    onPublicationTypeClick(eventData) {
+        const selectedData = eventData[0].data;
+        this.publicationTypeCode = selectedData['publication_type_code'];
+        this.available.publication_type_selected = true;
+        this.available.form_metadata = false;
+        this.getFormMetadata(this.publicationTypeCode);
+    }
+    getFormMetadata(publicationTypeCode, formVersionCode) {
+        let params = '/' + publicationTypeCode;
+        if (formVersionCode)
+            params += '?form-version-code=' + formVersionCode;
+        this.appSvc.listParam(src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.AppServiceType.PUBLICATION_FORM_METADATA, params).subscribe(response => {
+            this.publicationFormMetadata = response['data'];
+            this.available.form_metadata = true;
+        });
     }
 }
-PublicationFormComponent.ɵfac = function PublicationFormComponent_Factory(t) { return new (t || PublicationFormComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.AppService)); };
-PublicationFormComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: PublicationFormComponent, selectors: [["app-publication-form"]], decls: 10, vars: 1, consts: [[1, "max-w-none", "m-7"], [1, "grid", "grid-cols-4", "gap-4", 3, "formGroup"]], template: function PublicationFormComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "mat-card", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-card-title");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "Publication`s form");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "mat-card-subtitle");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Form of publication");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](5, "mat-divider");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-card-content");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "form", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, "Form");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+PublicationFormComponent.ɵfac = function PublicationFormComponent_Factory(t) { return new (t || PublicationFormComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.AppService)); };
+PublicationFormComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: PublicationFormComponent, selectors: [["app-publication-form"]], decls: 9, vars: 2, consts: [[1, "max-w-none", "m-7"], [4, "ngIf"], [1, "grid", "grid-cols-4", "gap-4", 3, "formGroup"], ["id", "publication_type_uuid", "placeholder", "-- Choose publication type --", 1, "form-control", 3, "formControlName", "items", "optionTextField", "optionValueField", "defaultValue", "selectionChanges"]], template: function PublicationFormComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-card", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-card-title");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Publication`s form");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "mat-card-subtitle");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "Form of publication");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](5, "mat-divider");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-card-content");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, PublicationFormComponent_ng_container_7_Template, 2, 0, "ng-container", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, PublicationFormComponent_ng_container_8_Template, 5, 8, "ng-container", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.form);
-    } }, directives: [_angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCard, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardTitle, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardSubtitle, _angular_material_divider__WEBPACK_IMPORTED_MODULE_5__.MatDivider, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardContent, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_1__.FormGroupDirective], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwdWJsaWNhdGlvbi1mb3JtLmNvbXBvbmVudC5zY3NzIn0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.available.form_builder);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.available.form_builder);
+    } }, directives: [_angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCard, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardTitle, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardSubtitle, _angular_material_divider__WEBPACK_IMPORTED_MODULE_5__.MatDivider, _angular_material_card__WEBPACK_IMPORTED_MODULE_4__.MatCardContent, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroupDirective, ngx_select_ex__WEBPACK_IMPORTED_MODULE_7__.NgxSelectComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControlName], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwdWJsaWNhdGlvbi1mb3JtLmNvbXBvbmVudC5zY3NzIn0= */"] });
 
 
 /***/ }),
@@ -1484,6 +1558,7 @@ var AppServiceType;
     AppServiceType[AppServiceType["PUBLICATION_MAIN"] = 1] = "PUBLICATION_MAIN";
     AppServiceType[AppServiceType["PUBLICATIONS"] = 2] = "PUBLICATIONS";
     AppServiceType[AppServiceType["PUBLICATION_FORM_METADATA"] = 3] = "PUBLICATION_FORM_METADATA";
+    AppServiceType[AppServiceType["PUBLICATION_MASTERDATA_PUBLICATION_TYPE"] = 4] = "PUBLICATION_MASTERDATA_PUBLICATION_TYPE";
 })(AppServiceType || (AppServiceType = {}));
 class AppService {
     constructor(config, http) {
@@ -1518,6 +1593,9 @@ class AppService {
                 break;
             case AppServiceType.PUBLICATION_FORM_METADATA:
                 url = this.BASE_URL_API + '/v1/publication/form-metadata';
+                break;
+            case AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE:
+                url = this.BASE_URL_API + '/v1/master/publication-type';
                 break;
             /** ================================= RESEARCH ================================= */
             /** ================================== DEFAULT ================================== */

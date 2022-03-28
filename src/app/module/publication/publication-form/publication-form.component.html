@@ -6,11 +6,33 @@
 
 	<mat-card-content>
 
-		<form [formGroup]="form" class="grid grid-cols-4 gap-4">
+		<ng-container *ngIf="!available.form_builder">No data</ng-container>
 
-			<ng-container>Form</ng-container>
+		<ng-container *ngIf="available.form_builder">
+			<form [formGroup]="forms" class="grid grid-cols-4 gap-4">
 
-		</form>
+				<ngx-select
+					class="form-control"
+					id="publication_type_uuid"
+					placeholder="-- Choose publication type --"
+					[formControlName]="'publication_type_uuid'"
+					[items]="selectOptions['publication_type'].items"
+					[optionTextField]="'publication_type_name'"
+					[optionValueField]="'uuid'"
+					[defaultValue]="selectOptions['publication_type'].defaultValue"
+					(selectionChanges)="onPublicationTypeClick($event)"
+				></ngx-select>
+
+				<ng-container *ngIf="(available.publication_type_selected && !available.form_metadata)">
+					Load data
+				</ng-container>
+
+				<ng-container *ngIf="(available.publication_type_selected && available.form_metadata)">
+
+				</ng-container>
+
+			</form>
+		</ng-container>
 
 	</mat-card-content>
 </mat-card>

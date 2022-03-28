@@ -6,6 +6,7 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeId from "@angular/common/locales/id";
+import { NgxSelectModule } from 'ngx-select-ex';
 
 // App routings, settings, components
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { PageBlankComponent } from './shared/page-blank/page-blank.component';
 import { PageComponentsComponent } from './shared/page-components/page-components.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PageUnderConstructionComponent } from './shared/page-under-construction/page-under-construction.component';
+import { GhostTableComponent } from './shared/ghost-table/ghost-table.component';
 
 // Module components
 import { LoginComponent } from './module/login/login.component';
@@ -34,7 +36,6 @@ import { OverviewComponent } from './module/overview/overview.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
-import { GhostTableComponent } from './shared/ghost-table/ghost-table.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -66,6 +67,7 @@ registerLocaleData(localeId, 'id');
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    NgxSelectModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'id' },

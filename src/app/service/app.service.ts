@@ -10,6 +10,7 @@ export enum AppServiceType {
   PUBLICATION_MAIN,
   PUBLICATIONS,
   PUBLICATION_FORM_METADATA,
+  PUBLICATION_MASTERDATA_PUBLICATION_TYPE,
 
 }
 
@@ -62,6 +63,10 @@ export class AppService {
 
       case AppServiceType.PUBLICATION_FORM_METADATA:
         url = this.BASE_URL_API + '/v1/publication/form-metadata';
+        break;
+
+      case AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE:
+        url = this.BASE_URL_API + '/v1/master/publication-type';
         break;
 
       /** ================================= RESEARCH ================================= */
