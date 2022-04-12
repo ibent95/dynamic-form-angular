@@ -36,6 +36,7 @@ import { OverviewComponent } from './module/overview/overview.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -43,20 +44,21 @@ registerLocaleData(localeId, 'id');
   declarations: [
     AppComponent,
     LoginComponent,
+    PageBlankComponent,
+    PageComponentsComponent,
     PageNotFoundComponent,
     PageUnderConstructionComponent,
     CoreComponent,
-    SidebarComponent,
     HeaderComponent,
+    SidebarComponent,
     ContentComponent,
     FooterComponent,
-    PublicationComponent,
     OverviewComponent,
-    PageBlankComponent,
-    PageComponentsComponent,
+    PublicationComponent,
     PublicationFormComponent,
     PublicationDetailComponent,
     GhostTableComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

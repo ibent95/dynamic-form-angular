@@ -4,6 +4,7 @@ import { CoreComponent } from './core/core.component';
 import { LoginComponent } from './module/login/login.component';
 import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './module/publication/publication.component';
+import { PageComponentsComponent } from './shared/page-components/page-components.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -14,10 +15,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    children: [],
   },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
+    children: [],
   },
   {
     path: 'publication',
@@ -46,6 +49,11 @@ const routes: Routes = [
         component: PublicationFormComponent
       }
     ],
+  },
+  {
+    path: 'components',
+    component: PageComponentsComponent,
+    children: [],
   },
 ];
 

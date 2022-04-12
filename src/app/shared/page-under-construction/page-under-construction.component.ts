@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-page-under-construction',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageUnderConstructionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private location: Location,
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  public onBackButtonClick(): void {
+    this.location.back();
   }
 
 }

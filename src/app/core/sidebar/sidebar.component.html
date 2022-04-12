@@ -3,15 +3,23 @@
 
 	<mat-list-item routerLink="/" [state]="{tracingId: 123}">
 		<!--<a matLine>-->
-			<mat-icon aria-hidden="false" aria-label="Beranda">home</mat-icon>
-			{{ 'Beranda' }}
+			<mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
+			{{ 'Home' }}
 		<!--</a>-->
 	</mat-list-item>
 
 	<mat-list-item routerLink="/publication" [state]="{tracingId: 321}">
 		<!--<a matLine>-->
-			<mat-icon aria-hidden="false" aria-label="Beranda">info</mat-icon>
-			{{ 'Publication' }}
+			<mat-icon aria-hidden="false" aria-label="Publication">document_scanner</mat-icon>
+			{{ 'Publications' }}
 		<!--</a>-->
 	</mat-list-item>
+
+	<mat-list-item routerLink="/components" [state]="{tracingId: 321}">
+		<!--<a matLine>-->
+			<mat-icon aria-hidden="false" aria-label="Component">view_compact_alt</mat-icon>
+			{{ 'Components' }}
+		<!--</a>-->
+	</mat-list-item>
+
 </mat-nav-list>

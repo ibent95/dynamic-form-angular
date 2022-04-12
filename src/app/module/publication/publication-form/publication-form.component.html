@@ -6,12 +6,25 @@
 
 	<mat-card-content>
 
-		<ng-container *ngIf="!available.form_builder">No data</ng-container>
+		<ng-container *ngIf="(available.no_data)">No data</ng-container>
 
-		<ng-container *ngIf="available.form_builder">
-			<form [formGroup]="forms" class="grid grid-cols-4 gap-4">
+		<ng-container *ngIf="(!available.no_data && available.form_builder && !available.publication_type_loaded)">
+			<app-loader></app-loader>
+		</ng-container>
 
-				<ngx-select
+		<ng-container *ngIf="(!available.no_data && available.form_builder && available.publication_type_loaded)">
+			<form [formGroup]="forms" class="grid grid-cols-1 gap-4">
+
+				<mat-form-field appearance="fill" [color]="'accent'">
+					<mat-label>Publication type</mat-label>
+					<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeClick($event)">
+						<ng-container *ngFor="let publicationType of selectOptions['publication_type'].items; let publicationTypeIndex = index;">
+							<mat-option [value]="publicationType.uuid">{{ publicationType.publication_type_name + ' [ ' + publicationType.publication_type_code + ' ]' }}</mat-option>
+						</ng-container>
+					</mat-select>
+				</mat-form-field>
+
+				<!--<ngx-select
 					class="form-control"
 					id="publication_type_uuid"
 					placeholder="-- Choose publication type --"
@@ -21,13 +34,40 @@
 					[optionValueField]="'uuid'"
 					[defaultValue]="selectOptions['publication_type'].defaultValue"
 					(selectionChanges)="onPublicationTypeClick($event)"
-				></ngx-select>
+				></ngx-select>-->
 
-				<ng-container *ngIf="(available.publication_type_selected && !available.form_metadata)">
-					Load data
+				<ng-container *ngIf="(available.publication_type_selected && !available.form_metadata_loaded)">
+					<app-loader></app-loader>
 				</ng-container>
 
-				<ng-container *ngIf="(available.publication_type_selected && available.form_metadata)">
+				<ng-container *ngIf="(available.publication_type_selected && available.form_metadata_loaded)">
+
+					<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
+						<mat-form-field appearance="fill" [color]="'accent'">
+
+							<!-- Field label -->
+							<mat-label>{{ field.field_label }}</mat-label>
+
+							<ng-container [ngSwitch]="field.field_type">
+
+								<ng-container *ngSwitchCase="'text'">
+									<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'select'">
+									<mat-select [formControlName]="field.field_name" [placeholder]="field.field_placeholder || 'Please select a data'">
+										<ng-container *ngFor="let option of forms.value[field.field_name + '_options']['items']; let optionIndex = index;">
+											<mat-option [value]="option.uuid">
+												{{ option.value + ' [ ' + option.value + ' ]' }}
+											</mat-option>
+										</ng-container>
+									</mat-select>
+								</ng-container>
+
+							</ng-container>
+
+						</mat-form-field>
+					</ng-container>
 
 				</ng-container>
 

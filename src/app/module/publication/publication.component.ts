@@ -11,7 +11,9 @@ export class PublicationComponent implements OnInit {
 
   serverResponse!: { message: string | null, date: string| null } | null;
 
-  tableDisplayedColumns!: { label: Array<string>, property: Array<string> };
+  showTable!: boolean;
+
+  tableDisplayedColumns!: { label: Array<string>, type: Array<string>, property: Array<string> };
   tableDataSource!: Array<any>;
 
   constructor(
@@ -21,11 +23,13 @@ export class PublicationComponent implements OnInit {
 
   ngOnInit(): void {
     this.serverResponse = null;
+    this.showTable = false;
 
     this.getServerInfo();
 
     this.tableDisplayedColumns = {
       label: [],
+      type: [],
       property: [],
     };
 
@@ -42,8 +46,9 @@ export class PublicationComponent implements OnInit {
 
   private tableInit(): void {
     this.tableDisplayedColumns = {
-      label: ['Title', 'Date of publish'],
-      property: ['title', 'publication_date'],
+      label: ['No.', 'Title', 'Date of publish', 'Status'],
+      type: ['number', 'text', 'text', 'object'],
+      property: ['position', 'title', 'publication_date', 'status'],
     };
 
     //this.tableDisplayedColumns = [
@@ -58,7 +63,16 @@ export class PublicationComponent implements OnInit {
 
   private getTableData(): void {
     this.appSvc.list(AppServiceType.PUBLICATIONS).subscribe(response => {
+      if (response['data']) response['data'].map((data: any, dataIndex: number) => {
+        data['position'] = dataIndex + 1;
+        data['status'] = data['publication_status']['publication_status_name'];
+        data['status_code'] = data['publication_status']['publication_status_code'];
+        data['status_uuid'] = data['publication_status']['uuid'];
+
+        return data;
+      });
       this.tableDataSource = response['data'];
+      this.showTable = true;
     });
   }
 
