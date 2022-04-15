@@ -321,6 +321,37 @@
 
 		</section>
 
+		<!-- Snackbar -->
+		<section class="mb-4">
+			<div class="mb-2">
+				<div class="text-title text-lg">Snackbar</div>
+				<mat-divider inset></mat-divider>
+			</div>
+
+			<div class="grid grid-cols-2 gap-4">
+
+				<!-- Default snackbar -->
+				<div class="mb-3">
+					<div class="text-title text-sm mb-2">Default snackbar</div>
+					<div>
+						<mat-form-field appearance="fill">
+							<mat-label>Message</mat-label>
+							<input matInput value="Lorem ipsum!" #message>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Action</mat-label>
+							<input matInput value="Dismiss" #action>
+						</mat-form-field>
+
+						<button mat-stroked-button (click)="openSnackbar(message.value, action.value)">Show snack-bar</button>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
 		<!-- Progress bar -->
 		<section class="mb-4">
 			<div class="mb-2">

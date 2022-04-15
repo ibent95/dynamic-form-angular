@@ -15,7 +15,7 @@
 		<ng-container *ngIf="(!available.no_data && available.form_builder && available.publication_type_loaded)">
 			<form [formGroup]="forms" class="grid grid-cols-1 gap-4">
 
-				<mat-form-field appearance="fill" [color]="'accent'">
+				<mat-form-field appearance="outline" [color]="'accent'">
 					<mat-label>Publication type</mat-label>
 					<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeClick($event)">
 						<ng-container *ngFor="let publicationType of selectOptions['publication_type'].items; let publicationTypeIndex = index;">
@@ -43,35 +43,405 @@
 				<ng-container *ngIf="(available.publication_type_selected && available.form_metadata_loaded)">
 
 					<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
-						<mat-form-field appearance="fill" [color]="'accent'">
+						<div class="field field-{{ fieldIndex }}">
 
 							<!-- Field label -->
-							<mat-label>{{ field.field_label }}</mat-label>
+							<!--<mat-label>{{ field.field_label }}</mat-label>-->
 
 							<ng-container [ngSwitch]="field.field_type">
 
 								<ng-container *ngSwitchCase="'text'">
-									<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+									<mat-form-field appearance="outline" [color]="'accent'">
+										<mat-label>{{ field.field_label }}</mat-label>
+										<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+									</mat-form-field>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'url'">
+									<mat-form-field appearance="outline" [color]="'accent'">
+										<mat-label>{{ field.field_label }}</mat-label>
+										<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+									</mat-form-field>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'number'">
+									<mat-form-field appearance="outline" [color]="'accent'">
+										<mat-label>{{ field.field_label }}</mat-label>
+										<input matInput type="number" [formControlName]="field.field_name" [placeholder]="field.field_placeholder" [min]="field.validation_config?.min || 0">
+									</mat-form-field>
 								</ng-container>
 
 								<ng-container *ngSwitchCase="'select'">
-									<mat-select [formControlName]="field.field_name" [placeholder]="field.field_placeholder || 'Please select a data'">
-										<ng-container *ngFor="let option of forms.value[field.field_name + '_options']['items']; let optionIndex = index;">
-											<mat-option [value]="option.uuid">
-												{{ option.value + ' [ ' + option.value + ' ]' }}
-											</mat-option>
+									<mat-form-field appearance="outline" [color]="'accent'">
+										<mat-label>{{ field.field_label }}</mat-label>
+										<mat-select [formControlName]="field.field_name" [placeholder]="field.field_placeholder || 'Please select a data'">
+											<ng-container *ngFor="let option of forms.value[field.field_name + '_options']['items']; let optionIndex = index;">
+												<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+											</ng-container>
+										</mat-select>
+									</mat-form-field>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'panel'">
+
+									<ng-container *ngFor="let child of field.children; let stepIndex = index;">
+
+										<ng-container [ngSwitch]="child.field_type">
+
+											<ng-container *ngSwitchCase="'text'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'url'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'number'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder"
+														[min]="child.validation_config.min || 0">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'select'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+														<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+															<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+														</ng-container>
+													</mat-select>
+												</mat-form-field>
+											</ng-container>
+
 										</ng-container>
-									</mat-select>
+
+									</ng-container>
+
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'well'">
+
+									<ng-container *ngFor="let child of field.children; let stepIndex = index;">
+
+										<ng-container [ngSwitch]="child.field_type">
+
+											<ng-container *ngSwitchCase="'text'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'url'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'number'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
+												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'select'">
+												<mat-form-field appearance="outline" [color]="'accent'">
+													<mat-label>{{ child.field_label }}</mat-label>
+													<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+														<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+															<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+														</ng-container>
+													</mat-select>
+												</mat-form-field>
+											</ng-container>
+
+										</ng-container>
+
+									</ng-container>
+
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'accordion'">
+									<div class="accordion">
+										<mat-label>{{ field.field_label }}</mat-label>
+
+										<mat-accordion [multi]="true" [hideToggle]="false">
+
+											<ng-container *ngFor="let panel of field.children; let panelIndex = index;">
+
+												<mat-expansion-panel [expanded]="true" hideToggle> <!-- (opened)="false" -->
+													<!-- Header -->
+													<mat-expansion-panel-header>
+														<mat-panel-title>{{ panel.field_label }}</mat-panel-title>
+														<mat-panel-description>{{ panel.description }} <mat-icon>account_circle</mat-icon></mat-panel-description>
+													</mat-expansion-panel-header>
+
+													<ng-container class="grid grid-cols-1 gap-4" *ngFor="let child of panel.children; let childFieldIndex = index;">
+
+														<div class="mb-4">
+															<ng-container [ngSwitch]="child.field_type">
+
+																<ng-container *ngSwitchCase="'text'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'url'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'number'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'select'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+																			<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+																				<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+																			</ng-container>
+																		</mat-select>
+																	</mat-form-field>
+																</ng-container>
+
+															</ng-container>
+
+															<!-- Field`s unique error -->
+															<ng-container *ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
+																<small class="text-red-500">{{ uniqueFalseCheckField[child.name_field]['error_message'] }}</small>
+																<br>
+															</ng-container>
+
+															<!-- Field`s errors message -->
+															<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
+															forms.get(child.field_name)?.touched)))">
+																<small class="text-red-500">{{ child.error_message }}</small>
+																<br>
+															</ng-container>
+
+															<!-- Field`s description -->
+															<ng-container *ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
+																<span>{{ child.description }}</span>
+															</ng-container>
+														</div>
+
+													</ng-container>
+												</mat-expansion-panel>
+
+											</ng-container>
+
+										</mat-accordion>
+									</div>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'stepper'">
+									<div class="border-custom m-0 p-0"> <!-- class:border-custom -->
+										<mat-label class="ml-1 mt-5">{{ field.field_label }}</mat-label>
+
+										<mat-stepper class="-z-10" [orientation]="field.field_configs.orientation" [linear]="field.field_configs.linear" [color]="'accent'" #stepper>
+
+											<ng-container *ngFor="let step of field.children; let stepIndex = index;">
+
+												<mat-step class="-z-10" [label]="step.field_label">
+
+													<ng-container class="grid grid-cols-1 gap-4" *ngFor="let child of step.children; let childFieldIndex = index;">
+
+														<div class="mb-4">
+															<ng-container [ngSwitch]="child.field_type">
+
+																<ng-container *ngSwitchCase="'text'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'url'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'number'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'select'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+																			<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+																				<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+																			</ng-container>
+																		</mat-select>
+																	</mat-form-field>
+																</ng-container>
+
+															</ng-container>
+
+															<!-- Field`s unique error -->
+															<ng-container *ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
+																<small class="text-red-500">{{ uniqueFalseCheckField[child.name_field]['error_message'] }}</small>
+																<br>
+															</ng-container>
+
+															<!-- Field`s errors message -->
+															<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
+															forms.get(child.field_name)?.touched)))">
+																<small class="text-red-500">{{ child.error_message }}</small>
+																<br>
+															</ng-container>
+
+															<!-- Field`s description -->
+															<ng-container *ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
+																<span>{{ child.description }}</span>
+															</ng-container>
+														</div>
+
+													</ng-container>
+
+													<div class="flex justify-center gap-4">
+
+														<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
+
+														<ng-container *ngIf="((stepIndex + 1) === 1)">
+															<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
+														</ng-container>
+
+														<ng-container *ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length))">
+															<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
+															<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
+														</ng-container>
+
+														<ng-container *ngIf="((stepIndex + 1) === field.children.length)">
+															<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
+															<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
+															<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
+														</ng-container>
+
+													</div>
+
+												</mat-step>
+
+											</ng-container>
+
+										</mat-stepper>
+									</div>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'multiple'">
+
+									<ng-container *ngFor="let childItem of getFormGroupControls(field.field_name)['controls'] ; let childItemIndex = index;">
+
+										<div [formArrayName]="field.field_name">
+
+											<ng-container [formGroupName]="childItemIndex">
+
+												<ng-container *ngFor="let child of field.children; let childFieldIndex">
+
+													<ng-container [ngSwitch]="child.field_type">
+
+														<ng-container *ngSwitchCase="'text'">
+															<mat-form-field appearance="outline" [color]="'accent'">
+																<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+															</mat-form-field>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'url'">
+															<mat-form-field appearance="outline" [color]="'accent'">
+																<mat-label>{{ child.field_label }}</mat-label>
+																<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+															</mat-form-field>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'number'">
+															<mat-form-field appearance="outline" [color]="'accent'">
+																<mat-label>{{ child.field_label }}</mat-label>
+																<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
+															</mat-form-field>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'select'">
+															<mat-form-field appearance="outline" [color]="'accent'">
+																<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+																	<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+																		<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+																	</ng-container>
+																</mat-select>
+															</mat-form-field>
+														</ng-container>
+
+													</ng-container>
+
+												</ng-container>
+
+											</ng-container>
+
+										</div>
+
+									</ng-container>
+
 								</ng-container>
 
 							</ng-container>
 
-						</mat-form-field>
+							<!-- Field`s unique error -->
+							<ng-container *ngIf="(uniqueFalseCheckField.hasOwnProperty(field.name_field) && uniqueFalseCheckField[field.name_field]['value'] && (field.field_type !== 'hidden'))">
+								<small class="text-red-500">{{ uniqueFalseCheckField[field.name_field]['error_message'] }}</small>
+								<br>
+							</ng-container>
+
+							<!-- Field`s errors message -->
+							<ng-container *ngIf="(field.error_message && (field.error_message.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+								<small class="text-red-500">{{ field.error_message }}</small>
+								<br>
+							</ng-container>
+
+							<!-- Field`s description -->
+							<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+								<span>{{ field.description }}</span>
+							</ng-container>
+
+						</div>
 					</ng-container>
+
+					<!-- Below form -->
+					<div class="below-form">
+						<mat-divider></mat-divider>
+
+						<div class="flex justify-center gap-4 mt-7">
+							<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>
+							<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>
+						</div>
+					</div>
 
 				</ng-container>
 
 			</form>
+
 		</ng-container>
 
 	</mat-card-content>

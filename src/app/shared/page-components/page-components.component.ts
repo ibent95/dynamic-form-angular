@@ -1,6 +1,7 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-page-components',
@@ -22,7 +23,9 @@ export class PageComponentsComponent implements OnInit {
   tableDisplayedColumns!: Array<string>;
   tableDataSource!: Array<any>;
 
-  constructor() { }
+  constructor(
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.hidePassword = true;
@@ -71,6 +74,10 @@ export class PageComponentsComponent implements OnInit {
     const index = this.chipsField.indexOf(fruit);
 
     if (index >= 0) this.chipsField.splice(index, 1);
+  }
+
+  public openSnackbar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }

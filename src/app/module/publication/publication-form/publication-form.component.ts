@@ -38,6 +38,9 @@ export class PublicationFormComponent implements OnInit {
   // All disabled fields in forms
   selectURLParameters!: any;
 
+  // All unique fields in forms
+  uniqueFalseCheckField!: any;
+
   userData!: any;
 
   /**
@@ -79,10 +82,14 @@ export class PublicationFormComponent implements OnInit {
     this.hiddenFields = {};
     this.disabledFields = {};
     this.selectURLParameters = {};
+    this.uniqueFalseCheckField = {};
 
     this.userData = {};
 
     this.initiateForm();
+
+    const CONST_A: any = { "pattern": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})" };
+
   }
 
   private getMasterdataPublicationType(): void {
@@ -151,7 +158,7 @@ export class PublicationFormComponent implements OnInit {
 
       if (element.field_type === 'wizard' && (element.children.length > 0)) {
         this.available.wizards.push({
-          label: element.field_label,
+          field_label: element.field_label,
           step: i,
           active: (i === 0)
         });
@@ -164,6 +171,7 @@ export class PublicationFormComponent implements OnInit {
           defaultValue: element.default_value || [],
           formControl: new FormControl()
         };
+
         this.selectURLParameters[element.field_name] = '';
       }
 
@@ -195,31 +203,31 @@ export class PublicationFormComponent implements OnInit {
   // Handling to set value in forms (in Form Create and Update)
   private setDynamicFormValues(publicationTypeUuid: string, publicationTypeCode: string) {
     let fieldDataSets: any = {};
+
     fieldDataSets['publication_type_uuid'] = publicationTypeUuid;
     fieldDataSets['publication_type_code'] = publicationTypeCode;
 
     this.fieldInForms.forEach((element: any) => {
 
-      if (element.field_type === 'radio') {
-
-        this.selectURLParameters[element.field_name] = '';
-        this.selectOptions[element.field_name] = {
-          items: element.children || [],
-          defaultValue: element.default_value || [],
+      if (element.field_type === 'url') {
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
-        fieldDataSets[element.field_name + '_select_options'] = {
-          items: element.children || [],
-          defaultValue: element.default_value || [],
-        };
-        fieldDataSets['uuid_' + element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || '')];
 
-      } else if (element.field_type === 'select') {
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.pattern(element.validation_config?.pattern || "^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")]];
 
+      } else if (element.field_type === 'radio') {
         this.selectURLParameters[element.field_name] = '';
 
         this.selectOptions[element.field_name] = {
           items: element.options || [],
           defaultValue: element.default_value || [],
+        };
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
         fieldDataSets[element.field_name + '_options'] = {
@@ -227,15 +235,41 @@ export class PublicationFormComponent implements OnInit {
           defaultValue: element.default_value || [],
         };
 
-        fieldDataSets[element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || '')];
+        fieldDataSets['uuid_' + element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || '')];
 
-      } else if (element.field_type === 'autoselect') {
-
+      } else if (element.field_type === 'select') {
         this.selectURLParameters[element.field_name] = '';
 
         this.selectOptions[element.field_name] = {
           items: element.options || [],
           defaultValue: element.default_value || [],
+        };
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name + '_options'] = {
+          items: element.options || [],
+          defaultValue: element.default_value || [],
+        };
+
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || (element.default_value || '')];
+
+        //if ((element.default_value) && ((element.default_value !== []) || (element.default_value !== ''))) this.onSelect(element.default_value, element.field_type, element.field_name, element.dependency_child, element.dependency_parent);
+
+      } else if (element.field_type === 'autoselect') {
+        this.selectURLParameters[element.field_name] = '';
+
+        this.selectOptions[element.field_name] = {
+          items: element.options || [],
+          defaultValue: element.default_value || [],
+        };
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
         fieldDataSets[element.field_name + '_options'] = {
@@ -245,32 +279,47 @@ export class PublicationFormComponent implements OnInit {
 
         if (this.userData['uuid_' + element.field_name]) {
           fieldDataSets[element.field_name + '_options'].items = [{ option_text_field: this.userData[element.field_name], uuid: this.userData['uuid_' + element.field_name], }].concat(fieldDataSets[element.field_name + '_options'].items);
+
           this.selectOptions[element.field_name].items = fieldDataSets[element.field_name + '_options'].items;
         }
 
-        fieldDataSets[element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || '')];
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || (element.default_value || '')];
 
       } else if (element.field_type === 'autocomplete') {
-
         this.selectURLParameters[element.field_name] = '';
 
         this.selectOptions[element.field_name] = {
-          items: element.children || [],
+          items: element.options || [],
           defaultValue: element.default_value || [],
+        };
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
         //if (this.userData[element.field_name]) this.onType(this.userData[element.field_name], element.field_type, element.field_name, element.dependency_child, element.dependency_parent, element.uuid_form);
 
-        fieldDataSets[element.field_name + '_select_options'] = this.selectOptions[element.field_name];
+        fieldDataSets[element.field_name + '_options'] = this.selectOptions[element.field_name];
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
         fieldDataSets['uuid_' + element.field_name] = [this.userData['uuid_' + element.field_name] || ''];
 
       } else if (element.field_type === 'multiple_select') {
-        let multiple_select: Array<any> = [];
+        let multiple_select = [];
 
         this.selectURLParameters[element.field_name] = '';
 
-        if (this.userData[element.field_name] && (this.userData[element.field_name].length > 0)) {
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name + '_options'] = {
+          items: element.options || [],
+          defaultValue: element.default_value || [],
+        };
+
+        if (this.userData[element.field_name] && this.userData[element.field_name].length > 0) {
           multiple_select = this.userData[element.field_name].map((apiData: any) => {
             return apiData['uuid'];
           });
@@ -278,28 +327,33 @@ export class PublicationFormComponent implements OnInit {
 
         this.selectOptions[element.field_name].defaultValue = multiple_select;
 
-        fieldDataSets[element.field_name] = multiple_select;
+        fieldDataSets[element.field_name] = [multiple_select];
 
       } else if (element.field_type === 'multiple_autoselect') {
-        let multiple_autoselect: Array<any> = [];
+        let multiple_autoselect = [];
 
         this.selectURLParameters[element.field_name] = '';
 
-        this.selectOptions[element.field_name].defaultValue = "";
-        fieldDataSets[element.field_name + '_select_options'] = {
-          items: element.children || [],
-          defaultValue: element.default_value || [],
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
-        //fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? [this.userData[element.field_name].map((item: any) => { return item.uuid; })] : [];
+        this.selectOptions[element.field_name].defaultValue = "";
 
-        if (this.userData[element.field_name] && this.userData[element.field_name].length) {
-          fieldDataSets[element.field_name + '_select_options'].items = this.userData[element.field_name].map((item: any) => {
+        fieldDataSets[element.field_name + '_options'] = {
+          items: element.options || [],
+          defaultValue: element.default_value || [],
+        };
+        //fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? [this.userData[element.field_name].map(item => { return item.uuid; })] : [];
+
+        if (this.userData[element.field_name] && this.userData[element.field_name].length > 0) {
+          fieldDataSets[element.field_name + '_options'].items = this.userData[element.field_name].map((item: any) => {
             return {
               option_text_field: item.value,
               uuid: item.uuid,
             };
-          }).concat(fieldDataSets[element.field_name + '_select_options'].items);
+          }).concat(fieldDataSets[element.field_name + '_options'].items);
 
           multiple_autoselect = this.userData[element.field_name].map((apiData: any) => {
             return apiData['uuid'];
@@ -308,29 +362,59 @@ export class PublicationFormComponent implements OnInit {
 
         this.available[element.field_name] = (this.userData[element.field_name]) ? [this.userData[element.field_name].map((item: any) => { return item.uuid; })] : [];
 
-        fieldDataSets[element.field_name] = multiple_autoselect;
+        fieldDataSets[element.field_name] = [multiple_autoselect];
 
       } else if (element.field_type === 'checkbox') {
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
 
         fieldDataSets[element.field_name] = [(this.userData[element.field_name] || this.userData[element.field_name] === '1') || false];
 
       } else if (element.field_type === 'file') {
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
 
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
-        //fieldDataSets[element.field_name + '_path_file'] = [this.userData[this.userData[element.field_name + '_path_file']] || ''];
+      } else if (element.field_type === 'image') {
+        // If the url is valid or exists, run the image service to get the base64 value, otherwise the default value is empty string
+        const self = this;
+
+        //this.available[element.field_name] = IMAGE_PLACEHOLDER;
+
+        //if (this.userData && this.userData.hasOwnProperty(element.field_name) && this.userData[element.field_name] && this.userData.hasOwnProperty(element.field_name + '_url_file') && this.userData[element.field_name + '_url_file']) this.imageSvc.imageBase64fromUrl(this.userData[element.field_name + '_url_file'], function (base64) {
+        //  self.available[element.field_name] = base64;
+        //});
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
       } else if (element.field_type === 'date' || element.field_type === 'year') {
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
 
-        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? (new Date(this.userData[element.field_name])) : '' ;
+        if (this.userData[element.field_name]) {
+          fieldDataSets[element.field_name] = (new Date(this.userData[element.field_name]));
+        } else {
+          fieldDataSets[element.field_name] = '';
+        }
 
-      } else if (element.field_type === 'multiple' || element.field_type === 'panel_multiple') {
-
+      } else if (element.field_type === 'multiple' || element.field_type === 'multiple_panel') {
         let multipleGroup: Array<any> = [];
 
         this.selectURLParameters[element.field_name] = [];
         this.selectOptions[element.field_name] = [];
-
         this.available[element.field_name] = [];
+        this.uniqueFalseCheckField[element.field_name] = [];
 
         if (this.userData[element.field_name]) {
           if (this.userData[element.field_name].length) {
@@ -345,18 +429,44 @@ export class PublicationFormComponent implements OnInit {
 
       } else if (element.field_type === 'number') {
 
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.min(1), Validators.pattern('^[0-9]*$')]];
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern ||'^[0-9]*$')]];
 
       } else if (element.field_type === 'mask_full_time') {
-
         this.available[element.field_name] = this.userData[element.field_name] || '';
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
+
+      } else if (element.field_type === 'mask') {
+        this.available[element.field_name] = this.userData[element.field_name] || '';
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
       } else {
 
-        fieldDataSets[element.field_name] = (element.tipe_validasi && (element.field_type !== 'mask')) ? ([this.userData[element.field_name] || '', [Validators.pattern(element.tipe_validasi)]]) : ([this.userData[element.field_name] || '']);
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = (element.validation_config?.pattern) ? ([this.userData[element.field_name] || '', [Validators.pattern(element.validation_config.pattern)]]) : ([this.userData[element.field_name] || '']);
 
       }
+
     });
 
     this.forms = this.formBuilder.group(fieldDataSets);
@@ -369,6 +479,10 @@ export class PublicationFormComponent implements OnInit {
 
   public get forms_metadata(): Array<any> {
     return this.publicationFormMetadata.forms;
+  }
+
+  public getFormGroupControls(fieldName: string) {
+    return this.forms?.get(fieldName) as FormArray;
   }
 
   /**

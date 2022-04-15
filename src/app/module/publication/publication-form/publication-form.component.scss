@@ -1,0 +1,22 @@
+::ng-deep .border-custom {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-radius: 0.25rem !important;
+	border-color: #757575 !important;
+	z-index: 500;
+}
+
+::ng-deep mat-form-field { .mat-form-field-wrapper { margin-bottom: 0; padding-bottom: 0; } }
+
+::ng-deep mat-stepper .mat-vertical-content-container .flex button { margin-bottom: 0; }
+
+::ng-deep .divider {
+	margin: 0 0 20px 0;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: rgba(255,255,255,.12);
+}
+
+::ng-deep .below-form button {
+	margin-bottom: 0;
+}
