@@ -90,6 +90,8 @@ export class PublicationFormComponent implements OnInit {
 
     const CONST_A: any = { "pattern": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})" };
 
+    const CONST_B: any = {"panel_description":{"mat_icon":"signal_cellular_alt_2_bar"}};
+
   }
 
   private getMasterdataPublicationType(): void {
