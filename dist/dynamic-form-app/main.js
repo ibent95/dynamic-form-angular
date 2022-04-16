@@ -2681,7 +2681,7 @@ class PublicationFormComponent {
             }
         });
         this.forms = this.formBuilder.group(fieldDataSets);
-        console.log('forms', this.forms);
+        //console.log('forms', this.forms);
         //this.setInitialFieldDependencyConfig();
         //this.subscribeToPublicationFormStatus();
     }
