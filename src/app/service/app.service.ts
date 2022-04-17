@@ -1,7 +1,33 @@
+import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { MatDateFormats, NativeDateAdapter } from '@angular/material/core';
 import { Observable } from 'rxjs';
 import { ENV } from '../app.config';
+
+export const LOCAL_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: { year: 'numeric', month: 'long', day: 'numeric' },
+  },
+  display: {
+    dateInput: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthYearLabel: { year: 'numeric', month: 'long' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  }
+};
+
+export const LUXON_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'EEEE, dd MMMM yyyy',
+  },
+  display: {
+    dateInput: 'EEEE, dd MMMM yyyy',
+    monthYearLabel: 'MMMM yyyy',
+    dateA11yLabel: 'DD MMMM yyyy',
+    monthYearA11yLabel: 'MMMM yyyy'
+  },
+};
 
 export enum AppServiceType {
 
@@ -13,6 +39,7 @@ export enum AppServiceType {
   PUBLICATION_MASTERDATA_PUBLICATION_TYPE,
 
 }
+
 
 @Injectable({
   providedIn: 'any'

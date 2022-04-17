@@ -1,13 +1,21 @@
 import { Location } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
+import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
-import { AppService, AppServiceType } from 'src/app/service/app.service';
+import { Subject, takeUntil } from "rxjs";
+import { AppService, AppServiceType, LOCAL_DATE_FORMATS, LUXON_DATE_FORMATS } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-publication-form',
   templateUrl: './publication-form.component.html',
-  styleUrls: ['./publication-form.component.scss']
+  styleUrls: ['./publication-form.component.scss'],
+  providers:[
+    { provide: DateAdapter, useClass: LuxonDateAdapter, deps: [MAT_DATE_LOCALE, MAT_LUXON_DATE_ADAPTER_OPTIONS] },
+    { provide: MAT_LUXON_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    { provide: MAT_DATE_FORMATS, useValue: LUXON_DATE_FORMATS },
+  ]
 })
 export class PublicationFormComponent implements OnInit {
 
@@ -43,6 +51,8 @@ export class PublicationFormComponent implements OnInit {
 
   userData!: any;
 
+  subscription$!: Subject<void>;
+
   /**
    * Constructor and other functions before form`s metadata are load
    */
@@ -64,6 +74,7 @@ export class PublicationFormComponent implements OnInit {
       wizard_avaliable: false,
       wizard_count: 0,
       wizards: [],
+      current_date: new Date(),
     };
 
     this.publicationTypeCode = 'JUR-1';
@@ -85,6 +96,7 @@ export class PublicationFormComponent implements OnInit {
     this.uniqueFalseCheckField = {};
 
     this.userData = {};
+    this.subscription$ = new Subject<void>();
 
     this.initiateForm();
 
@@ -98,24 +110,29 @@ export class PublicationFormComponent implements OnInit {
     this.appSvc.list(AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
       this.selectOptions['publication_type'].items = response['data'];
       this.available.publication_type_loaded = true;
+
+      this.forms.get('publication_type_code')?.setValue('BOK-1');
+      this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
+      this.onPublicationTypeClick({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
     });
   }
 
   private initiateForm(): void {
     // Required masterdata
-    this.getMasterdataPublicationType();
 
     this.forms = this.formBuilder.group({
       publication_type_code: null,
       publication_type_uuid: null,
     });
 
+    this.getMasterdataPublicationType();
     this.available.form_builder = true;
   }
 
   public onPublicationTypeClick(eventData: any): void {
 
     //const selectedData = eventData[0].data; // From ngx-select
+    console.log('onPublicationTypeClick eventData', eventData);
 
     const selectedData = this.selectOptions['publication_type'].items.find((item: any) => item.uuid === eventData.value);
     this.publicationTypeUuid = selectedData['uuid'] || null;
@@ -398,17 +415,23 @@ export class PublicationFormComponent implements OnInit {
 
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
-      } else if (element.field_type === 'date' || element.field_type === 'year') {
+      } else if (element.field_type === 'date' || element.field_type === 'month' || element.field_type === 'year') {
+
         this.uniqueFalseCheckField[element.field_name] = {
           'value': false,
           'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
-        if (this.userData[element.field_name]) {
-          fieldDataSets[element.field_name] = (new Date(this.userData[element.field_name]));
-        } else {
-          fieldDataSets[element.field_name] = '';
-        }
+        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
+
+      } else if (element.field_type === 'time') {
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
 
       } else if (element.field_type === 'multiple' || element.field_type === 'multiple_panel') {
         let multipleGroup: Array<any> = [];
@@ -436,7 +459,7 @@ export class PublicationFormComponent implements OnInit {
           'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern ||'^[0-9]*$')]];
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern || '^[0-9]*$')]];
 
       } else if (element.field_type === 'mask_full_time') {
         this.available[element.field_name] = this.userData[element.field_name] || '';
@@ -476,7 +499,14 @@ export class PublicationFormComponent implements OnInit {
     //console.log('forms', this.forms);
 
     //this.setInitialFieldDependencyConfig();
-    //this.subscribeToPublicationFormStatus();
+    this.subscribeToFormsChanges();
+  }
+
+  private subscribeToFormsChanges() {
+    this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+      //this.statusSvc.addEditMode = true;
+      console.log('statusChanges', this.forms.value);
+    });
   }
 
   public get forms_metadata(): Array<any> {

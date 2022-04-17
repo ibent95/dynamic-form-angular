@@ -219,6 +219,16 @@
 																		</mat-form-field>
 																	</ng-container>
 
+																	<ng-container *ngSwitchCase="'date'">
+																		<mat-form-field appearance="outline" [color]="'accent'">
+																			<mat-label>{{ child.field_label }}</mat-label>
+																			<input matInput [formControlName]="child.field_name" [matDatepicker]="picker" [placeholder]="child.field_placeholder">
+																			<mat-hint>MM/DD/YYYY</mat-hint>
+																			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+																			<mat-datepicker #picker></mat-datepicker>
+																		</mat-form-field>
+																	</ng-container>
+
 																	<ng-container *ngSwitchCase="'select'">
 																		<mat-form-field appearance="outline" [color]="'accent'">
 																			<mat-label>{{ child.field_label }}</mat-label>
@@ -294,6 +304,28 @@
 																	<mat-form-field appearance="outline" [color]="'accent'">
 																		<mat-label>{{ child.field_label }}</mat-label>
 																		<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'year'">
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [matDatepicker]="datePicker" [max]="available.current_date">
+																		<mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+																		<mat-datepicker [startView]="'multi-year'" #datePicker></mat-datepicker>
+																	</mat-form-field>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'date'">
+																	<!--<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput type="date" [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																	</mat-form-field>-->
+																	<mat-form-field appearance="outline" [color]="'accent'">
+																		<mat-label>{{ child.field_label }}</mat-label>
+																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [matDatepicker]="datePicker" [max]="available.current_date">
+																		<mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+																		<mat-datepicker #datePicker></mat-datepicker>
 																	</mat-form-field>
 																</ng-container>
 
