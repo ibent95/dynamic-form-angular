@@ -6,6 +6,8 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeId from "@angular/common/locales/id";
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { LuxonModule } from "luxon-angular";
 import { NgxSelectModule } from 'ngx-select-ex';
 
 // App routings, settings, components
@@ -69,10 +71,12 @@ registerLocaleData(localeId, 'id');
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    LuxonModule,
     NgxSelectModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'id' },
+    { provide: LOCALE_ID, useValue: 'id-ID' },
+    { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
     { provide: ENV, useValue: CONFIG },
     AppService
   ],
