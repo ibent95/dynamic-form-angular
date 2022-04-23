@@ -1,0 +1,23 @@
+<div class="datetime-picker">
+
+	<ng-container *ngIf="(mode === 'date')">
+		<app-date-picker [fieldControl]="fieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-date-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'month')">
+		<app-month-picker [fieldControl]="fieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-month-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'year')">
+		<app-year-picker [fieldControl]="fieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-year-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'time')">
+		<app-time-picker [fieldControl]="fieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-time-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'datetime')">
+		<app-date-time-picker [fieldControl]="fieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-date-time-picker>
+	</ng-container>
+
+</div>

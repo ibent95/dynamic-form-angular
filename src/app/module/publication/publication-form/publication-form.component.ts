@@ -11,7 +11,7 @@ import { AppService, AppServiceType, LOCAL_DATE_FORMATS, LUXON_DATE_FORMATS } fr
   selector: 'app-publication-form',
   templateUrl: './publication-form.component.html',
   styleUrls: ['./publication-form.component.scss'],
-  providers:[
+  providers: [
     { provide: DateAdapter, useClass: LuxonDateAdapter, deps: [MAT_DATE_LOCALE, MAT_LUXON_DATE_ADAPTER_OPTIONS] },
     { provide: MAT_LUXON_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: MAT_DATE_FORMATS, useValue: LUXON_DATE_FORMATS },
@@ -433,6 +433,15 @@ export class PublicationFormComponent implements OnInit {
 
         fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
 
+      } else if (element.field_type === 'owl-date' || element.field_type === 'owl-month' || element.field_type === 'owl-year' || element.field_type === 'owl-time' || element.field_type === 'owl-datetime') {
+
+        this.uniqueFalseCheckField[element.field_name] = {
+          'value': false,
+          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+        };
+
+        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
+
       } else if (element.field_type === 'multiple' || element.field_type === 'multiple_panel') {
         let multipleGroup: Array<any> = [];
 
@@ -511,6 +520,10 @@ export class PublicationFormComponent implements OnInit {
 
   public get forms_metadata(): Array<any> {
     return this.publicationFormMetadata.forms;
+  }
+
+  public getFieldControl(fieldName: string) {
+    return this.forms?.get(fieldName) as FormControl;
   }
 
   public getFormGroupControls(fieldName: string) {

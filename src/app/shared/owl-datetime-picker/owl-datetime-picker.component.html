@@ -1,0 +1,35 @@
+<div class="owl-datetime-picker">
+
+	<ng-container *ngIf="(mode === 'date')">
+		<app-owl-date-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-date-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'month')">
+		<app-owl-month-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-month-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'year')">
+		<app-owl-year-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-year-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'time')">
+		<app-owl-time-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-time-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'datetime')">
+		<app-owl-date-time-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-date-time-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'daterange')">
+		<app-owl-date-range-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-date-range-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'timerange')">
+		<app-owl-time-range-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-time-range-picker>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'datetimerange')">
+		<app-owl-date-time-range-picker [owlFieldControl]="owlFieldControl" [labelText]="label" [placeholderText]="placeholder" [appearance]="appearance" [color]="color"></app-owl-date-time-range-picker>
+	</ng-container>
+
+</div>

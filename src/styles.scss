@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+// @danielmoncada/angular-datetime-picker
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button { margin-right: 10px; margin-bottom: 10px; }
@@ -37,8 +40,13 @@ button.mat-flat-button, a.mat-flat-button {
 // mat-icon-button, mat-fab, mat-mini-fab
 button.mat-icon-button, button.mat-fab, button.mat-mini-fab { margin-bottom: 10px; }
 
+
 // mat-input
-mat-form-field { width: 100%; }
+mat-form-field {
+	width: 100%;
+	button.mat-icon-button { margin-right: 0 !important; }
+	a.mat-icon-button { margin-right: 0 !important; }
+}
 
 // mat-select
 mat-select { width: 100%; }

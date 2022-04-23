@@ -29,6 +29,30 @@ export const LUXON_DATE_FORMATS: MatDateFormats = {
   },
 };
 
+export const LUXON_MONTH_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'MMMM yyyy',
+  },
+  display: {
+    dateInput: 'MMMM yyyy',
+    monthYearLabel: 'MMMM yyyy',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM yyyy'
+  },
+};
+
+export const LUXON_YEAR_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'yyyy',
+  },
+  display: {
+    dateInput: 'yyyy',
+    monthYearLabel: 'yyyy',
+    dateA11yLabel: 'yyyy',
+    monthYearA11yLabel: 'yyyy'
+  },
+};
+
 export enum AppServiceType {
 
   ROOT,

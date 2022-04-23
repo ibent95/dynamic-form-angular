@@ -1,0 +1,9 @@
+<div>
+	<mat-form-field [appearance]="appearance" [color]="color">
+		<mat-label>{{ labelText }}</mat-label>
+
+		<input matInput [formControl]="owlFieldControl" [placeholder]="placeholderText" [owlDateTime]="monthPicker">
+		<button mat-icon-button matSuffix [owlDateTimeTrigger]="monthPicker"><mat-icon>calendar_view_month</mat-icon></button>
+		<owl-date-time [pickerType]="'calendar'" [startView]="owlDateTimeMonthStartView" (monthSelected)="setOwlDateTimeMonthYear($event, monthPicker)" #monthPicker></owl-date-time>
+	</mat-form-field>
+</div>

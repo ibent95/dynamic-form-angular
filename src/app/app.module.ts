@@ -7,8 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeId from "@angular/common/locales/id";
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { LuxonModule } from "luxon-angular";
+import { LuxonModule } from 'luxon-angular';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 
 // App routings, settings, components
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +33,13 @@ import { PageComponentsComponent } from './shared/page-components/page-component
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PageUnderConstructionComponent } from './shared/page-under-construction/page-under-construction.component';
 import { GhostTableComponent } from './shared/ghost-table/ghost-table.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { DatetimePickerComponent } from './shared/datetime-picker/datetime-picker.component';
+import { DatePickerComponent } from './shared/datetime-picker/date-picker/date-picker.component';
+import { MonthPickerComponent } from './shared/datetime-picker/month-picker/month-picker.component';
+import { YearPickerComponent } from './shared/datetime-picker/year-picker/year-picker.component';
+import { TimePickerComponent } from './shared/datetime-picker/time-picker/time-picker.component';
+import { DateTimePickerComponent } from './shared/datetime-picker/date-time-picker/date-time-picker.component';
 
 // Module components
 import { LoginComponent } from './module/login/login.component';
@@ -38,7 +47,15 @@ import { OverviewComponent } from './module/overview/overview.component';
 import { PublicationComponent } from './module/publication/publication.component';
 import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
-import { LoaderComponent } from './shared/loader/loader.component';
+import { OwlDatetimePickerComponent } from './shared/owl-datetime-picker/owl-datetime-picker.component';
+import { OwlDatePickerComponent } from './shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component';
+import { OwlMonthPickerComponent } from './shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component';
+import { OwlYearPickerComponent } from './shared/owl-datetime-picker/owl-year-picker/owl-year-picker.component';
+import { OwlTimePickerComponent } from './shared/owl-datetime-picker/owl-time-picker/owl-time-picker.component';
+import { OwlDateTimePickerComponent } from './shared/owl-datetime-picker/owl-date-time-picker/owl-date-time-picker.component';
+import { OwlDateRangePickerComponent } from './shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component';
+import { OwlTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component';
+import { OwlDateTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -61,6 +78,21 @@ registerLocaleData(localeId, 'id');
     PublicationDetailComponent,
     GhostTableComponent,
     LoaderComponent,
+    DatetimePickerComponent,
+    DatePickerComponent,
+    MonthPickerComponent,
+    YearPickerComponent,
+    TimePickerComponent,
+    DateTimePickerComponent,
+    OwlDatetimePickerComponent,
+    OwlDatePickerComponent,
+    OwlMonthPickerComponent,
+    OwlYearPickerComponent,
+    OwlTimePickerComponent,
+    OwlDateTimePickerComponent,
+    OwlDateRangePickerComponent,
+    OwlTimeRangePickerComponent,
+    OwlDateTimeRangePickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +105,11 @@ registerLocaleData(localeId, 'id');
     HttpClientModule,
     LuxonModule,
     NgxSelectModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'id-ID' },

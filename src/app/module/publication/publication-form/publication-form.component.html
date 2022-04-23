@@ -71,6 +71,50 @@
 									</mat-form-field>
 								</ng-container>
 
+								<ng-container *ngSwitchCase="'date'">
+									<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'month'">
+									<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'year'">
+									<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-date'">
+									<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-month'">
+									<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-year'">
+									<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-time'">
+									<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-datetime'">
+									<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-daterange'">
+									<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-timerange'">
+									<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
+								<ng-container *ngSwitchCase="'owl-datetimerange'">
+									<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-owl-datetime-picker>
+								</ng-container>
+
 								<ng-container *ngSwitchCase="'select'">
 									<mat-form-field appearance="outline" [color]="'accent'">
 										<mat-label>{{ field.field_label }}</mat-label>
@@ -108,6 +152,50 @@
 													<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder"
 														[min]="child.validation_config.min || 0">
 												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'date'">
+												<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'month'">
+												<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'year'">
+												<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-date'">
+												<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-month'">
+												<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-year'">
+												<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-time'">
+												<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-datetime'">
+												<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-daterange'">
+												<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-timerange'">
+												<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-datetimerange'">
+												<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'select'">
@@ -152,6 +240,50 @@
 													<mat-label>{{ child.field_label }}</mat-label>
 													<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
 												</mat-form-field>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'date'">
+												<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'month'">
+												<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'year'">
+												<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-date'">
+												<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-month'">
+												<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-year'">
+												<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-time'">
+												<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-datetime'">
+												<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-daterange'">
+												<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-timerange'">
+												<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+											</ng-container>
+
+											<ng-container *ngSwitchCase="'owl-datetimerange'">
+												<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'select'">
@@ -220,13 +352,47 @@
 																	</ng-container>
 
 																	<ng-container *ngSwitchCase="'date'">
-																		<mat-form-field appearance="outline" [color]="'accent'">
-																			<mat-label>{{ child.field_label }}</mat-label>
-																			<input matInput [formControlName]="child.field_name" [matDatepicker]="picker" [placeholder]="child.field_placeholder">
-																			<mat-hint>MM/DD/YYYY</mat-hint>
-																			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-																			<mat-datepicker #picker></mat-datepicker>
-																		</mat-form-field>
+																		<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'month'">
+																		<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'year'">
+																		<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-date'">
+																		<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-month'">
+																		<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-year'">
+																		<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-time'">
+																		<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-datetime'">
+																		<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-daterange'">
+																		<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-timerange'">
+																		<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																	</ng-container>
+
+																	<ng-container *ngSwitchCase="'owl-datetimerange'">
+																		<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 																	</ng-container>
 
 																	<ng-container *ngSwitchCase="'select'">
@@ -307,26 +473,48 @@
 																	</mat-form-field>
 																</ng-container>
 
-																<ng-container *ngSwitchCase="'year'">
-																	<mat-form-field appearance="outline" [color]="'accent'">
-																		<mat-label>{{ child.field_label }}</mat-label>
-																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [matDatepicker]="datePicker" [max]="available.current_date">
-																		<mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-																		<mat-datepicker [startView]="'multi-year'" #datePicker></mat-datepicker>
-																	</mat-form-field>
+																<ng-container *ngSwitchCase="'date'">
+																	<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
 																</ng-container>
 
-																<ng-container *ngSwitchCase="'date'">
-																	<!--<mat-form-field appearance="outline" [color]="'accent'">
-																		<mat-label>{{ child.field_label }}</mat-label>
-																		<input matInput type="date" [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																	</mat-form-field>-->
-																	<mat-form-field appearance="outline" [color]="'accent'">
-																		<mat-label>{{ child.field_label }}</mat-label>
-																		<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [matDatepicker]="datePicker" [max]="available.current_date">
-																		<mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-																		<mat-datepicker #datePicker></mat-datepicker>
-																	</mat-form-field>
+																<ng-container *ngSwitchCase="'month'">
+																	<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'year'">
+																	<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-date'">
+																	<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-month'">
+																	<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-year'">
+																	<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-time'">
+																	<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-datetime'">
+																	<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-daterange'">
+																	<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-timerange'">
+																	<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																</ng-container>
+
+																<ng-container *ngSwitchCase="'owl-datetimerange'">
+																	<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 																</ng-container>
 
 																<ng-container *ngSwitchCase="'select'">
@@ -363,6 +551,7 @@
 
 													</ng-container>
 
+													<!-- Direction button -->
 													<div class="flex justify-center gap-4">
 
 														<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
@@ -422,6 +611,50 @@
 																<mat-label>{{ child.field_label }}</mat-label>
 																<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
 															</mat-form-field>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'date'">
+															<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'month'">
+															<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'year'">
+															<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-date'">
+															<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-month'">
+															<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-year'">
+															<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-time'">
+															<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-datetime'">
+															<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-daterange'">
+															<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-timerange'">
+															<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+														</ng-container>
+
+														<ng-container *ngSwitchCase="'owl-datetimerange'">
+															<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'select'">

@@ -1,7 +1,10 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DateView, OwlDateTimeComponent } from '@danielmoncada/angular-datetime-picker';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-page-components',
@@ -19,6 +22,24 @@ export class PageComponentsComponent implements OnInit {
   readonly chipsSeparatorKeysCodes = [ENTER, COMMA] as const;
 
   sliderField!: number;
+
+  customDateField!: string;
+  customMonthField!: string;
+  customYearField!: string;
+  customTimeField!: string;
+  customDateTimeField!: string;
+
+  owlDateTimeMonthStartView!: DateView;
+  owlDateTimeYearStartView!: DateView;
+
+  owlDateField!: object;
+  owlMonthField!: object;
+  owlYearField!: object;
+  owlTimeField!: object;
+  owlDateTimeField!: object;
+  owlDateRangeField!: object;
+  owlTimeRangeField!: object;
+  owlDateTimeRangeField!: object;
 
   tableDisplayedColumns!: Array<string>;
   tableDataSource!: Array<any>;
@@ -40,6 +61,17 @@ export class PageComponentsComponent implements OnInit {
 
     this.sliderField = 20;
 
+    this.customDateField = '';
+    this.customMonthField = '';
+    this.customYearField = '';
+    this.customTimeField = '';
+    this.customDateTimeField = '';
+
+    this.owlDateTimeMonthStartView = DateView.MULTI_YEARS;
+    this.owlDateTimeYearStartView = DateView.MULTI_YEARS;
+
+    const dateObject: object = new Date('Sun Jan 01 2023 00:00:00 GMT+0700 (Western Indonesia Time)');
+
     this.tableDisplayedColumns = ['position', 'name', 'weight', 'symbol'];
     this.tableDataSource = [
       { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -55,7 +87,7 @@ export class PageComponentsComponent implements OnInit {
     ];
   }
 
-  public setHidePassword(event: Event) {
+  public setHidePassword(event: Event): void {
     event.preventDefault();
     this.hidePassword = !this.hidePassword;
   }
@@ -76,8 +108,20 @@ export class PageComponentsComponent implements OnInit {
     if (index >= 0) this.chipsField.splice(index, 1);
   }
 
-  public openSnackbar(message: string, action: string) {
+  public openSnackbar(message: string, action: string): void {
     this._snackBar.open(message, action);
+  }
+
+  public setOwlDateTimeMonthYear(selectedMonthYear: object, datepicker: OwlDateTimeComponent<object>): void {
+    datepicker.close();
+
+    this.owlMonthField = selectedMonthYear;
+  }
+
+  public setOwlDateTimeYear(selectedYear: object, datepicker: OwlDateTimeComponent<object>): void {
+    datepicker.close();
+
+    this.owlYearField = selectedYear;
   }
 
 }

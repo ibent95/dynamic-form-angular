@@ -1,0 +1,9 @@
+<div>
+	<mat-form-field [appearance]="appearance" [color]="color">
+		<mat-label>{{ labelText }}</mat-label>
+
+		<input matInput [formControl]="owlFieldControl" [placeholder]="placeholderText" [owlDateTime]="dateRangePicker" [selectMode]="'range'">
+		<button mat-icon-button matSuffix [owlDateTimeTrigger]="dateRangePicker"><mat-icon>date_range</mat-icon></button>
+		<owl-date-time [pickerType]="'calendar'" #dateRangePicker></owl-date-time>
+	</mat-form-field>
+</div>
