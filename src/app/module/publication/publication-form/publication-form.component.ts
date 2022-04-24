@@ -5,7 +5,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/materia
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from "rxjs";
-import { AppService, AppServiceType, LOCAL_DATE_FORMATS, LUXON_DATE_FORMATS } from 'src/app/service/app.service';
+import { AppService, AppServiceType, LUXON_DATE_FORMATS } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-publication-form',

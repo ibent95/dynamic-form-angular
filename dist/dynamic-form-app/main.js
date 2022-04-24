@@ -144,17 +144,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @angular/platform-browser */ 318);
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/platform-browser/animations */ 3598);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/platform-browser */ 318);
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/platform-browser/animations */ 3598);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/common */ 6362);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/common/http */ 8784);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/common/http */ 8784);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/forms */ 587);
 /* harmony import */ var _angular_common_locales_id__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/locales/id */ 2606);
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @angular/material/core */ 8133);
-/* harmony import */ var luxon_angular__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! luxon-angular */ 657);
-/* harmony import */ var ngx_select_ex__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ngx-select-ex */ 7150);
-/* harmony import */ var _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! @angular-material-components/datetime-picker */ 7929);
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var luxon_angular__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! luxon-angular */ 657);
+/* harmony import */ var ngx_select_ex__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ngx-select-ex */ 7150);
+/* harmony import */ var _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! @angular-material-components/datetime-picker */ 7929);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 158);
 /* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./material/material.module */ 898);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ 5041);
@@ -178,20 +178,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_datetime_picker_year_picker_year_picker_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shared/datetime-picker/year-picker/year-picker.component */ 6418);
 /* harmony import */ var _shared_datetime_picker_time_picker_time_picker_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./shared/datetime-picker/time-picker/time-picker.component */ 5266);
 /* harmony import */ var _shared_datetime_picker_date_time_picker_date_time_picker_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/datetime-picker/date-time-picker/date-time-picker.component */ 1571);
-/* harmony import */ var _module_login_login_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./module/login/login.component */ 2782);
-/* harmony import */ var _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./module/overview/overview.component */ 4579);
-/* harmony import */ var _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./module/publication/publication.component */ 824);
-/* harmony import */ var _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./module/publication/publication-form/publication-form.component */ 8727);
-/* harmony import */ var _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./module/publication/publication-detail/publication-detail.component */ 9901);
-/* harmony import */ var _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-datetime-picker.component */ 712);
-/* harmony import */ var _shared_owl_datetime_picker_owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component */ 609);
-/* harmony import */ var _shared_owl_datetime_picker_owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component */ 978);
-/* harmony import */ var _shared_owl_datetime_picker_owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-year-picker/owl-year-picker.component */ 992);
-/* harmony import */ var _shared_owl_datetime_picker_owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-time-picker/owl-time-picker.component */ 50);
-/* harmony import */ var _shared_owl_datetime_picker_owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-time-picker/owl-date-time-picker.component */ 266);
-/* harmony import */ var _shared_owl_datetime_picker_owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component */ 971);
-/* harmony import */ var _shared_owl_datetime_picker_owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component */ 933);
-/* harmony import */ var _shared_owl_datetime_picker_owl_date_time_range_picker_owl_date_time_range_picker_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component */ 883);
+/* harmony import */ var _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-datetime-picker.component */ 9712);
+/* harmony import */ var _shared_owl_datetime_picker_owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component */ 8609);
+/* harmony import */ var _shared_owl_datetime_picker_owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component */ 8978);
+/* harmony import */ var _shared_owl_datetime_picker_owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-year-picker/owl-year-picker.component */ 7992);
+/* harmony import */ var _shared_owl_datetime_picker_owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-time-picker/owl-time-picker.component */ 4050);
+/* harmony import */ var _shared_owl_datetime_picker_owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-time-picker/owl-date-time-picker.component */ 1266);
+/* harmony import */ var _shared_owl_datetime_picker_owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component */ 2180);
+/* harmony import */ var _shared_owl_datetime_picker_owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component */ 8933);
+/* harmony import */ var _shared_owl_datetime_picker_owl_date_time_range_picker_owl_date_time_range_picker_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component */ 883);
+/* harmony import */ var _module_login_login_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./module/login/login.component */ 2782);
+/* harmony import */ var _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./module/overview/overview.component */ 4579);
+/* harmony import */ var _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./module/publication/publication.component */ 824);
+/* harmony import */ var _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./module/publication/publication-form/publication-form.component */ 8727);
+/* harmony import */ var _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./module/publication/publication-detail/publication-detail.component */ 9901);
 // Angular and other libraries
 
 
@@ -218,7 +218,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Shared components
+// App shared components
+
+
+
+
+
+
+// App shared components (Custom material datetime picker)
+
+
+
+
+
+
+// App shared components (OWL datetime picker)
 
 
 
@@ -228,21 +242,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// App module / menu components
 
 
-
-// Module components
-
-
-
-
-
-
-
-
-
-
-
+// App module / menu components (Publication)
 
 
 
@@ -255,27 +258,28 @@ AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_39__["ɵ�
 AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_39__["ɵɵdefineInjector"]({ providers: [
         { provide: _angular_core__WEBPACK_IMPORTED_MODULE_39__.LOCALE_ID, useValue: 'id-ID' },
         { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_40__.MAT_DATE_LOCALE, useValue: 'id-ID' },
+        { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__.OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },
         { provide: _app_config__WEBPACK_IMPORTED_MODULE_4__.ENV, useValue: _app_config__WEBPACK_IMPORTED_MODULE_4__.CONFIG },
         _service_app_service__WEBPACK_IMPORTED_MODULE_5__.AppService
     ], imports: [[
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_41__.BrowserModule,
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_42__.BrowserModule,
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_42__.BrowserAnimationsModule,
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_43__.BrowserAnimationsModule,
             _core_core_module__WEBPACK_IMPORTED_MODULE_6__.CoreModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_43__.FormsModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_43__.ReactiveFormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_44__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_44__.ReactiveFormsModule,
             _material_material_module__WEBPACK_IMPORTED_MODULE_2__.MaterialModule,
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_44__.HttpClientModule,
-            luxon_angular__WEBPACK_IMPORTED_MODULE_45__.LuxonModule,
-            ngx_select_ex__WEBPACK_IMPORTED_MODULE_46__.NgxSelectModule,
-            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatDatetimePickerModule,
-            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatTimepickerModule,
-            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatNativeDateModule,
-            _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.OwlDateTimeModule,
-            _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.OwlNativeDateTimeModule,
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_45__.HttpClientModule,
+            luxon_angular__WEBPACK_IMPORTED_MODULE_46__.LuxonModule,
+            ngx_select_ex__WEBPACK_IMPORTED_MODULE_47__.NgxSelectModule,
+            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatDatetimePickerModule,
+            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatTimepickerModule,
+            _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatNativeDateModule,
+            _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__.OwlDateTimeModule,
+            _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__.OwlNativeDateTimeModule,
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_39__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__.AppComponent,
-        _module_login_login_component__WEBPACK_IMPORTED_MODULE_24__.LoginComponent,
+        _module_login_login_component__WEBPACK_IMPORTED_MODULE_33__.LoginComponent,
         _shared_page_blank_page_blank_component__WEBPACK_IMPORTED_MODULE_12__.PageBlankComponent,
         _shared_page_components_page_components_component__WEBPACK_IMPORTED_MODULE_13__.PageComponentsComponent,
         _shared_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_14__.PageNotFoundComponent,
@@ -285,10 +289,10 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_39__["ɵ�
         _core_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_9__.SidebarComponent,
         _core_content_content_component__WEBPACK_IMPORTED_MODULE_10__.ContentComponent,
         _core_footer_footer_component__WEBPACK_IMPORTED_MODULE_11__.FooterComponent,
-        _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_25__.OverviewComponent,
-        _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_26__.PublicationComponent,
-        _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_27__.PublicationFormComponent,
-        _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_28__.PublicationDetailComponent,
+        _module_overview_overview_component__WEBPACK_IMPORTED_MODULE_34__.OverviewComponent,
+        _module_publication_publication_component__WEBPACK_IMPORTED_MODULE_35__.PublicationComponent,
+        _module_publication_publication_form_publication_form_component__WEBPACK_IMPORTED_MODULE_36__.PublicationFormComponent,
+        _module_publication_publication_detail_publication_detail_component__WEBPACK_IMPORTED_MODULE_37__.PublicationDetailComponent,
         _shared_ghost_table_ghost_table_component__WEBPACK_IMPORTED_MODULE_16__.GhostTableComponent,
         _shared_loader_loader_component__WEBPACK_IMPORTED_MODULE_17__.LoaderComponent,
         _shared_datetime_picker_datetime_picker_component__WEBPACK_IMPORTED_MODULE_18__.DatetimePickerComponent,
@@ -297,29 +301,29 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_39__["ɵ�
         _shared_datetime_picker_year_picker_year_picker_component__WEBPACK_IMPORTED_MODULE_21__.YearPickerComponent,
         _shared_datetime_picker_time_picker_time_picker_component__WEBPACK_IMPORTED_MODULE_22__.TimePickerComponent,
         _shared_datetime_picker_date_time_picker_date_time_picker_component__WEBPACK_IMPORTED_MODULE_23__.DateTimePickerComponent,
-        _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_29__.OwlDatetimePickerComponent,
-        _shared_owl_datetime_picker_owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_30__.OwlDatePickerComponent,
-        _shared_owl_datetime_picker_owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_31__.OwlMonthPickerComponent,
-        _shared_owl_datetime_picker_owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_32__.OwlYearPickerComponent,
-        _shared_owl_datetime_picker_owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_33__.OwlTimePickerComponent,
-        _shared_owl_datetime_picker_owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_34__.OwlDateTimePickerComponent,
-        _shared_owl_datetime_picker_owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_35__.OwlDateRangePickerComponent,
-        _shared_owl_datetime_picker_owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_36__.OwlTimeRangePickerComponent,
-        _shared_owl_datetime_picker_owl_date_time_range_picker_owl_date_time_range_picker_component__WEBPACK_IMPORTED_MODULE_37__.OwlDateTimeRangePickerComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_41__.BrowserModule,
+        _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_24__.OwlDatetimePickerComponent,
+        _shared_owl_datetime_picker_owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_25__.OwlDatePickerComponent,
+        _shared_owl_datetime_picker_owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_26__.OwlMonthPickerComponent,
+        _shared_owl_datetime_picker_owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_27__.OwlYearPickerComponent,
+        _shared_owl_datetime_picker_owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_28__.OwlTimePickerComponent,
+        _shared_owl_datetime_picker_owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_29__.OwlDateTimePickerComponent,
+        _shared_owl_datetime_picker_owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_30__.OwlDateRangePickerComponent,
+        _shared_owl_datetime_picker_owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_31__.OwlTimeRangePickerComponent,
+        _shared_owl_datetime_picker_owl_date_time_range_picker_owl_date_time_range_picker_component__WEBPACK_IMPORTED_MODULE_32__.OwlDateTimeRangePickerComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_42__.BrowserModule,
         _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
-        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_42__.BrowserAnimationsModule,
+        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_43__.BrowserAnimationsModule,
         _core_core_module__WEBPACK_IMPORTED_MODULE_6__.CoreModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_43__.FormsModule,
-        _angular_forms__WEBPACK_IMPORTED_MODULE_43__.ReactiveFormsModule,
+        _angular_forms__WEBPACK_IMPORTED_MODULE_44__.FormsModule,
+        _angular_forms__WEBPACK_IMPORTED_MODULE_44__.ReactiveFormsModule,
         _material_material_module__WEBPACK_IMPORTED_MODULE_2__.MaterialModule,
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_44__.HttpClientModule,
-        luxon_angular__WEBPACK_IMPORTED_MODULE_45__.LuxonModule,
-        ngx_select_ex__WEBPACK_IMPORTED_MODULE_46__.NgxSelectModule,
-        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatDatetimePickerModule,
-        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatTimepickerModule,
-        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_47__.NgxMatNativeDateModule,
-        _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.OwlDateTimeModule,
-        _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.OwlNativeDateTimeModule] }); })();
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_45__.HttpClientModule,
+        luxon_angular__WEBPACK_IMPORTED_MODULE_46__.LuxonModule,
+        ngx_select_ex__WEBPACK_IMPORTED_MODULE_47__.NgxSelectModule,
+        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatDatetimePickerModule,
+        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatTimepickerModule,
+        _angular_material_components_datetime_picker__WEBPACK_IMPORTED_MODULE_48__.NgxMatNativeDateModule,
+        _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__.OwlDateTimeModule,
+        _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_41__.OwlNativeDateTimeModule] }); })();
 
 
 /***/ }),
@@ -1157,7 +1161,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/select */ 1434);
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/input */ 3365);
 /* harmony import */ var _shared_datetime_picker_datetime_picker_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../shared/datetime-picker/datetime-picker.component */ 2665);
-/* harmony import */ var _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../shared/owl-datetime-picker/owl-datetime-picker.component */ 712);
+/* harmony import */ var _shared_owl_datetime_picker_owl_datetime_picker_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../shared/owl-datetime-picker/owl-datetime-picker.component */ 9712);
 /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/expansion */ 2928);
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/icon */ 5590);
 /* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/stepper */ 7650);
@@ -3533,7 +3537,7 @@ PublicationFormComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_M
             { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_10__.DateAdapter, useClass: _angular_material_luxon_adapter__WEBPACK_IMPORTED_MODULE_11__.LuxonDateAdapter, deps: [_angular_material_core__WEBPACK_IMPORTED_MODULE_10__.MAT_DATE_LOCALE, _angular_material_luxon_adapter__WEBPACK_IMPORTED_MODULE_11__.MAT_LUXON_DATE_ADAPTER_OPTIONS] },
             { provide: _angular_material_luxon_adapter__WEBPACK_IMPORTED_MODULE_11__.MAT_LUXON_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
             { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_10__.MAT_DATE_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.LUXON_DATE_FORMATS },
-        ])], decls: 10, vars: 3, consts: [[1, "max-w-none", "m-7"], [4, "ngIf"], [1, "grid", "grid-cols-1", "gap-4", 3, "formGroup"], ["appearance", "outline", 3, "color"], [3, "formControlName", "selectionChange"], [4, "ngFor", "ngForOf"], [3, "value"], [1, "below-form"], [1, "flex", "justify-center", "gap-4", "mt-7"], ["mat-stroked-button", "", 1, "flex-initial", "w-32", 3, "color"], ["mat-raised-button", "", 1, "flex-initial", "w-32", 3, "color"], [3, "ngSwitch"], [4, "ngSwitchCase"], ["matInput", "", 3, "formControlName", "placeholder"], ["matInput", "", "type", "number", 3, "formControlName", "placeholder", "min"], [3, "mode", "appearance", "color", "fieldControl", "label", "placeholder"], [3, "mode", "appearance", "color", "owlFieldControl", "label", "placeholder"], [3, "formControlName", "placeholder"], ["multi", "", 1, "mat-elevation-z8", 3, "hideToggle"], [3, "expanded", "hideToggle"], [1, "divider-bottom"], [1, "justify-between"], [1, "grid", "grid-cols-1", "gap-y-4"], [3, "ngClass"], [1, "text-red-500"], [1, "border-custom", "m-0", "p-0"], [1, "ml-1", "mt-5"], [1, "-z-10", 3, "orientation", "linear", "color"], ["stepper", ""], [1, "-z-10", 3, "label"], ["class", "grid grid-cols-1 gap-4", 4, "ngFor", "ngForOf"], [1, "flex", "justify-center", "gap-4"], [1, "grid", "grid-cols-1", "gap-4"], [1, "mb-4"], ["mat-stroked-button", "", "matStepperNext", "", 1, "flex-initial", "w-32", 3, "color"], ["mat-stroked-button", "", "matStepperPrevious", "", 1, "flex-initial", "w-32", 3, "color"], [3, "formArrayName"], [3, "formGroupName"]], template: function PublicationFormComponent_Template(rf, ctx) { if (rf & 1) {
+        ])], decls: 10, vars: 3, consts: [[1, "max-w-none", "m-7"], [4, "ngIf"], [1, "grid", "grid-cols-1", "gap-4", 3, "formGroup"], ["appearance", "outline", 3, "color"], [3, "formControlName", "selectionChange"], [4, "ngFor", "ngForOf"], [3, "value"], [1, "below-form"], [1, "flex", "justify-center", "gap-4", "mt-7"], ["mat-stroked-button", "", 1, "flex-initial", "w-32", 3, "color"], ["mat-raised-button", "", 1, "flex-initial", "w-32", 3, "color"], [3, "ngSwitch"], [4, "ngSwitchCase"], ["matInput", "", 3, "formControlName", "placeholder"], ["matInput", "", "type", "number", 3, "formControlName", "placeholder", "min"], [3, "mode", "appearance", "color", "fieldControl", "label", "placeholder"], [3, "mode", "appearance", "color", "owlFieldControl", "label", "placeholder"], [3, "formControlName", "placeholder"], ["multi", "", 1, "mat-elevation-z8", 3, "hideToggle"], [1, "mat-elevation-z8", 3, "expanded", "hideToggle"], [1, "divider-bottom"], [1, "justify-between"], [1, "grid", "grid-cols-1", "gap-y-4"], [3, "ngClass"], [1, "text-red-500"], [1, "border-custom", "m-0", "p-0"], [1, "ml-1", "mt-5"], [1, "-z-10", 3, "orientation", "linear", "color"], ["stepper", ""], [1, "-z-10", 3, "label"], ["class", "grid grid-cols-1 gap-4", 4, "ngFor", "ngForOf"], [1, "flex", "justify-center", "gap-4"], [1, "grid", "grid-cols-1", "gap-4"], [1, "mb-4"], ["mat-stroked-button", "", "matStepperNext", "", 1, "flex-initial", "w-32", 3, "color"], ["mat-stroked-button", "", "matStepperPrevious", "", 1, "flex-initial", "w-32", 3, "color"], [3, "formArrayName"], [3, "formGroupName"]], template: function PublicationFormComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "mat-card", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "mat-card-title");
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](2, "Publication`s form");
@@ -3825,7 +3829,10 @@ PublicationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LOCAL_DATE_FORMATS": () => (/* binding */ LOCAL_DATE_FORMATS),
+/* harmony export */   "LOCAL_NATIVE_DATE_FORMATS": () => (/* binding */ LOCAL_NATIVE_DATE_FORMATS),
+/* harmony export */   "OWL_NATIVE_DATE_FORMATS": () => (/* binding */ OWL_NATIVE_DATE_FORMATS),
+/* harmony export */   "OWL_NATIVE_MONTH_FORMATS": () => (/* binding */ OWL_NATIVE_MONTH_FORMATS),
+/* harmony export */   "OWL_NATIVE_YEAR_FORMATS": () => (/* binding */ OWL_NATIVE_YEAR_FORMATS),
 /* harmony export */   "LUXON_DATE_FORMATS": () => (/* binding */ LUXON_DATE_FORMATS),
 /* harmony export */   "LUXON_MONTH_FORMATS": () => (/* binding */ LUXON_MONTH_FORMATS),
 /* harmony export */   "LUXON_YEAR_FORMATS": () => (/* binding */ LUXON_YEAR_FORMATS),
@@ -3839,16 +3846,58 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const LOCAL_DATE_FORMATS = {
+/** Angular date and time format
+ *
+ * 'short'      : equivalent to 'M/d/yy, h:mm a' (6/15/15, 9:03 AM).
+ * 'medium'     : equivalent to 'MMM d, y, h:mm:ss a' (Jun 15, 2015, 9:03:01 AM).
+ * 'long'       : equivalent to 'MMMM d, y, h:mm:ss a z' (June 15, 2015 at 9:03:01 AM GMT+1).
+ * 'full'       : equivalent to 'EEEE, MMMM d, y, h:mm:ss a zzzz' (Monday, June 15, 2015 at 9:03:01 AM GMT+01:00).
+ * 'shortDate'  : equivalent to 'M/d/yy' (6/15/15).
+ * 'mediumDate' : equivalent to 'MMM d, y' (Jun 15, 2015).
+ * 'longDate'   : equivalent to 'MMMM d, y' (June 15, 2015).
+ * 'fullDate'   : equivalent to 'EEEE, MMMM d, y' (Monday, June 15, 2015).
+ * 'shortTime'  : equivalent to 'h:mm a' (9:03 AM).
+ * 'mediumTime' : equivalent to 'h:mm:ss a' (9:03:01 AM).
+ * 'longTime'   : equivalent to 'h:mm:ss a z' (9:03:01 AM GMT+1).
+ * 'fullTime'   : equivalent to 'h:mm:ss a zzzz' (9:03:01 AM GMT+01:00).
+ */
+const LOCAL_NATIVE_DATE_FORMATS = {
     parse: {
-        dateInput: { year: 'numeric', month: 'long', day: 'numeric' },
+        dateInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
     },
     display: {
-        dateInput: { year: 'numeric', month: 'long', day: 'numeric' },
+        dateInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
         monthYearLabel: { year: 'numeric', month: 'long' },
-        dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+        dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
         monthYearA11yLabel: { year: 'numeric', month: 'long' },
     }
+};
+const OWL_NATIVE_DATE_FORMATS = {
+    parseInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    fullPickerInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    datePickerInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+    timePickerInput: { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    monthYearLabel: { year: 'numeric', month: 'long' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+};
+const OWL_NATIVE_MONTH_FORMATS = {
+    parseInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    fullPickerInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    datePickerInput: { year: 'numeric', month: 'long' },
+    timePickerInput: { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    monthYearLabel: { year: 'numeric', month: 'long' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+};
+const OWL_NATIVE_YEAR_FORMATS = {
+    parseInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    fullPickerInput: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    datePickerInput: { year: 'numeric' },
+    timePickerInput: { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'longOffset' },
+    monthYearLabel: { year: 'numeric', month: 'long' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
 };
 const LUXON_DATE_FORMATS = {
     parse: {
@@ -4628,7 +4677,7 @@ LoaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__
 
 /***/ }),
 
-/***/ 609:
+/***/ 8609:
 /*!*****************************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component.ts ***!
   \*****************************************************************************************/
@@ -4638,13 +4687,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlDatePickerComponent": () => (/* binding */ OwlDatePickerComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
+
 
 
 
@@ -4660,149 +4712,9 @@ class OwlDatePickerComponent {
     }
 }
 OwlDatePickerComponent.ɵfac = function OwlDatePickerComponent_Factory(t) { return new (t || OwlDatePickerComponent)(); };
-OwlDatePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: OwlDatePickerComponent, selectors: [["app-owl-date-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 8, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType"], ["datePicker", ""]], template: function OwlDatePickerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "calendar_month");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("pickerType", "calendar");
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_1__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_1__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_2__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_4__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_1__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_4__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_4__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
-
-
-/***/ }),
-
-/***/ 971:
-/*!*****************************************************************************************************!*\
-  !*** ./src/app/shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component.ts ***!
-  \*****************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "OwlDateRangePickerComponent": () => (/* binding */ OwlDateRangePickerComponent)
-/* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
-
-
-
-
-
-
-
-
-class OwlDateRangePickerComponent {
-    constructor() { }
-    ngOnInit() {
-        this.labelText = this.labelText || 'Choose a date';
-        this.placeholderText = this.placeholderText || 'Choose a date';
-        this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
-    }
-    setOwlDateTimeYear(selectedMonthYear, yearpicker) {
-        yearpicker.close();
-        this.owlFieldControl.setValue(selectedMonthYear);
-    }
-}
-OwlDateRangePickerComponent.ɵfac = function OwlDateRangePickerComponent_Factory(t) { return new (t || OwlDateRangePickerComponent)(); };
-OwlDateRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlDateRangePickerComponent, selectors: [["app-owl-date-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType"], ["dateRangePicker", ""]], template: function OwlDateRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "date_range");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "calendar");
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS1yYW5nZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
-
-
-/***/ }),
-
-/***/ 266:
-/*!***************************************************************************************************!*\
-  !*** ./src/app/shared/owl-datetime-picker/owl-date-time-picker/owl-date-time-picker.component.ts ***!
-  \***************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "OwlDateTimePickerComponent": () => (/* binding */ OwlDateTimePickerComponent)
-/* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
-
-
-
-
-
-
-
-
-class OwlDateTimePickerComponent {
-    constructor() { }
-    ngOnInit() {
-        this.labelText = this.labelText || 'Choose a date';
-        this.placeholderText = this.placeholderText || 'Choose a date';
-        this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
-    }
-    setOwlDateTimeYear(selectedMonthYear, yearpicker) {
-        yearpicker.close();
-        this.owlFieldControl.setValue(selectedMonthYear);
-    }
-}
-OwlDateTimePickerComponent.ɵfac = function OwlDateTimePickerComponent_Factory(t) { return new (t || OwlDateTimePickerComponent)(); };
-OwlDateTimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlDateTimePickerComponent, selectors: [["app-owl-date-time-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["dateTimePicker", ""]], template: function OwlDateTimePickerComponent_Template(rf, ctx) { if (rf & 1) {
+OwlDatePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlDatePickerComponent, selectors: [["app-owl-date-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_2__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 8, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType"], ["datePicker", ""]], template: function OwlDatePickerComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
@@ -4828,8 +4740,158 @@ OwlDateTimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "both")("showSecondsTimer", true);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS10aW1lLXBpY2tlci5jb21wb25lbnQuc2NzcyJ9 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "calendar");
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_2__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_2__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_2__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
+
+
+/***/ }),
+
+/***/ 2180:
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component.ts ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OwlDateRangePickerComponent": () => (/* binding */ OwlDateRangePickerComponent)
+/* harmony export */ });
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
+
+
+
+
+
+
+
+
+class OwlDateRangePickerComponent {
+    constructor() { }
+    ngOnInit() {
+        this.labelText = this.labelText || 'Choose a date';
+        this.placeholderText = this.placeholderText || 'Choose a date';
+        this.result = this.result || '';
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
+    }
+    setOwlDateTimeYear(selectedMonthYear, yearpicker) {
+        yearpicker.close();
+        this.owlFieldControl.setValue(selectedMonthYear);
+    }
+}
+OwlDateRangePickerComponent.ɵfac = function OwlDateRangePickerComponent_Factory(t) { return new (t || OwlDateRangePickerComponent)(); };
+OwlDateRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlDateRangePickerComponent, selectors: [["app-owl-date-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType"], ["dateRangePicker", ""]], template: function OwlDateRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "date_range");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "calendar");
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS1yYW5nZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
+
+
+/***/ }),
+
+/***/ 1266:
+/*!***************************************************************************************************!*\
+  !*** ./src/app/shared/owl-datetime-picker/owl-date-time-picker/owl-date-time-picker.component.ts ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OwlDateTimePickerComponent": () => (/* binding */ OwlDateTimePickerComponent)
+/* harmony export */ });
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
+
+
+
+
+
+
+
+
+class OwlDateTimePickerComponent {
+    constructor() { }
+    ngOnInit() {
+        this.labelText = this.labelText || 'Choose a date';
+        this.placeholderText = this.placeholderText || 'Choose a date';
+        this.result = this.result || '';
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
+    }
+    setOwlDateTimeYear(selectedMonthYear, yearpicker) {
+        yearpicker.close();
+        this.owlFieldControl.setValue(selectedMonthYear);
+    }
+}
+OwlDateTimePickerComponent.ɵfac = function OwlDateTimePickerComponent_Factory(t) { return new (t || OwlDateTimePickerComponent)(); };
+OwlDateTimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlDateTimePickerComponent, selectors: [["app-owl-date-time-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["dateTimePicker", ""]], template: function OwlDateTimePickerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "calendar_month");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "both")("showSecondsTimer", true);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS10aW1lLXBpY2tlci5jb21wb25lbnQuc2NzcyJ9 */"] });
 
 
 /***/ }),
@@ -4844,13 +4906,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlDateTimeRangePickerComponent": () => (/* binding */ OwlDateTimeRangePickerComponent)
 /* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
 
 
 
@@ -4865,7 +4929,7 @@ class OwlDateTimeRangePickerComponent {
         this.labelText = this.labelText || 'Choose a date';
         this.placeholderText = this.placeholderText || 'Choose a date';
         this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
     }
     setOwlDateTimeYear(selectedMonthYear, yearpicker) {
         yearpicker.close();
@@ -4873,39 +4937,41 @@ class OwlDateTimeRangePickerComponent {
     }
 }
 OwlDateTimeRangePickerComponent.ɵfac = function OwlDateTimeRangePickerComponent_Factory(t) { return new (t || OwlDateTimeRangePickerComponent)(); };
-OwlDateTimeRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlDateTimeRangePickerComponent, selectors: [["app-owl-date-time-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 10, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["dateTimeRangePicker", ""]], template: function OwlDateTimeRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "date_range");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+OwlDateTimeRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlDateTimeRangePickerComponent, selectors: [["app-owl-date-time-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 10, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["dateTimeRangePicker", ""]], template: function OwlDateTimeRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "date_range");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "both")("showSecondsTimer", true);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS10aW1lLXJhbmdlLXBpY2tlci5jb21wb25lbnQuc2NzcyJ9 */"] });
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "both")("showSecondsTimer", true);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtZGF0ZS10aW1lLXJhbmdlLXBpY2tlci5jb21wb25lbnQuc2NzcyJ9 */"] });
 
 
 /***/ }),
 
-/***/ 712:
+/***/ 9712:
 /*!*****************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-datetime-picker.component.ts ***!
   \*****************************************************************************/
@@ -4920,13 +4986,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ 228);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs */ 8951);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./owl-date-picker/owl-date-picker.component */ 609);
-/* harmony import */ var _owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./owl-month-picker/owl-month-picker.component */ 978);
-/* harmony import */ var _owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./owl-year-picker/owl-year-picker.component */ 992);
-/* harmony import */ var _owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./owl-time-picker/owl-time-picker.component */ 50);
-/* harmony import */ var _owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./owl-date-time-picker/owl-date-time-picker.component */ 266);
-/* harmony import */ var _owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./owl-date-range-picker/owl-date-range-picker.component */ 971);
-/* harmony import */ var _owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./owl-time-range-picker/owl-time-range-picker.component */ 933);
+/* harmony import */ var _owl_date_picker_owl_date_picker_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./owl-date-picker/owl-date-picker.component */ 8609);
+/* harmony import */ var _owl_month_picker_owl_month_picker_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./owl-month-picker/owl-month-picker.component */ 8978);
+/* harmony import */ var _owl_year_picker_owl_year_picker_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./owl-year-picker/owl-year-picker.component */ 7992);
+/* harmony import */ var _owl_time_picker_owl_time_picker_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./owl-time-picker/owl-time-picker.component */ 4050);
+/* harmony import */ var _owl_date_time_picker_owl_date_time_picker_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./owl-date-time-picker/owl-date-time-picker.component */ 1266);
+/* harmony import */ var _owl_date_range_picker_owl_date_range_picker_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./owl-date-range-picker/owl-date-range-picker.component */ 2180);
+/* harmony import */ var _owl_time_range_picker_owl_time_range_picker_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./owl-time-range-picker/owl-time-range-picker.component */ 8933);
 /* harmony import */ var _owl_date_time_range_picker_owl_date_time_range_picker_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./owl-date-time-range-picker/owl-date-time-range-picker.component */ 883);
 
 
@@ -5025,6 +5091,7 @@ class OwlDatetimePickerComponent {
         this.onDatetimeChange = (datetime) => { };
     }
     ngOnInit() {
+        // If parent form control is provided, set it to children form control, if not then set new one
         this.owlFieldControl = this.owlFieldControl || new _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormControl();
         this.subscription$ = new rxjs__WEBPACK_IMPORTED_MODULE_10__.Subject();
         this.label = this.label || null;
@@ -5102,7 +5169,7 @@ OwlDatetimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED
 
 /***/ }),
 
-/***/ 978:
+/***/ 8978:
 /*!*******************************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component.ts ***!
   \*******************************************************************************************/
@@ -5112,13 +5179,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlMonthPickerComponent": () => (/* binding */ OwlMonthPickerComponent)
 /* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
 
 
 
@@ -5133,7 +5202,7 @@ class OwlMonthPickerComponent {
         this.labelText = this.labelText || 'Choose a date';
         this.placeholderText = this.placeholderText || 'Choose a date';
         this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
     }
     setOwlDateTimeMonthYear(selectedMonthYear, monthpicker) {
         monthpicker.close();
@@ -5141,42 +5210,44 @@ class OwlMonthPickerComponent {
     }
 }
 OwlMonthPickerComponent.ɵfac = function OwlMonthPickerComponent_Factory(t) { return new (t || OwlMonthPickerComponent)(); };
-OwlMonthPickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlMonthPickerComponent, selectors: [["app-owl-month-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "startView", "monthSelected"], ["monthPicker", ""]], template: function OwlMonthPickerComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "calendar_view_month");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("monthSelected", function OwlMonthPickerComponent_Template_owl_date_time_monthSelected_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9); return ctx.setOwlDateTimeMonthYear($event, _r0); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+OwlMonthPickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlMonthPickerComponent, selectors: [["app-owl-month-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_MONTH_FORMATS },
+        ])], decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "startView", "monthSelected"], ["monthPicker", ""]], template: function OwlMonthPickerComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "calendar_view_month");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("monthSelected", function OwlMonthPickerComponent_Template_owl_date_time_monthSelected_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r1); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9); return ctx.setOwlDateTimeMonthYear($event, _r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "calendar")("startView", ctx.owlDateTimeMonthStartView);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtbW9udGgtcGlja2VyLmNvbXBvbmVudC5zY3NzIn0= */"] });
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "calendar")("startView", ctx.owlDateTimeMonthStartView);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtbW9udGgtcGlja2VyLmNvbXBvbmVudC5zY3NzIn0= */"] });
 
 
 /***/ }),
 
-/***/ 50:
+/***/ 4050:
 /*!*****************************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-time-picker/owl-time-picker.component.ts ***!
   \*****************************************************************************************/
@@ -5186,13 +5257,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlTimePickerComponent": () => (/* binding */ OwlTimePickerComponent)
 /* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
 
 
 
@@ -5207,7 +5280,7 @@ class OwlTimePickerComponent {
         this.labelText = this.labelText || 'Choose a date';
         this.placeholderText = this.placeholderText || 'Choose a date';
         this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
     }
     setOwlDateTimeYear(selectedMonthYear, yearpicker) {
         yearpicker.close();
@@ -5215,39 +5288,41 @@ class OwlTimePickerComponent {
     }
 }
 OwlTimePickerComponent.ɵfac = function OwlTimePickerComponent_Factory(t) { return new (t || OwlTimePickerComponent)(); };
-OwlTimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlTimePickerComponent, selectors: [["app-owl-time-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["timePicker", ""]], template: function OwlTimePickerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "access_time_filled");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+OwlTimePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlTimePickerComponent, selectors: [["app-owl-time-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["timePicker", ""]], template: function OwlTimePickerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "access_time_filled");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "timer")("showSecondsTimer", true);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtdGltZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "timer")("showSecondsTimer", true);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtdGltZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
 
 
 /***/ }),
 
-/***/ 933:
+/***/ 8933:
 /*!*****************************************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component.ts ***!
   \*****************************************************************************************************/
@@ -5257,13 +5332,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlTimeRangePickerComponent": () => (/* binding */ OwlTimeRangePickerComponent)
 /* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
 
 
 
@@ -5278,7 +5355,7 @@ class OwlTimeRangePickerComponent {
         this.labelText = this.labelText || 'Choose a date';
         this.placeholderText = this.placeholderText || 'Choose a date';
         this.result = this.result || '';
-        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
+        this.owlDateTimeMonthStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
     }
     setOwlDateTimeYear(selectedMonthYear, yearpicker) {
         yearpicker.close();
@@ -5286,39 +5363,41 @@ class OwlTimeRangePickerComponent {
     }
 }
 OwlTimeRangePickerComponent.ɵfac = function OwlTimeRangePickerComponent_Factory(t) { return new (t || OwlTimeRangePickerComponent)(); };
-OwlTimeRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlTimeRangePickerComponent, selectors: [["app-owl-time-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 10, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["timeRangePicker", ""]], template: function OwlTimeRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "av_timer");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+OwlTimeRangePickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlTimeRangePickerComponent, selectors: [["app-owl-time-range-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_DATE_FORMATS },
+        ])], decls: 10, vars: 10, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime", "selectMode"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "showSecondsTimer"], ["timeRangePicker", ""]], template: function OwlTimeRangePickerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "av_timer");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "timer")("showSecondsTimer", true);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtdGltZS1yYW5nZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0)("selectMode", "range");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "timer")("showSecondsTimer", true);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wtdGltZS1yYW5nZS1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
 
 
 /***/ }),
 
-/***/ 992:
+/***/ 7992:
 /*!*****************************************************************************************!*\
   !*** ./src/app/shared/owl-datetime-picker/owl-year-picker/owl-year-picker.component.ts ***!
   \*****************************************************************************************/
@@ -5328,13 +5407,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OwlYearPickerComponent": () => (/* binding */ OwlYearPickerComponent)
 /* harmony export */ });
-/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 587);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @danielmoncada/angular-datetime-picker */ 7257);
+/* harmony import */ var src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/service/app.service */ 6935);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+
 
 
 
@@ -5349,7 +5430,7 @@ class OwlYearPickerComponent {
         this.labelText = this.labelText || 'Choose a date';
         this.placeholderText = this.placeholderText || 'Choose a date';
         this.result = this.result || '';
-        this.owlDateTimeYearStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.DateView.MULTI_YEARS;
+        this.owlDateTimeYearStartView = _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.DateView.MULTI_YEARS;
     }
     setOwlDateTimeYear(selectedMonthYear, yearpicker) {
         yearpicker.close();
@@ -5357,37 +5438,39 @@ class OwlYearPickerComponent {
     }
 }
 OwlYearPickerComponent.ɵfac = function OwlYearPickerComponent_Factory(t) { return new (t || OwlYearPickerComponent)(); };
-OwlYearPickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: OwlYearPickerComponent, selectors: [["app-owl-year-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "startView", "yearSelected"], ["yearPicker", ""]], template: function OwlYearPickerComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "input", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "button", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "calendar_month");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "owl-date-time", 3, 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("yearSelected", function OwlYearPickerComponent_Template_owl_date_time_yearSelected_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9); return ctx.setOwlDateTimeYear($event, _r0); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+OwlYearPickerComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: OwlYearPickerComponent, selectors: [["app-owl-year-picker"]], inputs: { appearance: "appearance", color: "color", labelText: "labelText", placeholderText: "placeholderText", owlFieldControl: "owlFieldControl" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([
+            { provide: _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OWL_DATE_TIME_FORMATS, useValue: src_app_service_app_service__WEBPACK_IMPORTED_MODULE_0__.OWL_NATIVE_YEAR_FORMATS },
+        ])], decls: 10, vars: 9, consts: [[3, "appearance", "color"], ["matInput", "", 3, "formControl", "placeholder", "owlDateTime"], ["mat-icon-button", "", "matSuffix", "", 3, "owlDateTimeTrigger"], [3, "pickerType", "startView", "yearSelected"], ["yearPicker", ""]], template: function OwlYearPickerComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "input", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "mat-icon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "calendar_month");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "owl-date-time", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("yearSelected", function OwlYearPickerComponent_Template_owl_date_time_yearSelected_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r1); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9); return ctx.setOwlDateTimeYear($event, _r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.labelText);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("pickerType", "calendar")("startView", ctx.owlDateTimeYearStartView);
-    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_3__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_5__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_2__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_0__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wteWVhci1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("appearance", ctx.appearance)("color", ctx.color);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.labelText);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.owlFieldControl)("placeholder", ctx.placeholderText)("owlDateTime", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("owlDateTimeTrigger", _r0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("pickerType", "calendar")("startView", ctx.owlDateTimeYearStartView);
+    } }, directives: [_angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeInputDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatSuffix, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeTriggerDirective, _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__.MatIcon, _danielmoncada_angular_datetime_picker__WEBPACK_IMPORTED_MODULE_1__.OwlDateTimeComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvd2wteWVhci1waWNrZXIuY29tcG9uZW50LnNjc3MifQ== */"] });
 
 
 /***/ }),

@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { OWL_DATE_TIME_FORMATS } from '@danielmoncada/angular-datetime-picker';
+import { OWL_NATIVE_DATE_FORMATS } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-owl-date-picker',
   templateUrl: './owl-date-picker.component.html',
-  styleUrls: ['./owl-date-picker.component.scss']
+  styleUrls: ['./owl-date-picker.component.scss'],
+  providers: [
+    { provide: OWL_DATE_TIME_FORMATS, useValue: OWL_NATIVE_DATE_FORMATS },
+  ]
 })
 export class OwlDatePickerComponent implements OnInit {
 

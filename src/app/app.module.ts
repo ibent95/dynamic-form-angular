@@ -10,7 +10,7 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { LuxonModule } from 'luxon-angular';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from '@danielmoncada/angular-datetime-picker';
 
 // App routings, settings, components
 import { AppRoutingModule } from './app-routing.module';
@@ -27,13 +27,15 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { ContentComponent } from './core/content/content.component';
 import { FooterComponent } from './core/footer/footer.component';
 
-// Shared components
+// App shared components
 import { PageBlankComponent } from './shared/page-blank/page-blank.component';
 import { PageComponentsComponent } from './shared/page-components/page-components.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { PageUnderConstructionComponent } from './shared/page-under-construction/page-under-construction.component';
 import { GhostTableComponent } from './shared/ghost-table/ghost-table.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+
+// App shared components (Custom material datetime picker)
 import { DatetimePickerComponent } from './shared/datetime-picker/datetime-picker.component';
 import { DatePickerComponent } from './shared/datetime-picker/date-picker/date-picker.component';
 import { MonthPickerComponent } from './shared/datetime-picker/month-picker/month-picker.component';
@@ -41,12 +43,7 @@ import { YearPickerComponent } from './shared/datetime-picker/year-picker/year-p
 import { TimePickerComponent } from './shared/datetime-picker/time-picker/time-picker.component';
 import { DateTimePickerComponent } from './shared/datetime-picker/date-time-picker/date-time-picker.component';
 
-// Module components
-import { LoginComponent } from './module/login/login.component';
-import { OverviewComponent } from './module/overview/overview.component';
-import { PublicationComponent } from './module/publication/publication.component';
-import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
-import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
+// App shared components (OWL datetime picker)
 import { OwlDatetimePickerComponent } from './shared/owl-datetime-picker/owl-datetime-picker.component';
 import { OwlDatePickerComponent } from './shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component';
 import { OwlMonthPickerComponent } from './shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component';
@@ -56,6 +53,15 @@ import { OwlDateTimePickerComponent } from './shared/owl-datetime-picker/owl-dat
 import { OwlDateRangePickerComponent } from './shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component';
 import { OwlTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component';
 import { OwlDateTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component';
+
+// App module / menu components
+import { LoginComponent } from './module/login/login.component';
+import { OverviewComponent } from './module/overview/overview.component';
+
+// App module / menu components (Publication)
+import { PublicationComponent } from './module/publication/publication.component';
+import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
+import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -114,6 +120,7 @@ registerLocaleData(localeId, 'id');
   providers: [
     { provide: LOCALE_ID, useValue: 'id-ID' },
     { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
+    { provide: OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },
     { provide: ENV, useValue: CONFIG },
     AppService
   ],

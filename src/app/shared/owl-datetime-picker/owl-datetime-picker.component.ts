@@ -26,12 +26,14 @@ export class OwlDatetimePickerComponent implements OnInit {
   // Datetime picker mode
   @Input() mode: 'date' | 'month' | 'year' | 'time' | 'datetime' | 'daterange' | 'timerange' | 'datetimerange' = 'date';
 
+  // Parent form control
   @Input() owlFieldControl!: FormControl;
   subscription$!: Subject<void>;
 
   constructor() { }
 
   ngOnInit(): void {
+    // If parent form control is provided, set it to children form control, if not then set new one
     this.owlFieldControl = this.owlFieldControl || new FormControl();
     this.subscription$ = new Subject<void>();
 
