@@ -6,6 +6,8 @@ import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/mater
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from "rxjs";
 import { AppService, AppServiceType, LUXON_DATE_FORMATS } from 'src/app/service/app.service';
+import { MatDialog } from "@angular/material/dialog";
+import { DialogConfirmComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
 
 @Component({
   selector: 'app-publication-form',
@@ -19,7 +21,21 @@ import { AppService, AppServiceType, LUXON_DATE_FORMATS } from 'src/app/service/
 })
 export class PublicationFormComponent implements OnInit {
 
-  available!: any;
+  available!: any | {
+    no_data: boolean,
+    form_metadata_no_data: boolean,
+    form_metadata_loaded: boolean,
+    form_builder: boolean,
+    publication_type_loaded: boolean,
+    publication_type_selected: boolean,
+    publication_form_metadata_loaded: boolean,
+    wizard_avaliable: boolean,
+    wizard_count: number,
+    wizards: Array<any>,
+    current_date: Date,
+    cancel_button_disabled: boolean,
+    submit_button_disabled: boolean,
+  };
 
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
@@ -62,6 +78,7 @@ export class PublicationFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private appSvc: AppService,
     private location: Location,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +92,8 @@ export class PublicationFormComponent implements OnInit {
       wizard_count: 0,
       wizards: [],
       current_date: new Date(),
+      cancel_button_disabled: false,
+      submit_button_disabled: false,
     };
 
     this.publicationTypeCode = 'JUR-1';
@@ -106,6 +125,7 @@ export class PublicationFormComponent implements OnInit {
 
   }
 
+  // Function to get publication type
   private getMasterdataPublicationType(): void {
     this.appSvc.list(AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
       this.selectOptions['publication_type'].items = response['data'];
@@ -113,10 +133,11 @@ export class PublicationFormComponent implements OnInit {
 
       this.forms.get('publication_type_code')?.setValue('BOK-1');
       this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
-      this.onPublicationTypeClick({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
+      this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
     });
   }
 
+  // Initial function for build form
   private initiateForm(): void {
     // Required masterdata
 
@@ -129,10 +150,10 @@ export class PublicationFormComponent implements OnInit {
     this.available.form_builder = true;
   }
 
-  public onPublicationTypeClick(eventData: any): void {
+  // Event on select publication type
+  public onPublicationTypeSlctSelect(eventData: any): void {
 
     //const selectedData = eventData[0].data; // From ngx-select
-    console.log('onPublicationTypeClick eventData', eventData);
 
     const selectedData = this.selectOptions['publication_type'].items.find((item: any) => item.uuid === eventData.value);
     this.publicationTypeUuid = selectedData['uuid'] || null;
@@ -141,9 +162,13 @@ export class PublicationFormComponent implements OnInit {
     this.available.publication_type_selected = true;
     this.available.form_metadata_loaded = false;
 
+    delete this.available.no_data;
+    delete this.available.form_metadata_no_data;
+
     this.getFormMetadata(this.publicationTypeCode);
   }
 
+  // Function to get metadata of form`s configuration
   private getFormMetadata(publicationTypeCode: string, formVersionCode?: string): void {
     let params = '/' + publicationTypeCode;
 
@@ -151,7 +176,18 @@ export class PublicationFormComponent implements OnInit {
 
     this.appSvc.listParam(AppServiceType.PUBLICATION_FORM_METADATA, params).subscribe(response => {
       this.publicationFormMetadata = response['data'];
-      this.available.form_metadata_loaded = true;
+
+      //
+      if (this.publicationFormMetadata.forms) this.available.form_metadata_loaded = true;
+
+      //
+      this.available.form_metadata_no_data = (
+        (typeof this.publicationFormMetadata !== 'object') ||
+        (
+          (typeof this.publicationFormMetadata === 'object') &&
+          (Array.isArray(this.publicationFormMetadata.forms) && (this.publicationFormMetadata.forms.length === 0))
+        )
+      );
 
       this.setFieldsByAttribute('field_name', this.publicationFormMetadata.forms);
 
@@ -219,7 +255,7 @@ export class PublicationFormComponent implements OnInit {
     });
   }
 
-  // Handling to set value in forms (in Form Create and Update)
+  // Function to set value in forms (in Form Create and Update)
   private setDynamicFormValues(publicationTypeUuid: string, publicationTypeCode: string) {
     let fieldDataSets: any = {};
 
@@ -511,6 +547,7 @@ export class PublicationFormComponent implements OnInit {
     this.subscribeToFormsChanges();
   }
 
+  // Function for check changes of form
   private subscribeToFormsChanges() {
     this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
       //this.statusSvc.addEditMode = true;
@@ -522,11 +559,13 @@ export class PublicationFormComponent implements OnInit {
     return this.publicationFormMetadata.forms;
   }
 
+  // Function to get Form Control of formBuilder for custom component / child component (Shared component)
   public getFieldControl(fieldName: string) {
     return this.forms?.get(fieldName) as FormControl;
   }
 
-  public getFormGroupControls(fieldName: string) {
+  // Function to get Form Group of formBuilder
+  public getFormGroup(fieldName: string) {
     return this.forms?.get(fieldName) as FormArray;
   }
 
@@ -534,5 +573,82 @@ export class PublicationFormComponent implements OnInit {
    * Functions, events or handlers after form`s metadata are load
    */
 
+
+
+  /**
+   * Functions, events or handlers before submit or cancel form
+   */
+
+  // Event on click back button
+  public onBackBtnClick() {
+    this.location.back();
+  }
+
+  // Event on click cancel button
+  public onFormCancelBtnClick() {
+    this.available.submit_button_disabled = !!this.available.submit_button_disabled;
+
+    // Dialog initial configuration and open
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      height: '280px',
+      width: '600px',
+      data: {
+        title: 'Anda yakin ingin keluar?',
+        content_message: 'Data yang anda masukan tidak akan disimpan.',
+        no_button_label: 'Tidak',
+        yes_button_label: 'Ya',
+      }
+    });
+
+    // Subscribe to dialog closed event
+    dialogRef.afterClosed().subscribe(response => {
+
+      if (response.result) { // If user`s choice is yes, set location`s back
+        this.location.back();
+
+      } else { // Default handler, to set disable of submit button
+        this.available.submit_button_disabled = !!this.available.submit_button_disabled;
+      }
+    });
+
+    //const modal = this.modalSvc.show(ConfirmModalCustomComponent, { ignoreBackdropClick: true, class: MODAL.ALERT.WARNING, initialState: innitialState });
+    //(<ConfirmModalCustomComponent>modal.content).onClose.subscribe(result => {
+    //  if (result == 'terbit') {
+    //    this.doSubmitForm('DRF');
+    //  } else if (result == 'modal_closed') {
+    //    this.location.back();
+    //  } else {
+    //    modal.hide();
+    //  }
+    //});
+  }
+
+  // Event on click submit button
+  public onFormSubmitBtnClick() {
+    console.log('onFormSubmitBtnClick');
+
+    //const submitClick = { submitClick: true };
+    //this.dataSvc.setData(submitClick);
+
+    //const innitialState = {
+    //  title: this.translateSvc.instant('Apakah ingin simpan ?'),
+    //  message: this.translateSvc.instant('Anda dapat menyimpannya sebagai draft atau langsung terbitkan'),
+    //  confirmBtnlabel: this.translateSvc.instant('Terbitkan'),
+    //  draftBtnlabel: this.translateSvc.instant('Draft'),
+    //  cancelBtnlabel: this.translateSvc.instant('Batal'),
+    //};
+
+    //const modal = this.modalSvc.show(ConfirmModalCustomComponent, { ignoreBackdropClick: true, class: MODAL.ALERT.WARNING, initialState: innitialState, });
+    //(<ConfirmModalCustomComponent>modal.content).onClose.subscribe(result => {
+    //  if (result) {
+    //    const kd_status = (result === 'draft') ? 'DRF' : 'TRB';
+    //    this.btnSubmit = true;
+    //    this.doSubmitForm(kd_status);
+    //  } else {
+    //    this.btnSubmit = false;
+    //    modal.hide();
+    //  }
+    //});
+  }
 
 }

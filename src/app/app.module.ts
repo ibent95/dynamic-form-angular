@@ -35,7 +35,7 @@ import { PageUnderConstructionComponent } from './shared/page-under-construction
 import { GhostTableComponent } from './shared/ghost-table/ghost-table.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 
-// App shared components (Custom material datetime picker)
+// App shared components (Custom material datetime pickers)
 import { DatetimePickerComponent } from './shared/datetime-picker/datetime-picker.component';
 import { DatePickerComponent } from './shared/datetime-picker/date-picker/date-picker.component';
 import { MonthPickerComponent } from './shared/datetime-picker/month-picker/month-picker.component';
@@ -43,7 +43,7 @@ import { YearPickerComponent } from './shared/datetime-picker/year-picker/year-p
 import { TimePickerComponent } from './shared/datetime-picker/time-picker/time-picker.component';
 import { DateTimePickerComponent } from './shared/datetime-picker/date-time-picker/date-time-picker.component';
 
-// App shared components (OWL datetime picker)
+// App shared components (OWL datetime pickers)
 import { OwlDatetimePickerComponent } from './shared/owl-datetime-picker/owl-datetime-picker.component';
 import { OwlDatePickerComponent } from './shared/owl-datetime-picker/owl-date-picker/owl-date-picker.component';
 import { OwlMonthPickerComponent } from './shared/owl-datetime-picker/owl-month-picker/owl-month-picker.component';
@@ -53,6 +53,11 @@ import { OwlDateTimePickerComponent } from './shared/owl-datetime-picker/owl-dat
 import { OwlDateRangePickerComponent } from './shared/owl-datetime-picker/owl-date-range-picker/owl-date-range-picker.component';
 import { OwlTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-time-range-picker/owl-time-range-picker.component';
 import { OwlDateTimeRangePickerComponent } from './shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component';
+
+// App shared components (Dialogs)
+import { DialogConfirmComponent } from './shared/dialog-confirm/dialog-confirm.component';
+import { DialogAlertComponent } from './shared/dialog-alert/dialog-alert.component';
+import { DialogPromptComponent } from './shared/dialog-prompt/dialog-prompt.component';
 
 // App module / menu components
 import { LoginComponent } from './module/login/login.component';
@@ -99,6 +104,9 @@ registerLocaleData(localeId, 'id');
     OwlDateRangePickerComponent,
     OwlTimeRangePickerComponent,
     OwlDateTimeRangePickerComponent,
+    DialogConfirmComponent,
+    DialogAlertComponent,
+    DialogPromptComponent,
   ],
   imports: [
     BrowserModule,

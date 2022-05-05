@@ -1,0 +1,20 @@
+<div class="grid grid-cols-1 relative h-full">
+
+	<!-- Dialog title -->
+	<span class="absolute inset-x-0 top-5 text-2xl font-medium tracking-wide" align="center">{{ dialogData.title }}</span>
+
+	<!-- Dialog content -->
+	<mat-dialog-content class="mat-typography absolute inset-x-0 top-24 text-xl font-normal" align="center">{{ dialogData.content_message }}</mat-dialog-content>
+
+	<!-- Dialog action button -->
+	<mat-dialog-actions class="absolute inset-x-0 bottom-5 gap-4" align="center">
+		<ng-container *ngIf="dialogData.no_button_available">
+			<button class="flex-initial w-28 text-xl font-medium" mat-button color="warn" mat-dialog-close (click)="onNoBtnClick()">{{ dialogData.no_button_label }}</button>
+		</ng-container>
+
+		<ng-container *ngIf="dialogData.yes_button_available">
+			<button class="flex-initial w-28 text-xl font-medium" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()">{{ dialogData.yes_button_label }}</button>
+		</ng-container>
+	</mat-dialog-actions>
+
+</div>
