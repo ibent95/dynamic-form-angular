@@ -1,5 +1,6 @@
 // Angular and other libraries
 import { LOCALE_ID, NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
@@ -110,6 +111,7 @@ registerLocaleData(localeId, 'id');
   ],
   imports: [
     BrowserModule,
+    LayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,

@@ -29,6 +29,11 @@ export class PublicationFormComponent implements OnInit {
     publication_type_loaded: boolean,
     publication_type_selected: boolean,
     publication_form_metadata_loaded: boolean,
+    grid_system: {
+      type: 'material' | 'bootstrap' | 'tailwind' | 'no_grid_system',
+      cols: number,
+      config: object
+    } ,
     wizard_avaliable: boolean,
     wizard_count: number,
     wizards: Array<any>,
@@ -88,6 +93,11 @@ export class PublicationFormComponent implements OnInit {
       publication_type_loaded: false,
       publication_type_selected: false,
       publication_form_metadata_loaded: false,
+      grid_system: {
+        type: 'no_grid_system',
+        cols: 12,
+        config: {},
+      },
       wizard_avaliable: false,
       wizard_count: 0,
       wizards: [],
@@ -125,18 +135,6 @@ export class PublicationFormComponent implements OnInit {
 
   }
 
-  // Function to get publication type
-  private getMasterdataPublicationType(): void {
-    this.appSvc.list(AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
-      this.selectOptions['publication_type'].items = response['data'];
-      this.available.publication_type_loaded = true;
-
-      this.forms.get('publication_type_code')?.setValue('BOK-1');
-      this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
-      this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
-    });
-  }
-
   // Initial function for build form
   private initiateForm(): void {
     // Required masterdata
@@ -148,6 +146,18 @@ export class PublicationFormComponent implements OnInit {
 
     this.getMasterdataPublicationType();
     this.available.form_builder = true;
+  }
+
+  // Function to get publication type
+  private getMasterdataPublicationType(): void {
+    this.appSvc.list(AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
+      this.selectOptions['publication_type'].items = response['data'];
+      this.available.publication_type_loaded = true;
+
+      this.forms.get('publication_type_code')?.setValue('BOK-1');
+      this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
+      this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
+    });
   }
 
   // Event on select publication type
@@ -165,6 +175,12 @@ export class PublicationFormComponent implements OnInit {
     delete this.available.no_data;
     delete this.available.form_metadata_no_data;
 
+    this.available.grid_system = {
+      type: 'no_grid_system',
+      cols: 12,
+      config: {},
+    };
+
     this.getFormMetadata(this.publicationTypeCode);
   }
 
@@ -177,10 +193,10 @@ export class PublicationFormComponent implements OnInit {
     this.appSvc.listParam(AppServiceType.PUBLICATION_FORM_METADATA, params).subscribe(response => {
       this.publicationFormMetadata = response['data'];
 
-      //
+      // Set available.form_metadata_loaded if publicationFormMetadata.forms`s value is valid
       if (this.publicationFormMetadata.forms) this.available.form_metadata_loaded = true;
 
-      //
+      // Check and set available.form_metadata_no_data if form meta data value is empty or not
       this.available.form_metadata_no_data = (
         (typeof this.publicationFormMetadata !== 'object') ||
         (
@@ -188,6 +204,9 @@ export class PublicationFormComponent implements OnInit {
           (Array.isArray(this.publicationFormMetadata.forms) && (this.publicationFormMetadata.forms.length === 0))
         )
       );
+
+      // Set grid system configuration
+      this.available.grid_system = this.publicationFormMetadata.grid_system;
 
       this.setFieldsByAttribute('field_name', this.publicationFormMetadata.forms);
 
@@ -541,7 +560,61 @@ export class PublicationFormComponent implements OnInit {
 
     this.forms = this.formBuilder.group(fieldDataSets);
 
-    //console.log('forms', this.forms);
+    console.log('fieldInForms', this.fieldInForms);
+    console.log('publicationFormMetadata', this.publicationFormMetadata);
+
+    let gridConfig = {
+      type: "material",
+      cols: 12,
+      config: {
+        text_1: { colspan: 3, rowspan: 1 },
+        select_1: { colspan: 3, rowspan: 1 },
+
+        try_stepper_1: { colspan: 6, rowspan: 12 },
+
+        try_stepper_1_step_1: { colspan: 12, rowspan: 1 },
+        date_2: { colspan: 6, rowspan: 1 },
+        month_2: { colspan: 6, rowspan: 1 },
+        year_2: { colspan: 6, rowspan: 1 },
+        time_1: { colspan: 6, rowspan: 1 },
+        datetime_1: { colspan: 6, rowspan: 1 },
+        daterange_1: { colspan: 6, rowspan: 1 },
+        timerange_1: { colspan: 6, rowspan: 1 },
+        datetimerange_1: { colspan: 6, rowspan: 1 },
+
+        try_stepper_1_step_2: { colspan: 12, rowspan: 1 },
+        text_2: { colspan: 6, rowspan: 1 },
+        url_1: { colspan: 6, rowspan: 1 },
+        select_2: { colspan: 6, rowspan: 1 },
+        date_1: { colspan: 6, rowspan: 1 },
+        month_1: { colspan: 6, rowspan: 1 },
+        year_1: { colspan: 6, rowspan: 1 },
+
+        try_stepper_1_step_3: { colspan: 12, rowspan: 1 },
+        select_3: { colspan: 6, rowspan: 1 },
+        select_4: { colspan: 6, rowspan: 1 },
+        select_5: { colspan: 6, rowspan: 1 },
+        number_1: { colspan: 6, rowspan: 1 },
+
+        url_2: { colspan: 4, rowspan: 1 },
+        number_2: { colspan: 3, rowspan: 1 },
+
+        try_accordion_1: { colspan: 6, rowspan: 12 },
+
+        try_accordion_1_panel_1: { colspan: 12, rowspan: 1 },
+        text_3: { colspan: 4, rowspan: 1 },
+        url_3: { colspan: 4, rowspan: 1 },
+        number_3: { colspan: 4, rowspan: 1 },
+
+        try_accordion_1_panel_2: { colspan: 12, rowspan: 1 },
+        select_6: { colspan: 4, rowspan: 1 },
+        select_7: { colspan: 4, rowspan: 1 },
+
+        try_accordion_1_panel_3: { colspan: 12, rowspan: 1 },
+        select_8: { colspan: 4, rowspan: 1 },
+        select_9: { colspan: 4, rowspan: 1 },
+      },
+    };
 
     //this.setInitialFieldDependencyConfig();
     this.subscribeToFormsChanges();

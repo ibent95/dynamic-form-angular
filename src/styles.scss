@@ -40,7 +40,6 @@ button.mat-flat-button, a.mat-flat-button {
 // mat-icon-button, mat-fab, mat-mini-fab
 button.mat-icon-button, button.mat-fab, button.mat-mini-fab { margin-bottom: 10px; }
 
-
 // mat-input
 mat-form-field {
 	width: 100%;
@@ -95,6 +94,20 @@ mat-stepper {
 
 // mat-accordion
 //mat-accordion mat-expansion-panel mat-expansion-panel-header { padding-bottom: 20px; }
+
+// mat-grid-list, mat-grid-tile
+mat-grid-list mat-grid-tile {
+
+	height: 100% !important;
+	justify-content: flex-start !important;
+	align-items: flex-start !important;
+
+	mat-accordion mat-label h2 { margin: 0 !important; }
+
+	div.mat-grid-tile-container mat-accordion mat-label h2 { margin: 0 !important; }
+
+	div.mat-grid-tile-content { height: 100% !important; }
+}
 
 // ============================== Other Custom ============================== //
 
