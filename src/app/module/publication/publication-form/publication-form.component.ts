@@ -560,10 +560,7 @@ export class PublicationFormComponent implements OnInit {
 
     this.forms = this.formBuilder.group(fieldDataSets);
 
-    console.log('fieldInForms', this.fieldInForms);
-    console.log('publicationFormMetadata', this.publicationFormMetadata);
-
-    let gridConfig = {
+    let materialGridConfig = {
       type: "material",
       cols: 12,
       config: {
@@ -613,6 +610,112 @@ export class PublicationFormComponent implements OnInit {
         try_accordion_1_panel_3: { colspan: 12, rowspan: 1 },
         select_8: { colspan: 4, rowspan: 1 },
         select_9: { colspan: 4, rowspan: 1 },
+      },
+    };
+
+    let bootstrapGridConfig = {
+      type: "bootstrap",
+      cols: "row-cols-12",
+      config: {
+        text_1: { col: "col-3" },
+        select_1: { col: "col-3" },
+
+        try_stepper_1: { col: "col-62" },
+
+        try_stepper_1_step_1: { col: "col-12" },
+        date_2: { col: "col-6" },
+        month_2: { col: "col-6" },
+        year_2: { col: "col-6" },
+        time_1: { col: "col-6" },
+        datetime_1: { col: "col-6" },
+        daterange_1: { col: "col-6" },
+        timerange_1: { col: "col-6" },
+        datetimerange_1: { col: "col-6" },
+
+        try_stepper_1_step_2: { col: "col-12" },
+        text_2: { col: "col-6" },
+        url_1: { col: "col-6" },
+        select_2: { col: "col-6" },
+        date_1: { col: "col-6" },
+        month_1: { col: "col-6" },
+        year_1: { col: "col-6" },
+
+        try_stepper_1_step_3: { col: "col-12" },
+        select_3: { col: "col-6" },
+        select_4: { col: "col-6" },
+        select_5: { col: "col-6" },
+        number_1: { col: "col-6" },
+
+        url_2: { col: "col-4" },
+        number_2: { col: "col-3" },
+
+        try_accordion_1: { col: "col-12" },
+
+        try_accordion_1_panel_1: { col: "col-12" },
+        text_3: { col: "col-4" },
+        url_3: { col: "col-4" },
+        number_3: { col: "col-4" },
+
+        try_accordion_1_panel_2: { col: "col-12" },
+        select_6: { col: "col-4" },
+        select_7: { col: "col-4" },
+
+        try_accordion_1_panel_3: { col: "col-12" },
+        select_8: { col: "col-4" },
+        select_9: { col: "col-4" },
+      },
+    };
+
+    let tailwindGridConfig = {
+      type: "tailwind",
+      cols: "grid-cols-12",
+      config: {
+        text_1: { col: "col-span-3", row: "col-span-1" },
+        select_1: { col: "col-span-3", row: "col-span-1" },
+
+        try_stepper_1: { col: "col-span-62", row: "col-span-16" },
+
+        try_stepper_1_step_1: { col: "col-span-12", row: "col-span-1" },
+        date_2: { col: "col-span-6", row: "col-span-1" },
+        month_2: { col: "col-span-6", row: "col-span-1" },
+        year_2: { col: "col-span-6", row: "col-span-1" },
+        time_1: { col: "col-span-6", row: "col-span-1" },
+        datetime_1: { col: "col-span-6", row: "col-span-1" },
+        daterange_1: { col: "col-span-6", row: "col-span-1" },
+        timerange_1: { col: "col-span-6", row: "col-span-1" },
+        datetimerange_1: { col: "col-span-6", row: "col-span-1" },
+
+        try_stepper_1_step_2: { col: "col-span-12", row: "col-span-1" },
+        text_2: { col: "col-span-6", row: "col-span-1" },
+        url_1: { col: "col-span-6", row: "col-span-1" },
+        select_2: { col: "col-span-6", row: "col-span-1" },
+        date_1: { col: "col-span-6", row: "col-span-1" },
+        month_1: { col: "col-span-6", row: "col-span-1" },
+        year_1: { col: "col-span-6", row: "col-span-1" },
+
+        try_stepper_1_step_3: { col: "col-span-12", row: "col-span-1" },
+        select_3: { col: "col-span-6", row: "col-span-1" },
+        select_4: { col: "col-span-6", row: "col-span-1" },
+        select_5: { col: "col-span-6", row: "col-span-1" },
+        number_1: { col: "col-span-6", row: "col-span-1" },
+
+        url_2: { col: "col-span-4", row: "col-span-1" },
+        number_2: { col: "col-span-3", row: "col-span-1" },
+
+        try_accordion_1: { col: "col-span-12", row: "col-span-1" },
+
+        try_accordion_1_panel_1: { col: "col-span-12", row: "col-span-1" },
+        text_3: { col: "col-span-4", row: "col-span-1" },
+        url_3: { col: "col-span-4", row: "col-span-1" },
+        number_3: { col: "col-span-4", row: "col-span-1" },
+
+        try_accordion_1_panel_2: { col: "col-span-12", row: "col-span-1" },
+        select_6: { col: "col-span-4", row: "col-span-1" },
+        select_7: { col: "col-span-4", row: "col-span-1" },
+
+        try_accordion_1_panel_3: { col: "col-span-12", row: "col-span-1" },
+        select_8: { col: "col-span-4", row: "col-span-1" },
+        select_9: { col: "col-span-4", row: "col-span-1" },
       },
     };
 
