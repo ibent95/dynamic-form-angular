@@ -90,6 +90,19 @@ mat-stepper {
 	.mat-stepper-vertical-line { margin-left: 26.5px; }
 	.mat-vertical-content { margin-bottom: 0; padding-bottom: 0; }
 	.mat-vertical-content-container::before { position: absolute; top: -10px; bottom: -10px; }
+
+	mat-grid-list mat-grid-tile {
+
+		height: 100% !important;
+		justify-content: flex-start !important;
+		align-items: flex-start !important;
+
+		mat-accordion mat-label h2 { margin: 0 !important; }
+
+		div.mat-grid-tile-container mat-accordion mat-label h2 { margin: 0 !important; }
+
+		div.mat-grid-tile-content { height: 100% !important; }
+	}
 }
 
 // mat-accordion

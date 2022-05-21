@@ -362,31 +362,34 @@
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'accordion'">
-												<!--<mat-grid-tile [colspan]="6" [rowspan]="4">-->
-													<div>
-														<mat-label><h2>{{ field.field_label }}</h2></mat-label>
+												<div>
+													<mat-label><h2>{{ field.field_label }}</h2></mat-label>
 
-														<mat-accordion class="mat-elevation-z8" [hideToggle]="false" multi>
+													<mat-accordion class="mat-elevation-z8" [hideToggle]="false" multi>
 
-															<ng-container *ngFor="let panel of field.children; let panelIndex = index;">
+														<ng-container *ngFor="let panel of field.children; let panelIndex = index;">
 
-																<mat-expansion-panel class="mat-elevation-z8" [expanded]="true" [hideToggle]="false">
-																	<!-- Header -->
-																	<mat-expansion-panel-header class="divider-bottom">
-																		<mat-panel-title>{{ panel.field_label }}</mat-panel-title>
-																		<mat-panel-description class="justify-between">
-																			<span>{{ panel.description }}</span>
-																			<ng-container *ngIf="(panel.field_config?.panel_description?.mat_icon)">
-																				<mat-icon>{{ panel.field_config?.panel_description?.mat_icon }}</mat-icon>
-																			</ng-container>
-																		</mat-panel-description>
-																	</mat-expansion-panel-header>
+															<mat-expansion-panel class="mat-elevation-z8" [expanded]="true" [hideToggle]="false">
+																<!-- Header -->
+																<mat-expansion-panel-header class="divider-bottom mb-4">
+																	<mat-panel-title>{{ panel.field_label }}</mat-panel-title>
+																	<mat-panel-description class="justify-between">
+																		<span>{{ panel.description }}</span>
+																		<ng-container *ngIf="(panel.field_config?.panel_description?.mat_icon)">
+																			<mat-icon>{{ panel.field_config?.panel_description?.mat_icon }}</mat-icon>
+																		</ng-container>
+																	</mat-panel-description>
+																</mat-expansion-panel-header>
 
-																	<!-- Content -->
-																	<div class="grid grid-cols-1 gap-y-4">
-																		<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
+																<!-- Content -->
+																<mat-grid-list [cols]="available.grid_system.cols" [rowHeight]="'75px'" [gutterSize]="'15px'">
 
-																			<div [ngClass]="[(childFieldIndex === 0) ? 'mt-4' : '', (childFieldIndex === (panel.children.length - 1)) ? 'mb-4' : '']">
+																	<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
+
+																		<mat-grid-tile [colspan]="child.field_config.colspan" [rowspan]="child.field_config.rowspan">
+
+																			<div class="gap-4">
+
 																				<ng-container [ngSwitch]="child.field_type">
 
 																					<ng-container *ngSwitchCase="'text'">
@@ -486,161 +489,175 @@
 																				</ng-container>
 																			</div>
 
-																		</ng-container>
-																	</div>
-																</mat-expansion-panel>
-
-															</ng-container>
-
-														</mat-accordion>
-													</div>
-												<!--</mat-grid-tile>-->
-											</ng-container>
-
-											<ng-container *ngSwitchCase="'stepper'">
-												<!--<mat-grid-tile [colspan]="6" [rowspan]="4">-->
-													<div class="border-custom m-0 p-0"> <!-- class:border-custom -->
-														<mat-label><h2>{{ field.field_label }}</h2></mat-label>
-
-														<mat-stepper class="-z-10" [orientation]="field.field_config.orientation" [linear]="field.field_config.linear" [color]="'accent'" #stepper>
-
-															<ng-container *ngFor="let step of field.children; let stepIndex = index;">
-
-																<mat-step class="-z-10" [label]="step.field_label">
-
-																	<ng-container class="grid grid-cols-1 gap-4" *ngFor="let child of step.children; let childFieldIndex = index;">
-
-																		<div class="mb-4">
-																			<ng-container [ngSwitch]="child.field_type">
-
-																				<ng-container *ngSwitchCase="'text'">
-																					<mat-form-field appearance="outline" [color]="'accent'">
-																						<mat-label>{{ child.field_label }}</mat-label>
-																						<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																					</mat-form-field>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'url'">
-																					<mat-form-field appearance="outline" [color]="'accent'">
-																						<mat-label>{{ child.field_label }}</mat-label>
-																						<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																					</mat-form-field>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'number'">
-																					<mat-form-field appearance="outline" [color]="'accent'">
-																						<mat-label>{{ child.field_label }}</mat-label>
-																						<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
-																					</mat-form-field>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'date'">
-																					<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'month'">
-																					<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'year'">
-																					<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-date'">
-																					<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-month'">
-																					<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-year'">
-																					<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-time'">
-																					<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-datetime'">
-																					<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-daterange'">
-																					<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-timerange'">
-																					<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'owl-datetimerange'">
-																					<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
-																				</ng-container>
-
-																				<ng-container *ngSwitchCase="'select'">
-																					<mat-form-field appearance="outline" [color]="'accent'">
-																						<mat-label>{{ child.field_label }}</mat-label>
-																						<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-																							<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																								<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-																							</ng-container>
-																						</mat-select>
-																					</mat-form-field>
-																				</ng-container>
-
-																			</ng-container>
-
-																			<!-- Field`s unique error -->
-																			<ng-container *ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
-																				<small class="text-red-500">{{ uniqueFalseCheckField[child.name_field]['error_message'] }}</small>
-																				<br>
-																			</ng-container>
-
-																			<!-- Field`s errors message -->
-																			<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
-																			forms.get(child.field_name)?.touched)))">
-																				<small class="text-red-500">{{ child.error_message }}</small>
-																				<br>
-																			</ng-container>
-
-																			<!-- Field`s description -->
-																			<ng-container *ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
-																				<span>{{ child.description }}</span>
-																			</ng-container>
-																		</div>
+																		</mat-grid-tile>
 
 																	</ng-container>
 
-																	<!-- Direction button -->
-																	<div class="flex justify-center gap-4">
+																</mat-grid-list>
 
-																		<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
 
-																		<ng-container *ngIf="((stepIndex + 1) === 1)">
-																			<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
-																		</ng-container>
+															</mat-expansion-panel>
 
-																		<ng-container *ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length))">
-																			<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
-																			<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
-																		</ng-container>
+														</ng-container>
 
-																		<ng-container *ngIf="((stepIndex + 1) === field.children.length)">
-																			<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
-																			<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
-																			<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
-																		</ng-container>
+													</mat-accordion>
+												</div>
+											</ng-container>
 
-																	</div>
+											<ng-container *ngSwitchCase="'stepper'">
 
-																</mat-step>
+												<div class="border-custom m-0 p-0"> <!-- class:border-custom -->
+													<mat-label><h2>{{ field.field_label }}</h2></mat-label>
 
-															</ng-container>
+													<mat-stepper class="-z-10" [orientation]="field.field_config.orientation" [linear]="field.field_config.linear" [color]="'accent'" #stepper>
 
-														</mat-stepper>
-													</div>
-												<!--</mat-grid-tile>-->
+														<ng-container *ngFor="let step of field.children; let stepIndex = index;">
+
+															<mat-step class="-z-10" [label]="step.field_label">
+
+																<!-- Content -->
+																<mat-grid-list [cols]="available.grid_system.cols" [rowHeight]="'75px'" [gutterSize]="'15px'">
+
+																	<ng-container *ngFor="let child of step.children; let childFieldIndex = index;">
+
+																		<mat-grid-tile [colspan]="child.field_config.colspan" [rowspan]="child.field_config.rowspan">
+
+																			<div class="gap-4">
+
+																				<ng-container [ngSwitch]="child.field_type">
+
+																					<ng-container *ngSwitchCase="'text'">
+																						<mat-form-field appearance="outline" [color]="'accent'">
+																							<mat-label>{{ child.field_label }}</mat-label>
+																							<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																						</mat-form-field>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'url'">
+																						<mat-form-field appearance="outline" [color]="'accent'">
+																							<mat-label>{{ child.field_label }}</mat-label>
+																							<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
+																						</mat-form-field>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'number'">
+																						<mat-form-field appearance="outline" [color]="'accent'">
+																							<mat-label>{{ child.field_label }}</mat-label>
+																							<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
+																						</mat-form-field>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'date'">
+																						<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'month'">
+																						<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'year'">
+																						<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-date'">
+																						<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-month'">
+																						<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-year'">
+																						<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-time'">
+																						<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-datetime'">
+																						<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-daterange'">
+																						<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-timerange'">
+																						<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'owl-datetimerange'">
+																						<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																					</ng-container>
+
+																					<ng-container *ngSwitchCase="'select'">
+																						<mat-form-field appearance="outline" [color]="'accent'">
+																							<mat-label>{{ child.field_label }}</mat-label>
+																							<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+																								<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
+																									<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+																								</ng-container>
+																							</mat-select>
+																						</mat-form-field>
+																					</ng-container>
+
+																				</ng-container>
+
+																				<!-- Field`s unique error -->
+																				<ng-container *ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
+																					<small class="text-red-500">{{ uniqueFalseCheckField[child.name_field]['error_message'] }}</small>
+																					<br>
+																				</ng-container>
+
+																				<!-- Field`s errors message -->
+																				<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
+																				forms.get(child.field_name)?.touched)))">
+																					<small class="text-red-500">{{ child.error_message }}</small>
+																					<br>
+																				</ng-container>
+
+																				<!-- Field`s description -->
+																				<ng-container *ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
+																					<span>{{ child.description }}</span>
+																				</ng-container>
+																			</div>
+
+																		</mat-grid-tile>
+
+																	</ng-container>
+
+																</mat-grid-list>
+
+																<!-- Direction button -->
+																<div class="flex justify-center gap-4">
+
+																	<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
+
+																	<ng-container *ngIf="((stepIndex + 1) === 1)">
+																		<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
+																	</ng-container>
+
+																	<ng-container *ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length))">
+																		<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
+																		<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
+																	</ng-container>
+
+																	<ng-container *ngIf="((stepIndex + 1) === field.children.length)">
+																		<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
+																		<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
+																		<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
+																	</ng-container>
+
+																</div>
+
+															</mat-step>
+
+														</ng-container>
+
+													</mat-stepper>
+												</div>
+
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'multiple'">
