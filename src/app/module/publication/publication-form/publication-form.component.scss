@@ -1,13 +1,52 @@
-::ng-deep .border-custom {
-	border-style: solid !important;
-	border-width: 1px !important;
-	border-radius: 0.25rem !important;
-	border-color: rgba(255, 255, 255, 0.286) !important;
-	z-index: 500;
-}
+::ng-deep .border-custom { border-style: solid !important; border-width: 1px !important; border-radius: 0.25rem !important; border-color: rgba(255, 255, 255, 0.286) !important; z-index: 500; }
 
 ::ng-deep mat-form-field { .mat-form-field-wrapper { margin-bottom: 0; padding-bottom: 0; } }
 
-::ng-deep mat-stepper .mat-vertical-content-container .flex button { margin-bottom: 0; }
+::ng-deep mat-stepper {
+	.mat-vertical-content-container .flex button { margin-bottom: 0; }
+	.mat-horizontal-content-container {
+		height: 100% !important;
+	}
+
+	mat-grid-list mat-grid-tile {
+		mat-accordion mat-expansion-panel {
+			margin: 15px 8px !important;
+
+			mat-label h2 {
+				margin: 0;
+				margin: 10px 10px !important;
+			}
+		}
+
+		div.mat-grid-tile-container {
+			width: 100% !important;
+			height: 100% !important;
+
+			mat-accordion mat-expansion-panel {
+				margin: 15px 8px !important;
+
+				mat-label h2 {
+					margin: 0;
+					margin: 10px 10px !important;
+				}
+			}
+		}
+	}
+}
 
 ::ng-deep .below-form button { margin-bottom: 0; }
+
+::ng-deep mat-grid-list mat-grid-tile {
+	mat-accordion mat-expansion-panel {
+		margin: 15px 8px !important;
+		mat-label h2 { margin: 0; margin: 10px 10px !important; }
+	}
+
+	div.mat-grid-tile-container {
+		width: 100% !important; height: 100%;
+		mat-accordion mat-expansion-panel {
+			margin: 15px 8px !important;
+			mat-label h2 { margin: 0; margin: 10px 10px !important; }
+		}
+	}
+}
