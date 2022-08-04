@@ -19,6 +19,7 @@ import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { CONFIG, ENV } from './app.config';
 import { AppService } from './service/app.service';
+import { AppGeneralService } from './service/app-general.service';
 
 // App core components
 import { CoreModule } from './core/core.module';
@@ -132,7 +133,7 @@ registerLocaleData(localeId, 'id');
     { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
     { provide: OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },
     { provide: ENV, useValue: CONFIG },
-    AppService
+    AppService, AppGeneralService
   ],
   bootstrap: [AppComponent]
 })
