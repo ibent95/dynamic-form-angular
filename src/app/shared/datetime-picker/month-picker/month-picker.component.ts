@@ -5,7 +5,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateTime } from 'luxon';
-import { LUXON_MONTH_FORMATS } from 'src/app/service/app.service';
+import { LUXON_MONTH_FORMATS } from 'src/app/service/app-general.service';
 
 @Component({
   selector: 'app-month-picker',

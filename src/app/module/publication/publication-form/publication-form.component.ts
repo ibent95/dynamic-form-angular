@@ -5,7 +5,8 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/materia
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from "rxjs";
-import { AppService, AppServiceType, LUXON_DATE_FORMATS } from 'src/app/service/app.service';
+import { AppService, AppServiceType } from 'src/app/service/app.service';
+import { LUXON_DATE_FORMATS } from "src/app/service/app-general.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
 
@@ -132,6 +133,158 @@ export class PublicationFormComponent implements OnInit {
     const CONST_A: any = { "pattern": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})" };
 
     const CONST_B: any = {"panel_description":{"mat_icon":"signal_cellular_alt_2_bar"}};
+
+    const CONST_C: any = {
+      "type": "tailwind",
+      "cols": 12,
+      "config": {
+        "text_1": {
+          "colspan": 3,
+          "rowspan": 1
+        },
+        "select_1": {
+          "colspan": 3,
+          "rowspan": 1
+        },
+        "try_stepper_1": {
+          "colspan": 6,
+          "rowspan": 6
+        },
+        "try_stepper_1_step_1": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "date_2": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "month_2": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "year_2": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "time_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "datetime_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "daterange_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "timerange_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "datetimerange_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "try_stepper_1_step_2": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "text_2": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "url_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "select_2": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "date_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "month_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "year_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "try_stepper_1_step_3": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "select_3": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "select_4": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "select_5": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "number_1": {
+          "colspan": 6,
+          "rowspan": 1
+        },
+        "url_2": {
+          "colspan": 3,
+          "rowspan": 1
+        },
+        "number_2": {
+          "colspan": 3,
+          "rowspan": 1
+        },
+        "try_accordion_1": {
+          "colspan": 6,
+          "rowspan": 12
+        },
+        "try_accordion_1_panel_1": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "text_3": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "url_3": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "number_3": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "try_accordion_1_panel_2": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "select_6": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "select_7": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "try_accordion_1_panel_3": {
+          "colspan": 12,
+          "rowspan": 1
+        },
+        "select_8": {
+          "colspan": 4,
+          "rowspan": 1
+        },
+        "select_9": { "colspan": 4, "rowspan": 1 }
+      }
+    };
 
   }
 
