@@ -802,9 +802,9 @@
 
 			<!-- Tailwind grid system -->
 			<ng-container *ngIf="(available.grid_system.type === 'tailwind')">
-				<form [formGroup]="forms" class="grid grid-flow-col" [ngClass]="['grid-cols-' + available.grid_system.cols, 'gap-4']">
+				<form [formGroup]="forms" class="grid grid-flow-row-dense" [ngClass]="['grid-cols-' + available.grid_system.cols, 'grid-rows-6', 'gap-4']">
 
-					<mat-form-field class="col-span-12" appearance="outline" [color]="'accent'">
+					<mat-form-field class="col-span-12 row-span-6" appearance="outline" [color]="'accent'">
 						<mat-label>Publication type</mat-label>
 						<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeSlctSelect($event)">
 							<ng-container *ngFor="let publicationType of selectOptions['publication_type'].items; let publicationTypeIndex = index;">
@@ -827,7 +827,7 @@
 
 					<!-- Show no data information if forms meta data is empty -->
 					<ng-container *ngIf="(available.form_metadata_no_data)">
-						<div class="col-span-12">
+						<div class="col-span-12 row-span-6">
 							<div class="h-50" align="center">
 								<i class="material-icons text-9xl">warning_amber</i>
 
@@ -850,7 +850,7 @@
 					<ng-container *ngIf="(available.publication_type_selected && available.form_metadata_loaded && !available.form_metadata_no_data)">
 
 						<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
-							<div class="field field-{{ fieldIndex }} {{ (field.field_configs.colspan) ? 'col-span-' + field.field_configs.colspan : '' }} {{ (field.field_configs.rowspan) ? 'row-span-' + field.field_configs.rowspan : '' }}">
+							<div class="field field-{{ fieldIndex }} {{ (field.field_configs.colspan) ? 'col-span-' + field.field_configs.colspan : '' }} {{ (field.field_configs.rowspan) ? 'row-span-' + field.field_configs.rowspan : 'row-span-6' }}">
 
 								<!-- Field label -->
 								<!--<mat-label>{{ field.field_label }}</mat-label>-->
