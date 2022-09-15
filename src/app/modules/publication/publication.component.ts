@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppServiceType, AppService } from "../../service/app.service";
+import { AppServiceType, AppService } from "../../services/app.service";
 
 @Component({
   selector: 'app-publication',

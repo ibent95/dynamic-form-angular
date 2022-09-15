@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService, AppServiceType } from 'src/app/service/app.service';
+import { AppService, AppServiceType } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-overview',
