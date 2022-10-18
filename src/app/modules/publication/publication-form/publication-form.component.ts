@@ -5,8 +5,8 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/materia
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from "rxjs";
-import { AppService, AppServiceType } from 'src/app/service/app.service';
-import { LUXON_DATE_FORMATS } from "src/app/service/app-general.service";
+import { AppService, AppServiceType } from 'src/app/services/app.service';
+import { LUXON_DATE_FORMATS } from "src/app/services/app-general.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
 

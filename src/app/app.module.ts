@@ -18,8 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { CONFIG, ENV } from './app.config';
-import { AppService } from './service/app.service';
-import { AppGeneralService } from './service/app-general.service';
+import { AppService } from './services/app.service';
+import { AppGeneralService } from './services/app-general.service';
 
 // App core components
 import { CoreModule } from './core/core.module';
@@ -62,13 +62,13 @@ import { DialogAlertComponent } from './shared/dialog-alert/dialog-alert.compone
 import { DialogPromptComponent } from './shared/dialog-prompt/dialog-prompt.component';
 
 // App module / menu components
-import { LoginComponent } from './module/login/login.component';
-import { OverviewComponent } from './module/overview/overview.component';
+import { LoginComponent } from './modules/login/login.component';
+import { OverviewComponent } from './modules/overview/overview.component';
 
 // App module / menu components (Publication)
-import { PublicationComponent } from './module/publication/publication.component';
-import { PublicationFormComponent } from './module/publication/publication-form/publication-form.component';
-import { PublicationDetailComponent } from './module/publication/publication-detail/publication-detail.component';
+import { PublicationComponent } from './modules/publication/publication.component';
+import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
+import { PublicationDetailComponent } from './modules/publication/publication-detail/publication-detail.component';
 
 registerLocaleData(localeId, 'id');
 

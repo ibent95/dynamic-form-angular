@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PublicationComponent } from '../module/publication/publication.component';
+import { PublicationComponent } from '../modules/publication/publication.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { CoreComponent } from './core.component';
 
