@@ -31,8 +31,8 @@ export class AppService {
   ) {
     this.BASE_URL_API = this.config.apiUrl;
     this.HEADERS = new HttpHeaders()
-      //.set('Access-Control-Allow-Credentials', 'false')
-      //.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+      .set('Access-Control-Allow-Credentials', 'false')
+      .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
       //.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
       .set('Access-Control-Allow-Origin', '*')
       //.set('Allow', 'GET, POST, OPTIONS, PUT, DELETE')
@@ -112,6 +112,10 @@ export class AppService {
 
   update(serviceType: AppServiceType, body: any, params: string = ''): Observable<any> {
     return this.http.put(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
+  }
+
+  getIPAddress(params: string = ""): Observable<any> {
+    return this.http.get("http://ip-api.com/json" + (params || ""), { headers: this.HEADERS });
   }
 
 }

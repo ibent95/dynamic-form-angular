@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateView, OwlDateTimeComponent, OWL_DATE_TIME_FORMATS } from '@danielmoncada/angular-datetime-picker';
-import { OWL_NATIVE_YEAR_FORMATS } from 'src/app/service/app-general.service';
+import { OWL_NATIVE_YEAR_FORMATS } from 'src/app/services/app-general.service';
 
 @Component({
   selector: 'app-owl-year-picker',
