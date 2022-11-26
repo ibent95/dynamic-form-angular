@@ -104,3 +104,18 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
     monthYearA11yLabel: 'yyyy'
   },
 };
+
+export function setConsoleLog(data: any, message?: string): void {
+  if (message) {
+    console.log(message, data);
+  }
+
+  if (!message) {
+    console.log(data);
+  }
+}
+
+export function rebuildObject(data: any): any {
+  let result = JSON.parse(JSON.stringify(data));
+  return result;
+}

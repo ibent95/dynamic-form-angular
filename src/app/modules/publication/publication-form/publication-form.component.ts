@@ -4,9 +4,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from "rxjs";
-import { AppService, AppServiceType } from 'src/app/services/app.service';
-import { LUXON_DATE_FORMATS } from "src/app/services/app-general.service";
+import { Observable, Subject, takeUntil } from "rxjs";
+import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
+import { LUXON_DATE_FORMATS, rebuildObject, setConsoleLog } from "src/app/services/app-general.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
 
@@ -56,6 +56,8 @@ export class PublicationFormComponent implements OnInit {
   // All forms and user input in angular form bulder
   forms!: FormGroup;
 
+  formStatus!: AppFormStatus;
+
   // All select`s options in forms
   selectOptions!: any;
 
@@ -88,6 +90,11 @@ export class PublicationFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initiateData();
+    this.initiateForm();
+  }
+
+  private initiateData(): void {
     this.available = {
       form_metadata_loaded: false,
       form_builder: false,
@@ -124,173 +131,30 @@ export class PublicationFormComponent implements OnInit {
     this.disabledFields = {};
     this.selectURLParameters = {};
     this.uniqueFalseCheckField = {};
-
     this.userData = {};
+
     this.subscription$ = new Subject<void>();
 
-    this.initiateForm();
-
+    // Unused variable, for mapping all needed data
     const CONST_A: any = { "pattern": "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})" };
-
-    const CONST_B: any = {"panel_description":{"mat_icon":"signal_cellular_alt_2_bar"}};
-
+    const CONST_B: any = { "panel_description": { "mat_icon": "signal_cellular_alt_2_bar" } };
     const CONST_C: any = {
       "type": "tailwind",
       "cols": 12,
       "config": {
-        "text_1": {
-          "colspan": 3,
-          "rowspan": 1
-        },
-        "select_1": {
-          "colspan": 3,
-          "rowspan": 1
-        },
-        "try_stepper_1": {
-          "colspan": 6,
-          "rowspan": 6
-        },
-        "try_stepper_1_step_1": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "date_2": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "month_2": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "year_2": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "time_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "datetime_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "daterange_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "timerange_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "datetimerange_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "try_stepper_1_step_2": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "text_2": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "url_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "select_2": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "date_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "month_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "year_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "try_stepper_1_step_3": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "select_3": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "select_4": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "select_5": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "number_1": {
-          "colspan": 6,
-          "rowspan": 1
-        },
-        "url_2": {
-          "colspan": 3,
-          "rowspan": 1
-        },
-        "number_2": {
-          "colspan": 3,
-          "rowspan": 1
-        },
-        "try_accordion_1": {
-          "colspan": 6,
-          "rowspan": 12
-        },
-        "try_accordion_1_panel_1": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "text_3": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "url_3": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "number_3": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "try_accordion_1_panel_2": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "select_6": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "select_7": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "try_accordion_1_panel_3": {
-          "colspan": 12,
-          "rowspan": 1
-        },
-        "select_8": {
-          "colspan": 4,
-          "rowspan": 1
-        },
-        "select_9": { "colspan": 4, "rowspan": 1 }
+        "text_1": { "colspan": 3, "rowspan": 1 },
+        "select_1": { "colspan": 3, "rowspan": 1 },
+        "try_stepper_1": { "colspan": 6, "rowspan": 6 },
+        "try_stepper_1_step_1": { "colspan": 12, "rowspan": 1 },
       }
     };
-
   }
 
   // Initial function for build form
   private initiateForm(): void {
     // Required masterdata
+
+    this.formStatus = (this.userData.uuid) ? AppFormStatus.UPDATE : AppFormStatus.CREATE ;
 
     this.forms = this.formBuilder.group({
       publication_type_code: null,
@@ -436,13 +300,14 @@ export class PublicationFormComponent implements OnInit {
 
     this.fieldInForms.forEach((element: any) => {
 
-      if (element.field_type === 'url') {
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
+      this.uniqueFalseCheckField[element.field_name] = {
+        'value': false,
+        'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
+      };
 
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.pattern(element.validation_config?.pattern || "^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")]];
+      if (element.field_type === 'url') {
+
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || 'www.ibent95.id', [Validators.pattern(element.validation_config?.pattern || "^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})")]];
 
       } else if (element.field_type === 'radio') {
         this.selectURLParameters[element.field_name] = '';
@@ -452,77 +317,19 @@ export class PublicationFormComponent implements OnInit {
           defaultValue: element.default_value || [],
         };
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
         fieldDataSets[element.field_name + '_options'] = {
           items: element.options || [],
           defaultValue: element.default_value || [],
         };
 
-        fieldDataSets['uuid_' + element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || '')];
+        fieldDataSets['uuid_' + element.field_name] = [this.userData['uuid_' + element.field_name] || (element.default_value || 'A')];
 
-      } else if (element.field_type === 'select') {
+      } else if (element.field_type === 'select' || element.field_type === 'autoselect' || element.field_type === 'autocomplete') {
         this.selectURLParameters[element.field_name] = '';
 
         this.selectOptions[element.field_name] = {
           items: element.options || [],
           defaultValue: element.default_value || [],
-        };
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name + '_options'] = {
-          items: element.options || [],
-          defaultValue: element.default_value || [],
-        };
-
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || (element.default_value || '')];
-
-        //if ((element.default_value) && ((element.default_value !== []) || (element.default_value !== ''))) this.onSelect(element.default_value, element.field_type, element.field_name, element.dependency_child, element.dependency_parent);
-
-      } else if (element.field_type === 'autoselect') {
-        this.selectURLParameters[element.field_name] = '';
-
-        this.selectOptions[element.field_name] = {
-          items: element.options || [],
-          defaultValue: element.default_value || [],
-        };
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name + '_options'] = {
-          items: element.options || [],
-          defaultValue: element.default_value || [],
-        };
-
-        if (this.userData['uuid_' + element.field_name]) {
-          fieldDataSets[element.field_name + '_options'].items = [{ option_text_field: this.userData[element.field_name], uuid: this.userData['uuid_' + element.field_name], }].concat(fieldDataSets[element.field_name + '_options'].items);
-
-          this.selectOptions[element.field_name].items = fieldDataSets[element.field_name + '_options'].items;
-        }
-
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || (element.default_value || '')];
-
-      } else if (element.field_type === 'autocomplete') {
-        this.selectURLParameters[element.field_name] = '';
-
-        this.selectOptions[element.field_name] = {
-          items: element.options || [],
-          defaultValue: element.default_value || [],
-        };
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
         };
 
         //if (this.userData[element.field_name]) this.onType(this.userData[element.field_name], element.field_type, element.field_name, element.dependency_child, element.dependency_parent, element.uuid_form);
@@ -535,11 +342,6 @@ export class PublicationFormComponent implements OnInit {
         let multiple_select = [];
 
         this.selectURLParameters[element.field_name] = '';
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
 
         fieldDataSets[element.field_name + '_options'] = {
           items: element.options || [],
@@ -560,11 +362,6 @@ export class PublicationFormComponent implements OnInit {
         let multiple_autoselect = [];
 
         this.selectURLParameters[element.field_name] = '';
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
 
         this.selectOptions[element.field_name].defaultValue = "";
 
@@ -592,21 +389,10 @@ export class PublicationFormComponent implements OnInit {
         fieldDataSets[element.field_name] = [multiple_autoselect];
 
       } else if (element.field_type === 'checkbox') {
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
 
         fieldDataSets[element.field_name] = [(this.userData[element.field_name] || this.userData[element.field_name] === '1') || false];
 
-      } else if (element.field_type === 'file') {
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
-      } else if (element.field_type === 'image') {
+      } else if (element.field_type === 'file' || element.field_type === 'image') {
         // If the url is valid or exists, run the image service to get the base64 value, otherwise the default value is empty string
         const self = this;
 
@@ -616,39 +402,19 @@ export class PublicationFormComponent implements OnInit {
         //  self.available[element.field_name] = base64;
         //});
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
-      } else if (element.field_type === 'date' || element.field_type === 'month' || element.field_type === 'year') {
+      } else if (element.field_type === 'date' || element.field_type === 'month' || element.field_type === 'year' || element.field_type === 'time' || element.field_type === 'datetime' || element.field_type === 'owl-date' || element.field_type === 'owl-month' || element.field_type === 'owl-year' || element.field_type === 'owl-time' || element.field_type === 'owl-datetime') {
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
+        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : new Date();
 
-        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
+      } else if (element.field_type === 'daterange' || element.field_type === 'timerange' || element.field_type === 'datetimerange' || element.field_type === 'owl-daterange' || element.field_type === 'owl-timerange' || element.field_type === 'owl-datetimerange') {
+        const dateRangeData: Array<any> = this.userData[element.field_name] || null;
 
-      } else if (element.field_type === 'time') {
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
-
-      } else if (element.field_type === 'owl-date' || element.field_type === 'owl-month' || element.field_type === 'owl-year' || element.field_type === 'owl-time' || element.field_type === 'owl-datetime') {
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : '';
+        fieldDataSets[element.field_name] = (dateRangeData) ? [
+          (dateRangeData[0]) ? new Date(dateRangeData[0]) : new Date(),
+          (dateRangeData[1]) ? new Date(dateRangeData[1]) : new Date()
+        ] : '';
 
       } else if (element.field_type === 'multiple' || element.field_type === 'multiple_panel') {
         let multipleGroup: Array<any> = [];
@@ -671,41 +437,21 @@ export class PublicationFormComponent implements OnInit {
 
       } else if (element.field_type === 'number') {
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name] = [this.userData[element.field_name] || '', [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern || '^[0-9]*$')]];
+        fieldDataSets[element.field_name] = [this.userData[element.field_name] || 1, [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern || '^[0-9]*$')]];
 
       } else if (element.field_type === 'mask_full_time') {
         this.available[element.field_name] = this.userData[element.field_name] || '';
-
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
 
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
       } else if (element.field_type === 'mask') {
         this.available[element.field_name] = this.userData[element.field_name] || '';
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
-      } else {
+      } else { // Text and other type of field handler
 
-        this.uniqueFalseCheckField[element.field_name] = {
-          'value': false,
-          'error_message': 'Data ' + element.field_label + ' sudah dimasukan, silahkan masukan data ' + element.field_label + ' yang lain.'
-        };
-
-        fieldDataSets[element.field_name] = (element.validation_config?.pattern) ? ([this.userData[element.field_name] || '', [Validators.pattern(element.validation_config.pattern)]]) : ([this.userData[element.field_name] || '']);
+        fieldDataSets[element.field_name] = (element.validation_config?.pattern) ? [this.userData[element.field_name] || 'A', Validators.pattern(element.validation_config.pattern)] : this.userData[element.field_name] || 'A';
 
       }
 
@@ -713,165 +459,12 @@ export class PublicationFormComponent implements OnInit {
 
     this.forms = this.formBuilder.group(fieldDataSets);
 
-    let materialGridConfig = {
-      type: "material",
-      cols: 12,
-      config: {
-        text_1: { colspan: 3, rowspan: 1 },
-        select_1: { colspan: 3, rowspan: 1 },
+    // Console log after form created
+    setConsoleLog(this.forms.getRawValue(), 'formBuilder initial value : ')
+    setConsoleLog(this.available, 'available initial value : ')
+    setConsoleLog(this.fieldInForms, 'fieldInForms : ')
 
-        try_stepper_1: { colspan: 6, rowspan: 12 },
-
-        try_stepper_1_step_1: { colspan: 12, rowspan: 1 },
-        date_2: { colspan: 6, rowspan: 1 },
-        month_2: { colspan: 6, rowspan: 1 },
-        year_2: { colspan: 6, rowspan: 1 },
-        time_1: { colspan: 6, rowspan: 1 },
-        datetime_1: { colspan: 6, rowspan: 1 },
-        daterange_1: { colspan: 6, rowspan: 1 },
-        timerange_1: { colspan: 6, rowspan: 1 },
-        datetimerange_1: { colspan: 6, rowspan: 1 },
-
-        try_stepper_1_step_2: { colspan: 12, rowspan: 1 },
-        text_2: { colspan: 6, rowspan: 1 },
-        url_1: { colspan: 6, rowspan: 1 },
-        select_2: { colspan: 6, rowspan: 1 },
-        date_1: { colspan: 6, rowspan: 1 },
-        month_1: { colspan: 6, rowspan: 1 },
-        year_1: { colspan: 6, rowspan: 1 },
-
-        try_stepper_1_step_3: { colspan: 12, rowspan: 1 },
-        select_3: { colspan: 6, rowspan: 1 },
-        select_4: { colspan: 6, rowspan: 1 },
-        select_5: { colspan: 6, rowspan: 1 },
-        number_1: { colspan: 6, rowspan: 1 },
-
-        url_2: { colspan: 4, rowspan: 1 },
-        number_2: { colspan: 3, rowspan: 1 },
-
-        try_accordion_1: { colspan: 6, rowspan: 12 },
-
-        try_accordion_1_panel_1: { colspan: 12, rowspan: 1 },
-        text_3: { colspan: 4, rowspan: 1 },
-        url_3: { colspan: 4, rowspan: 1 },
-        number_3: { colspan: 4, rowspan: 1 },
-
-        try_accordion_1_panel_2: { colspan: 12, rowspan: 1 },
-        select_6: { colspan: 4, rowspan: 1 },
-        select_7: { colspan: 4, rowspan: 1 },
-
-        try_accordion_1_panel_3: { colspan: 12, rowspan: 1 },
-        select_8: { colspan: 4, rowspan: 1 },
-        select_9: { colspan: 4, rowspan: 1 },
-      },
-    };
-
-    let bootstrapGridConfig = {
-      type: "bootstrap",
-      cols: "row-cols-12",
-      config: {
-        text_1: { col: "col-3" },
-        select_1: { col: "col-3" },
-
-        try_stepper_1: { col: "col-62" },
-
-        try_stepper_1_step_1: { col: "col-12" },
-        date_2: { col: "col-6" },
-        month_2: { col: "col-6" },
-        year_2: { col: "col-6" },
-        time_1: { col: "col-6" },
-        datetime_1: { col: "col-6" },
-        daterange_1: { col: "col-6" },
-        timerange_1: { col: "col-6" },
-        datetimerange_1: { col: "col-6" },
-
-        try_stepper_1_step_2: { col: "col-12" },
-        text_2: { col: "col-6" },
-        url_1: { col: "col-6" },
-        select_2: { col: "col-6" },
-        date_1: { col: "col-6" },
-        month_1: { col: "col-6" },
-        year_1: { col: "col-6" },
-
-        try_stepper_1_step_3: { col: "col-12" },
-        select_3: { col: "col-6" },
-        select_4: { col: "col-6" },
-        select_5: { col: "col-6" },
-        number_1: { col: "col-6" },
-
-        url_2: { col: "col-4" },
-        number_2: { col: "col-3" },
-
-        try_accordion_1: { col: "col-12" },
-
-        try_accordion_1_panel_1: { col: "col-12" },
-        text_3: { col: "col-4" },
-        url_3: { col: "col-4" },
-        number_3: { col: "col-4" },
-
-        try_accordion_1_panel_2: { col: "col-12" },
-        select_6: { col: "col-4" },
-        select_7: { col: "col-4" },
-
-        try_accordion_1_panel_3: { col: "col-12" },
-        select_8: { col: "col-4" },
-        select_9: { col: "col-4" },
-      },
-    };
-
-    let tailwindGridConfig = {
-      type: "tailwind",
-      cols: "grid-cols-12",
-      config: {
-        text_1: { col: "col-span-3", row: "col-span-1" },
-        select_1: { col: "col-span-3", row: "col-span-1" },
-
-        try_stepper_1: { col: "col-span-62", row: "col-span-16" },
-
-        try_stepper_1_step_1: { col: "col-span-12", row: "col-span-1" },
-        date_2: { col: "col-span-6", row: "col-span-1" },
-        month_2: { col: "col-span-6", row: "col-span-1" },
-        year_2: { col: "col-span-6", row: "col-span-1" },
-        time_1: { col: "col-span-6", row: "col-span-1" },
-        datetime_1: { col: "col-span-6", row: "col-span-1" },
-        daterange_1: { col: "col-span-6", row: "col-span-1" },
-        timerange_1: { col: "col-span-6", row: "col-span-1" },
-        datetimerange_1: { col: "col-span-6", row: "col-span-1" },
-
-        try_stepper_1_step_2: { col: "col-span-12", row: "col-span-1" },
-        text_2: { col: "col-span-6", row: "col-span-1" },
-        url_1: { col: "col-span-6", row: "col-span-1" },
-        select_2: { col: "col-span-6", row: "col-span-1" },
-        date_1: { col: "col-span-6", row: "col-span-1" },
-        month_1: { col: "col-span-6", row: "col-span-1" },
-        year_1: { col: "col-span-6", row: "col-span-1" },
-
-        try_stepper_1_step_3: { col: "col-span-12", row: "col-span-1" },
-        select_3: { col: "col-span-6", row: "col-span-1" },
-        select_4: { col: "col-span-6", row: "col-span-1" },
-        select_5: { col: "col-span-6", row: "col-span-1" },
-        number_1: { col: "col-span-6", row: "col-span-1" },
-
-        url_2: { col: "col-span-4", row: "col-span-1" },
-        number_2: { col: "col-span-3", row: "col-span-1" },
-
-        try_accordion_1: { col: "col-span-12", row: "col-span-1" },
-
-        try_accordion_1_panel_1: { col: "col-span-12", row: "col-span-1" },
-        text_3: { col: "col-span-4", row: "col-span-1" },
-        url_3: { col: "col-span-4", row: "col-span-1" },
-        number_3: { col: "col-span-4", row: "col-span-1" },
-
-        try_accordion_1_panel_2: { col: "col-span-12", row: "col-span-1" },
-        select_6: { col: "col-span-4", row: "col-span-1" },
-        select_7: { col: "col-span-4", row: "col-span-1" },
-
-        try_accordion_1_panel_3: { col: "col-span-12", row: "col-span-1" },
-        select_8: { col: "col-span-4", row: "col-span-1" },
-        select_9: { col: "col-span-4", row: "col-span-1" },
-      },
-    };
-
+    // Handler after form created
     //this.setInitialFieldDependencyConfig();
     this.subscribeToFormsChanges();
   }
@@ -880,7 +473,7 @@ export class PublicationFormComponent implements OnInit {
   private subscribeToFormsChanges() {
     this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
       //this.statusSvc.addEditMode = true;
-      console.log('statusChanges', this.forms.value);
+      //console.log('statusChanges', this.forms.value);
     });
   }
 
@@ -909,12 +502,12 @@ export class PublicationFormComponent implements OnInit {
    */
 
   // Event on click back button
-  public onBackBtnClick() {
+  public onBackButtonClick() {
     this.location.back();
   }
 
   // Event on click cancel button
-  public onFormCancelBtnClick() {
+  public onFormCancelButtonClick() {
     this.available.submit_button_disabled = !!this.available.submit_button_disabled;
 
     // Dialog initial configuration and open
@@ -953,8 +546,8 @@ export class PublicationFormComponent implements OnInit {
   }
 
   // Event on click submit button
-  public onFormSubmitBtnClick() {
-    console.log('onFormSubmitBtnClick');
+  public onFormSubmitButtonClick() {
+    setConsoleLog('onFormSubmitButtonClick');
 
     //const submitClick = { submitClick: true };
     //this.dataSvc.setData(submitClick);
@@ -962,22 +555,76 @@ export class PublicationFormComponent implements OnInit {
     //const innitialState = {
     //  title: this.translateSvc.instant('Apakah ingin simpan ?'),
     //  message: this.translateSvc.instant('Anda dapat menyimpannya sebagai draft atau langsung terbitkan'),
-    //  confirmBtnlabel: this.translateSvc.instant('Terbitkan'),
-    //  draftBtnlabel: this.translateSvc.instant('Draft'),
-    //  cancelBtnlabel: this.translateSvc.instant('Batal'),
+    //  confirmButtonlabel: this.translateSvc.instant('Terbitkan'),
+    //  draftButtonlabel: this.translateSvc.instant('Draft'),
+    //  cancelButtonlabel: this.translateSvc.instant('Batal'),
     //};
 
     //const modal = this.modalSvc.show(ConfirmModalCustomComponent, { ignoreBackdropClick: true, class: MODAL.ALERT.WARNING, initialState: innitialState, });
     //(<ConfirmModalCustomComponent>modal.content).onClose.subscribe(result => {
     //  if (result) {
     //    const kd_status = (result === 'draft') ? 'DRF' : 'TRB';
-    //    this.btnSubmit = true;
+    //    this.buttonSubmit = true;
     //    this.doSubmitForm(kd_status);
     //  } else {
-    //    this.btnSubmit = false;
+    //    this.buttonSubmit = false;
     //    modal.hide();
     //  }
     //});
+
+    const formData = this.setFormData(this.forms.getRawValue());
+    const parameter = {};
+
+    this.sendData(formData, this.formStatus, parameter);
+  }
+
+  private setFormData(formValues: any): FormData {
+    let result = new FormData();
+
+    setConsoleLog(formValues, 'formValues')
+    result.append('publication_type_uuid', formValues['publication_type_uuid'] || '');
+    result.append('publication_type_code', formValues['publication_type_code'] || '');
+
+    this.fieldInForms.forEach((field: any) => {
+      switch (field.field_type) {
+        case 'select':
+        case 'autoselect':
+          result.append(field.field_name, formValues[field.field_name] || '');
+          break;
+
+        case 'autocomplete':
+          result.append(field.field_name, formValues[field.field_name] || '');
+          result.append('uuid_' + field.field_name, formValues['uuid_' + field.field_name] || '');
+          break;
+
+        default:
+          result.append(field.field_name, formValues[field.field_name] || '');
+          break;
+      }
+    });
+
+    return result;
+  }
+
+  private sendData(formData: FormData, formStatus: AppFormStatus, parameter: any): void {
+
+    if (formStatus === AppFormStatus.CREATE) {
+      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter).subscribe((response: Observable<any>) => {
+        setConsoleLog(response, 'Response: ');
+      });
+    }
+
+    if (formStatus === AppFormStatus.UPDATE) {
+      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter).subscribe((response: Observable<any>) => {
+        setConsoleLog(response, 'Response: ');
+      });
+    }
+
+    this.handleResponse();
+  }
+
+  private handleResponse(): void {
+
   }
 
 }

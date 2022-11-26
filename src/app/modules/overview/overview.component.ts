@@ -10,6 +10,9 @@ import { AppService, AppServiceType } from 'src/app/services/app.service';
 export class OverviewComponent implements OnInit {
 
   serverResponse!: { message: string | null, date: string | null } | null;
+
+  // Location resources
+  isLocationSupported!: boolean;
   geolocation: any;
   latitude: any;
   longitude: any;
@@ -22,8 +25,6 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.serverResponse = null;
 
-    console.log('LocationSvc', this.locationSvc);
-
     this.getServerInfo();
     this.getCurrentLocation();
   }
@@ -35,8 +36,10 @@ export class OverviewComponent implements OnInit {
   }
 
   private getCurrentLocation(): void {
+    this.isLocationSupported = false;
     const params = "";
     this.appSvc.getIPAddress().subscribe((response: any) => {
+      console.log('IP Location', response);
 
       if (!response.ip) {
         return;
@@ -47,6 +50,7 @@ export class OverviewComponent implements OnInit {
         return;
       }
 
+      this.isLocationSupported = true;
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
           if (position) {

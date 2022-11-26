@@ -21,28 +21,30 @@
 			</table>
 		</ng-container>
 
-		<div>
-			<span>{{ 'Geolocation' }}</span>
-			<table class="table-auto w-full">
-				<tbody>
-					<tr>
-						<td>IP Address</td>
-						<td>:</td>
-						<td>"{{ '' }}"</td>
-					</tr>
-					<tr>
-						<td>Latitude</td>
-						<td>:</td>
-						<td>{{ '' }}</td>
-					</tr>
-					<tr>
-						<td>Longitude</td>
-						<td>:</td>
-						<td>{{ '' }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<ng-container *ngIf="isLocationSupported">
+			<div>
+				<span>{{ 'Geolocation' }}</span>
+				<table class="table-auto w-full">
+					<tbody>
+						<tr>
+							<td>IP Address</td>
+							<td>:</td>
+							<td>{{ '' }}</td>
+						</tr>
+						<tr>
+							<td>Latitude</td>
+							<td>:</td>
+							<td>{{ '' }}</td>
+						</tr>
+						<tr>
+							<td>Longitude</td>
+							<td>:</td>
+							<td>{{ '' }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</ng-container>
 
 		<div class="mt-3">By <a class="text-white" href="https://github.com/ibent95">ibent95</a></div>
 	</mat-card-content>

@@ -1,8 +1,5 @@
-import { formatDate } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { MatDateFormats, NativeDateAdapter } from '@angular/material/core';
-import { OwlDateTimeFormats } from '@danielmoncada/angular-datetime-picker';
 import { Observable } from 'rxjs';
 import { ENV } from '../app.config';
 
@@ -15,6 +12,11 @@ export enum AppServiceType {
   PUBLICATION_FORM_METADATA,
   PUBLICATION_MASTERDATA_PUBLICATION_TYPE,
 
+}
+
+export enum AppFormStatus {
+  CREATE = 'create',
+  UPDATE = 'update',
 }
 
 @Injectable({
@@ -40,10 +42,13 @@ export class AppService {
       //.set('X-Powered-By', 'PHP/8.1.0')
       //.set('X-Robots-Tag', 'noindex')
       //.set('Content-Length', '79')
-      .set('Content-Type', 'application/json')
+      //.set('Content-Type', 'application/json')
       //.set('Connection', 'close')
+      .set('Accept', 'application/json, text/plain, */*')
       ;
     //{ 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
+
+
   }
 
   getUrl(serviceType: AppServiceType) {
@@ -102,20 +107,20 @@ export class AppService {
     return this.http.post(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
-  create(serviceType: AppServiceType, body: any, params: string = ''): Observable<any> {
-    return this.http.post(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
+  create(serviceType: AppServiceType, body: any, params: HttpParams, anotherParams: string = ''): Observable<any> {
+    return this.http.post(this.getUrl(serviceType) + anotherParams, body, { params: params, headers: this.HEADERS });
   }
 
   put(serviceType: AppServiceType, body: any): Observable<any> {
     return this.http.put(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
-  update(serviceType: AppServiceType, body: any, params: string = ''): Observable<any> {
-    return this.http.put(this.getUrl(serviceType) + params, body, { headers: this.HEADERS });
+  update(serviceType: AppServiceType, body: any, params: HttpParams, anotherParams: string = ''): Observable<any> {
+    return this.http.put(this.getUrl(serviceType) + anotherParams, body, { params: params, headers: this.HEADERS });
   }
 
   getIPAddress(params: string = ""): Observable<any> {
-    return this.http.get("http://ip-api.com/json" + (params || ""), { headers: this.HEADERS });
+    return this.http.get("http://ip-api.com/json/" + (params || ""), { headers: this.HEADERS });
   }
 
 }
