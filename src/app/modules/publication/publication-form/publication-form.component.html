@@ -802,7 +802,7 @@
 
 			<!-- Tailwind grid system -->
 			<ng-container *ngIf="(available.grid_system.type === 'tailwind')">
-				<form [formGroup]="forms" class="grid grid-flow-col auto-cols-max" [ngClass]="[(available.grid_system.cols) ? 'grid-cols-' + available.grid_system.cols : 'grid-cols-none', 'gap-4']">
+				<form [formGroup]="forms" class="grid auto-cols-max" [ngClass]="[(available.grid_system.cols) ? 'grid-cols-' + available.grid_system.cols : 'grid-cols-none', 'gap-4']">
 
 					<mat-form-field class="col-span-12" appearance="outline" [color]="'accent'">
 						<mat-label>Publication type</mat-label>
