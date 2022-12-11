@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateView, OwlDateTimeComponent, OWL_DATE_TIME_FORMATS } from '@danielmoncada/angular-datetime-picker';
 import { OWL_NATIVE_MONTH_FORMATS } from 'src/app/services/app-general.service';
@@ -26,7 +26,7 @@ export class OwlMonthPickerComponent implements OnInit {
   // `placeholderText` Input from datetime main component
   @Input() placeholderText!: any;
 
-  @Input() owlFieldControl!: FormControl;
+  @Input() owlFieldControl!: UntypedFormControl;
 
   owlDateTimeMonthStartView!: DateView;
 

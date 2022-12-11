@@ -1,6 +1,6 @@
 import { Location } from "@angular/common";
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
@@ -54,7 +54,7 @@ export class PublicationFormComponent implements OnInit {
   fieldInForms!: Array<any>;
 
   // All forms and user input in angular form bulder
-  forms!: FormGroup;
+  forms!: UntypedFormGroup;
 
   formStatus!: AppFormStatus;
 
@@ -83,7 +83,7 @@ export class PublicationFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private appSvc: AppService,
     private location: Location,
     private dialog: MatDialog,
@@ -118,7 +118,7 @@ export class PublicationFormComponent implements OnInit {
     this.formVersionCode = 'JUR1-V1';
 
     this.fieldInForms = [];
-    this.forms = new FormGroup({});
+    this.forms = new UntypedFormGroup({});
 
     this.selectOptions = {
       publication_type: {
@@ -260,7 +260,7 @@ export class PublicationFormComponent implements OnInit {
         this.selectOptions[element.field_name] = {
           items: element.children || [],
           defaultValue: element.default_value || [],
-          formControl: new FormControl()
+          formControl: new UntypedFormControl()
         };
 
         this.selectURLParameters[element.field_name] = '';
@@ -271,7 +271,7 @@ export class PublicationFormComponent implements OnInit {
           this.selectOptions[value.field_name] = {
             items: value.children,
             defaultValue: [],
-            formControl: new FormControl()
+            formControl: new UntypedFormControl()
           };
 
           // Set initial value for every select url params
@@ -483,12 +483,12 @@ export class PublicationFormComponent implements OnInit {
 
   // Function to get Form Control of formBuilder for custom component / child component (Shared component)
   public getFieldControl(fieldName: string) {
-    return this.forms?.get(fieldName) as FormControl;
+    return this.forms?.get(fieldName) as UntypedFormControl;
   }
 
   // Function to get Form Group of formBuilder
   public getFormGroup(fieldName: string) {
-    return this.forms?.get(fieldName) as FormArray;
+    return this.forms?.get(fieldName) as UntypedFormArray;
   }
 
   /**

@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateTime } from 'luxon';
 import { Subject, takeUntil } from 'rxjs';
@@ -27,13 +27,13 @@ export class DatetimePickerComponent implements OnInit {
   // Datetime picker mode
   @Input() mode: 'date' | 'month' | 'year' | 'time' | 'datetime' = 'date';
 
-  @Input() fieldControl!: FormControl;
+  @Input() fieldControl!: UntypedFormControl;
   subscription$!: Subject<void>;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.fieldControl = this.fieldControl || new FormControl();
+    this.fieldControl = this.fieldControl || new UntypedFormControl();
     this.subscription$ = new Subject<void>();
 
     this.label = this.label || null;

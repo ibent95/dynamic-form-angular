@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
@@ -21,7 +21,7 @@ export class DateTimePickerComponent implements OnInit {
   // `placeholderText` Input from datetime main component
   @Input() placeholderText!: any;
 
-  @Input() fieldControl!: FormControl;
+  @Input() fieldControl!: UntypedFormControl;
 
   result!: string;
 

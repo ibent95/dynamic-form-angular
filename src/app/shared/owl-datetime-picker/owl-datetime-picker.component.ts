@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -27,14 +27,14 @@ export class OwlDatetimePickerComponent implements OnInit {
   @Input() mode: 'date' | 'month' | 'year' | 'time' | 'datetime' | 'daterange' | 'timerange' | 'datetimerange' = 'date';
 
   // Parent form control
-  @Input() owlFieldControl!: FormControl;
+  @Input() owlFieldControl!: UntypedFormControl;
   subscription$!: Subject<void>;
 
   constructor() { }
 
   ngOnInit(): void {
     // If parent form control is provided, set it to children form control, if not then set new one
-    this.owlFieldControl = this.owlFieldControl || new FormControl();
+    this.owlFieldControl = this.owlFieldControl || new UntypedFormControl();
     this.subscription$ = new Subject<void>();
 
     this.label = this.label || null;

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
@@ -29,7 +29,7 @@ export class DatePickerComponent implements OnInit {
   // `placeholderText` Input from datetime main component
   @Input() placeholderText!: any;
 
-  @Input() fieldControl!: FormControl;
+  @Input() fieldControl!: UntypedFormControl;
 
   constructor() { }
 
