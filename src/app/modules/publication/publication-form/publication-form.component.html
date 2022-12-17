@@ -1529,7 +1529,7 @@
 					(available.grid_system?.type === 'bootstrap') ? 'row' : '',
 					(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
 
-					(available.grid_system?.type === 'tailwind') ? 'grid grid-flow-row-dense auto-rows-auto' : '',
+					(available.grid_system?.type === 'tailwind') ? 'grid' : '',
 					(available.grid_system?.type === 'tailwind' && available.grid_system?.cols) ? 'grid-cols-' + available.grid_system?.cols : 'grid-cols-12',
 					(available.grid_system?.type === 'tailwind' && available.grid_system?.rows) ? 'grid-rows-' + available.grid_system?.rows : 'grid-rows-none',
 					(available.grid_system?.type === 'tailwind') ? 'gap-4' : '',
@@ -1587,7 +1587,7 @@
 							(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
 
 							(available.grid_system?.type === 'tailwind') ? 'col-span-12' : '',
-							(available.grid_system?.type === 'tailwind') ? 'row-auto' : '',
+							(available.grid_system?.type === 'tailwind') ? 'row-span-1' : '',
 						]">
 							<app-loader></app-loader>
 						</div>
@@ -1601,7 +1601,7 @@
 								(available.grid_system?.type === 'bootstrap' && field.field_configs?.colspan) ? 'col-' + field.field_configs.colspan : '',
 
 								(available.grid_system?.type === 'tailwind' && field.field_configs?.colspan) ? 'col-span-' + field.field_configs.colspan : 'col-span-12',
-								(available.grid_system?.type === 'tailwind' && field.field_configs?.rowspan) ? 'row-span-' + field.field_configs.rowspan : 'row-auto',
+								(available.grid_system?.type === 'tailwind' && field.field_configs?.rowspan) ? 'row-span-' + field.field_configs.rowspan : 'row-span-1',
 							]">
 
 								<!-- Fields -->
@@ -2273,7 +2273,7 @@
 					<div class="below-form" [ngClass]="[
 						(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
 						(available.grid_system?.type === 'tailwind') ? 'col-span-12' : '',
-						(available.grid_system?.type === 'tailwind') ? 'row-auto' : '',
+						(available.grid_system?.type === 'tailwind') ? 'row-span-1' : '',
 					]">
 						<mat-divider></mat-divider>
 
