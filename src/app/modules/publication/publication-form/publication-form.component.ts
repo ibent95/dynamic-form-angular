@@ -460,9 +460,9 @@ export class PublicationFormComponent implements OnInit {
     this.forms = this.formBuilder.group(fieldDataSets);
 
     // Console log after form created
-    setConsoleLog(this.forms.getRawValue(), 'formBuilder initial value : ')
-    setConsoleLog(this.available, 'available initial value : ')
-    setConsoleLog(this.fieldInForms, 'fieldInForms : ')
+    //setConsoleLog(this.forms.getRawValue(), 'formBuilder initial value : ')
+    //setConsoleLog(this.available, 'available initial value : ')
+    //setConsoleLog(this.fieldInForms, 'fieldInForms : ')
 
     // Handler after form created
     //this.setInitialFieldDependencyConfig();
