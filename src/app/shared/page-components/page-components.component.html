@@ -287,7 +287,7 @@
 					<div class="text-title text-sm mb-2">Chips</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Chips</mat-label>
-						<mat-chip-list #chipList aria-label="Fruit selection">
+						<mat-chip-grid #chipList aria-label="Fruit selection">
 							<mat-chip *ngFor="let fruit of chipsField" (removed)="chipsRemove(fruit)">
 								{{ fruit.name }}
 								<button matChipRemove>
@@ -297,7 +297,7 @@
 							<input placeholder="New fruit..." [matChipInputFor]="chipList"
 								[matChipInputSeparatorKeyCodes]="chipsSeparatorKeysCodes" [matChipInputAddOnBlur]="chipsAddOnBlur"
 								(matChipInputTokenEnd)="chipsAdd($event)">
-						</mat-chip-list>
+						</mat-chip-grid>
 					</mat-form-field>
 				</div>
 
@@ -313,7 +313,8 @@
 				<!-- Slider -->
 				<div class="mb-3">
 					<div class="text-title text-sm mb-2">Slider</div>
-					<mat-slider [max]="100" [min]="0" [step]="1" [tickInterval]="5" [thumbLabel]="true" [(ngModel)]="sliderField" [ngModelOptions]="{ standalone: true }">
+					<mat-slider [max]="100" [min]="0" [step]="1" discrete showTickMarks [(ngModel)]="sliderField" [ngModelOptions]="{ standalone: true }">
+						<input matSliderThumb>
 					</mat-slider>
 				</div>
 
@@ -807,6 +808,58 @@
 
 				<div class="mb-3">
 					<div class="text-title text-sm mb-2">Page under construction</div>
+
+					<div class="mat-elevation-z8">
+						<app-page-under-construction></app-page-under-construction>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
+		<!-- Grid system -->
+		<section class="mb-4">
+			<div class="mb-2">
+				<div class="text-title text-lg">Grid system</div>
+				<mat-divider inset></mat-divider>
+			</div>
+
+			<div class="grid grid-flow-row auto-rows-max gap-4">
+
+				<div class="">
+					<div class="text-title text-sm mb-2">Bootstrap</div>
+
+					<div class="mat-elevation-z8">
+						<app-page-under-construction></app-page-under-construction>
+					</div>
+				</div>
+
+				<div class="">
+					<div class="text-title text-sm mb-2">Tailwind</div>
+
+					<div class="mat-elevation-z8">
+						
+						<div class="grid grid-rows-6 grid-cols-12 grid-flow-col gap-4">
+							<div class="row-span-2 col-span-2" style="background-color: purple;">01</div>
+							<div class="row-span-1 col-span-2" style="background-color: green;">02</div>
+							<div class="row-span-3 col-span-3" style="background-color: gray;">03</div>
+							<div class="row-span-3 col-span-1" style="background-color: yellow;">04</div>
+							<div class="row-span-1 col-span-3" style="background-color: orange;">05</div>
+							<div class="row-span-2 col-span-1" style="background-color: brown;">06</div>
+							<div class="row-span-3 col-span-1" style="background-color: blue;">07</div>
+							<div class="row-span-5 col-span-2" style="background-color: pink;">08</div>
+							<div class="row-span-6 col-span-2" style="background-color: red;">09</div>
+							<div class="row-span-3 col-span-2" style="background-color: lavender;">10</div>
+							<div class="row-span-3 col-span-2" style="background-color: cyan;">11</div>
+							<div class="row-span-6 col-span-2" style="background-color: magenta;">12</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="">
+					<div class="text-title text-sm mb-2">material</div>
 
 					<div class="mat-elevation-z8">
 						<app-page-under-construction></app-page-under-construction>

@@ -77,6 +77,10 @@ export class PublicationFormComponent implements OnInit {
 
   subscription$!: Subject<void>;
 
+  defaultGridConfigs!: {
+    rowsCols: Array<String>
+  };
+
   /**
    * Constructor and other functions before form`s metadata are load
    */

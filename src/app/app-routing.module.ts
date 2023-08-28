@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoreComponent } from './core/core.component';
 import { LoginComponent } from './modules/login/login.component';
 import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './modules/publication/publication.component';

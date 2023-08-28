@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { filter } from 'rxjs';
-import { ContentComponent } from "./content/content.component";
 
 @Component({
 	selector: 'app-core',
