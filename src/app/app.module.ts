@@ -69,6 +69,30 @@ import { OverviewComponent } from './modules/overview/overview.component';
 import { PublicationComponent } from './modules/publication/publication.component';
 import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './modules/publication/publication-detail/publication-detail.component';
+import { PublicationFormGridSystemsDefaultComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-default/publication-form-grid-systems-default.component';
+import { PublicationFormGridSystemsBootstrapComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
+import { PublicationFormGridSystemsTailwindComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
+
+// DynamicForm components
+import { DynamicFormComponent } from './shared/dynamic-form/dynamic-form.component';
+import { DFFieldTextComponent } from './shared/dynamic-form/df-field-text/df-field-text.component';
+import { DFFieldNumberComponent } from './shared/dynamic-form/df-field-number/df-field-number.component';
+import { DFFieldTextareaComponent } from './shared/dynamic-form/df-field-textarea/df-field-textarea.component';
+import { DFFieldDateComponent } from './shared/dynamic-form/df-field-date/df-field-date.component';
+import { DFFieldTimeComponent } from './shared/dynamic-form/df-field-time/df-field-time.component';
+import { DFFieldDatetimeComponent } from './shared/dynamic-form/df-field-datetime/df-field-datetime.component';
+import { DFFieldYearComponent } from './shared/dynamic-form/df-field-year/df-field-year.component';
+import { DFFieldFileComponent } from './shared/dynamic-form/df-field-file/df-field-file.component';
+import { DFFieldImageComponent } from './shared/dynamic-form/df-field-image/df-field-image.component';
+import { DFFieldColorComponent } from './shared/dynamic-form/df-field-color/df-field-color.component';
+import { DFFieldCheckboxComponent } from './shared/dynamic-form/df-field-checkbox/df-field-checkbox.component';
+import { DFFieldRadioComponent } from './shared/dynamic-form/df-field-radio/df-field-radio.component';
+import { DFFieldInfoComponent } from './shared/dynamic-form/df-field-info/df-field-info.component';
+import { DFFieldStepperComponent } from './shared/dynamic-form/df-field-stepper/df-field-stepper.component';
+import { DFFieldAccordionComponent } from './shared/dynamic-form/df-field-accordion/df-field-accordion.component';
+import { DFFieldPanelComponent } from './shared/dynamic-form/df-field-panel/df-field-panel.component';
+import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-multiple-form/df-field-multiple-form.component';
+import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -89,6 +113,9 @@ registerLocaleData(localeId, 'id');
     PublicationComponent,
     PublicationFormComponent,
     PublicationDetailComponent,
+    PublicationFormGridSystemsDefaultComponent,
+    PublicationFormGridSystemsBootstrapComponent,
+    PublicationFormGridSystemsTailwindComponent,
     GhostTableComponent,
     LoaderComponent,
     DatetimePickerComponent,
@@ -109,6 +136,25 @@ registerLocaleData(localeId, 'id');
     DialogConfirmComponent,
     DialogAlertComponent,
     DialogPromptComponent,
+    DynamicFormComponent,
+    DFFieldTextComponent,
+    DFFieldNumberComponent,
+    DFFieldTextareaComponent,
+    DFFieldDateComponent,
+    DFFieldTimeComponent,
+    DFFieldDatetimeComponent,
+    DFFieldYearComponent,
+    DFFieldFileComponent,
+    DFFieldImageComponent,
+    DFFieldColorComponent,
+    DFFieldCheckboxComponent,
+    DFFieldRadioComponent,
+    DFFieldInfoComponent,
+    DFFieldStepperComponent,
+    DFFieldAccordionComponent,
+    DFFieldPanelComponent,
+    DFFieldMultipleFormComponent,
+    DFFormMultipleComponent,
   ],
   imports: [
     BrowserModule,
