@@ -499,8 +499,6 @@ export class PublicationFormComponent implements OnInit {
    * Functions, events or handlers after form`s metadata are load
    */
 
-
-
   /**
    * Functions, events or handlers before submit or cancel form
    */

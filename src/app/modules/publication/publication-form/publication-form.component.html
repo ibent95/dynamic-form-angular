@@ -1525,13 +1525,13 @@
 
 			<!-- Bootstrap or Tailwind grid system -->
 			<ng-container *ngIf="(available.grid_system.type !== 'no_grid_system' && available.grid_system.type !== 'material')">
-				
+
 				<form [formGroup]="forms">
 
 					<div [ngClass]="[
 						(available.grid_system?.type === 'bootstrap') ? 'row' : '',
 						(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
-						(available.grid_system?.type === 'tailwind') ? 'grid gap-4' : '',
+						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
 					]">
 
 						<div [ngClass]="[
@@ -1866,7 +1866,10 @@
 													<mat-expansion-panel class="mat-elevation-z8" [expanded]="true" [hideToggle]="false">
 														<!-- Header -->
 														<mat-expansion-panel-header class="divider-bottom">
+															<!-- Title -->
 															<mat-panel-title>{{ panel.field_label }}</mat-panel-title>
+
+															<!-- Description -->
 															<mat-panel-description class="justify-between">
 																<span>{{ panel.description }}</span>
 																<ng-container *ngIf="(panel.field_configs?.panel_description?.mat_icon)">
@@ -1876,10 +1879,23 @@
 														</mat-expansion-panel-header>
 
 														<!-- Content -->
-														<div class="grid grid-cols-1 gap-y-4">
-															<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
+														<div class="grid grid-cols-12 gap-4" [ngClass]="[
+															(available.grid_system?.type === 'bootstrap') ? 'row' : '',
+															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
+														]">
 
-																<div [ngClass]="[(childFieldIndex === 0) ? 'mt-4' : '', (childFieldIndex === (panel.children.length - 1)) ? 'mb-4' : '']">
+															<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
+																<div [ngClass]="[
+																	(available.grid_system?.type === 'bootstrap' && child.field_configs?.colspan) ? 'col-' + child.field_configs.colspan : '',
+
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.rowspan) ? 'row-span-' + child.field_configs.rowspan : 'row-span-1',
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.colspan) ? 'col-span-' + child.field_configs.colspan : 'col-span-12',
+																]">
+
+																	<!-- (childFieldIndex === 0) ? 'mt-4' : '',
+																	(childFieldIndex === (panel.children.length - 1)) ? 'mb-4' : '',-->
+
 																	<ng-container [ngSwitch]="child.field_type">
 
 																		<ng-container *ngSwitchCase="'text'">
@@ -1999,15 +2015,20 @@
 
 													<mat-step [label]="step.field_label">
 
-														<div class="grid" [ngClass]="[
-															(step.field_configs?.cols) ? 'grid-cols-' + step.field_configs?.cols : 'grid-cols-none',
-															(step.field_configs?.rows) ? 'grid-rows-' + step.field_configs?.rows : 'grid-rows-none',
-															'gap-4',
+														<div [ngClass]="[
+															(available.grid_system?.type === 'bootstrap') ? 'row' : '',
+															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
 															'-z-10',
 														]">
 
 															<ng-container *ngFor="let child of step.children; let childFieldIndex = index;">
-																<div [ngClass]="[(child.field_configs?.colspan) ? 'col-span-' + child.field_configs?.colspan : 'col-span-12', (child.field_configs?.rowspan) ? 'row-span-' + child.field_configs?.rowspan : 'row-auto']">
+																<div [ngClass]="[
+																	(available.grid_system?.type === 'bootstrap' && child.field_configs?.colspan) ? 'col-' + child.field_configs.colspan : '',
+
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.rowspan) ? 'row-span-' + child.field_configs.rowspan : 'row-span-1',
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.colspan) ? 'col-span-' + child.field_configs.colspan : 'col-span-12',
+																]">
 
 																	<ng-container [ngSwitch]="child.field_type">
 
