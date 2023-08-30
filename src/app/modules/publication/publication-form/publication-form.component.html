@@ -1529,14 +1529,14 @@
 				<form [formGroup]="forms">
 
 					<div [ngClass]="[
-						(available.grid_system?.type === 'bootstrap') ? 'row' : '',
-						(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
-						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
+						(available.grid_system?.type === 'bootstrap') ? 'row' : 'null',
+						(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
+						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : 'null',
 					]">
 
 						<div [ngClass]="[
-							(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
-							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : '',
+							(available.grid_system?.type === 'bootstrap') ? 'col-12' : 'null',
+							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : 'null',
 						]">
 							<mat-form-field appearance="outline" [color]="'accent'">
 								<mat-label>Publication type</mat-label>
@@ -1548,8 +1548,8 @@
 
 						<!--
 						<div [ngClass]="[
-							(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
-							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : '',
+							(available.grid_system?.type === 'bootstrap') ? 'col-12' : 'null',
+							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : 'null',
 						]" *ngIf="(available.form_metadata_no_data)">
 							<ngx-select
 								class="form-control"
@@ -1566,9 +1566,9 @@
 						-->
 
 						<!-- Show no data information if forms meta data is empty -->
-						<div class="" [ngClass]="[
-							(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
-							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : '',
+						<div [ngClass]="[
+							(available.grid_system?.type === 'bootstrap') ? 'col-12' : 'null',
+							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : 'null',
 						]" *ngIf="(available.form_metadata_no_data)">
 							<div class="h-50" align="center">
 								<i class="material-icons text-9xl">warning_amber</i>
@@ -1583,9 +1583,9 @@
 						</div>
 
 						<!-- Show loader if forms meta data is available and is in progress -->
-						<div class="" [ngClass]="[
-							(available.grid_system?.type === 'bootstrap') ? 'col-12' : '',
-							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : '',
+						<div [ngClass]="[
+							(available.grid_system?.type === 'bootstrap') ? 'col-12' : 'null',
+							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : 'null',
 						]" *ngIf="(available.publication_type_selected && !available.form_metadata_loaded && !available.form_metadata_no_data)">
 							<app-loader></app-loader>
 						</div>
@@ -1593,7 +1593,7 @@
 						<!-- Show forms recursively -->
 						<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
 							<div [ngClass]="[
-								(available.grid_system?.type === 'bootstrap' && field.field_configs?.colspan) ? 'col-' + field.field_configs.colspan : '',
+								(available.grid_system?.type === 'bootstrap' && field.field_configs?.colspan) ? 'col-' + field.field_configs.colspan : 'null',
 
 								(available.grid_system?.type === 'tailwind' && field.field_configs?.rowspan) ? 'row-span-' + field.field_configs.rowspan : 'row-span-1',
 								(available.grid_system?.type === 'tailwind' && field.field_configs?.colspan) ? 'col-span-' + field.field_configs.colspan : 'col-span-12',
@@ -1879,15 +1879,15 @@
 														</mat-expansion-panel-header>
 
 														<!-- Content -->
-														<div class="grid grid-cols-12 gap-4" [ngClass]="[
-															(available.grid_system?.type === 'bootstrap') ? 'row' : '',
-															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
-															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
+														<div [ngClass]="[
+															(available.grid_system?.type === 'bootstrap') ? 'row' : 'null',
+															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row auto-rows-max gap-4' : 'null',
 														]">
 
 															<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
 																<div [ngClass]="[
-																	(available.grid_system?.type === 'bootstrap' && child.field_configs?.colspan) ? 'col-' + child.field_configs.colspan : '',
+																	(available.grid_system?.type === 'bootstrap' && child.field_configs?.colspan) ? 'col-' + child.field_configs.colspan : 'null',
 
 																	(available.grid_system?.type === 'tailwind' && child.field_configs?.rowspan) ? 'row-span-' + child.field_configs.rowspan : 'row-span-1',
 																	(available.grid_system?.type === 'tailwind' && child.field_configs?.colspan) ? 'col-span-' + child.field_configs.colspan : 'col-span-12',
@@ -2017,8 +2017,8 @@
 
 														<div [ngClass]="[
 															(available.grid_system?.type === 'bootstrap') ? 'row' : '',
-															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : '',
-															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : '',
+															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row auto-rows-max gap-4' : 'null',
 															'-z-10',
 														]">
 
@@ -2026,8 +2026,8 @@
 																<div [ngClass]="[
 																	(available.grid_system?.type === 'bootstrap' && child.field_configs?.colspan) ? 'col-' + child.field_configs.colspan : '',
 
-																	(available.grid_system?.type === 'tailwind' && child.field_configs?.rowspan) ? 'row-span-' + child.field_configs.rowspan : 'row-span-1',
-																	(available.grid_system?.type === 'tailwind' && child.field_configs?.colspan) ? 'col-span-' + child.field_configs.colspan : 'col-span-12',
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.rowspan) ? 'row-span-' + child.field_configs.rowspan : 'row-auto',
+																	(available.grid_system?.type === 'tailwind' && child.field_configs?.colspan) ? 'col-span-' + child.field_configs.colspan : 'col-auto',
 																]">
 
 																	<ng-container [ngSwitch]="child.field_type">
