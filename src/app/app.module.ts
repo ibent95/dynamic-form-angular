@@ -93,6 +93,7 @@ import { DFFieldAccordionComponent } from './shared/dynamic-form/df-field-accord
 import { DFFieldPanelComponent } from './shared/dynamic-form/df-field-panel/df-field-panel.component';
 import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-multiple-form/df-field-multiple-form.component';
 import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
+import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -155,6 +156,7 @@ registerLocaleData(localeId, 'id');
     DFFieldPanelComponent,
     DFFieldMultipleFormComponent,
     DFFormMultipleComponent,
+    DFFieldSliderComponent,
   ],
   imports: [
     BrowserModule,
