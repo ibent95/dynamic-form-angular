@@ -7,6 +7,7 @@
 // @danielmoncada/angular-datetime-picker
 @import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
 
+*, ::before, ::after { border-style: none; }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button { margin-right: 10px; margin-bottom: 10px; }
