@@ -95,7 +95,7 @@ import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-mul
 import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
-import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngxselect/df-field-ngxselect.component';
+import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component';
 import { DfFieldEmailComponent } from './shared/dynamic-form/df-field-email/df-field-email.component';
 import { DfFieldTelComponent } from './shared/dynamic-form/df-field-tel/df-field-tel.component';
 import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field-url.component';

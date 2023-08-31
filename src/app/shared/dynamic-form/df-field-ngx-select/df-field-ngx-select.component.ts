@@ -7,8 +7,8 @@ import { SelectOptionsGroup } from 'src/app/interfaces/select-options-group';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-field-ngxselect',
-  templateUrl: './df-field-ngxselect.component.html',
+  selector: 'df-field-ngx-select',
+  templateUrl: './df-field-ngx-select.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
 export class DFFieldNGXSelectComponent {
