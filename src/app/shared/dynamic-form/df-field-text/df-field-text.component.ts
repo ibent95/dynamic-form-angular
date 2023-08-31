@@ -26,7 +26,6 @@ export class DFFieldTextComponent implements OnInit {
     this.formGroup = this.parentFormGroup.form as FormGroup;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
