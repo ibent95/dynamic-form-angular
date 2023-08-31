@@ -1534,6 +1534,7 @@
 						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row gap-3' : 'null',
 					]">
 
+						<!-- Publication type input -->
 						<div [ngClass]="[
 							(available.grid_system?.type === 'bootstrap') ? 'col-12' : 'null',
 							(available.grid_system?.type === 'tailwind') ? 'row-span-1 col-span-12' : 'null',
@@ -1619,15 +1620,19 @@
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'date'">
-										<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+										<df-field-date appearance="outline" color="accent" [field]="field"></df-field-date>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'month'">
-										<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+										<df-field-month appearance="outline" color="accent" [field]="field"></df-field-month>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'year'">
-										<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(field.field_name)" [label]="field.field_label" [placeholder]="field.field_placeholder"></app-datetime-picker>
+										<df-field-year appearance="outline" color="accent" [field]="field"></df-field-year>
+									</ng-container>
+
+									<ng-container *ngSwitchCase="'time'">
+										<df-field-time appearance="outline" color="accent" [field]="field"></df-field-time>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'owl-date'">
