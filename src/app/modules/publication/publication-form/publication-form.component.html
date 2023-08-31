@@ -1603,6 +1603,8 @@
 								<!-- Fields -->
 								<ng-container [ngSwitch]="field.field_type">
 
+									<!-- Main Fields Start -->
+
 									<ng-container *ngSwitchCase="'text'">
 										<df-field-text appearance="outline" color="accent" [field]="field"></df-field-text>
 									</ng-container>
@@ -1679,6 +1681,10 @@
 										<df-field-image appearance="outline" color="accent" [field]="field"></df-field-image>
 									</ng-container>
 
+									<!-- Main Fields End -->
+
+									<!-- Group Fields Start -->
+
 									<ng-container *ngSwitchCase="'panel'">
 
 										<ng-container *ngFor="let child of field.children; let stepIndex = index;">
@@ -1686,37 +1692,35 @@
 											<ng-container [ngSwitch]="child.field_type">
 
 												<ng-container *ngSwitchCase="'text'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-													</mat-form-field>
+													<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'url'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-													</mat-form-field>
+													<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'email'">
+													<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'number'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder"
-															[min]="child.validation_config.min || 0">
-													</mat-form-field>
+													<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'date'">
-													<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'month'">
-													<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'year'">
-													<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'time'">
+													<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'owl-date'">
@@ -1752,14 +1756,15 @@
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'select'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-															<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-															</ng-container>
-														</mat-select>
-													</mat-form-field>
+													<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'file'">
+													<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'image'">
+													<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 												</ng-container>
 
 											</ng-container>
@@ -1775,36 +1780,35 @@
 											<ng-container [ngSwitch]="child.field_type">
 
 												<ng-container *ngSwitchCase="'text'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-													</mat-form-field>
+													<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'url'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-													</mat-form-field>
+													<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'email'">
+													<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'number'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
-													</mat-form-field>
+													<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'date'">
-													<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'month'">
-													<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'year'">
-													<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+													<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'time'">
+													<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'owl-date'">
@@ -1840,14 +1844,15 @@
 												</ng-container>
 
 												<ng-container *ngSwitchCase="'select'">
-													<mat-form-field appearance="outline" [color]="'accent'">
-														<mat-label>{{ child.field_label }}</mat-label>
-														<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-															<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-															</ng-container>
-														</mat-select>
-													</mat-form-field>
+													<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'file'">
+													<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
+												</ng-container>
+
+												<ng-container *ngSwitchCase="'image'">
+													<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 												</ng-container>
 
 											</ng-container>
@@ -1916,15 +1921,19 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
-																			<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'month'">
-																			<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'year'">
-																			<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'time'">
+																			<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'owl-date'">
@@ -2047,15 +2056,19 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
-																			<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'month'">
-																			<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'year'">
-																			<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																			<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'time'">
+																			<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'owl-date'">
@@ -2170,77 +2183,96 @@
 														<ng-container [ngSwitch]="child.field_type">
 
 															<ng-container *ngSwitchCase="'text'">
-																<mat-form-field appearance="outline" [color]="'accent'">
-																	<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																</mat-form-field>
+																<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'url'">
-																<mat-form-field appearance="outline" [color]="'accent'">
-																	<mat-label>{{ child.field_label }}</mat-label>
-																	<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																</mat-form-field>
+																<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
+															</ng-container>
+
+															<ng-container *ngSwitchCase="'email'">
+																<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'number'">
-																<mat-form-field appearance="outline" [color]="'accent'">
-																	<mat-label>{{ child.field_label }}</mat-label>
-																	<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config.min || 0">
-																</mat-form-field>
+																<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'date'">
-																<app-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'month'">
-																<app-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'year'">
-																<app-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [fieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-datetime-picker>
+																<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
+															</ng-container>
+
+															<ng-container *ngSwitchCase="'time'">
+																<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-date'">
-																<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'date'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-month'">
-																<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'month'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-year'">
-																<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'year'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-time'">
-																<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'time'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-datetime'">
-																<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'datetime'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-daterange'">
-																<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'daterange'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-timerange'">
-																<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'timerange'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'owl-datetimerange'">
-																<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'" [owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label" [placeholder]="child.field_placeholder"></app-owl-datetime-picker>
+																<app-owl-datetime-picker [mode]="'datetimerange'" [appearance]="'outline'" [color]="'accent'"
+																	[owlFieldControl]="getFieldControl(child.field_name)" [label]="child.field_label"
+																	[placeholder]="child.field_placeholder"></app-owl-datetime-picker>
 															</ng-container>
 
 															<ng-container *ngSwitchCase="'select'">
-																<mat-form-field appearance="outline" [color]="'accent'">
-																	<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-																		<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																			<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-																		</ng-container>
-																	</mat-select>
-																</mat-form-field>
+																<df-field-select appearance="outline" color="accent" [field]="child"
+																	[options]="forms.value[child.field_name + '_options']"></df-field-select>
+															</ng-container>
+
+															<ng-container *ngSwitchCase="'file'">
+																<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
+															</ng-container>
+
+															<ng-container *ngSwitchCase="'image'">
+																<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 															</ng-container>
 
 														</ng-container>
@@ -2254,6 +2286,8 @@
 										</ng-container>
 
 									</ng-container>
+
+									<!-- Group Fields End -->
 
 								</ng-container>
 							</div>
