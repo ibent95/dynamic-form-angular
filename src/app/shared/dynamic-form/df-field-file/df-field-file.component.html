@@ -1,1 +1,5 @@
-<p>df-field-file works!</p>
+<mat-form-field [appearance]="appearence" [color]="color" [formGroup]="formGroup">
+	<mat-label>{{ field.field_label }}</mat-label>
+	<button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+	<input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+</mat-form-field>
