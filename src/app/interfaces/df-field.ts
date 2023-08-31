@@ -28,6 +28,7 @@ export interface DFField {
 export interface DFFieldFieldConfigs {
 	rowspan: number;
 	colspan: number;
+	multiple: boolean;
 }
 
 export interface DFFieldFieldOptions {

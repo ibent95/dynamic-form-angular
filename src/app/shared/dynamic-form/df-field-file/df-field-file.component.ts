@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
@@ -17,6 +17,8 @@ export class DFFieldFileComponent {
   @Input() color!: ThemePalette;
   @Input() value!: any;
 
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
   formGroup!: FormGroup;
 
   constructor(
@@ -26,22 +28,20 @@ export class DFFieldFileComponent {
     this.formGroup = this.parentFormGroup.form as FormGroup;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.value = this.formGroup.get(this.field?.field_name)?.value;
+  }
 
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        console.log(e.target.result);
-
-        //this.srcResult = e.target.result;
-      };
-
-      reader.readAsArrayBuffer(inputNode.files[0]);
+  onSelected(files: FileList | null) {
+    if (files && files[0]) {
+      this.formGroup.get(this.field.field_name)?.setValue(files[0]);
+      this.value = files[0].name;
     }
+  }
+
+  clearInput() {
+    this.formGroup.get(this.field?.field_name)?.patchValue(null);
+    this.value = null;
   }
 
 }

@@ -1675,6 +1675,14 @@
 										</mat-form-field>
 									</ng-container>
 
+									<ng-container *ngSwitchCase="'file'">
+										<df-field-file appearence="outline" color="accent" [field]="field"></df-field-file>
+									</ng-container>
+
+									<ng-container *ngSwitchCase="'image'">
+										<df-field-image appearence="outline" color="accent" [field]="field"></df-field-image>
+									</ng-container>
+
 									<ng-container *ngSwitchCase="'panel'">
 
 										<ng-container *ngFor="let child of field.children; let stepIndex = index;">
