@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DFField } from 'src/app/interfaces/df-field';
@@ -17,10 +17,14 @@ export class DFFieldNumberComponent {
   @Input() color!: ThemePalette;
   @Input() value!: any;
 
+  formGroup!: FormGroup;
+
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private parentFormGroup: FormGroupDirective,
     private appSvc: AppService,
-  ) { }
+  ) {
+    this.formGroup = this.parentFormGroup.form as FormGroup;
+  }
 
   ngOnInit(): void { }
 

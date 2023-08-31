@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline" [color]="'accent'">
+<mat-form-field appearance="outline" [color]="'accent'" [formGroup]="formGroup">
 	<mat-label>{{ field.field_label }}</mat-label>
 	<mat-select [formControlName]="'uuid_' + field.field_name"
 		[placeholder]="field.field_placeholder || 'Please select a data'">

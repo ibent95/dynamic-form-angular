@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { DFControlValueAccessor, DFField } from 'src/app/interfaces/df-field';
+import { DFField } from 'src/app/interfaces/df-field';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -17,11 +17,16 @@ export class DFFieldTextComponent implements OnInit {
   @Input() color!: ThemePalette;
   @Input() value!: any;
 
-  constructor(
-    private controlContainer: ControlContainer,
-    private appSvc: AppService,
-  ) { }
+  formGroup!: FormGroup;
 
-  ngOnInit(): void { }
+  constructor(
+    private parentFormGroup: FormGroupDirective,
+    private appSvc: AppService,
+  ) {
+    this.formGroup = this.parentFormGroup.form as FormGroup;
+  }
+
+  ngOnInit(): void {
+  }
 
 }
