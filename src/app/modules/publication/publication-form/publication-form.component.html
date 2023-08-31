@@ -1663,14 +1663,7 @@
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'select'">
-										<mat-form-field appearance="outline" [color]="'accent'">
-											<mat-label>{{ field.field_label }}</mat-label>
-											<mat-select [formControlName]="'uuid_' + field.field_name" [placeholder]="field.field_placeholder || 'Please select a data'">
-												<ng-container *ngFor="let option of forms.value[field.field_name + '_options']['items']; let optionIndex = index;">
-													<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-												</ng-container>
-											</mat-select>
-										</mat-form-field>
+										<df-field-select appearence="outline" color="accent" [field]="field" [options]="forms.value[field.field_name + '_options']"></df-field-select>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'file'">
@@ -2103,7 +2096,7 @@
 																		<ng-container *ngSwitchCase="'select'">
 																			<mat-form-field appearance="outline" [color]="'accent'">
 																				<mat-label>{{ child.field_label }}</mat-label>
-																				<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
+																				<mat-select [formControlName]="'uuid_' + child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
 																					<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
 																						<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
 																					</ng-container>

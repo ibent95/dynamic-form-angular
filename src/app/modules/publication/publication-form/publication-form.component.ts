@@ -475,9 +475,12 @@ export class PublicationFormComponent implements OnInit {
 
   // Function for check changes of form
   private subscribeToFormsChanges() {
-    this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+    //this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
       //this.statusSvc.addEditMode = true;
       //console.log('statusChanges', this.forms.value);
+    //});
+    this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+      console.log('subscribeToFormsChanges formValueChanges', this.forms.value);
     });
   }
 
