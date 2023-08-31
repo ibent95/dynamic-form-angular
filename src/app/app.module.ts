@@ -101,6 +101,7 @@ import { DfFieldTelComponent } from './shared/dynamic-form/df-field-tel/df-field
 import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field-url.component';
 import { DfFieldPasswordComponent } from './shared/dynamic-form/df-field-password/df-field-password.component';
 import { DfFieldSearchComponent } from './shared/dynamic-form/df-field-search/df-field-search.component';
+import { DFFieldMonthComponent } from './shared/dynamic-form/df-field-month/df-field-month.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -171,6 +172,7 @@ registerLocaleData(localeId, 'id');
     DfFieldUrlComponent,
     DfFieldPasswordComponent,
     DfFieldSearchComponent,
+    DFFieldMonthComponent,
   ],
   imports: [
     BrowserModule,
