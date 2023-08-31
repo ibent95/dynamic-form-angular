@@ -96,6 +96,11 @@ import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
 import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngxselect/df-field-ngxselect.component';
+import { DfFieldEmailComponent } from './shared/dynamic-form/df-field-email/df-field-email.component';
+import { DfFieldTelComponent } from './shared/dynamic-form/df-field-tel/df-field-tel.component';
+import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field-url.component';
+import { DfFieldPasswordComponent } from './shared/dynamic-form/df-field-password/df-field-password.component';
+import { DfFieldSearchComponent } from './shared/dynamic-form/df-field-search/df-field-search.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -161,6 +166,11 @@ registerLocaleData(localeId, 'id');
     DFFieldSliderComponent,
     DFFieldSelectComponent,
     DFFieldNGXSelectComponent,
+    DfFieldEmailComponent,
+    DfFieldTelComponent,
+    DfFieldUrlComponent,
+    DfFieldPasswordComponent,
+    DfFieldSearchComponent,
   ],
   imports: [
     BrowserModule,
