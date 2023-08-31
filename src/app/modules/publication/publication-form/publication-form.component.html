@@ -1531,7 +1531,7 @@
 					<div [ngClass]="[
 						(available.grid_system?.type === 'bootstrap') ? 'row' : 'null',
 						(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
-						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 gap-4' : 'null',
+						(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row gap-3' : 'null',
 					]">
 
 						<div [ngClass]="[
@@ -1603,19 +1603,19 @@
 								<ng-container [ngSwitch]="field.field_type">
 
 									<ng-container *ngSwitchCase="'text'">
-										<df-field-text appearence="outline" color="accent" [field]="field"></df-field-text>
+										<df-field-text appearance="outline" color="accent" [field]="field"></df-field-text>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'url'">
-										<df-field-url appearence="outline" color="accent" [field]="field"></df-field-url>
+										<df-field-url appearance="outline" color="accent" [field]="field"></df-field-url>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'email'">
-										<df-field-email appearence="outline" color="accent" [field]="field"></df-field-email>
+										<df-field-email appearance="outline" color="accent" [field]="field"></df-field-email>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'number'">
-										<df-field-number appearence="outline" color="accent" [field]="field"></df-field-number>
+										<df-field-number appearance="outline" color="accent" [field]="field"></df-field-number>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'date'">
@@ -1663,15 +1663,15 @@
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'select'">
-										<df-field-select appearence="outline" color="accent" [field]="field" [options]="forms.value[field.field_name + '_options']"></df-field-select>
+										<df-field-select appearance="outline" color="accent" [field]="field" [options]="forms.value[field.field_name + '_options']"></df-field-select>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'file'">
-										<df-field-file appearence="outline" color="accent" [field]="field"></df-field-file>
+										<df-field-file appearance="outline" color="accent" [field]="field"></df-field-file>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'image'">
-										<df-field-image appearence="outline" color="accent" [field]="field"></df-field-image>
+										<df-field-image appearance="outline" color="accent" [field]="field"></df-field-image>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'panel'">
@@ -1878,7 +1878,7 @@
 														<div [ngClass]="[
 															(available.grid_system?.type === 'bootstrap') ? 'row' : 'null',
 															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
-															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row auto-rows-max gap-4' : 'null',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row gap-4' : 'null',
 														]">
 
 															<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
@@ -1895,19 +1895,19 @@
 																	<ng-container [ngSwitch]="child.field_type">
 
 																		<ng-container *ngSwitchCase="'text'">
-																			<df-field-text appearence="outline" color="accent" [field]="child"></df-field-text>
+																			<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'url'">
-																			<df-field-url appearence="outline" color="accent" [field]="child"></df-field-url>
+																			<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'email'">
-																			<df-field-email appearence="outline" color="accent" [field]="child"></df-field-email>
+																			<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'number'">
-																			<df-field-number appearence="outline" color="accent" [field]="child"></df-field-number>
+																			<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
@@ -1955,16 +1955,16 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'select'">
-																			<df-field-select appearence="outline" color="accent" [field]="child"
+																			<df-field-select appearance="outline" color="accent" [field]="child"
 																				[options]="forms.value[child.field_name + '_options']"></df-field-select>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'file'">
-																			<df-field-file appearence="outline" color="accent" [field]="child"></df-field-file>
+																			<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'image'">
-																			<df-field-image appearence="outline" color="accent" [field]="child"></df-field-image>
+																			<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 																		</ng-container>
 
 																	</ng-container>
@@ -2011,7 +2011,7 @@
 														<div [ngClass]="[
 															(available.grid_system?.type === 'bootstrap') ? 'row' : '',
 															(available.grid_system?.type === 'bootstrap' && available.grid_system?.cols) ? 'row-cols-' + available.grid_system?.cols : 'null',
-															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row auto-rows-max gap-4' : 'null',
+															(available.grid_system?.type === 'tailwind') ? 'grid grid-cols-12 grid-flow-row gap-4' : 'null',
 															'-z-10',
 														]">
 
@@ -2026,19 +2026,19 @@
 																	<ng-container [ngSwitch]="child.field_type">
 
 																		<ng-container *ngSwitchCase="'text'">
-																			<df-field-text appearence="outline" color="accent" [field]="child"></df-field-text>
+																			<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'url'">
-																			<df-field-url appearence="outline" color="accent" [field]="child"></df-field-url>
+																			<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'email'">
-																			<df-field-email appearence="outline" color="accent" [field]="child"></df-field-email>
+																			<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'number'">
-																			<df-field-number appearence="outline" color="accent" [field]="child"></df-field-number>
+																			<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
@@ -2086,15 +2086,15 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'select'">
-																			<df-field-select appearence="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
+																			<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'file'">
-																			<df-field-file appearence="outline" color="accent" [field]="child"></df-field-file>
+																			<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'image'">
-																			<df-field-image appearence="outline" color="accent" [field]="child"></df-field-image>
+																			<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 																		</ng-container>
 
 																	</ng-container>

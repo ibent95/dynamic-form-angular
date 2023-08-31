@@ -13,7 +13,7 @@ import { AppService } from 'src/app/services/app.service';
 export class DFFieldTimeComponent {
 
   @Input() field!: DFField;
-  @Input() appearence!: MatFormFieldAppearance;
+  @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
 

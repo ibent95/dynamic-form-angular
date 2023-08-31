@@ -14,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
 export class DFFieldNGXSelectComponent {
 
   @Input() field!: DFField;
-  @Input() appearence!: MatFormFieldAppearance;
+  @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() options!: SelectOptionsGroup;
   @Input() value!: any;
