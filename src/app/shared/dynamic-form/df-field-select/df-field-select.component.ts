@@ -1,24 +1,26 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { DFControlValueAccessor, DFField } from 'src/app/interfaces/df-field';
+import { DFField } from 'src/app/interfaces/df-field';
+import { SelectOptionsGroup } from 'src/app/interfaces/select-options-group';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-field-text',
-  templateUrl: './df-field-text.component.html',
+  selector: 'df-field-select',
+  templateUrl: './df-field-select.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldTextComponent implements OnInit {
+export class DFFieldSelectComponent {
 
   @Input() field!: DFField;
   @Input() appearence!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
+  @Input() options!: SelectOptionsGroup;
   @Input() value!: any;
 
   constructor(
-    private controlContainer: ControlContainer,
+    private formBuilder: UntypedFormBuilder,
     private appSvc: AppService,
   ) { }
 

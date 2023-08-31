@@ -1603,10 +1603,7 @@
 								<ng-container [ngSwitch]="field.field_type">
 
 									<ng-container *ngSwitchCase="'text'">
-										<mat-form-field appearance="outline" [color]="'accent'">
-											<mat-label>{{ field.field_label }}</mat-label>
-											<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
-										</mat-form-field>
+										<df-field-text appearence="outline" color="accent" [field]="field" [formControlName]="field.field_name"></df-field-text>
 									</ng-container>
 
 									<ng-container *ngSwitchCase="'url'">

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-df-field-checkbox',
+  selector: 'df-field-checkbox',
   templateUrl: './df-field-checkbox.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })

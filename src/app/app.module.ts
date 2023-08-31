@@ -94,6 +94,8 @@ import { DFFieldPanelComponent } from './shared/dynamic-form/df-field-panel/df-f
 import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-multiple-form/df-field-multiple-form.component';
 import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
+import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
+import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngxselect/df-field-ngxselect.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -157,6 +159,8 @@ registerLocaleData(localeId, 'id');
     DFFieldMultipleFormComponent,
     DFFormMultipleComponent,
     DFFieldSliderComponent,
+    DFFieldSelectComponent,
+    DFFieldNGXSelectComponent,
   ],
   imports: [
     BrowserModule,
