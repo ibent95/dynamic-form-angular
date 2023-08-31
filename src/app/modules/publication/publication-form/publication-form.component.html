@@ -1895,24 +1895,19 @@
 																	<ng-container [ngSwitch]="child.field_type">
 
 																		<ng-container *ngSwitchCase="'text'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																			</mat-form-field>
+																			<df-field-text appearence="outline" color="accent" [field]="child"></df-field-text>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'url'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																			</mat-form-field>
+																			<df-field-url appearence="outline" color="accent" [field]="child"></df-field-url>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'email'">
+																			<df-field-email appearence="outline" color="accent" [field]="child"></df-field-email>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'number'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
-																			</mat-form-field>
+																			<df-field-number appearence="outline" color="accent" [field]="child"></df-field-number>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
@@ -1960,14 +1955,16 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'select'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<mat-select [formControlName]="child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-																					<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																						<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-																					</ng-container>
-																				</mat-select>
-																			</mat-form-field>
+																			<df-field-select appearence="outline" color="accent" [field]="child"
+																				[options]="forms.value[child.field_name + '_options']"></df-field-select>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'file'">
+																			<df-field-file appearence="outline" color="accent" [field]="child"></df-field-file>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'image'">
+																			<df-field-image appearence="outline" color="accent" [field]="child"></df-field-image>
 																		</ng-container>
 
 																	</ng-container>
@@ -2029,24 +2026,19 @@
 																	<ng-container [ngSwitch]="child.field_type">
 
 																		<ng-container *ngSwitchCase="'text'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																			</mat-form-field>
+																			<df-field-text appearence="outline" color="accent" [field]="child"></df-field-text>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'url'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput [formControlName]="child.field_name" [placeholder]="child.field_placeholder">
-																			</mat-form-field>
+																			<df-field-url appearence="outline" color="accent" [field]="child"></df-field-url>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'email'">
+																			<df-field-email appearence="outline" color="accent" [field]="child"></df-field-email>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'number'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<input matInput type="number" [formControlName]="child.field_name" [placeholder]="child.field_placeholder" [min]="child.validation_config?.min || 0">
-																			</mat-form-field>
+																			<df-field-number appearence="outline" color="accent" [field]="child"></df-field-number>
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'date'">
@@ -2094,14 +2086,15 @@
 																		</ng-container>
 
 																		<ng-container *ngSwitchCase="'select'">
-																			<mat-form-field appearance="outline" [color]="'accent'">
-																				<mat-label>{{ child.field_label }}</mat-label>
-																				<mat-select [formControlName]="'uuid_' + child.field_name" [placeholder]="child.field_placeholder || 'Please select a data'">
-																					<ng-container *ngFor="let option of forms.value[child.field_name + '_options']['items']; let optionIndex = index;">
-																						<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
-																					</ng-container>
-																				</mat-select>
-																			</mat-form-field>
+																			<df-field-select appearence="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'file'">
+																			<df-field-file appearence="outline" color="accent" [field]="child"></df-field-file>
+																		</ng-container>
+
+																		<ng-container *ngSwitchCase="'image'">
+																			<df-field-image appearence="outline" color="accent" [field]="child"></df-field-image>
 																		</ng-container>
 
 																	</ng-container>
