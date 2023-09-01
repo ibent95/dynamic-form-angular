@@ -95,12 +95,22 @@ import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-mul
 import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
-import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngxselect/df-field-ngxselect.component';
+import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component';
 import { DfFieldEmailComponent } from './shared/dynamic-form/df-field-email/df-field-email.component';
 import { DfFieldTelComponent } from './shared/dynamic-form/df-field-tel/df-field-tel.component';
 import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field-url.component';
 import { DfFieldPasswordComponent } from './shared/dynamic-form/df-field-password/df-field-password.component';
 import { DfFieldSearchComponent } from './shared/dynamic-form/df-field-search/df-field-search.component';
+import { DFFieldMonthComponent } from './shared/dynamic-form/df-field-month/df-field-month.component';
+import { DFFieldOwlDatetimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-datetime.component';
+import { DFFieldOwlDateComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date/df-field-owl-date.component';
+import { DFFieldOwlDateTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time/df-field-owl-date-time.component';
+import { DFFieldOwlTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time/df-field-owl-time.component';
+import { DFFieldOwlMonthComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-month/df-field-owl-month.component';
+import { DFFieldOwlYearComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-year/df-field-owl-year.component';
+import { DFFieldOwlDateRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-range/df-field-owl-date-range.component';
+import { DFFieldOwlTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time-range/df-field-owl-time-range.component';
+import { DFFieldOwlDateTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time-range/df-field-owl-date-time-range.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -171,6 +181,16 @@ registerLocaleData(localeId, 'id');
     DfFieldUrlComponent,
     DfFieldPasswordComponent,
     DfFieldSearchComponent,
+    DFFieldMonthComponent,
+    DFFieldOwlDatetimeComponent,
+    DFFieldOwlDateComponent,
+    DFFieldOwlDateTimeComponent,
+    DFFieldOwlTimeComponent,
+    DFFieldOwlMonthComponent,
+    DFFieldOwlYearComponent,
+    DFFieldOwlDateRangeComponent,
+    DFFieldOwlTimeRangeComponent,
+    DFFieldOwlDateTimeRangeComponent,
   ],
   imports: [
     BrowserModule,
