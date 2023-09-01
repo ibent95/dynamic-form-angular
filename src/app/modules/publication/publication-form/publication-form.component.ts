@@ -485,7 +485,7 @@ export class PublicationFormComponent implements OnInit {
   }
 
   public get forms_metadata(): Array<any> {
-    return this.publicationFormMetadata.forms;
+    return this.publicationFormMetadata?.forms;
   }
 
   // Function to get Form Control of formBuilder for custom component / child component (Shared component)

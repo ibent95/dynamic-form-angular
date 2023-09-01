@@ -1,4 +1,4 @@
-<form [formGroup]="forms" class="grid grid-cols-1 gap-4">
+<form [formGroup]="forms" class="grid grid-cols-1 gap-4" *ngIf="forms && available && selectOptions && forms_metadata && uniqueFalseCheckField">
 
 	<mat-form-field appearance="outline" [color]="'accent'">
 		<mat-label>Publication type</mat-label>
@@ -851,10 +851,8 @@
 			<mat-divider></mat-divider>
 
 			<div class="flex justify-center gap-4 mt-7">
-				<button mat-stroked-button class="flex-initial w-32" [color]="'warn'"
-					(click)="onFormCancelButtonClick()" [disabled]="available.cancel_button_disabled">Cancel</button>
-				<button mat-raised-button class="flex-initial w-32" [color]="'accent'"
-					(click)="onFormSubmitButtonClick()" [disabled]="available.submit_button_disabled">Save</button>
+				<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="available.cancel_button_disabled">Cancel</button>
+				<button mat-raised-button class="flex-initial w-32" [color]="'accent'" (click)="onFormSubmitButtonClick()" [disabled]="available.submit_button_disabled">Save</button>
 			</div>
 		</div>
 
