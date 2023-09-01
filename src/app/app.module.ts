@@ -102,6 +102,15 @@ import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field
 import { DfFieldPasswordComponent } from './shared/dynamic-form/df-field-password/df-field-password.component';
 import { DfFieldSearchComponent } from './shared/dynamic-form/df-field-search/df-field-search.component';
 import { DFFieldMonthComponent } from './shared/dynamic-form/df-field-month/df-field-month.component';
+import { DFFieldOwlDatetimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-datetime.component';
+import { DFFieldOwlDateComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date/df-field-owl-date.component';
+import { DFFieldOwlDateTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time/df-field-owl-date-time.component';
+import { DFFieldOwlTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time/df-field-owl-time.component';
+import { DFFieldOwlMonthComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-month/df-field-owl-month.component';
+import { DFFieldOwlYearComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-year/df-field-owl-year.component';
+import { DFFieldOwlDateRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-range/df-field-owl-date-range.component';
+import { DFFieldOwlTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time-range/df-field-owl-time-range.component';
+import { DFFieldOwlDateTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time-range/df-field-owl-date-time-range.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -173,6 +182,15 @@ registerLocaleData(localeId, 'id');
     DfFieldPasswordComponent,
     DfFieldSearchComponent,
     DFFieldMonthComponent,
+    DFFieldOwlDatetimeComponent,
+    DFFieldOwlDateComponent,
+    DFFieldOwlDateTimeComponent,
+    DFFieldOwlTimeComponent,
+    DFFieldOwlMonthComponent,
+    DFFieldOwlYearComponent,
+    DFFieldOwlDateRangeComponent,
+    DFFieldOwlTimeRangeComponent,
+    DFFieldOwlDateTimeRangeComponent,
   ],
   imports: [
     BrowserModule,
