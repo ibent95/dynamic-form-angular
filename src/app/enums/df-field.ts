@@ -1,7 +1,7 @@
 export enum DFFieldAppearance {
 	null,
-	'fill',
-	'outline',
+	"fill",
+	"outline",
 }
 
 export enum DFFieldOwlDatetimeMode {

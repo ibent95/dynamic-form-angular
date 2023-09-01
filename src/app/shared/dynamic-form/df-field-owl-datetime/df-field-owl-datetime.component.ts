@@ -19,7 +19,7 @@ export class DFFieldOwlDatetimeComponent {
   @Input() value!: any;
 
   // Datetime picker mode
-  @Input() mode: DFFieldOwlDatetimeMode;
+  @Input() mode!: DFFieldOwlDatetimeMode | string;
 
   formGroup: FormGroup;
 
@@ -28,7 +28,7 @@ export class DFFieldOwlDatetimeComponent {
     private appSvc: AppService,
   ) {
     this.formGroup = this.parentFormGroup.form as FormGroup;
-    this.mode = DFFieldOwlDatetimeMode.DATE;
+    this.mode = this.mode || DFFieldOwlDatetimeMode.DATE;
   }
 
   ngOnInit(): void { }
