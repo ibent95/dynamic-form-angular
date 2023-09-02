@@ -1,4 +1,4 @@
-<form [formGroup]="forms" class="grid grid-cols-1 gap-4" *ngIf="forms && available && selectOptions && forms_metadata && uniqueFalseCheckField">
+<form [formGroup]="forms" class="grid grid-cols-1 gap-4">
 
 	<mat-form-field appearance="outline" [color]="'accent'">
 		<mat-label>Publication type</mat-label>
@@ -10,16 +10,16 @@
 	</mat-form-field>
 
 	<!--<ngx-select
-						class="form-control"
-						id="publication_type_uuid"
-						placeholder="-- Choose publication type --"
-						[formControlName]="'publication_type_uuid'"
-						[items]="selectOptions['publication_type'].items"
-						[optionTextField]="'publication_type_name'"
-						[optionValueField]="'uuid'"
-						[defaultValue]="selectOptions['publication_type'].defaultValue"
-						(selectionChanges)="onPublicationTypeClick($event)"
-					></ngx-select>-->
+		class="form-control"
+		id="publication_type_uuid"
+		placeholder="-- Choose publication type --"
+		[formControlName]="'publication_type_uuid'"
+		[items]="selectOptions['publication_type'].items"
+		[optionTextField]="'publication_type_name'"
+		[optionValueField]="'uuid'"
+		[defaultValue]="selectOptions['publication_type'].defaultValue"
+		(selectionChanges)="onPublicationTypeClick($event)"
+	></ngx-select>-->
 
 	<!-- Show no data information if forms meta data is empty -->
 	<ng-container *ngIf="(available.form_metadata_no_data)">
@@ -39,14 +39,12 @@
 	</ng-container>
 
 	<!-- Show loader if forms meta data is available and is in progress -->
-	<ng-container
-		*ngIf="(available.publication_type_selected && !available.form_metadata_loaded && !available.form_metadata_no_data)">
+	<ng-container *ngIf="(available.publication_type_selected && !available.form_metadata_loaded && !available.form_metadata_no_data)">
 		<app-loader></app-loader>
 	</ng-container>
 
 	<!-- Show forms recursively -->
-	<ng-container
-		*ngIf="(available.publication_type_selected && available.form_metadata_loaded && !available.form_metadata_no_data)">
+	<ng-container *ngIf="(available.publication_type_selected && available.form_metadata_loaded && !available.form_metadata_no_data)">
 
 		<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
 			<div class="field field-{{ fieldIndex }}">

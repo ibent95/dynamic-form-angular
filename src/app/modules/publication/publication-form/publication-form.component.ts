@@ -175,9 +175,9 @@ export class PublicationFormComponent implements OnInit {
       this.selectOptions['publication_type'].items = response['data'];
       this.available.publication_type_loaded = true;
 
-      this.forms.get('publication_type_code')?.setValue('BOK-1');
-      this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
-      this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
+      //this.forms.get('publication_type_code')?.setValue('BOK-1');
+      //this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
+      //this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
     });
   }
 

@@ -21,7 +21,7 @@
 
 			<!-- Material grid system -->
 			<ng-container *ngIf="(available.grid_system.type === 'material')">
-				<form [formGroup]="forms">
+				<form>
 
 					<mat-grid-list [cols]="available.grid_system.cols" [rowHeight]="'75px'" [gutterSize]="'15px'">
 
@@ -802,7 +802,7 @@
 			<!-- Bootstrap or Tailwind grid system -->
 			<ng-container *ngIf="(available.grid_system.type !== 'no_grid_system' && available.grid_system.type !== 'material')">
 
-				<form [formGroup]="forms">
+				<form>
 
 					<div [ngClass]="[
 						(available.grid_system?.type === 'bootstrap') ? 'row' : 'null',

@@ -3,7 +3,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DFFieldOwlDatetimeMode } from 'src/app/enums/df-field';
-import { DFField } from 'src/app/interfaces/df-field';
+import { DFField } from 'src/app/interfaces/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
