@@ -36,10 +36,6 @@ export class PublicationFormGridSystemsDefaultComponent implements OnInit {
 
   public ngOnInit(): void {
     this.ref.detectChanges();
-    setTimeout(() => {
-      console.log('aaaaaaaaaaa', this.dfMetadata);
-
-    }, 10000);
   }
 
   private subscribeDFMetadata() {

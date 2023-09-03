@@ -87,12 +87,6 @@ import { DFFieldImageComponent } from './shared/dynamic-form/df-field-image/df-f
 import { DFFieldColorComponent } from './shared/dynamic-form/df-field-color/df-field-color.component';
 import { DFFieldCheckboxComponent } from './shared/dynamic-form/df-field-checkbox/df-field-checkbox.component';
 import { DFFieldRadioComponent } from './shared/dynamic-form/df-field-radio/df-field-radio.component';
-import { DFFieldInfoComponent } from './shared/dynamic-form/df-field-info/df-field-info.component';
-import { DFFieldStepperComponent } from './shared/dynamic-form/df-field-stepper/df-field-stepper.component';
-import { DFFieldAccordionComponent } from './shared/dynamic-form/df-field-accordion/df-field-accordion.component';
-import { DFFieldPanelComponent } from './shared/dynamic-form/df-field-panel/df-field-panel.component';
-import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-multiple-form/df-field-multiple-form.component';
-import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
 import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component';
@@ -111,6 +105,13 @@ import { DFFieldOwlYearComponent } from './shared/dynamic-form/df-field-owl-date
 import { DFFieldOwlDateRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-range/df-field-owl-date-range.component';
 import { DFFieldOwlTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time-range/df-field-owl-time-range.component';
 import { DFFieldOwlDateTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time-range/df-field-owl-date-time-range.component';
+import { DFAlertComponent } from './shared/dynamic-form/df-alert/df-alert.component';
+import { DFFieldMultipleComponent } from './shared/dynamic-form/df-field-multiple/df-field-multiple.component';
+import { DFWrapperStepperComponent } from './shared/dynamic-form/df-wrapper-stepper/df-wrapper-stepper.component';
+import { DFWrapperAccordionComponent } from './shared/dynamic-form/df-wrapper-accordion/df-wrapper-accordion.component';
+import { DFWrapperPanelComponent } from './shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component';
+import { DFWrapperMultipleComponent } from './shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
+import { DFCustomAlertInfoNoDataComponent } from './shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -167,12 +168,6 @@ registerLocaleData(localeId, 'id');
     DFFieldColorComponent,
     DFFieldCheckboxComponent,
     DFFieldRadioComponent,
-    DFFieldInfoComponent,
-    DFFieldStepperComponent,
-    DFFieldAccordionComponent,
-    DFFieldPanelComponent,
-    DFFieldMultipleFormComponent,
-    DFFormMultipleComponent,
     DFFieldSliderComponent,
     DFFieldSelectComponent,
     DFFieldNGXSelectComponent,
@@ -191,6 +186,13 @@ registerLocaleData(localeId, 'id');
     DFFieldOwlDateRangeComponent,
     DFFieldOwlTimeRangeComponent,
     DFFieldOwlDateTimeRangeComponent,
+    DFFieldMultipleComponent,
+    DFAlertComponent,
+    DFWrapperStepperComponent,
+    DFWrapperAccordionComponent,
+    DFWrapperPanelComponent,
+    DFWrapperMultipleComponent,
+    DFCustomAlertInfoNoDataComponent,
   ],
   imports: [
     BrowserModule,

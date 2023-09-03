@@ -6,11 +6,11 @@ import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-field-multiple-form',
-  templateUrl: './df-field-multiple-form.component.html',
+  selector: 'df-wrapper-accordion',
+  templateUrl: './df-wrapper-accordion.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldMultipleFormComponent {
+export class DFWrapperAccordionComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

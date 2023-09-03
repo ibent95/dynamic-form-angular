@@ -14,7 +14,7 @@
 			<app-loader></app-loader>
 		</ng-container>
 
-		<ng-container [formGroup]="forms" *ngIf="(dfMetadata.isFormBuilderCreated && dfMetadata.isFormTypeLoaded)">
+		<form [formGroup]="forms" *ngIf="(dfMetadata.isFormBuilderCreated && dfMetadata.isFormTypeLoaded)">
 
 			<!-- No grid system -->
 			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'no_grid_system' || dfMetadata.gridSystems.type === 'default')">
@@ -63,19 +63,7 @@
 						<!-- Show no data information if forms meta data is empty -->
 						<ng-container *ngIf="(available.form_metadata_no_data)">
 							<mat-grid-tile [colspan]="12" [rowspan]="4">
-
-								<div class="mat-grid-tile-container h-50" align="center">
-									<i class="material-icons text-9xl">warning_amber</i>
-
-									<div class="grid grid-cols-1">
-										<span class="text-xl font-medium">No data</span>
-										<span class="text-xl">No form data is displayed, please select another type of publication or back.</span>
-									</div>
-
-								</div>
-
-								<button mat-stroked-button class="flex-initial w-32" (click)="onBackButtonClick()">Back</button>
-
+								<df-custom-alert-info-no-data></df-custom-alert-info-no-data>
 							</mat-grid-tile>
 						</ng-container>
 
@@ -1575,7 +1563,7 @@
 
 			</ng-container>
 
-		</ng-container>
+		</form>
 
 	</mat-card-content>
 </mat-card>

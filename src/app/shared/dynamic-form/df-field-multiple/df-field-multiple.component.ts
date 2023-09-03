@@ -6,11 +6,11 @@ import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-form-multiple',
-  templateUrl: './df-form-multiple.component.html',
+  selector: 'df-field-multiple',
+  templateUrl: './df-field-multiple.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFormMultipleComponent {
+export class DFFieldMultipleComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

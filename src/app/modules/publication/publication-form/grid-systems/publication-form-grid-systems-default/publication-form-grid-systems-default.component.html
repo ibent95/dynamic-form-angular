@@ -1,4 +1,4 @@
-<form [formGroup]="forms" class="grid grid-cols-1 gap-4">
+<div [formGroup]="forms" class="grid grid-cols-1 gap-4">
 
 	<mat-form-field appearance="outline" [color]="'accent'">
 		<mat-label>Publication type</mat-label>
@@ -28,18 +28,7 @@
 
 	<!-- Show no data information if forms meta data is empty -->
 	<ng-container *ngIf="(dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
-		<div class="grid justify-items-center gap-4">
-			<div class="h-50" style="text-align: center;">
-				<i class="material-icons text-9xl">warning_amber</i>
-
-				<div class="grid grid-cols-1">
-					<span class="text-xl font-medium">No data</span>
-					<span class="text-xl">No form data is displayed, please select another type of publication or back.</span>
-				</div>
-			</div>
-
-			<button mat-stroked-button class="flex-initial w-32" (click)="onBackButtonClick()">Back</button>
-		</div>
+		<df-custom-alert-info-no-data></df-custom-alert-info-no-data>
 	</ng-container>
 
 	<!-- Show forms recursively -->
@@ -763,4 +752,4 @@
 
 	</ng-container>
 
-</form>
+</div>
