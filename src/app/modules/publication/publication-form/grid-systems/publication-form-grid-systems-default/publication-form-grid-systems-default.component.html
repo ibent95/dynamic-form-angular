@@ -21,10 +21,15 @@
 		(selectionChanges)="onPublicationTypeClick($event)"
 	></ngx-select>-->
 
+	<!-- Show loader if forms meta data is available and is in progress -->
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && !dfMetadata.isMetadataLoaded)">
+		<app-loader [messages]="loadingMessage"></app-loader>
+	</ng-container>
+
 	<!-- Show no data information if forms meta data is empty -->
-	<ng-container *ngIf="(dfMetadata.noData && !dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+	<ng-container *ngIf="(dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
 		<div class="grid justify-items-center gap-4">
-			<div class="h-50" align="center">
+			<div class="h-50" style="text-align: center;">
 				<i class="material-icons text-9xl">warning_amber</i>
 
 				<div class="grid grid-cols-1">
@@ -35,11 +40,6 @@
 
 			<button mat-stroked-button class="flex-initial w-32" (click)="onBackButtonClick()">Back</button>
 		</div>
-	</ng-container>
-
-	<!-- Show loader if forms meta data is available and is in progress -->
-	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && !dfMetadata.isMetadataLoaded)">
-		<app-loader></app-loader>
 	</ng-container>
 
 	<!-- Show forms recursively -->
@@ -498,103 +498,79 @@
 												<ng-container [ngSwitch]="child.field_type">
 
 													<ng-container *ngSwitchCase="'text'">
-														<df-field-text appearance="outline" color="accent"
-															[field]="child"></df-field-text>
+														<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'url'">
-														<df-field-url appearance="outline" color="accent"
-															[field]="child"></df-field-url>
+														<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'email'">
-														<df-field-email appearance="outline" color="accent"
-															[field]="child"></df-field-email>
+														<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'number'">
-														<df-field-number appearance="outline" color="accent"
-															[field]="child"></df-field-number>
+														<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'date'">
-														<df-field-date appearance="outline" color="accent"
-															[field]="child"></df-field-date>
+														<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'month'">
-														<df-field-month appearance="outline" color="accent"
-															[field]="child"></df-field-month>
+														<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'year'">
-														<df-field-year appearance="outline" color="accent"
-															[field]="child"></df-field-year>
+														<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'time'">
-														<df-field-time appearance="outline" color="accent"
-															[field]="child"></df-field-time>
+														<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-date'">
-														<df-field-owl-datetime [mode]="'date'" [appearance]="'outline'"
-															[color]="'accent'" [field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-month'">
-														<df-field-owl-datetime [mode]="'month'" [appearance]="'outline'"
-															[color]="'accent'" [field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-year'">
-														<df-field-owl-datetime [mode]="'year'" [appearance]="'outline'"
-															[color]="'accent'" [field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-time'">
-														<df-field-owl-datetime [mode]="'time'" [appearance]="'outline'"
-															[color]="'accent'" [field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-datetime'">
-														<df-field-owl-datetime [mode]="'date-time'"
-															[appearance]="'outline'" [color]="'accent'"
-															[field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'date-time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-daterange'">
-														<df-field-owl-datetime [mode]="'date-range'"
-															[appearance]="'outline'" [color]="'accent'"
-															[field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'date-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-timerange'">
-														<df-field-owl-datetime [mode]="'time-range'"
-															[appearance]="'outline'" [color]="'accent'"
-															[field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'owl-datetimerange'">
-														<df-field-owl-datetime [mode]="'date-time-range'"
-															[appearance]="'outline'" [color]="'accent'"
-															[field]="child"></df-field-owl-datetime>
+														<df-field-owl-datetime [mode]="'date-time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'select'">
-														<df-field-select appearance="outline" color="accent"
-															[field]="child"
-															[options]="forms.value[child.field_name + '_options']"></df-field-select>
+														<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'file'">
-														<df-field-file appearance="outline" color="accent"
-															[field]="child"></df-field-file>
+														<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
 													</ng-container>
 
 													<ng-container *ngSwitchCase="'image'">
-														<df-field-image appearance="outline" color="accent"
-															[field]="child"></df-field-image>
+														<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 													</ng-container>
 
 												</ng-container>

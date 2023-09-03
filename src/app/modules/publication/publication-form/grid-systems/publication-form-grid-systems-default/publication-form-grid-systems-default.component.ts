@@ -18,9 +18,10 @@ export class PublicationFormGridSystemsDefaultComponent implements OnInit {
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
   @Output() onFormSubmitButtonClicked!: EventEmitter<any>;
 
-
+  selectedPublicationType!: { text: string; value: any };
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
+  loadingMessage!: string;
 
   constructor(
     private location: Location,
@@ -35,6 +36,10 @@ export class PublicationFormGridSystemsDefaultComponent implements OnInit {
 
   public ngOnInit(): void {
     this.ref.detectChanges();
+    setTimeout(() => {
+      console.log('aaaaaaaaaaa', this.dfMetadata);
+
+    }, 10000);
   }
 
   private subscribeDFMetadata() {
@@ -49,6 +54,8 @@ export class PublicationFormGridSystemsDefaultComponent implements OnInit {
   }
 
   public onPublicationTypeSlctSelect(data: any) {
+    this.selectedPublicationType = { text: data.source?.selected?.viewValue, value: data };
+    this.loadingMessage = 'Loading ' + this.selectedPublicationType?.text + ' form...';
     this.onPublicationTypeSelected.emit(data);
   }
 
