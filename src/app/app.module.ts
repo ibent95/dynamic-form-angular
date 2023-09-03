@@ -70,6 +70,7 @@ import { PublicationComponent } from './modules/publication/publication.componen
 import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './modules/publication/publication-detail/publication-detail.component';
 import { PublicationFormGridSystemsDefaultComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-default/publication-form-grid-systems-default.component';
+import { PublicationFormGridSystemsMaterialComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-material/publication-form-grid-systems-material.component';
 import { PublicationFormGridSystemsBootstrapComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
 import { PublicationFormGridSystemsTailwindComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
 
@@ -133,6 +134,7 @@ registerLocaleData(localeId, 'id');
     PublicationFormComponent,
     PublicationDetailComponent,
     PublicationFormGridSystemsDefaultComponent,
+    PublicationFormGridSystemsMaterialComponent,
     PublicationFormGridSystemsBootstrapComponent,
     PublicationFormGridSystemsTailwindComponent,
     GhostTableComponent,

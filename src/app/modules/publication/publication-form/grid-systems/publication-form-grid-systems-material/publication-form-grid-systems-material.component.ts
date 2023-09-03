@@ -1,15 +1,15 @@
 import { Location } from "@angular/common";
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormArray } from "@angular/forms";
-import { AppService } from "src/app/services/app.service";
-import { DFMetadata, DFDataService } from "src/app/shared/dynamic-form/dynamic-forms";
+import { FormGroup, FormArray } from '@angular/forms';
+import { AppService } from 'src/app/services/app.service';
+import { DFMetadata, DFDataService } from 'src/app/shared/dynamic-form/dynamic-forms';
 
 @Component({
-  selector: 'app-publication-form-grid-systems-bootstrap',
-  templateUrl: './publication-form-grid-systems-bootstrap.component.html',
-  styleUrls: ['./publication-form-grid-systems-bootstrap.component.scss']
+  selector: 'app-publication-form-grid-systems-material',
+  templateUrl: './publication-form-grid-systems-material.component.html',
+  styleUrls: ['./publication-form-grid-systems-material.component.scss']
 })
-export class PublicationFormGridSystemsBootstrapComponent implements OnInit {
+export class PublicationFormGridSystemsMaterialComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
   @Input('parentForms') forms!: FormGroup;

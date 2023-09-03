@@ -23,27 +23,6 @@ import { DFDataService, DFMetadata } from "src/app/shared/dynamic-form/dynamic-f
 })
 export class PublicationFormComponent implements OnInit {
 
-  available!: any | {
-    no_data: boolean,
-    form_metadata_no_data: boolean,
-    form_metadata_loaded: boolean,
-    form_builder: boolean,
-    publication_type_loaded: boolean,
-    publication_type_selected: boolean,
-    publication_form_metadata_loaded: boolean,
-    grid_system: {
-      type: 'material' | 'bootstrap' | 'tailwind' | 'no_grid_system',
-      cols: number,
-      config: object
-    } ,
-    wizard_avaliable: boolean,
-    wizard_count: number,
-    wizards: Array<any>,
-    current_date: Date,
-    cancel_button_disabled: boolean,
-    submit_button_disabled: boolean,
-  };
-
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   formVersionCode!: string | null;
@@ -103,25 +82,6 @@ export class PublicationFormComponent implements OnInit {
   }
 
   private initiateData(): void {
-    this.available = {
-      form_metadata_loaded: false,
-      form_builder: false,
-      publication_type_loaded: false,
-      publication_type_selected: false,
-      publication_form_metadata_loaded: false,
-      grid_system: {
-        type: 'no_grid_system',
-        cols: 12,
-        config: {},
-      },
-      wizard_avaliable: false,
-      wizard_count: 0,
-      wizards: [],
-      current_date: new Date(),
-      cancel_button_disabled: false,
-      submit_button_disabled: false,
-    };
-
     this.dfMetadata = {
       noData: true,
       isRawMetadataLoaded: false,
@@ -204,7 +164,6 @@ export class PublicationFormComponent implements OnInit {
     this.dfMetadata.isFormBuilderCreated = true;
 
     this.getMasterdataPublicationType();
-    console.info('PublicationFormComponent, dfMetadata: ', this.dfMetadata)
   }
 
   // Function to get publication type
@@ -300,8 +259,8 @@ export class PublicationFormComponent implements OnInit {
         this.disabledFields[element.field_name] = false;
       }
 
-      if (element.field_type === 'wizard' && (element.children.length > 0)) {
-        this.available.wizards.push({
+      if ((element.field_type === 'wizard' || element.field_type === 'stepper') && (element.children.length > 0)) {
+        this.dfMetadata.wizards?.push({
           field_label: element.field_label,
           step: i,
           active: (i === 0)
@@ -439,7 +398,7 @@ export class PublicationFormComponent implements OnInit {
           });
         }
 
-        this.available[element.field_name] = (this.userData[element.field_name]) ? [this.userData[element.field_name].map((item: any) => { return item.uuid; })] : [];
+        this.dfMetadata.unknown[element.field_name] = (this.userData[element.field_name]) ? [this.userData[element.field_name].map((item: any) => { return item.uuid; })] : [];
 
         fieldDataSets[element.field_name] = [multiple_autoselect];
 
@@ -476,7 +435,7 @@ export class PublicationFormComponent implements OnInit {
 
         this.selectURLParameters[element.field_name] = [];
         this.selectOptions[element.field_name] = [];
-        this.available[element.field_name] = [];
+        this.dfMetadata.unknown[element.field_name] = [];
         this.uniqueFalseCheckField[element.field_name] = [];
 
         if (this.userData[element.field_name]) {
@@ -495,12 +454,12 @@ export class PublicationFormComponent implements OnInit {
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || 1, [Validators.min(element.validation_config?.min || 0), Validators.pattern(element.validation_config?.pattern || '^[0-9]*$')]];
 
       } else if (element.field_type === 'mask_full_time') {
-        this.available[element.field_name] = this.userData[element.field_name] || '';
+        this.dfMetadata.unknown[element.field_name] = this.userData[element.field_name] || '';
 
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
       } else if (element.field_type === 'mask') {
-        this.available[element.field_name] = this.userData[element.field_name] || '';
+        this.dfMetadata.unknown[element.field_name] = this.userData[element.field_name] || '';
 
         fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
 
@@ -540,14 +499,12 @@ export class PublicationFormComponent implements OnInit {
 
   // Function for check changes of form
   private subscribeToFormsChanges() {
-    console.log('formValue', this.forms.value);
-    this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
-      //this.statusSvc.addEditMode = true;
-    });
-    this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
-      console.log('subscribeToFormsChanges formValueChanges', this.forms.value);
-      //this.updateGlobalDFMetadata();
-    });
+    //this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+    //  this.statusSvc.addEditMode = true;
+    //});
+    //this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+    //  this.updateGlobalDFMetadata();
+    //});
   }
 
   public get forms_metadata(): Array<any> {
@@ -579,7 +536,7 @@ export class PublicationFormComponent implements OnInit {
 
   // Event on click cancel button
   public onFormCancelButtonClick() {
-    this.available.submit_button_disabled = !!this.available.submit_button_disabled;
+    this.dfMetadata.isSubmitButtonDisabled = !!this.dfMetadata.isSubmitButtonDisabled;
 
     // Dialog initial configuration and open
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
@@ -600,7 +557,7 @@ export class PublicationFormComponent implements OnInit {
         this.location.back();
 
       } else { // Default handler, to set disable of submit button
-        this.available.submit_button_disabled = !!this.available.submit_button_disabled;
+        this.dfMetadata.isSubmitButtonDisabled = !!this.dfMetadata.isSubmitButtonDisabled;
       }
     });
 
