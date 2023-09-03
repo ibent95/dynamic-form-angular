@@ -3,7 +3,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateView, OWL_DATE_TIME_FORMATS, OwlDateTimeComponent } from '@danielmoncada/angular-datetime-picker';
-import { DFField } from 'src/app/interfaces/dynamic-forms';
+import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { OWL_NATIVE_YEAR_FORMATS } from 'src/app/services/app-general.service';
 import { AppService } from 'src/app/services/app.service';
 

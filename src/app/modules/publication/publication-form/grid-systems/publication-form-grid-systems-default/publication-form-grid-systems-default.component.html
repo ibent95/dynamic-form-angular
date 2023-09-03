@@ -3,7 +3,7 @@
 	<mat-form-field appearance="outline" [color]="'accent'">
 		<mat-label>Publication type</mat-label>
 		<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeSlctSelect($event)">
-			<ng-container *ngFor="let publicationType of selectOptions['publication_type'].items; let publicationTypeIndex = index;">
+			<ng-container *ngFor="let publicationType of dfMetadata.selectOptions.publication_type.items; let publicationTypeIndex = index;">
 				<mat-option [value]="publicationType.uuid">{{ publicationType.publication_type_name + ' [ ' + publicationType.publication_type_code + ' ]' }}</mat-option>
 			</ng-container>
 		</mat-select>
@@ -22,15 +22,14 @@
 	></ngx-select>-->
 
 	<!-- Show no data information if forms meta data is empty -->
-	<ng-container *ngIf="(available.form_metadata_no_data)">
+	<ng-container *ngIf="(dfMetadata.noData && !dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
 		<div class="grid justify-items-center gap-4">
 			<div class="h-50" align="center">
 				<i class="material-icons text-9xl">warning_amber</i>
 
 				<div class="grid grid-cols-1">
 					<span class="text-xl font-medium">No data</span>
-					<span class="text-xl">No form data is displayed, please select another type of publication or
-						back.</span>
+					<span class="text-xl">No form data is displayed, please select another type of publication or back.</span>
 				</div>
 			</div>
 
@@ -39,14 +38,14 @@
 	</ng-container>
 
 	<!-- Show loader if forms meta data is available and is in progress -->
-	<ng-container *ngIf="(available.publication_type_selected && !available.form_metadata_loaded && !available.form_metadata_no_data)">
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && !dfMetadata.isMetadataLoaded)">
 		<app-loader></app-loader>
 	</ng-container>
 
 	<!-- Show forms recursively -->
-	<ng-container *ngIf="(available.publication_type_selected && available.form_metadata_loaded && !available.form_metadata_no_data)">
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
 
-		<ng-container *ngFor="let field of forms_metadata; let fieldIndex = index;">
+		<ng-container *ngFor="let field of dfMetadata.initialFields.forms; let fieldIndex = index;">
 			<div class="field field-{{ fieldIndex }}">
 
 				<!-- Field label -->
@@ -354,155 +353,119 @@
 
 								<ng-container *ngFor="let panel of field.children; let panelIndex = index;">
 
-									<mat-expansion-panel class="mat-elevation-z8" [expanded]="true"
-										[hideToggle]="false">
+									<mat-expansion-panel class="mat-elevation-z8" [expanded]="true" [hideToggle]="false">
 										<!-- Header -->
 										<mat-expansion-panel-header class="divider-bottom">
 											<mat-panel-title>{{ panel.field_label }}</mat-panel-title>
 											<mat-panel-description class="justify-between">
 												<span>{{ panel.description }}</span>
-												<ng-container
-													*ngIf="(panel.field_configs?.panel_description?.mat_icon)">
-													<mat-icon>{{ panel.field_configs?.panel_description?.mat_icon
-														}}</mat-icon>
+												<ng-container *ngIf="(panel.field_configs?.panel_description?.mat_icon)">
+													<mat-icon>{{ panel.field_configs?.panel_description?.mat_icon }}</mat-icon>
 												</ng-container>
 											</mat-panel-description>
 										</mat-expansion-panel-header>
 
 										<!-- Content -->
 										<div class="grid grid-cols-1 gap-y-4">
-											<ng-container
-												*ngFor="let child of panel.children; let childFieldIndex = index;">
+											<ng-container *ngFor="let child of panel.children; let childFieldIndex = index;">
 
-												<div
-													[ngClass]="[(childFieldIndex === 0) ? 'mt-4' : '', (childFieldIndex === (panel.children.length - 1)) ? 'mb-4' : '']">
+												<div [ngClass]="[(childFieldIndex === 0) ? 'mt-4' : '', (childFieldIndex === (panel.children?.length - 1)) ? 'mb-4' : '']">
 													<ng-container [ngSwitch]="child.field_type">
 
 														<ng-container *ngSwitchCase="'text'">
-															<df-field-text appearance="outline" color="accent"
-																[field]="child"></df-field-text>
+															<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'url'">
-															<df-field-url appearance="outline" color="accent"
-																[field]="child"></df-field-url>
+															<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'email'">
-															<df-field-email appearance="outline" color="accent"
-																[field]="child"></df-field-email>
+															<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'number'">
-															<df-field-number appearance="outline" color="accent"
-																[field]="child"></df-field-number>
+															<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'date'">
-															<df-field-date appearance="outline" color="accent"
-																[field]="child"></df-field-date>
+															<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'month'">
-															<df-field-month appearance="outline" color="accent"
-																[field]="child"></df-field-month>
+															<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'year'">
-															<df-field-year appearance="outline" color="accent"
-																[field]="child"></df-field-year>
+															<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'time'">
-															<df-field-time appearance="outline" color="accent"
-																[field]="child"></df-field-time>
+															<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-date'">
-															<df-field-owl-datetime [mode]="'date'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-month'">
-															<df-field-owl-datetime [mode]="'month'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-year'">
-															<df-field-owl-datetime [mode]="'year'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-time'">
-															<df-field-owl-datetime [mode]="'time'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-datetime'">
-															<df-field-owl-datetime [mode]="'date-time'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'date-time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-daterange'">
-															<df-field-owl-datetime [mode]="'date-range'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'date-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-timerange'">
-															<df-field-owl-datetime [mode]="'time-range'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'owl-datetimerange'">
-															<df-field-owl-datetime [mode]="'date-time-range'"
-																[appearance]="'outline'" [color]="'accent'"
-																[field]="child"></df-field-owl-datetime>
+															<df-field-owl-datetime [mode]="'date-time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'select'">
-															<df-field-select appearance="outline" color="accent"
-																[field]="child"
-																[options]="forms.value[child.field_name + '_options']"></df-field-select>
+															<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'file'">
-															<df-field-file appearance="outline" color="accent"
-																[field]="child"></df-field-file>
+															<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
 														</ng-container>
 
 														<ng-container *ngSwitchCase="'image'">
-															<df-field-image appearance="outline" color="accent"
-																[field]="child"></df-field-image>
+															<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 														</ng-container>
 
 													</ng-container>
 
 													<!-- Field`s unique error -->
-													<ng-container
-														*ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
-														<small class="text-red-500">{{
-															uniqueFalseCheckField[child.name_field]['error_message']
-															}}</small>
+													<ng-container *ngIf="(dfMetadata.uniqueFalseCheckFields.hasOwnProperty(child.field_name) && dfMetadata.uniqueFalseCheckFields[child.field_name]?.value && (child.field_type !== 'hidden'))">
+														<small class="text-red-500">
+															{{ dfMetadata.uniqueFalseCheckFields[child.field_name]?.error_message }}
+														</small>
 														<br>
 													</ng-container>
 
 													<!-- Field`s errors message -->
-													<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
-																	forms.get(child.field_name)?.touched)))">
+													<ng-container *ngIf="((child.error_message?.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty || forms.get(child.field_name)?.touched)))">
 														<small class="text-red-500">{{ child.error_message }}</small>
 														<br>
 													</ng-container>
 
 													<!-- Field`s description -->
-													<ng-container
-														*ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
+													<ng-container *ngIf="((child.description?.length > 0) && (child.field_type !== 'hidden'))">
 														<span>{{ child.description }}</span>
 													</ng-container>
 												</div>
@@ -521,8 +484,8 @@
 						<div class="border-custom m-0 p-0"> <!-- class:border-custom -->
 							<mat-label class="ml-1 mt-5">{{ field.field_label }}</mat-label>
 
-							<mat-stepper class="-z-10" [orientation]="field.field_configs.orientation"
-								[linear]="field.field_configs.linear" [color]="'accent'" #stepper>
+							<mat-stepper class="-z-10" [orientation]="field.field_configs?.orientation"
+								[linear]="field.field_configs?.linear" [color]="'accent'" #stepper>
 
 								<ng-container *ngFor="let step of field.children; let stepIndex = index;">
 
@@ -637,24 +600,21 @@
 												</ng-container>
 
 												<!-- Field`s unique error -->
-												<ng-container
-													*ngIf="(uniqueFalseCheckField.hasOwnProperty(child.name_field) && uniqueFalseCheckField[child.name_field]['value'] && (child.field_type !== 'hidden'))">
-													<small class="text-red-500">{{
-														uniqueFalseCheckField[child.name_field]['error_message']
-														}}</small>
+												<ng-container *ngIf="(dfMetadata.uniqueFalseCheckFields.hasOwnProperty(child.field_name) && dfMetadata.uniqueFalseCheckFields[child.field_name]?.value && (child.field_type !== 'hidden'))">
+													<small class="text-red-500">
+														{{ dfMetadata.uniqueFalseCheckFields[child.field_name]?.error_message }}
+													</small>
 													<br>
 												</ng-container>
 
 												<!-- Field`s errors message -->
-												<ng-container *ngIf="(child.error_message && (child.error_message.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty ||
-																forms.get(child.field_name)?.touched)))">
+												<ng-container *ngIf="((child.error_message?.length > 0) && (child.field_type !== 'hidden') && (forms.get(child.field_name)?.invalid && (forms.get(child.field_name)?.dirty || forms.get(child.field_name)?.touched)))">
 													<small class="text-red-500">{{ child.error_message }}</small>
 													<br>
 												</ng-container>
 
 												<!-- Field`s description -->
-												<ng-container
-													*ngIf="(child.description && (child.description.length > 0) && (child.field_type !== 'hidden'))">
+												<ng-container *ngIf="((child.description?.length > 0) && (child.field_type !== 'hidden'))">
 													<span>{{ child.description }}</span>
 												</ng-container>
 											</div>
@@ -667,21 +627,16 @@
 											<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
 
 											<ng-container *ngIf="((stepIndex + 1) === 1)">
-												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'"
-													matStepperNext>Next</button>
+												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
 											</ng-container>
 
-											<ng-container
-												*ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length))">
-												<button mat-stroked-button class="flex-initial w-32" [color]="'default'"
-													matStepperPrevious>Back</button>
-												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'"
-													matStepperNext>Next</button>
+											<ng-container *ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children?.length))">
+												<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
+												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
 											</ng-container>
 
-											<ng-container *ngIf="((stepIndex + 1) === field.children.length)">
-												<button mat-stroked-button class="flex-initial w-32" [color]="'default'"
-													matStepperPrevious>Back</button>
+											<ng-container *ngIf="((stepIndex + 1) === field.children?.length)">
+												<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
 												<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
 												<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
 											</ng-container>
@@ -698,8 +653,7 @@
 
 					<ng-container *ngSwitchCase="'multiple'">
 
-						<ng-container
-							*ngFor="let childItem of getFormGroup(field.field_name)['controls'] ; let childItemIndex = index;">
+						<ng-container *ngFor="let childItem of getFormGroup(field.field_name)['controls'] ; let childItemIndex = index;">
 
 							<div [formArrayName]="field.field_name">
 
@@ -710,99 +664,79 @@
 										<ng-container [ngSwitch]="child.field_type">
 
 											<ng-container *ngSwitchCase="'text'">
-												<df-field-text appearance="outline" color="accent"
-													[field]="child"></df-field-text>
+												<df-field-text appearance="outline" color="accent" [field]="child"></df-field-text>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'url'">
-												<df-field-url appearance="outline" color="accent"
-													[field]="child"></df-field-url>
+												<df-field-url appearance="outline" color="accent" [field]="child"></df-field-url>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'email'">
-												<df-field-email appearance="outline" color="accent"
-													[field]="child"></df-field-email>
+												<df-field-email appearance="outline" color="accent" [field]="child"></df-field-email>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'number'">
-												<df-field-number appearance="outline" color="accent"
-													[field]="child"></df-field-number>
+												<df-field-number appearance="outline" color="accent" [field]="child"></df-field-number>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'date'">
-												<df-field-date appearance="outline" color="accent"
-													[field]="child"></df-field-date>
+												<df-field-date appearance="outline" color="accent" [field]="child"></df-field-date>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'month'">
-												<df-field-month appearance="outline" color="accent"
-													[field]="child"></df-field-month>
+												<df-field-month appearance="outline" color="accent" [field]="child"></df-field-month>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'year'">
-												<df-field-year appearance="outline" color="accent"
-													[field]="child"></df-field-year>
+												<df-field-year appearance="outline" color="accent" [field]="child"></df-field-year>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'time'">
-												<df-field-time appearance="outline" color="accent"
-													[field]="child"></df-field-time>
+												<df-field-time appearance="outline" color="accent" [field]="child"></df-field-time>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-date'">
-												<df-field-owl-datetime [mode]="'date'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'date'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-month'">
-												<df-field-owl-datetime [mode]="'month'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'month'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-year'">
-												<df-field-owl-datetime [mode]="'year'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'year'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-time'">
-												<df-field-owl-datetime [mode]="'time'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-datetime'">
-												<df-field-owl-datetime [mode]="'date-time'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'date-time'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-daterange'">
-												<df-field-owl-datetime [mode]="'date-range'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'date-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-timerange'">
-												<df-field-owl-datetime [mode]="'time-range'" [appearance]="'outline'"
-													[color]="'accent'" [field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'owl-datetimerange'">
-												<df-field-owl-datetime [mode]="'date-time-range'"
-													[appearance]="'outline'" [color]="'accent'"
-													[field]="child"></df-field-owl-datetime>
+												<df-field-owl-datetime [mode]="'date-time-range'" [appearance]="'outline'" [color]="'accent'" [field]="child"></df-field-owl-datetime>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'select'">
-												<df-field-select appearance="outline" color="accent" [field]="child"
-													[options]="forms.value[child.field_name + '_options']"></df-field-select>
+												<df-field-select appearance="outline" color="accent" [field]="child" [options]="forms.value[child.field_name + '_options']"></df-field-select>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'file'">
-												<df-field-file appearance="outline" color="accent"
-													[field]="child"></df-field-file>
+												<df-field-file appearance="outline" color="accent" [field]="child"></df-field-file>
 											</ng-container>
 
 											<ng-container *ngSwitchCase="'image'">
-												<df-field-image appearance="outline" color="accent"
-													[field]="child"></df-field-image>
+												<df-field-image appearance="outline" color="accent" [field]="child"></df-field-image>
 											</ng-container>
 
 										</ng-container>
@@ -822,22 +756,19 @@
 				</ng-container>
 
 				<!-- Field`s unique error -->
-				<ng-container
-					*ngIf="(uniqueFalseCheckField.hasOwnProperty(field.name_field) && uniqueFalseCheckField[field.name_field]['value'] && (field.field_type !== 'hidden'))">
-					<small class="text-red-500">{{ uniqueFalseCheckField[field.name_field]['error_message'] }}</small>
+				<ng-container *ngIf="(dfMetadata.uniqueFalseCheckFields.hasOwnProperty(field.field_name) && dfMetadata.uniqueFalseCheckFields[field.field_name]?.value && (field.field_type !== 'hidden'))">
+					<small class="text-red-500">{{ dfMetadata.uniqueFalseCheckFields[field.field_name]?.error_message }}</small>
 					<br>
 				</ng-container>
 
 				<!-- Field`s errors message -->
-				<ng-container
-					*ngIf="(field.error_message && (field.error_message.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+				<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
 					<small class="text-red-500">{{ field.error_message }}</small>
 					<br>
 				</ng-container>
 
 				<!-- Field`s description -->
-				<ng-container
-					*ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+				<ng-container *ngIf="((field.description?.length > 0) && (field.field_type !== 'hidden'))">
 					<span>{{ field.description }}</span>
 				</ng-container>
 
@@ -849,8 +780,8 @@
 			<mat-divider></mat-divider>
 
 			<div class="flex justify-center gap-4 mt-7">
-				<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="available.cancel_button_disabled">Cancel</button>
-				<button mat-raised-button class="flex-initial w-32" [color]="'accent'" (click)="onFormSubmitButtonClick()" [disabled]="available.submit_button_disabled">Save</button>
+				<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="dfMetadata.iscancel_button_disabled">Cancel</button>
+				<button mat-raised-button class="flex-initial w-32" [color]="'accent'" (click)="onFormSubmitButtonClick()" [disabled]="dfMetadata.issubmit_button_disabled">Save</button>
 			</div>
 		</div>
 

@@ -1,14 +1,15 @@
 import { Location } from "@angular/common";
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from "rxjs";
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
-import { LUXON_DATE_FORMATS, rebuildObject, setConsoleLog } from "src/app/services/app-general.service";
+import { LUXON_DATE_FORMATS, setConsoleLog } from "src/app/services/app-general.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
+import { DFDataService, DFMetadata } from "src/app/shared/dynamic-form/dynamic-forms";
 
 @Component({
   selector: 'app-publication-form',
@@ -54,7 +55,7 @@ export class PublicationFormComponent implements OnInit {
   fieldInForms!: Array<any>;
 
   // All forms and user input in angular form bulder
-  forms!: UntypedFormGroup;
+  forms!: FormGroup;
 
   formStatus!: AppFormStatus;
 
@@ -81,6 +82,8 @@ export class PublicationFormComponent implements OnInit {
     rowsCols: Array<String>
   };
 
+  dfMetadata!: DFMetadata | any;
+
   /**
    * Constructor and other functions before form`s metadata are load
    */
@@ -91,11 +94,12 @@ export class PublicationFormComponent implements OnInit {
     private appSvc: AppService,
     private location: Location,
     private dialog: MatDialog,
+    private dfDataSvc: DFDataService,
+    private ref: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
     this.initiateData();
-    this.initiateForm();
   }
 
   private initiateData(): void {
@@ -118,11 +122,41 @@ export class PublicationFormComponent implements OnInit {
       submit_button_disabled: false,
     };
 
+    this.dfMetadata = {
+      noData: true,
+      isRawMetadataLoaded: false,
+      isFormBuilderCreated: false,
+      isFormTypeLoaded: false,
+      isFormTypeSelected: false,
+      isMetadataLoaded: false,
+      isWizardsAvaliable: false,
+      isStepperAvaliable: false,
+      isCancelButtonDisabled: false,
+      isSubmitButtonDisabled: false,
+
+      gridSystems: {
+        type: 'default',
+        cols: 12,
+        config: {},
+      },
+      initialFields: [],
+      usedFields: [],
+      selectOptions: null,
+      disabledFields: null,
+      hiddenFields: null,
+      selectURLParameters: null,
+      uniqueFalseCheckFields: null,
+
+      wizardsCount: 0,
+      currentDate: new Date(),
+    };
+    this.dfDataSvc.setMetadata(this.dfMetadata);
+
     this.publicationTypeCode = 'JUR-1';
     this.formVersionCode = 'JUR1-V1';
 
     this.fieldInForms = [];
-    this.forms = new UntypedFormGroup({});
+    this.forms = new FormGroup({});
 
     this.selectOptions = {
       publication_type: {
@@ -152,6 +186,8 @@ export class PublicationFormComponent implements OnInit {
         "try_stepper_1_step_1": { "colspan": 12, "rowspan": 1 },
       }
     };
+
+    this.initiateForm();
   }
 
   // Initial function for build form
@@ -159,25 +195,30 @@ export class PublicationFormComponent implements OnInit {
     // Required masterdata
 
     this.formStatus = (this.userData.uuid) ? AppFormStatus.UPDATE : AppFormStatus.CREATE ;
+    this.dfMetadata.formStatus = this.formStatus ;
 
     this.forms = this.formBuilder.group({
       publication_type_code: null,
       publication_type_uuid: null,
     });
+    this.dfMetadata.isFormBuilderCreated = true;
 
     this.getMasterdataPublicationType();
-    this.available.form_builder = true;
+    console.info('PublicationFormComponent, dfMetadata: ', this.dfMetadata)
   }
 
   // Function to get publication type
   private getMasterdataPublicationType(): void {
     this.appSvc.list(AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE).subscribe(response => {
       this.selectOptions['publication_type'].items = response['data'];
-      this.available.publication_type_loaded = true;
 
-      //this.forms.get('publication_type_code')?.setValue('BOK-1');
-      //this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
-      //this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
+      this.dfMetadata.selectOptions = this.selectOptions;
+      this.dfMetadata.isFormTypeLoaded = true;
+
+      this.forms.get('publication_type_code')?.setValue('BOK-1');
+      this.forms.get('publication_type_uuid')?.setValue('a23892cd-6811-44bd-a671-c85b87829887a');
+
+      this.onPublicationTypeSlctSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
     });
   }
 
@@ -190,17 +231,20 @@ export class PublicationFormComponent implements OnInit {
     this.publicationTypeUuid = selectedData['uuid'] || null;
     this.publicationTypeCode = selectedData['publication_type_code'] || null;
 
-    this.available.publication_type_selected = true;
-    this.available.form_metadata_loaded = false;
+    this.dfMetadata.isFormTypeSelected = true;
+    this.dfMetadata.isMetadataLoaded = false;
 
-    delete this.available.no_data;
-    delete this.available.form_metadata_no_data;
+    delete this.dfMetadata.noData;
 
-    this.available.grid_system = {
-      type: 'no_grid_system',
+    this.dfMetadata.gridSystems = {
+      type: 'default',
       cols: 12,
       config: {},
     };
+    this.dfMetadata.initialFields = [];
+    this.dfMetadata.usedFields = [];
+
+    this.updateGlobalDFMetadata();
 
     this.getFormMetadata(this.publicationTypeCode);
   }
@@ -212,24 +256,29 @@ export class PublicationFormComponent implements OnInit {
     if (formVersionCode) params += '?form-version-code=' + formVersionCode;
 
     this.appSvc.listParam(AppServiceType.PUBLICATION_FORM_METADATA, params).subscribe(response => {
-      this.publicationFormMetadata = response['data'];
+      this.dfMetadata.initialFields = response['data'];
 
       // Set available.form_metadata_loaded if publicationFormMetadata.forms`s value is valid
-      if (this.publicationFormMetadata.forms) this.available.form_metadata_loaded = true;
+      if (this.dfMetadata.initialFields.forms) this.dfMetadata.isMetadataLoaded = false;
 
       // Check and set available.form_metadata_no_data if form meta data value is empty or not
-      this.available.form_metadata_no_data = (
-        (typeof this.publicationFormMetadata !== 'object') ||
+      this.dfMetadata.noData = (
+        (typeof this.dfMetadata.initialFields !== 'object') ||
         (
-          (typeof this.publicationFormMetadata === 'object') &&
-          (Array.isArray(this.publicationFormMetadata.forms) && (this.publicationFormMetadata.forms.length === 0))
+          (typeof this.dfMetadata.initialFields === 'object') &&
+          (
+            Array.isArray(this.dfMetadata.initialFields?.forms) &&
+            (this.dfMetadata.initialFields?.forms.length === 0)
+          )
         )
       );
 
       // Set grid system configuration
-      this.available.grid_system = this.publicationFormMetadata.grid_system;
+      this.dfMetadata.gridSystems = this.dfMetadata.initialFields.grid_system;
 
-      this.setFieldsByAttribute('field_name', this.publicationFormMetadata.forms);
+      this.updateGlobalDFMetadata();
+
+      this.setFieldsByAttribute('field_name', this.dfMetadata.initialFields.forms);
 
       this.setDynamicFormValues(this.publicationTypeUuid, this.publicationTypeCode);
     });
@@ -293,6 +342,8 @@ export class PublicationFormComponent implements OnInit {
         this.setFieldsByAttribute(attribute, element['children']);
       }
     });
+
+    this.dfMetadata.usedFields = this.fieldInForms;
   }
 
   // Function to set value in forms (in Form Create and Update)
@@ -463,24 +514,39 @@ export class PublicationFormComponent implements OnInit {
 
     this.forms = this.formBuilder.group(fieldDataSets);
 
+    this.dfMetadata.selectOptions = this.selectOptions;
+    this.dfMetadata.disabledFields = this.disabledFields;
+    this.dfMetadata.hiddenFields = this.hiddenFields;
+    this.dfMetadata.selectURLParameters = this.selectURLParameters;
+    this.dfMetadata.uniqueFalseCheckFields = this.uniqueFalseCheckField;
+
+    this.dfMetadata.isMetadataLoaded = true;
+
     // Console log after form created
     //setConsoleLog(this.forms.getRawValue(), 'formBuilder initial value : ')
     //setConsoleLog(this.available, 'available initial value : ')
     //setConsoleLog(this.fieldInForms, 'fieldInForms : ')
 
     // Handler after form created
+    this.ref.detectChanges();
+    this.updateGlobalDFMetadata();
     //this.setInitialFieldDependencyConfig();
     this.subscribeToFormsChanges();
   }
 
+  private updateGlobalDFMetadata() {
+    this.dfDataSvc.setMetadata(this.dfMetadata);
+  }
+
   // Function for check changes of form
   private subscribeToFormsChanges() {
-    //this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+    console.log('formValue', this.forms.value);
+    this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
       //this.statusSvc.addEditMode = true;
-      //console.log('statusChanges', this.forms.value);
-    //});
+    });
     this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
       console.log('subscribeToFormsChanges formValueChanges', this.forms.value);
+      //this.updateGlobalDFMetadata();
     });
   }
 

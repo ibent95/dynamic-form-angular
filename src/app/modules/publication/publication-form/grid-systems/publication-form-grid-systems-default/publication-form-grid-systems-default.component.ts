@@ -1,7 +1,8 @@
 import { Location } from "@angular/common";
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective, UntypedFormArray } from '@angular/forms';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormArray } from '@angular/forms';
 import { AppService } from 'src/app/services/app.service';
+import { DFDataService, DFMetadata } from "src/app/shared/dynamic-form/dynamic-forms";
 
 @Component({
   selector: 'app-publication-form-grid-systems-default',
@@ -10,35 +11,41 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class PublicationFormGridSystemsDefaultComponent implements OnInit {
 
-  @Input() available!: any;
-  @Input() selectOptions!: any;
-  @Input() forms_metadata!: Array<any>;
-  @Input() uniqueFalseCheckField!: any;
+  @Input() dfMetadata: DFMetadata | any;
+  @Input('parentForms') forms!: FormGroup;
 
   @Output() onPublicationTypeSelected!: EventEmitter<any>;
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
   @Output() onFormSubmitButtonClicked!: EventEmitter<any>;
 
-  forms!: FormGroup;
+
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
 
   constructor(
-    private parentFormGroup: FormGroupDirective,
-    private appSvc: AppService,
     private location: Location,
+    private appSvc: AppService,
+    private dfDataSvc: DFDataService,
+    private ref: ChangeDetectorRef,
   ) {
-    this.forms = this.parentFormGroup.form as FormGroup;
     this.onPublicationTypeSelected = new EventEmitter<any>(true);
     this.onFormCancelButtonClicked = new EventEmitter<any>(true);
     this.onFormSubmitButtonClicked = new EventEmitter<any>(true);
   }
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {
+    this.ref.detectChanges();
+  }
+
+  private subscribeDFMetadata() {
+    this.dfDataSvc.metadata.subscribe((metadata: DFMetadata | any) => {
+      this.dfMetadata = metadata;
+    });
+  }
 
   // Function to get Form Group of formBuilder
   public getFormGroup(fieldName: string) {
-    return this.forms?.get(fieldName) as UntypedFormArray;
+    return this.forms?.get(fieldName) as FormArray;
   }
 
   public onPublicationTypeSlctSelect(data: any) {

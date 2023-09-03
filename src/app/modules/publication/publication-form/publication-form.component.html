@@ -6,21 +6,24 @@
 
 	<mat-card-content>
 
-		<ng-container *ngIf="(available.no_data)">No data</ng-container>
+		<ng-container *ngIf="(!dfMetadata.isFormBuilderCreated && !dfMetadata.isFormTypeLoaded)">
+			No data...
+		</ng-container>
 
-		<ng-container *ngIf="(!available.no_data && available.form_builder && !available.publication_type_loaded && !publicationFormMetadata)">
+		<ng-container *ngIf="(dfMetadata.isFormBuilderCreated && !dfMetadata.isFormTypeLoaded)">
 			<app-loader></app-loader>
 		</ng-container>
 
-		<ng-container [formGroup]="forms" *ngIf="(!available.no_data && available.form_builder && available.publication_type_loaded && publicationFormMetadata)">
+		<ng-container [formGroup]="forms" *ngIf="(dfMetadata.isFormBuilderCreated && dfMetadata.isFormTypeLoaded)">
 
 			<!-- No grid system -->
-			<ng-container *ngIf="(available.grid_system.type === 'no_grid_system' || available.grid_system.type === 'default')">
-				<app-publication-form-grid-systems-default [available]="available" [selectOptions]="selectOptions" [forms_metadata]="publicationFormMetadata.forms" [uniqueFalseCheckField]="uniqueFalseCheckField" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-grid-systems-default>
+			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'no_grid_system' || dfMetadata.gridSystems.type === 'default')">
+				<app-publication-form-grid-systems-default [dfMetadata]="dfMetadata" [parentForms]="forms" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-grid-systems-default>
 			</ng-container>
 
 			<!-- Material grid system -->
 			<ng-container *ngIf="(available.grid_system.type === 'material')">
+
 				<form>
 
 					<mat-grid-list [cols]="available.grid_system.cols" [rowHeight]="'75px'" [gutterSize]="'15px'">
@@ -797,6 +800,7 @@
 					</div>
 
 				</form>
+
 			</ng-container>
 
 			<!-- Bootstrap or Tailwind grid system -->
