@@ -2,18 +2,18 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { DFField } from 'src/app/interfaces/df-field';
+import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-field-multiple-form',
-  templateUrl: './df-field-multiple-form.component.html',
+  selector: 'df-wrapper-multiple',
+  templateUrl: './df-wrapper-multiple.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldMultipleFormComponent {
+export class DFWrapperMultipleComponent {
 
   @Input() field!: DFField;
-  @Input() appearence!: MatFormFieldAppearance;
+  @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
 

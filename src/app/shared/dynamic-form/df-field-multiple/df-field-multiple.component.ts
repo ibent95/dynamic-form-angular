@@ -2,21 +2,19 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { DFField } from 'src/app/interfaces/df-field';
-import { SelectOptionsGroup } from 'src/app/interfaces/select-options-group';
+import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'df-field-ngxselect',
-  templateUrl: './df-field-ngxselect.component.html',
+  selector: 'df-field-multiple',
+  templateUrl: './df-field-multiple.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldNGXSelectComponent {
+export class DFFieldMultipleComponent {
 
   @Input() field!: DFField;
-  @Input() appearence!: MatFormFieldAppearance;
+  @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
-  @Input() options!: SelectOptionsGroup;
   @Input() value!: any;
 
   formGroup!: FormGroup;
@@ -29,7 +27,5 @@ export class DFFieldNGXSelectComponent {
   }
 
   ngOnInit(): void { }
-
-  onSelectionChanges(data: any) { }
 
 }
