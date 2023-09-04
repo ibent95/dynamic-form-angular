@@ -22,6 +22,7 @@ export class PublicationFormGridSystemsMaterialComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
+  gridSystemsClassConfig!: Array<string>;
 
   constructor(
     private location: Location,
@@ -35,6 +36,7 @@ export class PublicationFormGridSystemsMaterialComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.gridSystemsClassConfig = [];
     this.ref.detectChanges();
   }
 

@@ -13,7 +13,7 @@ export class PublicationFormRecursiveComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
   @Input('parentForms') forms!: FormGroup;
-  @Input() gridSystemsClassConfig!: string;
+  @Input() gridSystemsClassConfig!: Array<string>;
   @Input() fieldChildren?: Array<DFField>;
 
   @Output() onPublicationTypeSelected!: EventEmitter<any>;

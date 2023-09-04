@@ -22,6 +22,7 @@ export class PublicationFormGridSystemsBootstrapComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
+  gridSystemsClassConfig!: Array<string>;
 
   constructor(
     private location: Location,
@@ -35,6 +36,10 @@ export class PublicationFormGridSystemsBootstrapComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.gridSystemsClassConfig = [
+      'row',
+      (this.dfMetadata.gridSystems?.cols) ? 'row-cols-' + this.dfMetadata.gridSystems?.cols : '',
+    ];
     this.ref.detectChanges();
   }
 
