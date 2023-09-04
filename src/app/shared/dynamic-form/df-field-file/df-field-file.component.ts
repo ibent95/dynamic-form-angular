@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { DFField } from 'src/app/interfaces/df-field';
+import { DFField } from 'src/app/shared/dynamic-form/dynamic-forms';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AppService } from 'src/app/services/app.service';
 export class DFFieldFileComponent {
 
   @Input() field!: DFField;
-  @Input() appearence!: MatFormFieldAppearance;
+  @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
 

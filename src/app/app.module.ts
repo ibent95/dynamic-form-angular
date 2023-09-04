@@ -70,6 +70,7 @@ import { PublicationComponent } from './modules/publication/publication.componen
 import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
 import { PublicationDetailComponent } from './modules/publication/publication-detail/publication-detail.component';
 import { PublicationFormGridSystemsDefaultComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-default/publication-form-grid-systems-default.component';
+import { PublicationFormGridSystemsMaterialComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-material/publication-form-grid-systems-material.component';
 import { PublicationFormGridSystemsBootstrapComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
 import { PublicationFormGridSystemsTailwindComponent } from './modules/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
 
@@ -87,20 +88,32 @@ import { DFFieldImageComponent } from './shared/dynamic-form/df-field-image/df-f
 import { DFFieldColorComponent } from './shared/dynamic-form/df-field-color/df-field-color.component';
 import { DFFieldCheckboxComponent } from './shared/dynamic-form/df-field-checkbox/df-field-checkbox.component';
 import { DFFieldRadioComponent } from './shared/dynamic-form/df-field-radio/df-field-radio.component';
-import { DFFieldInfoComponent } from './shared/dynamic-form/df-field-info/df-field-info.component';
-import { DFFieldStepperComponent } from './shared/dynamic-form/df-field-stepper/df-field-stepper.component';
-import { DFFieldAccordionComponent } from './shared/dynamic-form/df-field-accordion/df-field-accordion.component';
-import { DFFieldPanelComponent } from './shared/dynamic-form/df-field-panel/df-field-panel.component';
-import { DFFieldMultipleFormComponent } from './shared/dynamic-form/df-field-multiple-form/df-field-multiple-form.component';
-import { DFFormMultipleComponent } from './shared/dynamic-form/df-form-multiple/df-form-multiple.component';
 import { DFFieldSliderComponent } from './shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './shared/dynamic-form/df-field-select/df-field-select.component';
-import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngxselect/df-field-ngxselect.component';
+import { DFFieldNGXSelectComponent } from './shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component';
 import { DfFieldEmailComponent } from './shared/dynamic-form/df-field-email/df-field-email.component';
 import { DfFieldTelComponent } from './shared/dynamic-form/df-field-tel/df-field-tel.component';
 import { DfFieldUrlComponent } from './shared/dynamic-form/df-field-url/df-field-url.component';
 import { DfFieldPasswordComponent } from './shared/dynamic-form/df-field-password/df-field-password.component';
 import { DfFieldSearchComponent } from './shared/dynamic-form/df-field-search/df-field-search.component';
+import { DFFieldMonthComponent } from './shared/dynamic-form/df-field-month/df-field-month.component';
+import { DFFieldOwlDatetimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-datetime.component';
+import { DFFieldOwlDateComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date/df-field-owl-date.component';
+import { DFFieldOwlDateTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time/df-field-owl-date-time.component';
+import { DFFieldOwlTimeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time/df-field-owl-time.component';
+import { DFFieldOwlMonthComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-month/df-field-owl-month.component';
+import { DFFieldOwlYearComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-year/df-field-owl-year.component';
+import { DFFieldOwlDateRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-range/df-field-owl-date-range.component';
+import { DFFieldOwlTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-time-range/df-field-owl-time-range.component';
+import { DFFieldOwlDateTimeRangeComponent } from './shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time-range/df-field-owl-date-time-range.component';
+import { DFAlertComponent } from './shared/dynamic-form/df-alert/df-alert.component';
+import { DFFieldMultipleComponent } from './shared/dynamic-form/df-field-multiple/df-field-multiple.component';
+import { DFWrapperStepperComponent } from './shared/dynamic-form/df-wrapper-stepper/df-wrapper-stepper.component';
+import { DFWrapperAccordionComponent } from './shared/dynamic-form/df-wrapper-accordion/df-wrapper-accordion.component';
+import { DFWrapperPanelComponent } from './shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component';
+import { DFWrapperMultipleComponent } from './shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
+import { DFCustomAlertInfoNoDataComponent } from './shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
+import { PublicationFormRecursiveComponent } from './modules/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -122,6 +135,7 @@ registerLocaleData(localeId, 'id');
     PublicationFormComponent,
     PublicationDetailComponent,
     PublicationFormGridSystemsDefaultComponent,
+    PublicationFormGridSystemsMaterialComponent,
     PublicationFormGridSystemsBootstrapComponent,
     PublicationFormGridSystemsTailwindComponent,
     GhostTableComponent,
@@ -157,12 +171,6 @@ registerLocaleData(localeId, 'id');
     DFFieldColorComponent,
     DFFieldCheckboxComponent,
     DFFieldRadioComponent,
-    DFFieldInfoComponent,
-    DFFieldStepperComponent,
-    DFFieldAccordionComponent,
-    DFFieldPanelComponent,
-    DFFieldMultipleFormComponent,
-    DFFormMultipleComponent,
     DFFieldSliderComponent,
     DFFieldSelectComponent,
     DFFieldNGXSelectComponent,
@@ -171,6 +179,24 @@ registerLocaleData(localeId, 'id');
     DfFieldUrlComponent,
     DfFieldPasswordComponent,
     DfFieldSearchComponent,
+    DFFieldMonthComponent,
+    DFFieldOwlDatetimeComponent,
+    DFFieldOwlDateComponent,
+    DFFieldOwlDateTimeComponent,
+    DFFieldOwlTimeComponent,
+    DFFieldOwlMonthComponent,
+    DFFieldOwlYearComponent,
+    DFFieldOwlDateRangeComponent,
+    DFFieldOwlTimeRangeComponent,
+    DFFieldOwlDateTimeRangeComponent,
+    DFFieldMultipleComponent,
+    DFAlertComponent,
+    DFWrapperStepperComponent,
+    DFWrapperAccordionComponent,
+    DFWrapperPanelComponent,
+    DFWrapperMultipleComponent,
+    DFCustomAlertInfoNoDataComponent,
+    PublicationFormRecursiveComponent,
   ],
   imports: [
     BrowserModule,

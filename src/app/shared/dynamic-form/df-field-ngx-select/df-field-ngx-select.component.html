@@ -1,0 +1,7 @@
+<div [formGroup]="formGroup">
+	<ngx-select class="form-control" id="publication_type_uuid" placeholder="-- Choose publication type --"
+		[formControlName]="'publication_type_uuid'" [items]="options.items"
+		[optionTextField]="'publication_type_name'" [optionValueField]="'uuid'"
+		[defaultValue]="options.default_value"
+		(selectionChanges)="onSelectionChanges($event)"></ngx-select>
+</div>

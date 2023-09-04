@@ -1,1 +1,54 @@
-<p>publication-form-grid-systems-tailwind works!</p>
+<div [formGroup]="forms">
+
+	<div [ngClass]="gridSystemsClassConfig">
+
+		<!-- Publication type input -->
+		<div class="row-span-1 col-span-12">
+			<mat-form-field appearance="outline" [color]="'accent'">
+				<mat-label>Publication type</mat-label>
+				<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeSlctSelect($event)">
+					<mat-option *ngFor="let publicationType of dfMetadata.selectOptions.publication_type?.items; let publicationTypeIndex = index;" [value]="publicationType.uuid">{{ publicationType.publication_type_name + ' [ ' + publicationType.publication_type_code + ' ]' }}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+
+		<!--
+		<div class="row-span-1 col-span-12" *ngIf="(dfMetadata.noData)">
+			<ngx-select class="form-control" id="publication_type_uuid" placeholder="-- Choose publication type --"
+				[formControlName]="'publication_type_uuid'" [items]="dfMetadata.selectOptions.publication_type?.items"
+				[optionTextField]="'publication_type_name'" [optionValueField]="'uuid'"
+				[defaultValue]="dfMetadata.selectOptions.publication_type?.defaultValue"
+				(selectionChanges)="onPublicationTypeClick($event)"></ngx-select>
+		</div>
+		-->
+
+		<!-- Show loader if forms meta data is available and is in progress -->
+		<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && !dfMetadata.isMetadataLoaded)">
+			<app-loader></app-loader>
+		</ng-container>
+
+		<!-- Show no data information if forms meta data is empty -->
+		<ng-container *ngIf="(dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+			<df-custom-alert-info-no-data></df-custom-alert-info-no-data>
+		</ng-container>
+
+	</div>
+
+	<!-- Show forms recursively -->
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+
+		<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
+
+	</ng-container>
+
+	<!-- Below form -->
+	<div class="below-form">
+		<mat-divider></mat-divider>
+
+		<div class="flex justify-center gap-4 mt-7">
+			<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="dfMetadata.cancel_button_disabled">Cancel</button>
+			<button mat-raised-button class="flex-initial w-32" [color]="'accent'" (click)="onFormSubmitButtonClick()" [disabled]="dfMetadata.isSubmitButtonDisabled || !(forms.valid)">Save</button>
+		</div>
+	</div>
+
+</div>
