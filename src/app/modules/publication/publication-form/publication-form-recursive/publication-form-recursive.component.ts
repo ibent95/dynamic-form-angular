@@ -1,18 +1,20 @@
 import { Location } from "@angular/common";
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
-import { AppService } from 'src/app/services/app.service';
-import { DFMetadata, DFDataService } from 'src/app/shared/dynamic-form/dynamic-forms';
+import { FormGroup, FormArray } from "@angular/forms";
+import { AppService } from "src/app/services/app.service";
+import { DFMetadata, DFDataService, DFField } from "src/app/shared/dynamic-form/dynamic-forms";
 
 @Component({
-  selector: 'app-publication-form-grid-systems-tailwind',
-  templateUrl: './publication-form-grid-systems-tailwind.component.html',
-  styleUrls: ['./publication-form-grid-systems-tailwind.component.scss']
+  selector: 'app-publication-form-recursive',
+  templateUrl: './publication-form-recursive.component.html',
+  styleUrls: ['./publication-form-recursive.component.scss']
 })
-export class PublicationFormGridSystemsTailwindComponent implements OnInit {
+export class PublicationFormRecursiveComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
   @Input('parentForms') forms!: FormGroup;
+  @Input() gridSystemsClassConfig!: string;
+  @Input() fieldChildren?: Array<DFField>;
 
   @Output() onPublicationTypeSelected!: EventEmitter<any>;
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
@@ -22,7 +24,6 @@ export class PublicationFormGridSystemsTailwindComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
-  gridSystemsClassConfig!: string;
 
   constructor(
     private location: Location,
@@ -33,10 +34,10 @@ export class PublicationFormGridSystemsTailwindComponent implements OnInit {
     this.onPublicationTypeSelected = new EventEmitter<any>(true);
     this.onFormCancelButtonClicked = new EventEmitter<any>(true);
     this.onFormSubmitButtonClicked = new EventEmitter<any>(true);
-    this.gridSystemsClassConfig = 'grid grid-cols-12 grid-flow-row gap-3';
   }
 
   public ngOnInit(): void {
+    this.fieldChildren = this.fieldChildren ?? this.dfMetadata.initialFields.forms ;
     this.ref.detectChanges();
   }
 
