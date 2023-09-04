@@ -32,14 +32,14 @@
 			<df-custom-alert-info-no-data></df-custom-alert-info-no-data>
 		</ng-container>
 
-		<!-- Show forms recursively -->
-		<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
-
-			<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
-
-		</ng-container>
-
 	</div>
+
+	<!-- Show forms recursively -->
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+
+		<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
+
+	</ng-container>
 
 	<!-- Below form -->
 	<div class="below-form">
