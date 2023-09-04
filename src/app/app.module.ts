@@ -113,6 +113,7 @@ import { DFWrapperAccordionComponent } from './shared/dynamic-form/df-wrapper-ac
 import { DFWrapperPanelComponent } from './shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component';
 import { DFWrapperMultipleComponent } from './shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
 import { DFCustomAlertInfoNoDataComponent } from './shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
+import { PublicationFormRecursiveComponent } from './modules/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -195,6 +196,7 @@ registerLocaleData(localeId, 'id');
     DFWrapperPanelComponent,
     DFWrapperMultipleComponent,
     DFCustomAlertInfoNoDataComponent,
+    PublicationFormRecursiveComponent,
   ],
   imports: [
     BrowserModule,
