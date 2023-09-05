@@ -83,7 +83,7 @@ export interface DFField {
 	dependency_child: any | null;
 	dependency_parent: any | null;
 	description: string | null;
-	error_message: string | null;
+	error_message?: string | any;
 	field_class: string | null;
 	field_configs: DFFieldFieldConfigs | any;
 	field_id: string | null;
