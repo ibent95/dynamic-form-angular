@@ -1,18 +1,20 @@
 import { Location } from "@angular/common";
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
-import { AppService } from 'src/app/services/app.service';
-import { DFMetadata, DFDataService } from 'src/app/shared/dynamic-form/dynamic-forms';
+import { FormGroup, FormArray } from "@angular/forms";
+import { AppService } from "src/app/services/app.service";
+import { DFMetadata, DFDataService, DFField } from "src/app/shared/dynamic-form/dynamic-forms";
 
 @Component({
-  selector: 'app-publication-form-grid-systems-material',
-  templateUrl: './publication-form-grid-systems-material.component.html',
-  styleUrls: ['./publication-form-grid-systems-material.component.scss']
+  selector: 'app-publication-form-recursive',
+  templateUrl: './publication-form-recursive.component.html',
+  styleUrls: ['./publication-form-recursive.component.scss']
 })
-export class PublicationFormGridSystemsMaterialComponent implements OnInit {
+export class PublicationFormRecursiveComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
   @Input('parentForms') forms!: FormGroup;
+  @Input() gridSystemsClassConfig!: Array<string>;
+  @Input() fieldChildren?: Array<DFField>;
 
   @Output() onPublicationTypeSelected!: EventEmitter<any>;
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
@@ -22,7 +24,6 @@ export class PublicationFormGridSystemsMaterialComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
-  gridSystemsClassConfig!: Array<string>;
 
   constructor(
     private location: Location,
@@ -36,7 +37,7 @@ export class PublicationFormGridSystemsMaterialComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.gridSystemsClassConfig = [];
+    this.fieldChildren = this.fieldChildren ?? this.dfMetadata.initialFields.forms ;
     this.ref.detectChanges();
   }
 

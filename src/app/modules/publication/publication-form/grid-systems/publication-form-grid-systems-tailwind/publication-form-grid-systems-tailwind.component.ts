@@ -22,6 +22,7 @@ export class PublicationFormGridSystemsTailwindComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
+  gridSystemsClassConfig!: Array<string>;
 
   constructor(
     private location: Location,
@@ -35,6 +36,11 @@ export class PublicationFormGridSystemsTailwindComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.gridSystemsClassConfig = [
+      'grid',
+      (this.dfMetadata.gridSystems?.cols) ? 'grid-cols-' + (this.dfMetadata.gridSystems?.cols || 12) : '',
+      'grid-flow-row gap-3'
+    ];
     this.ref.detectChanges();
   }
 
