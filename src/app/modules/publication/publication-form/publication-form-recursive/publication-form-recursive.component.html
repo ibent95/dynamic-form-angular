@@ -2,7 +2,7 @@
 
 	<mat-grid-list [cols]="dfMetadata.gridSystems.cols" [rowHeight]="'75px'" [gutterSize]="'15px'">
 
-		<ng-container *ngFor="let field of dfMetadata.initialFields.forms; let fieldIndex = index;">
+		<ng-container *ngFor="let field of fieldChildren; let fieldIndex = index;">
 
 			<mat-grid-tile [colspan]="field.field_configs?.colspan" [rowspan]="field.field_configs?.rowspan">
 
