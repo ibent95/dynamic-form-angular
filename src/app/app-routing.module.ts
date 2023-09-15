@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './modules/login/login.component';
-import { PublicationFormComponent } from './modules/publication/publication-form/publication-form.component';
-import { PublicationComponent } from './modules/publication/publication.component';
-import { PageComponentsComponent } from './shared/page-components/page-components.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { LoginComponent } from './components/login/login.component';
+import { PublicationFormComponent } from './components/publication/publication-form/publication-form.component';
+import { PublicationComponent } from './components/publication/publication.component';
+import { PageComponentsComponent } from './components/shared/page-components/page-components.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {

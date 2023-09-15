@@ -1,0 +1,10 @@
+<mat-form-field appearance="outline" [color]="'accent'" [formGroup]="formGroup">
+	<mat-label>{{ field.field_label }}</mat-label>
+	<mat-select [formControlName]="field.field_name" (selectionChange)="onChange($event)"
+		[placeholder]="field.field_placeholder || 'Please select a data'">
+		<ng-container
+			*ngFor="let option of options.items; let optionIndex = index;">
+			<mat-option [value]="option.uuid">{{ option.value }}</mat-option>
+		</ng-container>
+	</mat-select>
+</mat-form-field>

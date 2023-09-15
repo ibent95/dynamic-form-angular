@@ -9,8 +9,10 @@ export enum AppServiceType {
 
   PUBLICATION_MAIN,
   PUBLICATIONS,
-  PUBLICATION_FORM_METADATA,
-  PUBLICATION_MASTERDATA_PUBLICATION_TYPE,
+  PUBLICATIONS_FORM_METADATA,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES,
 
 }
 
@@ -59,7 +61,7 @@ export class AppService {
         url = this.BASE_URL_API + '/v1';
         break;
 
-      /** =============================== PUBLICATION =============================== */
+      /** =============================== PUBLICATION API =============================== */
 
       case AppServiceType.PUBLICATION_MAIN:
         url = this.BASE_URL_API + '/v1/publication';
@@ -69,17 +71,25 @@ export class AppService {
         url = this.BASE_URL_API + '/v1/publications';
         break;
 
-      case AppServiceType.PUBLICATION_FORM_METADATA:
-        url = this.BASE_URL_API + '/v1/publication/form-metadata';
+      case AppServiceType.PUBLICATIONS_FORM_METADATA:
+        url = this.BASE_URL_API + '/v1/publications/form-metadata';
         break;
 
-      case AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE:
-        url = this.BASE_URL_API + '/v1/master/publication-type';
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES:
+        url = this.BASE_URL_API + '/v1/master/publication-general-types';
         break;
 
-      /** ================================= RESEARCH ================================= */
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES:
+        url = this.BASE_URL_API + '/v1/master/publication-types';
+        break;
 
-      /** ================================== DEFAULT ================================== */
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES:
+        url = this.BASE_URL_API + '/v1/master/publication-statuses';
+        break;
+
+      /** ================================= RESEARCH API ================================= */
+
+      /** ================================== DEFAULT API ================================== */
 
       default:
         url = '';

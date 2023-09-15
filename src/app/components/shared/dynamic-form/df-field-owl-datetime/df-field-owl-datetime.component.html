@@ -1,0 +1,35 @@
+<div class="owl-datetime">
+
+	<ng-container *ngIf="(mode === 'date')">
+		<df-field-owl-date [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-date>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'month')">
+		<df-field-owl-month [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-month>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'year')">
+		<df-field-owl-year [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-year>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'time')">
+		<df-field-owl-time [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-time>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'date-time')">
+		<df-field-owl-date-time [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-date-time>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'date-range')">
+		<df-field-owl-date-range [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-date-range>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'time-range')">
+		<df-field-owl-time-range [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-time-range>
+	</ng-container>
+
+	<ng-container *ngIf="(mode === 'date-time-range')">
+		<df-field-owl-date-time-range [appearance]="appearance" [color]="color" [field]="field" (type)="onType($event)" (change)="onChange($event)"></df-field-owl-date-time-range>
+	</ng-container>
+
+</div>
