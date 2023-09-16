@@ -8,8 +8,7 @@
 
 				<div class="mat-grid-tile-container field field-{{ fieldIndex }}">
 
-					<!-- Field label -->
-
+					<!-- Fields -->
 					<ng-container [ngSwitch]="field.field_type">
 
 						<!-- Main Fields Start -->
@@ -162,8 +161,6 @@
 											<!-- Direction button -->
 											<div class="flex justify-center gap-4">
 
-												<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
-
 												<ng-container *ngIf="((stepIndex + 1) === 1)">
 													<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
 												</ng-container>
@@ -175,8 +172,6 @@
 
 												<ng-container *ngIf="((stepIndex + 1) === field.children?.length)">
 													<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
-													<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
-													<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
 												</ng-container>
 
 											</div>
@@ -329,12 +324,32 @@
 
 						<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [parentField]="field" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
 
+						<!-- Field`s errors message -->
+						<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+							<small class="text-red-500">{{ field.error_message }}</small>
+							<br>
+						</ng-container>
+
+						<!-- Field`s description -->
+						<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+							<span>{{ field.description }}</span>
+						</ng-container>
 					</ng-container>
 
 					<ng-container *ngSwitchCase="'well'">
 
 						<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [parentField]="field" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
 
+						<!-- Field`s errors message -->
+						<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+							<small class="text-red-500">{{ field.error_message }}</small>
+							<br>
+						</ng-container>
+
+						<!-- Field`s description -->
+						<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+							<span>{{ field.description }}</span>
+						</ng-container>
 					</ng-container>
 
 					<ng-container *ngSwitchCase="'accordion'">
@@ -368,6 +383,17 @@
 								</ng-container>
 
 							</mat-accordion>
+
+							<!-- Field`s errors message -->
+							<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+								<small class="text-red-500">{{ field.error_message }}</small>
+								<br>
+							</ng-container>
+
+							<!-- Field`s description -->
+							<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+								<span>{{ field.description }}</span>
+							</ng-container>
 						</div>
 					</ng-container>
 
@@ -386,8 +412,6 @@
 
 										<!-- Direction button -->
 										<div class="flex justify-center gap-4">
-
-											<!--<button mat-stroked-button class="flex-initial w-32" [color]="'warn'">Cancel</button>-->
 
 											<ng-container *ngIf="((stepIndex + 1) === 1)">
 												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
@@ -411,6 +435,17 @@
 								</ng-container>
 
 							</mat-stepper>
+
+							<!-- Field`s errors message -->
+							<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+								<small class="text-red-500">{{ field.error_message }}</small>
+								<br>
+							</ng-container>
+
+							<!-- Field`s description -->
+							<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+								<span>{{ field.description }}</span>
+							</ng-container>
 						</div>
 					</ng-container>
 
@@ -418,11 +453,28 @@
 
 						<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [parentField]="field" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
 
+						<!-- Field`s errors message -->
+						<ng-container *ngIf="((field.error_message?.length > 0) && (field.field_type !== 'hidden') && (forms.get(field.field_name)?.invalid && (forms.get(field.field_name)?.dirty || forms.get(field.field_name)?.touched)))">
+							<small class="text-red-500">{{ field.error_message }}</small>
+							<br>
+						</ng-container>
+
+						<!-- Field`s description -->
+						<ng-container *ngIf="(field.description && (field.description.length > 0) && (field.field_type !== 'hidden'))">
+							<span>{{ field.description }}</span>
+						</ng-container>
 					</ng-container>
 
 					<!-- Group Fields End -->
 
 				</ng-container>
+
+				<!-- Field`s unique error -->
+				<ng-container *ngIf="(dfMetadata.uniqueFalseCheckFields[field.field_name]?.value && (field.field_type !== 'hidden'))">
+					<mat-error>{{ dfMetadata.uniqueFalseCheckFields[field.field_name]?.error_message }}</mat-error>
+					<br>
+				</ng-container>
+
 			</div>
 
 		</ng-container>

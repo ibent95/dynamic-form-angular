@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from "rxjs";
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { LUXON_DATE_FORMATS, setConsoleLog } from "src/app/services/app-general.service";
-import { MatDialog } from "@angular/material/dialog";
-import { DialogConfirmComponent } from "src/app/components/shared/dialog-confirm/dialog-confirm.component";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { DialogConfirmComponent } from "src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component";
 import { DFDataService, DFMetadata, NUMBER_VALIDATION_CONFIG_PATTERN, URL_VALIDATION_CONFIG_PATTERN } from "src/app/components/shared/dynamic-form/dynamic-forms";
 import { BsModalService, ModalOptions } from "ngx-bootstrap/modal";
+import { CustomModalPublicationSubmitConfirmComponent } from "./custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component";
 
 @Component({
   selector: 'app-publication-form',
@@ -93,6 +94,7 @@ export class PublicationFormComponent implements OnInit {
       isMetadataLoaded: false,
       isWizardsAvaliable: false,
       isStepperAvaliable: false,
+      isInSaveProcess: false,
       isCancelButtonDisabled: false,
       isSubmitButtonDisabled: false,
 
@@ -563,20 +565,22 @@ export class PublicationFormComponent implements OnInit {
   public onFormCancelButtonClick() {
     this.dfMetadata.isSubmitButtonDisabled = !!this.dfMetadata.isSubmitButtonDisabled;
 
-    // Dialog initial configuration and open
-    const dialogRef = this.dialog.open(DialogConfirmComponent, {
-      height: '280px',
+    let dialogConfig: MatDialogConfig = {
+      // height: '280px',
       width: '600px',
       data: {
-        title: 'Anda yakin ingin keluar?',
-        content_message: 'Data yang anda masukan tidak akan disimpan.',
-        no_button_label: 'Tidak',
-        yes_button_label: 'Ya',
+        title: 'Are you sure to leave this form?',
+        messages: 'Your data will be destroy after leave th form.',
+        noButtonText: 'No',
+        yesButtonText: 'Sure',
       }
-    });
+    };
+
+    // Dialog initial configuration and open
+    const dialogRef = this.dialog.open(DialogConfirmComponent, dialogConfig);
 
     // Subscribe to dialog closed event
-    dialogRef.afterClosed().subscribe(response => {
+    dialogRef.afterClosed().subscribe((response: any) => {
 
       if (response.result) { // If user`s choice is yes, set location`s back
         this.location.back();
@@ -601,25 +605,25 @@ export class PublicationFormComponent implements OnInit {
   // Event on click submit button
   public onFormSubmitButtonClick() {
 
-    //const submitClick = { submitClick: true };
-    //this.dataSvc.setData(submitClick);
-
-    const innitialState: ModalOptions = {
+    const modalOptions: ModalOptions = {
+      ignoreBackdropClick: true,
+      class: 'modal-md',
       initialState: {
-        title: 'Apakah ingin simpan ?',
-        message: 'Anda dapat menyimpannya sebagai draft atau langsung terbitkan',
-        confirmButtonlabel: 'Terbitkan',
-        draftButtonlabel: 'Draft',
-        cancelButtonlabel: 'Batal',
+        title: 'Are you sure to submit this publication?',
+        messages: 'You can save it as Draft or proceed to Submit',
+        cancelButtonText: 'Cancel',
+        draftButtonText: 'Draft',
+        proceedButtonText: 'Proceed',
        }
     };
 
-    const modal = this.bsModalSvc.show(ConfirmModalCustomComponent, { ignoreBackdropClick: true, class: MODAL.ALERT.WARNING, initialState: innitialState, });
-    (<ConfirmModalCustomComponent>modal.content).onClose.subscribe((result: any) => {
+    const modal = this.bsModalSvc.show(CustomModalPublicationSubmitConfirmComponent, modalOptions) ;
+    (<CustomModalPublicationSubmitConfirmComponent>modal.content).closeState.subscribe((result: any) => {
       if (result) {
         const statusCode = (result === 'draft') ? 'DRF' : 'PRO';
         this.dfMetadata.isSubmitButtonDisabled = true;
         this.dfMetadata.isCancelButtonDisabled = true;
+        this.dfMetadata.isInSaveProcess = true;
 
         const formData = this.setFormData(this.forms.getRawValue(), statusCode);
         const parameter = {};
@@ -629,11 +633,10 @@ export class PublicationFormComponent implements OnInit {
       } else {
         this.dfMetadata.isSubmitButtonDisabled = false;
         this.dfMetadata.isCancelButtonDisabled = false;
-        modal.hide();
+        this.dfMetadata.isInSaveProcess = false;
       }
     });
 
-    
   }
 
   private setFormData(formValues: any, statusCode: string = 'DRF'): FormData {
@@ -641,7 +644,6 @@ export class PublicationFormComponent implements OnInit {
 
     setConsoleLog(formValues, 'formValues')
     result.append('publication_status_code', statusCode);
-    result.append('publication_type_uuid', formValues['publication_type_uuid'] || '');
     result.append('publication_type_code', formValues['publication_type_code'] || '');
 
     this.fieldInForms.forEach((field: any, fieldIndex: number) => {
@@ -652,14 +654,22 @@ export class PublicationFormComponent implements OnInit {
         case 'multiple_select':
         case 'multiple_autoselect':
         case 'multiple_autocomplete':
+          let multipleSelectVariantValue: Array<string> = formValues[field.field_name];
+          let multipleSelectVariantTextValue: Array<string> = formValues[field.field_name + '_text'];
+
           result.append('meta_data[' + fieldIndex + '][uuid]', formValues[field.field_name + '_uuid'] || '');
           result.append('meta_data[' + fieldIndex + '][field_name]', field.field_name || '');
-          formValues[field.field_name]?.forEach((item: any, itemIndex: number) => {
-            result.append('meta_data[' + fieldIndex + '][value][' + itemIndex + ']', formValues[field.field_name] || '');
-            result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][uuid]', formValues[field.field_name] || '');
-            result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][value]', formValues[field.field_name] || '');
-            result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][text]', formValues[field.field_name + '_text'] || '');
-          });
+          if (multipleSelectVariantValue) {
+            multipleSelectVariantValue?.forEach((item: any, itemIndex: number) => {
+              result.append('meta_data[' + fieldIndex + '][value][' + itemIndex + ']', item || '');
+              result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][uuid]', item || '');
+              result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][value]', item || '');
+              result.append('meta_data[' + fieldIndex + '][other_value][' + itemIndex + '][text]', multipleSelectVariantTextValue[itemIndex] || '');
+            });
+          } else {
+            result.append('meta_data[' + fieldIndex + '][value]', '');
+            result.append('meta_data[' + fieldIndex + '][other_value]', '');
+          }
           break;
 
         case 'select':
@@ -685,16 +695,14 @@ export class PublicationFormComponent implements OnInit {
         case 'owl-time':
         case 'owl-datetime':
           // Set value to Date() object.
-          let dateTimeFormat: string = (field.field_type === 'time' || field.field_type === 'owl-time') ? 'H:i:s' : 'Y-m-d H:i:s' ;
+          let dateTimeFormat: string = (field.field_type === 'time' || field.field_type === 'owl-time') ? 'HH:mm:ss' : 'Y-MM-dd HH:mm:ss' ;
+          let dateTimeValue = (formValues[field.field_name])
+            ? formatDate(formValues[field.field_name], dateTimeFormat, 'id')
+            : '' ;
 
           result.append('meta_data[' + fieldIndex + '][uuid]', formValues[field.field_name + '_uuid'] || '');
           result.append('meta_data[' + fieldIndex + '][field_name]', field.field_name || '');
-          result.append(
-            'meta_data[' + fieldIndex + '][value]',
-            (formValues[field.field_name])
-              ? formatDate(formValues[field.field_name], dateTimeFormat, 'id')
-              : ''
-          );
+          result.append('meta_data[' + fieldIndex + '][value]', dateTimeValue);
           result.append('meta_data[' + fieldIndex + '][other_value]', '');
           break;
 
@@ -705,19 +713,24 @@ export class PublicationFormComponent implements OnInit {
         case 'owl-timerange':
         case 'owl-datetimerange':
           // Set value to Date() object.
-          let dateTimeRangeFormat: string = (field.field_type === 'timerange' || field.field_type === 'owl-timerange') ? 'H:i:s' : 'Y-m-d H:i:s' ;
+          let dateTimeRangeFormat: string = (field.field_type === 'timerange' || field.field_type === 'owl-timerange') ? 'HH:mm:ss' : 'Y-MM-dd HH:mm:ss' ;
+          let dateTimeRangeValues = formValues[field.field_name];
 
           result.append('meta_data[' + fieldIndex + '][uuid]', formValues[field.field_name + '_uuid'] || '');
           result.append('meta_data[' + fieldIndex + '][field_name]', field.field_name || '');
-          formValues[field.field_name]?.forEach((item: any, itemIndex: number) => {
-            result.append(
-              'meta_data[' + fieldIndex + '][value][' + itemIndex + ']',
-              (formValues[field.field_name])
-                ? formatDate(item, dateTimeRangeFormat, 'id')
-                : ''
-            );
-          });
-          result.append('meta_data[' + fieldIndex + '][other_value]', '');
+          if (dateTimeRangeValues) {
+            dateTimeRangeValues?.forEach((item: any, itemIndex: number) => {
+              let dateTimeRangeOtherValueName = 'meta_data[' + fieldIndex + '][other_value][' + ((itemIndex === 0) ? 'start_date' : 'end_date') + ']';
+              let dateTimeRangeValueName = 'meta_data[' + fieldIndex + '][value][' + itemIndex + ']';
+              let dateTimeRangeValue = (item) ? formatDate(item, dateTimeRangeFormat, 'id') : '';
+
+              result.append(dateTimeRangeValueName, dateTimeRangeValue);
+              result.append(dateTimeRangeOtherValueName, dateTimeRangeValue);
+            });
+          } else {
+            result.append('meta_data[' + fieldIndex + '][value]', '');
+            result.append('meta_data[' + fieldIndex + '][other_value]', '');
+          }
           break;
 
         case 'checkbox':
@@ -742,22 +755,40 @@ export class PublicationFormComponent implements OnInit {
   private sendData(formData: FormData, formStatus: AppFormStatus, parameter: any): void {
 
     if (formStatus === AppFormStatus.CREATE) {
-      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter).subscribe((response: Observable<any>) => {
-        setConsoleLog(response, 'Response: ');
-      });
+      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
+        (successResponse: Observable<any>) => {
+          setConsoleLog(successResponse, 'POST success response: ');
+        },
+        (errorResponse: Observable<any>) => {
+          setConsoleLog(errorResponse, 'POST error response: ');
+        },
+        () => {
+          this.dfMetadata.isSubmitButtonDisabled = false;
+          this.dfMetadata.isCancelButtonDisabled = false;
+          this.dfMetadata.isInSaveProcess = false;
+        }
+      );
     }
 
     if (formStatus === AppFormStatus.UPDATE) {
-      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter).subscribe((response: Observable<any>) => {
-        setConsoleLog(response, 'Response: ');
-      });
+      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
+        (successResponse: Observable<any>) => {
+          setConsoleLog(successResponse, 'PUT success response: ');
+        },
+        (errorResponse: Observable<any>) => {
+          setConsoleLog(errorResponse, 'PUT error response: ');
+        },
+        () => {
+          this.dfMetadata.isSubmitButtonDisabled = false;
+          this.dfMetadata.isCancelButtonDisabled = false;
+          this.dfMetadata.isInSaveProcess = false;
+        }
+      );
     }
 
     this.handleResponse();
   }
 
-  private handleResponse(): void {
-
-  }
+  private handleResponse(): void { }
 
 }

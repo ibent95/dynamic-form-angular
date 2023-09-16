@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PublicationFormComponent } from './components/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './components/publication/publication.component';
-import { PageComponentsComponent } from './components/shared/page-components/page-components.component';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { PageComponentsComponent } from './components/shared/pages/page-components/page-components.component';
+import { PageNotFoundComponent } from './components/shared/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {

@@ -3,27 +3,35 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 interface DialogData {
   title: string;
-  content_message: string;
-  no_button_available: boolean;
-  no_button_label: string;
-  yes_button_available: boolean;
-  yes_button_label: string;
+  messages: string;
+  noButtonText: string;
+  yesButtonText: string;
 }
 
 @Component({
   selector: 'app-dialog-confirm',
-  templateUrl: './dialog-confirm.component.html',
-  styleUrls: ['./dialog-confirm.component.scss'],
+  template: `
+    <!-- Dialog title -->
+    <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>
+
+    <!-- Dialog content -->
+    <mat-dialog-content class="text-center" [innerHTML]="dialogData.messages"></mat-dialog-content>
+
+    <!-- Dialog action button -->
+    <mat-dialog-actions class="text-center">
+      <button mat-stroked-button mat-dialog-close (click)="onNoBtnClick()" [innerHTML]="dialogData.noButtonText"></button>
+      <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()" [innerHTML]="dialogData.yesButtonText"></button>
+    </mat-dialog-actions>
+  `,
+  styles: ['mat-dialog-actions.mat-mdc-dialog-actions { justify-content: center; }'],
 })
 export class DialogConfirmComponent implements OnInit {
 
   dialogData: DialogData = {
     title: 'Confirm!',
-    content_message: 'Are you sure?',
-    no_button_available: true,
-    no_button_label: 'No',
-    yes_button_available: true,
-    yes_button_label: 'Yes',
+    messages: 'Are you sure?',
+    noButtonText: 'No',
+    yesButtonText: 'Yes',
   };
 
   result!: undefined | {
@@ -41,11 +49,9 @@ export class DialogConfirmComponent implements OnInit {
 
     // Set MAT_DIALOG_DATA to dialogData
     if (this.data?.title !== undefined) this.dialogData.title = this.data?.title;
-    if (this.data?.content_message !== undefined) this.dialogData.content_message = this.data?.content_message;
-    if (this.data?.no_button_available !== undefined) this.dialogData.no_button_available = this.data?.no_button_available;
-    if (this.data?.no_button_label !== undefined) this.dialogData.no_button_label = this.data?.no_button_label;
-    if (this.data?.yes_button_available !== undefined) this.dialogData.yes_button_available = this.data?.yes_button_available;
-    if (this.data?.yes_button_label !== undefined) this.dialogData.yes_button_label = this.data?.yes_button_label;
+    if (this.data?.messages !== undefined) this.dialogData.messages = this.data?.messages;
+    if (this.data?.noButtonText !== undefined) this.dialogData.noButtonText = this.data?.noButtonText;
+    if (this.data?.yesButtonText !== undefined) this.dialogData.yesButtonText = this.data?.yesButtonText;
 
     // Initial value to result variable
     this.result = {

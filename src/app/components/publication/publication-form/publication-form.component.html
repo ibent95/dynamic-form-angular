@@ -39,4 +39,14 @@
 		</form>
 
 	</mat-card-content>
+
+	<mat-card-footer class="below-form mt-3" *ngIf="(dfMetadata?.isFormBuilderCreated && dfMetadata?.isMetadataLoaded )">
+		<mat-divider></mat-divider>
+
+		<div class="flex justify-center gap-4 my-3">
+			<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="dfMetadata.isCancelButtonDisabled">Cancel</button>
+			<button mat-raised-button class="flex-initial w-32" [color]="'accent'" (click)="onFormSubmitButtonClick()" [disabled]="(dfMetadata.isSubmitButtonDisabled || !forms.valid)">Save</button>
+		</div>
+		<mat-progress-bar mode="indeterminate" *ngIf="dfMetadata?.isInSaveProcess"></mat-progress-bar>
+	  </mat-card-footer>
 </mat-card>

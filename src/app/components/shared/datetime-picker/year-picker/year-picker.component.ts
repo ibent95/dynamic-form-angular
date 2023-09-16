@@ -35,8 +35,6 @@ export class YearPickerComponent implements OnInit {
 
   result!: string;
 
-  constructor() { }
-
   ngOnInit(): void {
     this.labelText = this.labelText || 'Choose a date';
     this.placeholderText = this.placeholderText || 'Choose a date';

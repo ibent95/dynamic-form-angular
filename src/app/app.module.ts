@@ -31,10 +31,10 @@ import { ContentComponent } from './core/content/content.component';
 import { FooterComponent } from './core/footer/footer.component';
 
 // App shared components
-import { PageBlankComponent } from './components/shared/page-blank/page-blank.component';
-import { PageComponentsComponent } from './components/shared/page-components/page-components.component';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { PageUnderConstructionComponent } from './components/shared/page-under-construction/page-under-construction.component';
+import { PageBlankComponent } from './components/shared/pages/page-blank/page-blank.component';
+import { PageComponentsComponent } from './components/shared/pages/page-components/page-components.component';
+import { PageNotFoundComponent } from './components/shared/pages/page-not-found/page-not-found.component';
+import { PageUnderConstructionComponent } from './components/shared/pages/page-under-construction/page-under-construction.component';
 import { GhostTableComponent } from './components/shared/ghost-table/ghost-table.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
 
@@ -58,9 +58,14 @@ import { OwlTimeRangePickerComponent } from './components/shared/owl-datetime-pi
 import { OwlDateTimeRangePickerComponent } from './components/shared/owl-datetime-picker/owl-date-time-range-picker/owl-date-time-range-picker.component';
 
 // App shared components (Dialogs)
-import { DialogConfirmComponent } from './components/shared/dialog-confirm/dialog-confirm.component';
-import { DialogAlertComponent } from './components/shared/dialog-alert/dialog-alert.component';
-import { DialogPromptComponent } from './components/shared/dialog-prompt/dialog-prompt.component';
+import { DialogConfirmComponent } from './components/shared/dialogs/dialog-confirm/dialog-confirm.component';
+import { DialogAlertComponent } from './components/shared/dialogs/dialog-alert/dialog-alert.component';
+import { DialogPromptComponent } from './components/shared/dialogs/dialog-prompt/dialog-prompt.component';
+
+// App shared components (Bootstrap modals)
+import { ModalConfirmComponent } from './components/shared/modals/modal-confirm/modal-confirm.component';
+import { ModalAlertComponent } from './components/shared/modals/modal-alert/modal-alert.component';
+import { ModalPromptComponent } from './components/shared/modals/modal-prompt/modal-prompt.component';
 
 // App module / menu components
 import { LoginComponent } from './components/login/login.component';
@@ -74,6 +79,10 @@ import { PublicationFormGridSystemsDefaultComponent } from './components/publica
 import { PublicationFormGridSystemsMaterialComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-material/publication-form-grid-systems-material.component';
 import { PublicationFormGridSystemsBootstrapComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
 import { PublicationFormGridSystemsTailwindComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
+import { PublicationFormRecursiveComponent } from './components/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
+import { CustomModalPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component';
+import { CustomModalPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-modal-publication-exit-form-confirm/custom-modal-publication-exit-form-confirm.component';
+import { CustomModalPublicationDeleteConfirmComponent } from './components/publication/custom-modal-publication-delete-confirm/custom-modal-publication-delete-confirm.component';
 
 // DynamicForm components
 import { DynamicFormComponent } from './components/shared/dynamic-form/dynamic-form.component';
@@ -114,7 +123,6 @@ import { DFWrapperAccordionComponent } from './components/shared/dynamic-form/df
 import { DFWrapperPanelComponent } from './components/shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component';
 import { DFWrapperMultipleComponent } from './components/shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
 import { DFCustomAlertInfoNoDataComponent } from './components/shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
-import { PublicationFormRecursiveComponent } from './components/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -139,6 +147,10 @@ registerLocaleData(localeId, 'id');
     PublicationFormGridSystemsMaterialComponent,
     PublicationFormGridSystemsBootstrapComponent,
     PublicationFormGridSystemsTailwindComponent,
+    PublicationFormRecursiveComponent,
+    CustomModalPublicationSubmitConfirmComponent,
+    CustomModalPublicationExitFormConfirmComponent,
+    CustomModalPublicationDeleteConfirmComponent,
     GhostTableComponent,
     LoaderComponent,
     DatetimePickerComponent,
@@ -159,6 +171,9 @@ registerLocaleData(localeId, 'id');
     DialogConfirmComponent,
     DialogAlertComponent,
     DialogPromptComponent,
+    ModalConfirmComponent,
+    ModalAlertComponent,
+    ModalPromptComponent,
     DynamicFormComponent,
     DFFieldTextComponent,
     DFFieldNumberComponent,
@@ -197,7 +212,6 @@ registerLocaleData(localeId, 'id');
     DFWrapperPanelComponent,
     DFWrapperMultipleComponent,
     DFCustomAlertInfoNoDataComponent,
-    PublicationFormRecursiveComponent,
   ],
   imports: [
     BrowserModule,

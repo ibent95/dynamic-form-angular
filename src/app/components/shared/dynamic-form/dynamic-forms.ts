@@ -136,6 +136,7 @@ export interface DFMetadata {
 	isMetadataLoaded: boolean;
 	isWizardsAvaliable?: boolean;
 	isStepperAvaliable?: boolean;
+	isInSaveProcess?: boolean;
 	isCancelButtonDisabled: boolean;
 	isSubmitButtonDisabled: boolean;
 
