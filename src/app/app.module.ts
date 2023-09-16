@@ -83,6 +83,8 @@ import { PublicationFormRecursiveComponent } from './components/publication/publ
 import { CustomModalPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component';
 import { CustomModalPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-modal-publication-exit-form-confirm/custom-modal-publication-exit-form-confirm.component';
 import { CustomModalPublicationDeleteConfirmComponent } from './components/publication/custom-modal-publication-delete-confirm/custom-modal-publication-delete-confirm.component';
+import { CustomDialogPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component';
+import { CustomDialogPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-dialog-publication-exit-form-confirm/custom-dialog-publication-exit-form-confirm.component';
 
 // DynamicForm components
 import { DynamicFormComponent } from './components/shared/dynamic-form/dynamic-form.component';
@@ -151,6 +153,8 @@ registerLocaleData(localeId, 'id');
     CustomModalPublicationSubmitConfirmComponent,
     CustomModalPublicationExitFormConfirmComponent,
     CustomModalPublicationDeleteConfirmComponent,
+    CustomDialogPublicationSubmitConfirmComponent,
+    CustomDialogPublicationExitFormConfirmComponent,
     GhostTableComponent,
     LoaderComponent,
     DatetimePickerComponent,

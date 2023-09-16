@@ -1,17 +1,18 @@
 import { Location, formatDate } from "@angular/common";
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
-import { Observable, Subject, takeUntil } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
-import { LUXON_DATE_FORMATS, setConsoleLog } from "src/app/services/app-general.service";
+import { AppGeneralService, LUXON_DATE_FORMATS, ResponseFormat, setConsoleLog } from "src/app/services/app-general.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component";
 import { DFDataService, DFMetadata, NUMBER_VALIDATION_CONFIG_PATTERN, URL_VALIDATION_CONFIG_PATTERN } from "src/app/components/shared/dynamic-form/dynamic-forms";
-import { BsModalService, ModalOptions } from "ngx-bootstrap/modal";
-import { CustomModalPublicationSubmitConfirmComponent } from "./custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component";
+import { BsModalService } from "ngx-bootstrap/modal";
+import { CustomDialogPublicationSubmitConfirmComponent } from "./custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-publication-form',
@@ -71,13 +72,14 @@ export class PublicationFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private appSvc: AppService,
+    private generalSvc: AppGeneralService,
     private location: Location,
     private dialog: MatDialog,
     private dfDataSvc: DFDataService,
     private ref: ChangeDetectorRef,
-    private bsModalSvc: BsModalService
+    private bsModalSvc: BsModalService,
   ) { }
 
   ngOnInit(): void {
@@ -264,7 +266,7 @@ export class PublicationFormComponent implements OnInit {
         this.selectOptions[element.field_name] = {
           items: element.children || [],
           defaultValue: element.default_value || [],
-          formControl: new UntypedFormControl()
+          formControl: new FormControl()
         };
 
         this.selectURLParameters[element.field_name] = '';
@@ -275,7 +277,7 @@ export class PublicationFormComponent implements OnInit {
           this.selectOptions[value.field_name] = {
             items: value.children,
             defaultValue: [],
-            formControl: new UntypedFormControl()
+            formControl: new FormControl()
           };
 
           // Set initial value for every select url params
@@ -540,12 +542,12 @@ export class PublicationFormComponent implements OnInit {
 
   // Function to get Form Control of formBuilder for custom component / child component (Shared component)
   public getFieldControl(fieldName: string) {
-    return this.forms?.get(fieldName) as UntypedFormControl;
+    return this.forms?.get(fieldName) as FormControl;
   }
 
   // Function to get Form Group of formBuilder
   public getFormGroup(fieldName: string) {
-    return this.forms?.get(fieldName) as UntypedFormArray;
+    return this.forms?.get(fieldName) as FormGroup;
   }
 
   /**
@@ -581,7 +583,6 @@ export class PublicationFormComponent implements OnInit {
 
     // Subscribe to dialog closed event
     dialogRef.afterClosed().subscribe((response: any) => {
-
       if (response.result) { // If user`s choice is yes, set location`s back
         this.location.back();
 
@@ -589,38 +590,29 @@ export class PublicationFormComponent implements OnInit {
         this.dfMetadata.isSubmitButtonDisabled = !!this.dfMetadata.isSubmitButtonDisabled;
       }
     });
-
-    //const modal = this.modalSvc.show(ConfirmModalCustomComponent, { ignoreBackdropClick: true, class: MODAL.ALERT.WARNING, initialState: innitialState });
-    //(<ConfirmModalCustomComponent>modal.content).onClose.subscribe(result => {
-    //  if (result == 'terbit') {
-    //    this.doSubmitForm('DRF');
-    //  } else if (result == 'modal_closed') {
-    //    this.location.back();
-    //  } else {
-    //    modal.hide();
-    //  }
-    //});
   }
 
   // Event on click submit button
   public onFormSubmitButtonClick() {
 
-    const modalOptions: ModalOptions = {
-      ignoreBackdropClick: true,
-      class: 'modal-md',
-      initialState: {
+    let dialogConfig: MatDialogConfig = {
+      width: '600px',
+      data: {
         title: 'Are you sure to submit this publication?',
         messages: 'You can save it as Draft or proceed to Submit',
         cancelButtonText: 'Cancel',
         draftButtonText: 'Draft',
         proceedButtonText: 'Proceed',
-       }
+      }
     };
 
-    const modal = this.bsModalSvc.show(CustomModalPublicationSubmitConfirmComponent, modalOptions) ;
-    (<CustomModalPublicationSubmitConfirmComponent>modal.content).closeState.subscribe((result: any) => {
-      if (result) {
-        const statusCode = (result === 'draft') ? 'DRF' : 'PRO';
+    // Dialog initial configuration and open
+    const dialogRef = this.dialog.open(CustomDialogPublicationSubmitConfirmComponent, dialogConfig);
+
+    // Subscribe to dialog closed event
+    dialogRef.afterClosed().subscribe((response: any) => {
+      if (response) {
+        const statusCode = (response === 'draft') ? 'DRF' : 'PRO';
         this.dfMetadata.isSubmitButtonDisabled = true;
         this.dfMetadata.isCancelButtonDisabled = true;
         this.dfMetadata.isInSaveProcess = true;
@@ -628,7 +620,6 @@ export class PublicationFormComponent implements OnInit {
         const formData = this.setFormData(this.forms.getRawValue(), statusCode);
         const parameter = {};
 
-        setConsoleLog(formData, 'onFormSubmitButtonClick formData:');
         this.sendData(formData, this.formStatus, parameter);
       } else {
         this.dfMetadata.isSubmitButtonDisabled = false;
@@ -642,7 +633,6 @@ export class PublicationFormComponent implements OnInit {
   private setFormData(formValues: any, statusCode: string = 'DRF'): FormData {
     let result = new FormData();
 
-    setConsoleLog(formValues, 'formValues')
     result.append('publication_status_code', statusCode);
     result.append('publication_type_code', formValues['publication_type_code'] || '');
 
@@ -756,11 +746,12 @@ export class PublicationFormComponent implements OnInit {
 
     if (formStatus === AppFormStatus.CREATE) {
       this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
-        (successResponse: Observable<any>) => {
-          setConsoleLog(successResponse, 'POST success response: ');
+        (successResponse: ResponseFormat) => {
+          this.handleResponse(successResponse);
+          this.location.back();
         },
-        (errorResponse: Observable<any>) => {
-          setConsoleLog(errorResponse, 'POST error response: ');
+        (errorResponse: ResponseFormat) => {
+          this.handleResponse(errorResponse);
         },
         () => {
           this.dfMetadata.isSubmitButtonDisabled = false;
@@ -772,11 +763,12 @@ export class PublicationFormComponent implements OnInit {
 
     if (formStatus === AppFormStatus.UPDATE) {
       this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
-        (successResponse: Observable<any>) => {
-          setConsoleLog(successResponse, 'PUT success response: ');
+        (successResponse: ResponseFormat) => {
+          this.handleResponse(successResponse);
+          this.location.back();
         },
-        (errorResponse: Observable<any>) => {
-          setConsoleLog(errorResponse, 'PUT error response: ');
+        (errorResponse: ResponseFormat) => {
+          this.handleResponse(errorResponse);
         },
         () => {
           this.dfMetadata.isSubmitButtonDisabled = false;
@@ -785,10 +777,10 @@ export class PublicationFormComponent implements OnInit {
         }
       );
     }
-
-    this.handleResponse();
   }
 
-  private handleResponse(): void { }
+  private handleResponse(response: ResponseFormat): void {
+    this.generalSvc.setResponseSnackBar(response);
+  }
 
 }

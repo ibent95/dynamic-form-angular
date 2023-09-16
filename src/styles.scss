@@ -123,6 +123,8 @@ mat-grid-list mat-grid-tile {
 	div.mat-grid-tile-content { height: 100% !important; }
 }
 
+mat-dialog-actions.custom-mat-dialog-actions, mat-dialog-actions.mat-mdc-dialog-actions { justify-content: center; }
+
 // ============================== Other Custom ============================== //
 
 .full-width { width: 100%; max-width: 100%; margin-right: 0; padding-right: 0; }

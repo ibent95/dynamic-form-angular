@@ -17,11 +17,11 @@ interface DialogData {
     <mat-dialog-content class="text-center" [innerHTML]="dialogData.messages"></mat-dialog-content>
 
     <!-- Dialog action button -->
-    <mat-dialog-actions class="text-center">
+    <mat-dialog-actions class="custom-mat-dialog-actions text-center">
       <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()" [innerHTML]="dialogData.okButtonText"></button>
     </mat-dialog-actions>
   `,
-  styles: ['mat-dialog-actions.mat-mdc-dialog-actions { justify-content: center; }'],
+  styles: [''],
 })
 export class DialogAlertComponent implements OnInit {
 

@@ -21,11 +21,11 @@ interface DialogData {
     </mat-dialog-content>
 
     <!-- Dialog action button -->
-    <mat-dialog-actions class="text-center">
+    <mat-dialog-actions class="custom-mat-dialog-actions text-center">
       <button mat-stroked-button mat-dialog-close (click)="onNoBtnClick()" [innerHTML]="dialogData.noButtonText"></button>
       <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()" [innerHTML]="dialogData.yesButtonText"></button>
   `,
-  styles: ['mat-dialog-actions.mat-mdc-dialog-actions { justify-content: center; }'],
+  styles: [''],
 })
 export class DialogPromptComponent implements OnInit {
 
