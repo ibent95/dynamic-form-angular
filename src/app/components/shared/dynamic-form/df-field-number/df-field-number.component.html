@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline" [color]="'accent'" [formGroup]="formGroup">
+	<mat-label>{{ field.field_label }}</mat-label>
+	<input matInput type="number" [formControlName]="field.field_name" [placeholder]="field.field_placeholder"
+		[min]="field.validation_configs?.min || 0">
+
+		<mat-error [innerHTML]="field.error_message" *ngIf="formGroup.get(field.field_name)?.invalid && (formGroup.get(field.field_name)?.dirty || formGroup.get(field.field_name)?.touched)"></mat-error>
+		<mat-hint [innerHTML]="field.description"></mat-hint>
+</mat-form-field>
