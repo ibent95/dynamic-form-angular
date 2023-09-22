@@ -694,9 +694,17 @@ export class PublicationFormComponent implements OnInit {
         case 'owl-datetime':
           // Set value to Date() object.
           let dateTimeFormat: string = (field.field_type === 'time' || field.field_type === 'owl-time') ? 'HH:mm:ss' : 'Y-MM-dd HH:mm:ss' ;
-          let dateTimeValue = (formValues[field.field_name])
-            ? formatDate(formValues[field.field_name], dateTimeFormat, 'id')
-            : '' ;
+          let dateTimeValue = '';
+
+          if (field.field_type === 'time') {
+            dateTimeValue = (formValues[field.field_name])
+              ? formValues[field.field_name]
+              : '' ;
+          } else {
+            dateTimeValue = (formValues[field.field_name])
+              ? formatDate(formValues[field.field_name], dateTimeFormat, 'id')
+              : '' ;
+          }
 
           result.append('meta_data[' + fieldIndex + '][uuid]', formValues[field.field_name + '_uuid'] || '');
           result.append('meta_data[' + fieldIndex + '][field_name]', field.field_name || '');
