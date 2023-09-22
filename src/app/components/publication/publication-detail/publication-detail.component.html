@@ -1,0 +1,50 @@
+<mat-card class=" m-7">
+	<mat-card-title>Publication details</mat-card-title>
+	<mat-card-subtitle>Details of publication</mat-card-subtitle>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		<ng-container *ngIf="(dfMetadata.noData && !dfMetadata.isMetadataLoaded && !dfMetadata.isFormTypeLoaded)">
+			No data...
+		</ng-container>
+
+		<ng-container *ngIf="(!dfMetadata.noData && !dfMetadata.isMetadataLoaded && dfMetadata.isFormTypeLoaded)">
+			<app-loader></app-loader>
+		</ng-container>
+
+		<form *ngIf="(!dfMetadata.noData && dfMetadata.isMetadataLoaded && dfMetadata.isFormTypeLoaded)">
+
+			<!-- No grid system -->
+			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'no_grid_system' || dfMetadata.gridSystems.type === 'default')">
+				<app-publication-form-grid-systems-default [dfMetadata]="dfMetadata"></app-publication-form-grid-systems-default>
+			</ng-container>
+
+			<!-- Material grid system -->
+			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'material')">
+				<app-publication-form-grid-systems-material [dfMetadata]="dfMetadata"></app-publication-form-grid-systems-material>
+			</ng-container>
+
+			<!-- Bootstrap grid system -->
+			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'bootstrap')">
+				<app-publication-form-grid-systems-bootstrap [dfMetadata]="dfMetadata"></app-publication-form-grid-systems-bootstrap>
+			</ng-container>
+
+			<!-- =Tailwind grid system -->
+			<ng-container *ngIf="(dfMetadata.gridSystems.type === 'tailwind')">
+				<app-publication-form-grid-systems-tailwind [dfMetadata]="dfMetadata"></app-publication-form-grid-systems-tailwind>
+			</ng-container>
+
+		</form>
+
+	</mat-card-content>
+
+	<mat-card-footer class="below-form mt-3">
+		<mat-divider></mat-divider>
+
+		<div class="flex justify-center gap-4 my-3">
+			<button mat-stroked-button class="flex-initial w-32" [color]="'default'" (click)="onBackButtonClick()">Cancel</button>
+		</div>
+	  </mat-card-footer>
+</mat-card>

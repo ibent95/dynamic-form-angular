@@ -1,13 +1,48 @@
 import { Injectable } from '@angular/core';
 import { MatDateFormats } from '@angular/material/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { OwlDateTimeFormats } from '@danielmoncada/angular-datetime-picker';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppGeneralService {
 
-  constructor() { }
+  matSnackBarConfig!: MatSnackBarConfig;
+
+  constructor(
+    private snackBar: MatSnackBar
+  ) {
+    this.matSnackBarConfig = {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      duration: 5000,
+    }
+  }
+
+  public setResponseSnackBar(response: ResponseFormat, duration?: number) {
+    if (duration) {
+      this.matSnackBarConfig.duration = duration;
+    }
+
+    switch (response.info) {
+      case 'success':
+        response.message = 'Success: ' + response.message;
+        break;
+
+      case 'error':
+        response.message = 'Failed: ' + response.message;
+        break;
+
+      case 'info':
+      default:
+        response.message = 'Info: ' + response.message;
+        break;
+    }
+
+    this.snackBar.open(response.message, undefined, this.matSnackBarConfig);
+  }
 
 }
 
@@ -103,6 +138,21 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
     dateA11yLabel: 'yyyy',
     monthYearA11yLabel: 'yyyy'
   },
+};
+
+export interface Page {
+  pageNumber: number;
+  limit: number;
+  offset?: number;
+  count?: number;
+};
+
+export interface ResponseFormat {
+  info: 'success' | 'error' | 'info';
+  count?: number;
+  data: any;
+  message?: any;
+  messages?: Array<any>;
 };
 
 export function setConsoleLog(data: any, message?: string): void {
