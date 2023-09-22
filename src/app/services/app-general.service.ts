@@ -140,8 +140,16 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
   },
 };
 
+export interface Page {
+  pageNumber: number;
+  limit: number;
+  offset?: number;
+  count?: number;
+};
+
 export interface ResponseFormat {
   info: 'success' | 'error' | 'info';
+  count?: number;
   data: any;
   message?: any;
   messages?: Array<any>;

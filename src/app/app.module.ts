@@ -80,9 +80,10 @@ import { PublicationFormGridSystemsMaterialComponent } from './components/public
 import { PublicationFormGridSystemsBootstrapComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
 import { PublicationFormGridSystemsTailwindComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
 import { PublicationFormRecursiveComponent } from './components/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
+import { CustomModalPublicationRemoveConfirmComponent } from './components/publication/custom-modal-publication-remove-confirm/custom-modal-publication-remove-confirm.component';
 import { CustomModalPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component';
 import { CustomModalPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-modal-publication-exit-form-confirm/custom-modal-publication-exit-form-confirm.component';
-import { CustomModalPublicationDeleteConfirmComponent } from './components/publication/custom-modal-publication-delete-confirm/custom-modal-publication-delete-confirm.component';
+import { CustomDialogPublicationRemoveConfirmComponent } from './components/publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
 import { CustomDialogPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component';
 import { CustomDialogPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-dialog-publication-exit-form-confirm/custom-dialog-publication-exit-form-confirm.component';
 
@@ -150,9 +151,10 @@ registerLocaleData(localeId, 'id');
     PublicationFormGridSystemsBootstrapComponent,
     PublicationFormGridSystemsTailwindComponent,
     PublicationFormRecursiveComponent,
+    CustomModalPublicationRemoveConfirmComponent,
     CustomModalPublicationSubmitConfirmComponent,
     CustomModalPublicationExitFormConfirmComponent,
-    CustomModalPublicationDeleteConfirmComponent,
+    CustomDialogPublicationRemoveConfirmComponent,
     CustomDialogPublicationSubmitConfirmComponent,
     CustomDialogPublicationExitFormConfirmComponent,
     GhostTableComponent,

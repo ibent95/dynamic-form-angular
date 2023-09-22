@@ -40,18 +40,37 @@
 		<ng-container *ngIf="showTable">
 			<div class="mat-elevation-z8">
 				<!-- Table Start -->
-				<table mat-table recycleRows matSort [dataSource]="tableDataSource" class="mat-elevation-z10">
+				<table mat-table recycleRows matSort [dataSource]="tableDataSource" class="mat-elevation-z10" aria-describedby="tableCaption">
+					<caption>Publications data</caption>
 
-					<!-- Columns -->
-					<ng-container *ngFor="let column of tableDisplayedColumns.label; let columnIndex = index;">
-
-						<ng-container matColumnDef="{{ tableDisplayedColumns.property[columnIndex] }}">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header>{{ tableDisplayedColumns.label[columnIndex] }}</th>
-							<td mat-cell *matCellDef="let element">{{ element[tableDisplayedColumns.property[columnIndex]] }}</td>
-						</ng-container>
-
+					<!-- Header columns -->
+					<ng-container [matColumnDef]="column" *ngFor="let column of tableDisplayedColumns.originalProperty; let columnIndex = index;">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header [innerHTML]="tableDisplayedColumns.label[columnIndex]"></th>
+						<td mat-cell *matCellDef="let element" [innerHTML]="element[tableDisplayedColumns.property[columnIndex]]"></td>
 					</ng-container>
 
+					<!-- Addition of actions column (header & content) -->
+					<ng-container matColumnDef="actions">
+						<th mat-header-cell *matHeaderCellDef>Actions</th>
+						<td mat-cell *matCellDef="let element">
+							<button mat-mini-fab color="primary" (click)="onDetailsPublicationClick(element)">
+								<mat-icon>remove_red_eye</mat-icon>
+							</button>
+							<ng-container *ngIf="!(
+								element.publication_status?.publication_status_code === 'PRO' ||
+								element.publication_status?.publication_status_code === 'RJT'
+							)">
+								<button mat-mini-fab color="accent" (click)="onEditPublicationClick(element)">
+									<mat-icon>edit</mat-icon>
+								</button>
+							</ng-container>
+						  	<button mat-mini-fab color="warn" (click)="onRemovePublicationClick(element)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						</td>
+					</ng-container>
+
+					<!-- Show data when exist -->
 					<tr mat-header-row *matHeaderRowDef="tableDisplayedColumns.property"></tr>
 					<tr mat-row *matRowDef="let row; columns: tableDisplayedColumns.property;"></tr>
 
@@ -60,9 +79,15 @@
 						<td class="mat-cell text-center" [attr.colspan]="tableDisplayedColumns.property.length">{{ 'Tidak ada data' }}</td>
 					</tr>
 
+					<!-- Footer with paginator -->
+					<ng-container matColumnDef="paginations">
+						<td mat-footer-cell *matFooterCellDef [attr.colspan]="100">
+						  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" [length]="tableDataSource.length" showFirstLastButtons aria-label="Select page"></mat-paginator>
+						</td>
+				   </ng-container>
+				   <tr mat-footer-row *matFooterRowDef="['paginations'];"></tr>
 				</table>
 
-				<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="tableDataSource.length" showFirstLastButtons aria-label="Select page of publications"></mat-paginator>
 				<!-- Table End -->
 			</div>
 		</ng-container>

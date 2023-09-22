@@ -4,15 +4,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
-import { Observable, Subject } from "rxjs";
+import { Subject } from "rxjs";
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
-import { AppGeneralService, LUXON_DATE_FORMATS, ResponseFormat, setConsoleLog } from "src/app/services/app-general.service";
+import { AppGeneralService, LUXON_DATE_FORMATS, ResponseFormat } from "src/app/services/app-general.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogConfirmComponent } from "src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component";
 import { DFDataService, DFMetadata, NUMBER_VALIDATION_CONFIG_PATTERN, URL_VALIDATION_CONFIG_PATTERN } from "src/app/components/shared/dynamic-form/dynamic-forms";
 import { BsModalService } from "ngx-bootstrap/modal";
 import { CustomDialogPublicationSubmitConfirmComponent } from "./custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { HttpParams } from "@angular/common/http";
 
 @Component({
   selector: 'app-publication-form',
@@ -135,7 +135,7 @@ export class PublicationFormComponent implements OnInit {
     this.disabledFields = {};
     this.selectURLParameters = {};
     this.uniqueFalseCheckField = {};
-    this.userData = {};
+    this.userData = window.history?.state;
 
     this.subscription$ = new Subject<void>();
 
@@ -144,14 +144,18 @@ export class PublicationFormComponent implements OnInit {
 
   // Initial function for build form
   private initiateForm(): void {
-    // Required masterdata
+    this.formStatus = (this.userData?.uuid) ? AppFormStatus.UPDATE : AppFormStatus.CREATE ;
 
-    this.formStatus = (this.userData.uuid) ? AppFormStatus.UPDATE : AppFormStatus.CREATE ;
+    // Back to previous page if update form and uuid data is not exist
+    if (this.router.url === '/publication/update' && !this.userData?.uuid) {
+      this.location.back();
+    }
+
     this.dfMetadata.formStatus = this.formStatus ;
 
     this.forms = this.formBuilder.group({
-      publication_type_code: null,
-      publication_type_uuid: null,
+      publication_type_code: (AppFormStatus.UPDATE) ? this.userData.publication_type?.publication_type_code : null,
+      publication_type_uuid: (AppFormStatus.UPDATE) ? this.userData.publication_type?.uuid : null,
     });
     this.dfMetadata.isFormBuilderCreated = true;
 
@@ -166,15 +170,14 @@ export class PublicationFormComponent implements OnInit {
       this.dfMetadata.selectOptions = this.selectOptions;
       this.dfMetadata.isFormTypeLoaded = true;
 
-      this.forms.get('publication_type_code')?.setValue('BOK-2');
-      this.forms.get('publication_type_uuid')?.setValue('4376fe79-b2bd-4178-bfd4-1ed1664a8f61');
-
-      this.onPublicationTypeSlctSelect({ value: '4376fe79-b2bd-4178-bfd4-1ed1664a8f61' });
+      if (this.formStatus === AppFormStatus.UPDATE) {
+        this.onPublicationTypeSelect({ value: this.userData.publication_type?.uuid });
+      }
     });
   }
 
   // Event on select publication type
-  public onPublicationTypeSlctSelect(eventData: any): void {
+  public onPublicationTypeSelect(eventData: any): void {
 
     /**
      * Different way when from ngx-select is eventData[0].data;
@@ -204,11 +207,20 @@ export class PublicationFormComponent implements OnInit {
 
   // Function to get metadata of form`s configuration
   private getFormMetadata(publicationTypeCode: string, formVersionCode?: string): void {
-    let params = '/' + publicationTypeCode;
+
+    let url = (this.formStatus === AppFormStatus.UPDATE)
+      ? AppServiceType.PUBLICATIONS
+      : AppServiceType.PUBLICATIONS_FORM_META_DATA ;
+
+    let params = '/' + (
+      (this.formStatus === AppFormStatus.UPDATE)
+        ? this.userData?.uuid + '/form-meta-data'
+        : publicationTypeCode
+    );
 
     if (formVersionCode) params += '?form-version-code=' + formVersionCode;
 
-    this.appSvc.listParam(AppServiceType.PUBLICATIONS_FORM_METADATA, params).subscribe(response => {
+    this.appSvc.listParams(url, new HttpParams(), params).subscribe(response => {
       this.dfMetadata.initialFields = response['data'];
 
       // Set available.form_metadata_loaded if publicationFormMetadata.forms`s value is valid
@@ -385,8 +397,8 @@ export class PublicationFormComponent implements OnInit {
            * 3. Data, to store original selected uuid data (mostly uuid).
            */
           fieldDataSets[element.field_name + '_options'] = this.selectOptions[element.field_name];
-          fieldDataSets[element.field_name + '_text'] = [this.userData[element.field_name] || ''];
-          fieldDataSets[element.field_name] = [this.userData['uuid_' + element.field_name] || ''];
+          fieldDataSets[element.field_name + '_text'] = [element?.other_value?.text || ''];
+          fieldDataSets[element.field_name] = [element.value || ''];
 
           /**
            * Info: when you want to trigger the onType event, comment out this.
@@ -493,8 +505,8 @@ export class PublicationFormComponent implements OnInit {
 
         default: // Handler for text or other field type
           fieldDataSets[element.field_name] = (element.validation_config?.pattern) 
-            ? [this.userData[element.field_name], Validators.pattern(element.validation_config.pattern)]
-            : this.userData[element.field_name];
+            ? [element?.value, Validators.pattern(element.validation_config.pattern)]
+            : element?.value;
           break;
       }
 
@@ -549,10 +561,6 @@ export class PublicationFormComponent implements OnInit {
   public getFormGroup(fieldName: string) {
     return this.forms?.get(fieldName) as FormGroup;
   }
-
-  /**
-   * Functions, events or handlers after form`s metadata are load
-   */
 
   /**
    * Functions, events or handlers before submit or cancel form
@@ -618,9 +626,9 @@ export class PublicationFormComponent implements OnInit {
         this.dfMetadata.isInSaveProcess = true;
 
         const formData = this.setFormData(this.forms.getRawValue(), statusCode);
-        const parameter = {};
+        const stringParameter = (this.userData?.uuid) ? '/' + this.userData?.uuid : '';
 
-        this.sendData(formData, this.formStatus, parameter);
+        this.sendData(formData, this.formStatus, null, stringParameter);
       } else {
         this.dfMetadata.isSubmitButtonDisabled = false;
         this.dfMetadata.isCancelButtonDisabled = false;
@@ -739,19 +747,28 @@ export class PublicationFormComponent implements OnInit {
       }
     });
 
+    // Extra form data for PUT
+    if (this.formStatus === AppFormStatus.UPDATE) {
+      result.append('_method', 'PUT');
+    }
+
     return result;
   }
 
-  private sendData(formData: FormData, formStatus: AppFormStatus, parameter: any): void {
+  private sendData(formData: FormData, formStatus: AppFormStatus, parameter: any = null, stringParams: string = ''): void {
 
+    // Access create API
     if (formStatus === AppFormStatus.CREATE) {
-      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
+      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter, stringParams).subscribe(
         (successResponse: ResponseFormat) => {
           this.handleResponse(successResponse);
-          this.location.back();
+          this.router.navigate(['/publication']);
         },
         (errorResponse: ResponseFormat) => {
           this.handleResponse(errorResponse);
+          this.dfMetadata.isSubmitButtonDisabled = false;
+          this.dfMetadata.isCancelButtonDisabled = false;
+          this.dfMetadata.isInSaveProcess = false;
         },
         () => {
           this.dfMetadata.isSubmitButtonDisabled = false;
@@ -761,14 +778,18 @@ export class PublicationFormComponent implements OnInit {
       );
     }
 
+    // Access update API
     if (formStatus === AppFormStatus.UPDATE) {
-      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter).subscribe(
+      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter, stringParams).subscribe(
         (successResponse: ResponseFormat) => {
           this.handleResponse(successResponse);
-          this.location.back();
+          this.router.navigate(['/publication']);
         },
         (errorResponse: ResponseFormat) => {
           this.handleResponse(errorResponse);
+          this.dfMetadata.isSubmitButtonDisabled = false;
+          this.dfMetadata.isCancelButtonDisabled = false;
+          this.dfMetadata.isInSaveProcess = false;
         },
         () => {
           this.dfMetadata.isSubmitButtonDisabled = false;

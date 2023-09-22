@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PublicationFormComponent } from './components/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './components/publication/publication.component';
 import { PageComponentsComponent } from './components/shared/pages/page-components/page-components.component';
 import { PageNotFoundComponent } from './components/shared/pages/page-not-found/page-not-found.component';
+import { PublicationDetailComponent } from './components/publication/publication-detail/publication-detail.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'update',
         component: PublicationFormComponent
+      },
+      {
+        path: 'detail',
+        component: PublicationDetailComponent
       }
     ],
   },
@@ -56,8 +61,12 @@ const routes: Routes = [
   },
 ];
 
+const config: ExtraOptions = {
+  // enableTracing: true,
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

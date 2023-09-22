@@ -60,6 +60,10 @@ export class PublicationFormRecursiveComponent implements OnInit {
     return this.forms?.get(fieldName) as FormArray;
   }
 
+  /**
+   * Functions, events or handlers after form`s metadata are load
+   */
+
   public onPublicationTypeSlctSelect(data: any) {
     this.selectedPublicationType = { text: data.source?.selected?.viewValue, value: data };
     this.loadingMessage = 'Loading ' + this.selectedPublicationType?.text + ' form...';
