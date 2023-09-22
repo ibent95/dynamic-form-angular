@@ -7,7 +7,7 @@ import { DFMetadata, DFDataService } from 'src/app/components/shared/dynamic-for
 @Component({
   selector: 'app-publication-form-grid-systems-material',
   templateUrl: './publication-form-grid-systems-material.component.html',
-  styleUrls: ['./publication-form-grid-systems-material.component.scss']
+  styles: ['']
 })
 export class PublicationFormGridSystemsMaterialComponent implements OnInit {
 

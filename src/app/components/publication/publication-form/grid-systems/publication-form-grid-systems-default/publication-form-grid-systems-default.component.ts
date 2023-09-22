@@ -7,7 +7,7 @@ import { DFDataService, DFMetadata } from "src/app/components/shared/dynamic-for
 @Component({
   selector: 'app-publication-form-grid-systems-default',
   templateUrl: './publication-form-grid-systems-default.component.html',
-  styleUrls: ['./publication-form-grid-systems-default.component.scss']
+  styles: ['']
 })
 export class PublicationFormGridSystemsDefaultComponent implements OnInit {
 

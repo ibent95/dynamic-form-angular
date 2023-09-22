@@ -8,7 +8,7 @@ import { DFMetadata, DFDataService, DFField } from "src/app/components/shared/dy
 @Component({
   selector: 'app-publication-form-recursive',
   templateUrl: './publication-form-recursive.component.html',
-  styleUrls: ['./publication-form-recursive.component.scss']
+  styles: ['']
 })
 export class PublicationFormRecursiveComponent implements OnInit {
 

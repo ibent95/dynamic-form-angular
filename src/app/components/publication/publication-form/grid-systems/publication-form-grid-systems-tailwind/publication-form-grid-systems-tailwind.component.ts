@@ -7,7 +7,7 @@ import { DFMetadata, DFDataService } from 'src/app/components/shared/dynamic-for
 @Component({
   selector: 'app-publication-form-grid-systems-tailwind',
   templateUrl: './publication-form-grid-systems-tailwind.component.html',
-  styleUrls: ['./publication-form-grid-systems-tailwind.component.scss']
+  styles: ['']
 })
 export class PublicationFormGridSystemsTailwindComponent implements OnInit {
 

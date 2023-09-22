@@ -7,7 +7,7 @@ import { DFMetadata, DFDataService } from "src/app/components/shared/dynamic-for
 @Component({
   selector: 'app-publication-form-grid-systems-bootstrap',
   templateUrl: './publication-form-grid-systems-bootstrap.component.html',
-  styleUrls: ['./publication-form-grid-systems-bootstrap.component.scss']
+  styles: ['']
 })
 export class PublicationFormGridSystemsBootstrapComponent implements OnInit {
 
