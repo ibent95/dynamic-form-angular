@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ENV } from '../app.config';
+import { Page } from './app-general.service';
 
 export enum AppServiceType {
 
@@ -9,8 +10,10 @@ export enum AppServiceType {
 
   PUBLICATION_MAIN,
   PUBLICATIONS,
-  PUBLICATION_FORM_METADATA,
-  PUBLICATION_MASTERDATA_PUBLICATION_TYPE,
+  PUBLICATIONS_FORM_META_DATA,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES,
 
 }
 
@@ -59,7 +62,7 @@ export class AppService {
         url = this.BASE_URL_API + '/v1';
         break;
 
-      /** =============================== PUBLICATION =============================== */
+      /** =============================== PUBLICATION API =============================== */
 
       case AppServiceType.PUBLICATION_MAIN:
         url = this.BASE_URL_API + '/v1/publication';
@@ -69,17 +72,25 @@ export class AppService {
         url = this.BASE_URL_API + '/v1/publications';
         break;
 
-      case AppServiceType.PUBLICATION_FORM_METADATA:
-        url = this.BASE_URL_API + '/v1/publication/form-metadata';
+      case AppServiceType.PUBLICATIONS_FORM_META_DATA:
+        url = this.BASE_URL_API + '/v1/publications/form-meta-data';
         break;
 
-      case AppServiceType.PUBLICATION_MASTERDATA_PUBLICATION_TYPE:
-        url = this.BASE_URL_API + '/v1/master/publication-type';
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES:
+        url = this.BASE_URL_API + '/v1/master/publication-general-types';
         break;
 
-      /** ================================= RESEARCH ================================= */
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES:
+        url = this.BASE_URL_API + '/v1/master/publication-types';
+        break;
 
-      /** ================================== DEFAULT ================================== */
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES:
+        url = this.BASE_URL_API + '/v1/master/publication-statuses';
+        break;
+
+      /** ================================= RESEARCH API ================================= */
+
+      /** ================================== DEFAULT API ================================== */
 
       default:
         url = '';
@@ -99,24 +110,36 @@ export class AppService {
     return this.http.get(this.getUrl(serviceType), { headers: this.HEADERS });
   }
 
-  listParam(serviceType: AppServiceType, params: string = ''): Observable<any> {
-    return this.http.get(this.getUrl(serviceType) + params, { headers: this.HEADERS });
+  listParams(serviceType: AppServiceType, params: HttpParams, stringParams: string = '', page: Page | null = null): Observable<any> {
+    if (page) {
+      params.appendAll({
+        'page_number': page.pageNumber,
+        'limit': page.limit,
+        'offset': page.pageNumber * page.limit,
+      });
+    }
+
+    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
   post(serviceType: AppServiceType, body: any): Observable<any> {
     return this.http.post(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
-  create(serviceType: AppServiceType, body: any, params: HttpParams, anotherParams: string = ''): Observable<any> {
-    return this.http.post(this.getUrl(serviceType) + anotherParams, body, { params: params, headers: this.HEADERS });
+  create(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.post(this.getUrl(serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
   }
 
   put(serviceType: AppServiceType, body: any): Observable<any> {
     return this.http.put(this.getUrl(serviceType), body, { headers: this.HEADERS });
   }
 
-  update(serviceType: AppServiceType, body: any, params: HttpParams, anotherParams: string = ''): Observable<any> {
-    return this.http.put(this.getUrl(serviceType) + anotherParams, body, { params: params, headers: this.HEADERS });
+  update(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.put(this.getUrl(serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
+  }
+
+  delete(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.delete(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
   }
 
   getIPAddress(params: string = ""): Observable<any> {
