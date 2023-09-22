@@ -778,9 +778,9 @@ export class PublicationFormComponent implements OnInit {
       );
     }
 
-    // Access update API
+    // Access update API (with Symfony backend problem request data on PUT method, I change to POST with extra form data `_method` PUT for temporary fix)
     if (formStatus === AppFormStatus.UPDATE) {
-      this.appSvc.update(AppServiceType.PUBLICATIONS, formData, parameter, stringParams).subscribe(
+      this.appSvc.create(AppServiceType.PUBLICATIONS, formData, parameter, stringParams).subscribe(
         (successResponse: ResponseFormat) => {
           this.handleResponse(successResponse);
           this.router.navigate(['/publication']);
