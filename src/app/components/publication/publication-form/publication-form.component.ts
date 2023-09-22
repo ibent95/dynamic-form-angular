@@ -338,8 +338,8 @@ export class PublicationFormComponent implements OnInit {
           this.dfMetadata.unknown[element.field_name] = [];
           this.uniqueFalseCheckField[element.field_name] = [];
 
-          if (this.userData[element.field_name]?.length > 0) {
-            this.userData[element.field_name].forEach((apiData: any, index: number) => {
+          if (element?.value?.length > 0) {
+            element.value.forEach((apiData: any, index: number) => {
               // multipleGroup.push(this.doCreateMultipleItem(element.field_name, element.children, index, apiData));
             })
             fieldDataSets[element.field_name] = this.formBuilder.array(multipleGroup);
@@ -352,7 +352,7 @@ export class PublicationFormComponent implements OnInit {
         case 'multiple_autoselect':
         case 'multiple_autocomplete':
           // Initial array
-          let selectedMultipleData = this.userData[element.field_name]?.other_value || [];
+          let selectedMultipleData = element?.value || [];
 
           /**
            * Save support data 
@@ -398,7 +398,7 @@ export class PublicationFormComponent implements OnInit {
            */
           fieldDataSets[element.field_name + '_options'] = this.selectOptions[element.field_name];
           fieldDataSets[element.field_name + '_text'] = [element?.other_value?.text || ''];
-          fieldDataSets[element.field_name] = [element.value || ''];
+          fieldDataSets[element.field_name] = [element?.value || ''];
 
           /**
            * Info: when you want to trigger the onType event, comment out this.
@@ -418,7 +418,7 @@ export class PublicationFormComponent implements OnInit {
         case 'file':
         case 'image':
           // Set image placeholder for empty data if possible
-          fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
+          fieldDataSets[element.field_name] = [element?.value || ''];
           break;
 
         case 'date':
@@ -432,7 +432,7 @@ export class PublicationFormComponent implements OnInit {
         case 'owl-time':
         case 'owl-datetime':
           // Set value to Date() object.
-          fieldDataSets[element.field_name] = (this.userData[element.field_name]) ? new Date(this.userData[element.field_name]) : new Date();
+          fieldDataSets[element.field_name] = (element?.value) ? new Date(element?.value) : new Date();
           break;
 
         case 'daterange':
@@ -442,7 +442,7 @@ export class PublicationFormComponent implements OnInit {
         case 'owl-timerange':
         case 'owl-datetimerange':
           // Initial range value
-          const dateRangeData: Array<any> = this.userData[element.field_name] || null;
+          const dateRangeData: Array<any> = element?.value || null;
 
           // Set range of values to Date() objects.
           fieldDataSets[element.field_name] = (dateRangeData) ? [
@@ -465,20 +465,20 @@ export class PublicationFormComponent implements OnInit {
            * 3. Data, to store original selected uuid data (mostly uuid).
            */
           fieldDataSets[element.field_name + '_options'] = this.selectOptions[element.field_name];
-          fieldDataSets[element.field_name + '_text'] = [this.userData[element.field_name] || ''];
-          fieldDataSets[element.field_name] = [this.userData['uuid_' + element.field_name] || ''];
+          fieldDataSets[element.field_name + '_text'] = [element?.other_value?.text || ''];
+          fieldDataSets[element.field_name] = [element?.value || ''];
           break;
 
         case 'checkbox':
           // For true or false values
           fieldDataSets[element.field_name] = [
-            (this.userData[element.field_name] || this.userData[element.field_name] === '1') || false
+            (element?.value || element?.value === '1') || false
           ];
           break;
 
         case 'number':
           fieldDataSets[element.field_name] = [
-            this.userData[element.field_name] || 1,
+            element?.value || 1,
             [
               Validators.min(element.validation_config?.min || 0),
               Validators.pattern(element.validation_config?.pattern || NUMBER_VALIDATION_CONFIG_PATTERN)
@@ -488,14 +488,14 @@ export class PublicationFormComponent implements OnInit {
 
         case 'mask':
         case 'mask_full_time':
-          this.dfMetadata.unknown[element.field_name] = this.userData[element.field_name] || '';
+          this.dfMetadata.unknown[element.field_name] = element?.value || '';
 
-          fieldDataSets[element.field_name] = [this.userData[element.field_name] || ''];
+          fieldDataSets[element.field_name] = [element?.value || ''];
           break;
 
         case 'url':
           fieldDataSets[element.field_name] = [
-            this.userData[element.field_name],
+            element?.value,
             [
               Validators.pattern(
               element.validation_config?.pattern || URL_VALIDATION_CONFIG_PATTERN
