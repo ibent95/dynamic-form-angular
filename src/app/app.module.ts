@@ -74,12 +74,16 @@ import { OverviewComponent } from './components/overview/overview.component';
 // App module / menu components (Publication)
 import { PublicationComponent } from './components/publication/publication.component';
 import { PublicationFormComponent } from './components/publication/publication-form/publication-form.component';
-import { PublicationDetailComponent } from './components/publication/publication-detail/publication-detail.component';
 import { PublicationFormGridSystemsDefaultComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-default/publication-form-grid-systems-default.component';
 import { PublicationFormGridSystemsMaterialComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-material/publication-form-grid-systems-material.component';
 import { PublicationFormGridSystemsBootstrapComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component';
 import { PublicationFormGridSystemsTailwindComponent } from './components/publication/publication-form/grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component';
 import { PublicationFormRecursiveComponent } from './components/publication/publication-form/publication-form-recursive/publication-form-recursive.component';
+import { PublicationDetailComponent } from './components/publication/publication-detail/publication-detail.component';
+import { PublicationDetailGridSystemsDefaultComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-default/publication-detail-grid-systems-default.component';
+import { PublicationDetailGridSystemsMaterialComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-material/publication-detail-grid-systems-material.component';
+import { PublicationDetailGridSystemsBootstrapComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-bootstrap/publication-detail-grid-systems-bootstrap.component';
+import { PublicationDetailGridSystemsTailwindComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-tailwind/publication-detail-grid-systems-tailwind.component';
 import { CustomModalPublicationRemoveConfirmComponent } from './components/publication/custom-modal-publication-remove-confirm/custom-modal-publication-remove-confirm.component';
 import { CustomModalPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component';
 import { CustomModalPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-modal-publication-exit-form-confirm/custom-modal-publication-exit-form-confirm.component';
@@ -145,12 +149,16 @@ registerLocaleData(localeId, 'id');
     OverviewComponent,
     PublicationComponent,
     PublicationFormComponent,
-    PublicationDetailComponent,
     PublicationFormGridSystemsDefaultComponent,
     PublicationFormGridSystemsMaterialComponent,
     PublicationFormGridSystemsBootstrapComponent,
     PublicationFormGridSystemsTailwindComponent,
     PublicationFormRecursiveComponent,
+    PublicationDetailComponent,
+    PublicationDetailGridSystemsDefaultComponent,
+    PublicationDetailGridSystemsMaterialComponent,
+    PublicationDetailGridSystemsBootstrapComponent,
+    PublicationDetailGridSystemsTailwindComponent,
     CustomModalPublicationRemoveConfirmComponent,
     CustomModalPublicationSubmitConfirmComponent,
     CustomModalPublicationExitFormConfirmComponent,
