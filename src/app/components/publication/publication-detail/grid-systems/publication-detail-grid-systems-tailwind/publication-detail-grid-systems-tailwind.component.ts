@@ -9,19 +9,21 @@ import { DFMetadata } from 'src/app/components/shared/dynamic-form/dynamic-forms
 export class PublicationDetailGridSystemsTailwindComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
+  @Input() userData: any;
 
-  @Output() onFormBackButtonClicked!: EventEmitter<any>;
+  @Output() onBackButtonClicked!: EventEmitter<any>;
 
   selectedPublicationType!: { text: string; value: any };
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
   gridSystemsClassConfig!: Array<string>;
+  gridSystemsChildClassConfig!: string;
 
   constructor(
     private ref: ChangeDetectorRef,
   ) {
-    this.onFormBackButtonClicked = new EventEmitter<any>(true);
+    this.onBackButtonClicked = new EventEmitter<any>(true);
   }
 
   public ngOnInit(): void {
@@ -30,11 +32,12 @@ export class PublicationDetailGridSystemsTailwindComponent implements OnInit {
       (this.dfMetadata.gridSystems?.cols) ? 'grid-cols-' + (this.dfMetadata.gridSystems?.cols || 12) : '',
       'grid-flow-row gap-3'
     ];
+    this.gridSystemsChildClassConfig = 'grid grid-cols-12 grid-flow-col auto-cols-max';
     this.ref.detectChanges();
   }
 
-  public onFormBackButtonClick() {
-    this.onFormBackButtonClicked.emit(true);
+  public onBackButtonClick() {
+    this.onBackButtonClicked.emit(true);
   }
 
 }

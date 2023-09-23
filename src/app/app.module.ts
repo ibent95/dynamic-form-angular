@@ -84,6 +84,7 @@ import { PublicationDetailGridSystemsDefaultComponent } from './components/publi
 import { PublicationDetailGridSystemsMaterialComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-material/publication-detail-grid-systems-material.component';
 import { PublicationDetailGridSystemsBootstrapComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-bootstrap/publication-detail-grid-systems-bootstrap.component';
 import { PublicationDetailGridSystemsTailwindComponent } from './components/publication/publication-detail/grid-systems/publication-detail-grid-systems-tailwind/publication-detail-grid-systems-tailwind.component';
+import { PublicationDetailRecursiveComponent } from './components/publication/publication-detail/publication-detail-recursive/publication-detail-recursive.component';
 import { CustomModalPublicationRemoveConfirmComponent } from './components/publication/custom-modal-publication-remove-confirm/custom-modal-publication-remove-confirm.component';
 import { CustomModalPublicationSubmitConfirmComponent } from './components/publication/publication-form/custom-modal-publication-submit-confirm/custom-modal-publication-submit-confirm.component';
 import { CustomModalPublicationExitFormConfirmComponent } from './components/publication/publication-form/custom-modal-publication-exit-form-confirm/custom-modal-publication-exit-form-confirm.component';
@@ -159,6 +160,7 @@ registerLocaleData(localeId, 'id');
     PublicationDetailGridSystemsMaterialComponent,
     PublicationDetailGridSystemsBootstrapComponent,
     PublicationDetailGridSystemsTailwindComponent,
+    PublicationDetailRecursiveComponent,
     CustomModalPublicationRemoveConfirmComponent,
     CustomModalPublicationSubmitConfirmComponent,
     CustomModalPublicationExitFormConfirmComponent,

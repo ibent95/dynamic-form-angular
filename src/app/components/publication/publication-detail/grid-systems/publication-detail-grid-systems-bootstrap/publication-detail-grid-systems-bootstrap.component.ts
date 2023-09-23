@@ -9,6 +9,7 @@ import { DFMetadata } from "src/app/components/shared/dynamic-form/dynamic-forms
 export class PublicationDetailGridSystemsBootstrapComponent implements OnInit {
 
   @Input() dfMetadata: DFMetadata | any;
+  @Input() userData: any;
 
   @Output() onFormBackButtonClicked!: EventEmitter<any>;
 

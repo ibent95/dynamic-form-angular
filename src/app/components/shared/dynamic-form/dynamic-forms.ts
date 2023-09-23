@@ -99,6 +99,8 @@ export interface DFField {
 	flag_required: boolean;
 	options: string | null;
 	order_position: number | null;
+	value?: any;
+	other_value?: any;
 	uuid: string;
 	validation_configs: DFFieldValidationConfigs | any | null;
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
@@ -10,12 +10,13 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-text.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldTextComponent implements OnInit {
+export class DFFieldTextComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -30,8 +31,6 @@ export class DFFieldTextComponent implements OnInit {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-
-  ngOnInit(): void { }
 
   public onType(data: any) {
     this.change.emit(data);

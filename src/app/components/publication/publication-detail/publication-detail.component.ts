@@ -5,9 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
-import { AppGeneralService, setConsoleLog } from 'src/app/services/app-general.service';
+import { AppGeneralService } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
-import { DFMetadata, DFDataService, NUMBER_VALIDATION_CONFIG_PATTERN, URL_VALIDATION_CONFIG_PATTERN } from '../../shared/dynamic-form/dynamic-forms';
+import { DFMetadata, DFDataService } from '../../shared/dynamic-form/dynamic-forms';
 import { HttpParams } from "@angular/common/http";
 
 @Component({

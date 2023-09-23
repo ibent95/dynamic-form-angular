@@ -16,6 +16,7 @@ export class DFFieldFileComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -32,11 +33,7 @@ export class DFFieldFileComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-  
-  ngOnInit(): void {
-    this.value = this.formGroup.get(this.field?.field_name)?.value;
-  }
-  
+
   onSelected(files: FileList | null) {
     if (files && files[0]) {
       this.formGroup.get(this.field.field_name)?.setValue(files[0]);

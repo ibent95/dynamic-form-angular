@@ -17,6 +17,7 @@ export class DFFieldOwlDatetimeComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   // Datetime picker mode
   @Input() mode!: DFFieldOwlDatetimeMode | string;
@@ -35,8 +36,6 @@ export class DFFieldOwlDatetimeComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-
-  ngOnInit(): void { }
 
   public onType(data: any) {
     this.change.emit(data);

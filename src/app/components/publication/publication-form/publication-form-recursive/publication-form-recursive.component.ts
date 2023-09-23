@@ -17,6 +17,7 @@ export class PublicationFormRecursiveComponent implements OnInit {
   @Input() gridSystemsClassConfig!: Array<string>;
   @Input() parentField?: DFField;
   @Input() parentControlName?: string;
+  @Input() isDetails?: string;
   
   @Output() onPublicationTypeSelected!: EventEmitter<any>;
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
