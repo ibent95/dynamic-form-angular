@@ -6,21 +6,19 @@ import { NavigationEnd, Router } from '@angular/router';
 @Component({
 	selector: 'app-core',
 	template: `
-		<ng-container>
-			<mat-drawer-container class="drawer-container">
-				<mat-drawer mode="side">
-					<app-sidebar [routeMap]="routeMap" [isSidebarOpen]="isSidebarOpen" (sidebarCloseToggleClick)="onSidebarCloseToggleClick($event)"></app-sidebar>
-				</mat-drawer>
+		<mat-drawer-container class="drawer-container">
+			<mat-drawer mode="side">
+				<app-sidebar [routeMap]="routeMap" [isSidebarOpen]="isSidebarOpen" (sidebarCloseToggleClick)="onSidebarCloseToggleClick($event)"></app-sidebar>
+			</mat-drawer>
 
-				<mat-drawer-content>
-					<app-header [routeMap]="routeMap" [isSidebarOpen]="isSidebarOpen" (sidebarToggleClick)="onHeaderSidebarToggleClick($event)"></app-header>
+			<mat-drawer-content>
+				<app-header [routeMap]="routeMap" [isSidebarOpen]="isSidebarOpen" (sidebarToggleClick)="onHeaderSidebarToggleClick($event)"></app-header>
 
-					<app-content [routeMap]="routeMap"></app-content>
+				<app-content [routeMap]="routeMap"></app-content>
 
-					<app-footer [routeMap]="routeMap"></app-footer>
-				</mat-drawer-content>
-			</mat-drawer-container>
-		</ng-container>
+				<app-footer [routeMap]="routeMap"></app-footer>
+			</mat-drawer-content>
+		</mat-drawer-container>
 	`,
 	styles: ['.drawer-container { height: 100%; width: 100%; }']
 })

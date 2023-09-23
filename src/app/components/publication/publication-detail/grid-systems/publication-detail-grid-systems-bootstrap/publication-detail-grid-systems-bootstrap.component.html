@@ -1,4 +1,4 @@
-<div [formGroup]="forms">
+<div>
 
 	<div [ngClass]="gridSystemsClassConfig">
 
@@ -6,7 +6,7 @@
 		<div class="col-12">
 			<mat-form-field appearance="outline" [color]="'accent'">
 				<mat-label>Publication type</mat-label>
-				<mat-select [formControlName]="'publication_type_uuid'" (selectionChange)="onPublicationTypeSlctSelect($event)">
+				<mat-select [formControlName]="'publication_type_uuid'">
 					<mat-option *ngFor="let publicationType of dfMetadata.selectOptions.publication_type?.items; let publicationTypeIndex = index;" [value]="publicationType.uuid">{{ publicationType.publication_type_name + ' [ ' + publicationType.publication_type_code + ' ]' }}</mat-option>
 				</mat-select>
 			</mat-form-field>
@@ -37,7 +37,7 @@
 	<!-- Show forms recursively -->
 	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
 
-		<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
+		<app-publication-form-recursive [dfMetadata]="dfMetadata" [gridSystemsClassConfig]="gridSystemsClassConfig" (onFormBackButtonClicked)="onFormBackButtonClick()"></app-publication-form-recursive>
 
 	</ng-container>
 
