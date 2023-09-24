@@ -1,25 +1,26 @@
+<div class="top-sidebar-content">
+	<a matRipple class="btn btn-link" aria-label="Sidebar button" (click)="onSidebarCloseToggleClick()">
+		<mat-icon>close</mat-icon>
+	</a>
+
+	<a mat-button>ibent95</a>
+</div>
+
 <mat-nav-list>
-	<mat-list-item class="center-content">ibent95</mat-list-item>
 
 	<mat-list-item routerLink="/" [state]="{tracingId: 123}">
-		<!--<a matLine>-->
-			<mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
-			{{ 'Home' }}
-		<!--</a>-->
+		<mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
+		{{ 'Home' }}
 	</mat-list-item>
 
 	<mat-list-item routerLink="/publication" [state]="{tracingId: 321}">
-		<!--<a matLine>-->
-			<mat-icon aria-hidden="false" aria-label="Publication">document_scanner</mat-icon>
-			{{ 'Publications' }}
-		<!--</a>-->
+		<mat-icon aria-hidden="false" aria-label="Publication">document_scanner</mat-icon>
+		{{ 'Publications' }}
 	</mat-list-item>
 
 	<mat-list-item routerLink="/components" [state]="{tracingId: 321}">
-		<!--<a matLine>-->
-			<mat-icon aria-hidden="false" aria-label="Component">view_compact_alt</mat-icon>
-			{{ 'Components' }}
-		<!--</a>-->
+		<mat-icon aria-hidden="false" aria-label="Component">view_compact_alt</mat-icon>
+		{{ 'Components' }}
 	</mat-list-item>
 
 </mat-nav-list>

@@ -18,6 +18,7 @@ export class DFFieldNGXSelectComponent {
   @Input() color!: ThemePalette;
   @Input() options!: SelectOptionsGroup;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -32,8 +33,6 @@ export class DFFieldNGXSelectComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-
-  ngOnInit(): void { }
 
   onSelectionChanges(data: any) { }
 

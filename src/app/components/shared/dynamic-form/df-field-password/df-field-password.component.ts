@@ -16,6 +16,7 @@ export class DfFieldPasswordComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -30,8 +31,6 @@ export class DfFieldPasswordComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-
-  ngOnInit(): void { }
 
   public onType(data: any) {
     this.change.emit(data);

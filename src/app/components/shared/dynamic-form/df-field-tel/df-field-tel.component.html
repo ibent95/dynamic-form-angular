@@ -1,7 +1,13 @@
-<mat-form-field [appearance]="appearance" [color]="color" [formGroup]="formGroup">
-	<mat-label>{{ field.field_label }}</mat-label>
-	<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+<ng-container *ngIf="!isShowDetail">
+	<mat-form-field [appearance]="appearance" [color]="color" [formGroup]="formGroup">
+		<mat-label>{{ field.field_label }}</mat-label>
+		<input matInput [formControlName]="field.field_name" [placeholder]="field.field_placeholder">
+	
+		<mat-error [innerHTML]="field.error_message" *ngIf="formGroup.get(field.field_name)?.invalid && (formGroup.get(field.field_name)?.dirty || formGroup.get(field.field_name)?.touched)"></mat-error>
+		<mat-hint [innerHTML]="field.description"></mat-hint>
+	</mat-form-field>
+</ng-container>
 
-	<mat-error [innerHTML]="field.error_message" *ngIf="formGroup.get(field.field_name)?.invalid && (formGroup.get(field.field_name)?.dirty || formGroup.get(field.field_name)?.touched)"></mat-error>
-	<mat-hint [innerHTML]="field.description"></mat-hint>
-</mat-form-field>
+<ng-container *ngIf="isShowDetail">
+	{{ field.value }}
+</ng-container>

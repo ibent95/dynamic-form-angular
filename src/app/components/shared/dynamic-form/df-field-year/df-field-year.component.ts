@@ -25,6 +25,7 @@ export class DFFieldYearComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -40,8 +41,6 @@ export class DFFieldYearComponent {
     this.change = new EventEmitter<any>();
   }
 
-  ngOnInit(): void { }
-  
   setYear(normalizedMonthAndYear: DateTime, datepicker: MatDatepicker<DateTime>) {
     datepicker.close();
 

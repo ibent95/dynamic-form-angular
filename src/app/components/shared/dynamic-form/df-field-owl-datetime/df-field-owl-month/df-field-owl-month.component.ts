@@ -21,6 +21,7 @@ export class DFFieldOwlMonthComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
+  @Input() isShowDetail: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
@@ -37,8 +38,6 @@ export class DFFieldOwlMonthComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
   }
-
-  ngOnInit(): void { }
 
   public setOwlDateTimeMonthYear(selectedMonthYear: object, monthpicker: OwlDateTimeComponent<object>): void {
     monthpicker.close();

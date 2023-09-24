@@ -1,0 +1,50 @@
+<div>
+
+	<span class="text-lg font-medium tracking-wide">General information</span>
+	<mat-divider class="mb-3"></mat-divider>
+
+	<div class="mb-4" [ngClass]="gridSystemsClassConfig">
+
+		<div class="row-span-1 col-span-6" [ngClass]="gridSystemsClassConfig">
+			<mat-label class="col-span-6">Publication general type</mat-label>
+			<span class="col-span-6" [innerHTML]="': ' + userData.publication_general_type?.publication_general_type_name"></span>
+		</div>
+
+		<div class="row-span-1 col-span-6" [ngClass]="gridSystemsClassConfig">
+			<mat-label class="col-span-5">Publication type</mat-label>
+			<span class="col-span-7" [innerHTML]="': ' + userData.publication_type?.publication_type_name"></span>
+		</div>
+
+		<div class="row-span-1 col-span-6" [ngClass]="gridSystemsClassConfig">
+			<mat-label class="col-span-6">Form version</mat-label>
+			<span class="col-span-6" [innerHTML]="': ' + userData.publication_form_version?.publication_form_version_name"></span>
+		</div>
+
+		<div class="row-span-1 col-span-6" [ngClass]="gridSystemsClassConfig">
+			<mat-label class="col-span-5">Publication status</mat-label>
+			<span class="col-span-7" [innerHTML]="': ' + userData.publication_status?.publication_status_name"></span>
+		</div>
+
+		<!-- Show loader if forms meta data is available and is in progress -->
+		<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && !dfMetadata.isMetadataLoaded)">
+			<app-loader></app-loader>
+		</ng-container>
+
+		<!-- Show no data information if forms meta data is empty -->
+		<ng-container *ngIf="(dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+			<df-custom-alert-info-no-data></df-custom-alert-info-no-data>
+		</ng-container>
+
+	</div>
+
+	<span class="text-lg font-medium tracking-wide">Metadata</span>
+	<mat-divider class="mb-3"></mat-divider>
+
+	<!-- Show forms recursively -->
+	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
+
+		<app-publication-detail-recursive [dfMetadata]="dfMetadata" [gridSystemsClassConfig]="gridSystemsClassConfig" (ondetailBackButtonClicked)="onBackButtonClick()"></app-publication-detail-recursive>
+
+	</ng-container>
+
+</div>

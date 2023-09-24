@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://svc-dynamic-form-symfony.loc/api',
+  ngxDocViewer: 'url',
   // apiUrl: 'https://service.ibent95.my.id/svc-dynamic-form-symfony/public/api'
 };
 
