@@ -1,8 +1,10 @@
 import { Location } from "@angular/common";
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray } from "@angular/forms";
 import { AppService } from "src/app/services/app.service";
 import { DFMetadata, DFDataService, DFField } from "src/app/components/shared/dynamic-form/dynamic-forms";
+import { ENV } from "src/app/app.config";
+import { viewerType } from "ngx-doc-viewer";
 
 @Component({
   selector: 'app-publication-detail-recursive',
@@ -20,13 +22,17 @@ export class PublicationDetailRecursiveComponent implements OnInit {
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
+  ngxDocViewer!: viewerType;
 
   constructor(
     private location: Location,
     private appSvc: AppService,
     private dfDataSvc: DFDataService,
     private ref: ChangeDetectorRef,
-  ) { }
+    @Inject(ENV) private config: any,
+  ) {
+    this.ngxDocViewer = this.config.ngxDocViewer;
+  }
 
   public ngOnInit(): void {
     this.fields = this.parentField?.children ?? this.dfMetadata.initialFields?.forms;

@@ -12,6 +12,7 @@ import { LuxonModule } from 'luxon-angular';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from '@danielmoncada/angular-datetime-picker';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
 
 // App routings, settings, components
 import { AppRoutingModule } from './app-routing.module';
@@ -247,6 +248,7 @@ registerLocaleData(localeId, 'id');
     NgxMatNativeDateModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    NgxDocViewerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'id-ID' },
