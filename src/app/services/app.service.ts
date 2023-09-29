@@ -6,7 +6,9 @@ import { Page } from './app-general.service';
 
 export enum AppServiceType {
 
-  ROOT,
+  MAIN,
+  MAIN_UPLOAD_FILE,
+  MAIN_UPLOADED_FILE,
 
   PUBLICATION_MAIN,
   PUBLICATIONS,
@@ -58,10 +60,18 @@ export class AppService {
     let url: string;
 
     switch (serviceType) {
-      case AppServiceType.ROOT:
+      case AppServiceType.MAIN:
         url = this.BASE_URL_API + '/v1';
         break;
 
+      case AppServiceType.MAIN_UPLOAD_FILE:
+        url = this.BASE_URL_API + '/v1/files/upload';
+        break;
+
+      case AppServiceType.MAIN_UPLOADED_FILE:
+        url = this.BASE_URL_API + '/v1/files';
+        break;
+  
       /** =============================== PUBLICATION API =============================== */
 
       case AppServiceType.PUBLICATION_MAIN:
