@@ -12,11 +12,11 @@
 
 		<!-- Image viewer -->
 		<div class="pb-1" *ngIf="imageSrcs">
-			<img [src]="imageSrcs" class="df-image-preview" id="df-image-preview" />
+			<img [src]="imageSrcs" class="df-image-preview" id="df-image-preview" alt="image"/>
 		</div>
 
 		<!-- Files button: to trigger files inputs/chooser dialog -->
-		<button mat-raised-button (click)="onPrepareButtonClick">Prepare File</button>
+		<button mat-raised-button (click)="onPrepareButtonClick()">Prepare File</button>
 
 		<mat-error [innerHTML]="field.error_message" *ngIf="formGroup.get(field.field_name)?.invalid && (formGroup.get(field.field_name)?.dirty || formGroup.get(field.field_name)?.touched)"></mat-error>
 		<mat-hint [innerHTML]="field.description"></mat-hint>
