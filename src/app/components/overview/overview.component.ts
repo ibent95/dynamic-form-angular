@@ -30,7 +30,7 @@ export class OverviewComponent implements OnInit {
   }
 
   private getServerInfo(): void {
-    this.appSvc.list(AppServiceType.ROOT).subscribe(response => {
+    this.appSvc.list(AppServiceType.MAIN).subscribe(response => {
       this.serverResponse = response['data'];
     });
   }

@@ -170,6 +170,7 @@ export class PublicationFormComponent implements OnInit {
       this.dfMetadata.selectOptions = this.selectOptions;
       this.dfMetadata.isFormTypeLoaded = true;
 
+      this.onPublicationTypeSelect({ value: 'a23892cd-6811-44bd-a671-c85b87829887' });
       if (this.formStatus === AppFormStatus.UPDATE) {
         this.onPublicationTypeSelect({ value: this.userData.publication_type?.uuid });
       }
@@ -417,6 +418,8 @@ export class PublicationFormComponent implements OnInit {
 
         case 'file':
         case 'image':
+        case 'file-upload':
+        case 'image-upload':
           // Set image placeholder for empty data if possible
           fieldDataSets[element.field_name] = [element?.value || ''];
           break;

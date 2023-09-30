@@ -1,12 +1,6 @@
 <ng-container *ngIf="!isShowDetail">
 	<mat-form-field [appearance]="appearance" [color]="color" [formGroup]="formGroup">
 		<mat-label>{{ field.field_label }}</mat-label>
-	
-		<!-- File binaries -->
-		<input type="hidden" [formControlName]="field.field_name" [placeholder]="field.field_placeholder" hidden />
-	
-		<!-- File inputs/chooser: files input/chooser dialog -->
-		<input type="file" (change)="onSelected(fileInput.files)" #fileInput id="file" hidden />
 
 		<!-- File names -->
 		<input type="text" matInput [value]="value" [placeholder]="field.field_placeholder" readonly />
@@ -15,10 +9,15 @@
 		<button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
 			<mat-icon>close</mat-icon>
 		</button>
-	
+
+		<!-- Image viewer -->
+		<div class="pb-1" *ngIf="imageSrcs">
+			<img [src]="imageSrcs" class="df-image-preview" id="df-image-preview" />
+		</div>
+
 		<!-- Files button: to trigger files inputs/chooser dialog -->
-		<button mat-raised-button (click)="fileInput.click()">Choose File</button>
-	
+		<button mat-raised-button (click)="onPrepareButtonClick">Prepare File</button>
+
 		<mat-error [innerHTML]="field.error_message" *ngIf="formGroup.get(field.field_name)?.invalid && (formGroup.get(field.field_name)?.dirty || formGroup.get(field.field_name)?.touched)"></mat-error>
 		<mat-hint [innerHTML]="field.description"></mat-hint>
 	</mat-form-field>

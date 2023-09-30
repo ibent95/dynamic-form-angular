@@ -104,6 +104,8 @@ import { DFFieldDatetimeComponent } from './components/shared/dynamic-form/df-fi
 import { DFFieldYearComponent } from './components/shared/dynamic-form/df-field-year/df-field-year.component';
 import { DFFieldFileComponent } from './components/shared/dynamic-form/df-field-file/df-field-file.component';
 import { DFFieldImageComponent } from './components/shared/dynamic-form/df-field-image/df-field-image.component';
+import { DFFieldFileUploadComponent } from './components/shared/dynamic-form/df-field-file-upload/df-field-file-upload.component';
+import { DFFieldImageUploadComponent } from './components/shared/dynamic-form/df-field-image-upload/df-field-image-upload.component';
 import { DFFieldColorComponent } from './components/shared/dynamic-form/df-field-color/df-field-color.component';
 import { DFFieldCheckboxComponent } from './components/shared/dynamic-form/df-field-checkbox/df-field-checkbox.component';
 import { DFFieldRadioComponent } from './components/shared/dynamic-form/df-field-radio/df-field-radio.component';
@@ -126,6 +128,7 @@ import { DFFieldOwlDateRangeComponent } from './components/shared/dynamic-form/d
 import { DFFieldOwlTimeRangeComponent } from './components/shared/dynamic-form/df-field-owl-datetime/df-field-owl-time-range/df-field-owl-time-range.component';
 import { DFFieldOwlDateTimeRangeComponent } from './components/shared/dynamic-form/df-field-owl-datetime/df-field-owl-date-time-range/df-field-owl-date-time-range.component';
 import { DFAlertComponent } from './components/shared/dynamic-form/df-alert/df-alert.component';
+import { DFDialogFileUploadPromptComponent } from './components/shared/dynamic-form/df-dialog-file-upload-prompt/df-dialog-file-upload-prompt.component';
 import { DFFieldMultipleComponent } from './components/shared/dynamic-form/df-field-multiple/df-field-multiple.component';
 import { DFWrapperStepperComponent } from './components/shared/dynamic-form/df-wrapper-stepper/df-wrapper-stepper.component';
 import { DFWrapperAccordionComponent } from './components/shared/dynamic-form/df-wrapper-accordion/df-wrapper-accordion.component';
@@ -201,6 +204,8 @@ registerLocaleData(localeId, 'id');
     DFFieldYearComponent,
     DFFieldFileComponent,
     DFFieldImageComponent,
+    DFFieldFileUploadComponent,
+    DFFieldImageUploadComponent,
     DFFieldColorComponent,
     DFFieldCheckboxComponent,
     DFFieldRadioComponent,
@@ -224,6 +229,7 @@ registerLocaleData(localeId, 'id');
     DFFieldOwlDateTimeRangeComponent,
     DFFieldMultipleComponent,
     DFAlertComponent,
+    DFDialogFileUploadPromptComponent,
     DFWrapperStepperComponent,
     DFWrapperAccordionComponent,
     DFWrapperPanelComponent,
