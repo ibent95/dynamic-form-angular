@@ -44,6 +44,7 @@ export class DFFieldImageUploadComponent {
     let dialogConfig: MatDialogConfig = {
       width: '600px',
       data: {
+        field: this.field,
         backendService: this.backendService,
         appearance: 'outline',
         color: 'accent',
