@@ -89,6 +89,14 @@
 							<df-field-image appearance="outline" color="accent" [field]="field" (type)="onType($event, field, field.field_name, fieldIndex)" (change)="onChange($event, field, parentControlName + field.field_name, fieldIndex)"></df-field-image>
 						</ng-container>
 
+						<ng-container *ngSwitchCase="'file-upload'">
+							<df-field-file-upload appearance="outline" color="accent" [field]="field" [backendService]="'publications'" (type)="onType($event, field, field.field_name, fieldIndex)" (change)="onChange($event, field, parentControlName + field.field_name, fieldIndex)"></df-field-file-upload>
+						</ng-container>
+	
+						<ng-container *ngSwitchCase="'image-upload'">
+							<df-field-image-upload appearance="outline" color="accent" [field]="field" [backendService]="'publications'" (type)="onType($event, field, field.field_name, fieldIndex)" (change)="onChange($event, field, parentControlName + field.field_name, fieldIndex)"></df-field-image-upload>
+						</ng-container>
+	
 						<!-- Main Fields End -->
 
 						<!-- Group Fields Start -->
