@@ -4,6 +4,7 @@ import { AppServiceType, AppService } from "../../services/app.service";
 import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomDialogPublicationRemoveConfirmComponent } from './custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-publication',
@@ -60,8 +61,8 @@ export class PublicationComponent implements OnInit {
     this.tableDisplayedColumns = {
       label: ['No.', 'Title', 'Date of publish', 'Status', 'Actions'],
       type: ['number', 'text', 'text', 'object', 'any'],
-      originalProperty: ['position', 'title', 'publication_date', 'status', 'actions'],
-      property: ['position', 'title', 'publication_date'],
+      originalProperty: ['position', 'title', 'publication_date_preview', 'status', 'actions'],
+      property: ['position', 'title', 'publication_date_preview'],
     };
 
     //this.tableDisplayedColumns = [
@@ -83,8 +84,9 @@ export class PublicationComponent implements OnInit {
 
     this.appSvc.listPaginatorParams(AppServiceType.PUBLICATIONS, undefined, undefined, this.tableDataPage).subscribe(successResponse => {
       if (successResponse['data']) successResponse['data'] = successResponse['data'].map((data: any, dataIndex: number) => {
-        data['position']    = dataIndex + 1;
-        data['status']      = this.setDataStatus(data['publication_status']);
+        data['position']                  = dataIndex + 1;
+        data['publication_date_preview']  = (data['publication_date']) ? formatDate(data['publication_date'], 'fullDate', 'en') : null;
+        data['status']                    = this.setDataStatus(data['publication_status']);
 
         return data;
       });
