@@ -120,13 +120,18 @@ export class AppService {
     return this.http.get(this.getUrl(serviceType), { headers: this.HEADERS });
   }
 
-  listParams(serviceType: AppServiceType, params: HttpParams, stringParams: string = '', page: Page | null = null): Observable<any> {
+  listParams(serviceType: AppServiceType, params: {[param: string]: any} | HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
+  }
+
+  listPaginatorParams(serviceType: AppServiceType, params: {[param: string]: any} | HttpParams = {}, stringParams: string = '', page?: Page): Observable<any> {
     if (page) {
-      params.appendAll({
-        'page_number': page.pageNumber,
-        'limit': page.limit,
-        'offset': page.pageNumber * page.limit,
-      });
+      params = { ...params, ...{
+        'page_index': page.pageIndex,
+        'limit': page.pageSize,
+        'offset': page.pageSize * page.pageIndex,
+        }
+      };
     }
 
     return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
