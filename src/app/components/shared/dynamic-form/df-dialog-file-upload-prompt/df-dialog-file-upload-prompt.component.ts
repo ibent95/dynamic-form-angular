@@ -5,8 +5,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { AppGeneralService, ResponseFormat } from 'src/app/services/app-general.service';
 import { AppService, AppServiceType } from 'src/app/services/app.service';
+import { DFField } from '../dynamic-forms';
 
 interface DialogData {
+  field: DFField | null,
   backendService: string;
   appearance: MatFormFieldAppearance;
   color: ThemePalette;
@@ -30,10 +32,10 @@ interface DialogData {
         <input type="file" (change)="onSelected(fileInput.files)" #fileInput id="file-0" hidden />
 
         <!-- File names -->
-        <input type="text" matInput [value]="files[0]?.value" [placeholder]="'Please prepare your files to upload...'" readonly />
+        <input type="text" matInput [value]="(result.files) ? result.files[0].name : ''" [placeholder]="'Please prepare your files to upload...'" readonly />
 
         <!-- Clear button -->
-        <button *ngIf="files[0]?.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
+        <button *ngIf="(result.files) ? result.files[0].name : null" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
           <mat-icon>close</mat-icon>
         </button>
 
@@ -54,6 +56,7 @@ export class DFDialogFileUploadPromptComponent {
   @ViewChild('fileInput') fileInput!: ElementRef;
 
   dialogData: DialogData = {
+    field: null,
     backendService: '',
     appearance: 'outline',
     color: 'accent',
@@ -62,13 +65,11 @@ export class DFDialogFileUploadPromptComponent {
     backButtonText: 'Back',
   };
 
-  files!: Array<any>;
   isInUploadProcess!: boolean;
-
-  result!: undefined | {
-    response: FileList | false | null
-    user_choice: boolean | 'draft' | null
-    result: boolean | 'draft' | null
+  
+  result!: {
+    files: FileList | any,
+    uuid: string
   };
 
   constructor(
@@ -77,13 +78,17 @@ export class DFDialogFileUploadPromptComponent {
     private appSvc: AppService,
     private generalSvc: AppGeneralService,
   ) {
-    this.files = [null]
+    this.result = {
+      files: null,
+      uuid: ''
+    };
     this.isInUploadProcess = false;
   }
 
   ngOnInit(): void {
     // Set MAT_DIALOG_DATA to dialogData
     if (this.data?.backendService !== undefined) this.dialogData.backendService = this.data?.backendService;
+    if (this.data?.field !== undefined) this.dialogData.field = this.data?.field;
     if (this.data?.appearance !== undefined) this.dialogData.appearance = this.data?.appearance;
     if (this.data?.color !== undefined) this.dialogData.color = this.data?.color;
     if (this.data?.title !== undefined) this.dialogData.title = this.data?.title;
@@ -92,18 +97,19 @@ export class DFDialogFileUploadPromptComponent {
   }
 
   public onActionBtnClick(): void {
-    this.dialogRef.close(this.files ?? false);
+    this.dialogRef.close(this.result ?? false);
   }
 
   public clearInput() {
-    this.files[0] = null;
+    this.result.files = null;
   }
 
   public onSelected(files: FileList | null) {
     if (files && files[0]) {
-
       let formData = new FormData();
-      formData.append('files[0]', files[0]);
+      Array.from(files).forEach((file: File, fileIndex: number) => {
+        formData.append(`files[${fileIndex}]`, file);
+      });
 
       this.sendData(formData, files, '/' + this.dialogData.backendService);
     }
@@ -112,7 +118,10 @@ export class DFDialogFileUploadPromptComponent {
   private sendData(formData: FormData, files: FileList, stringParams: string = '') {
     this.appSvc.create(AppServiceType.MAIN_UPLOAD_FILE, formData, new HttpParams, stringParams).subscribe(
       (successResponse: ResponseFormat) => {
-        this.files[0] = successResponse.data;
+        this.result = {
+          files: files,
+          uuid: successResponse.data
+        };
         this.handleResponse(successResponse);
       },
       (errorResponse: ResponseFormat) => {

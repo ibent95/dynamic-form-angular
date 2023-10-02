@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AppServiceType, AppService } from "../../services/app.service";
-import { AppGeneralService, ResponseFormat } from 'src/app/services/app-general.service';
+import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomDialogPublicationRemoveConfirmComponent } from './custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
-import { HttpParams } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-publication',
@@ -19,19 +19,16 @@ export class PublicationComponent implements OnInit {
 
   tableDisplayedColumns!: { label: Array<string>, type: Array<string>, property: Array<string>, originalProperty: Array<string> };
   tableDataSource!: Array<any>;
+  tableDataPage!: Page;
 
   constructor(
     private router: Router,
     private appSvc: AppService,
     private generalSvc: AppGeneralService,
     private dialog: MatDialog,
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.serverResponse = null;
     this.showTable = false;
-
-    this.getServerInfo();
 
     this.tableDisplayedColumns = {
       label: [],
@@ -41,7 +38,16 @@ export class PublicationComponent implements OnInit {
     };
 
     this.tableDataSource = [];
+    this.tableDataPage = {
+      length: 0,
+      pageIndex: 0,
+      pageSize: 10,
+      previousPageIndex: 0,
+    };
+  }
 
+  ngOnInit(): void {
+    this.getServerInfo();
     this.tableInit();
   }
 
@@ -55,8 +61,8 @@ export class PublicationComponent implements OnInit {
     this.tableDisplayedColumns = {
       label: ['No.', 'Title', 'Date of publish', 'Status', 'Actions'],
       type: ['number', 'text', 'text', 'object', 'any'],
-      property: ['position', 'title', 'publication_date', 'status', 'actions'],
-      originalProperty: ['position', 'title', 'publication_date', 'status'],
+      originalProperty: ['position', 'title', 'publication_date_preview', 'status', 'actions'],
+      property: ['position', 'title', 'publication_date_preview'],
     };
 
     //this.tableDisplayedColumns = [
@@ -69,23 +75,59 @@ export class PublicationComponent implements OnInit {
     this.getTableData();
   }
 
-  private getTableData(): void {
-    let PARAMS = new HttpParams();
-    PARAMS.append('limit', 10);
-    PARAMS.append('offset', 0);
+  public getTableData(page?: Page): void {
+    if (page) {
+      this.tableDataPage = page;
+    }
 
-    this.appSvc.listParams(AppServiceType.PUBLICATIONS, PARAMS).subscribe(response => {
-      if (response['data']) response['data'] = response['data'].map((data: any, dataIndex: number) => {
-        data['position']    = dataIndex + 1;
-        data['status']      = data['publication_status']['publication_status_name'];
-        data['status_code'] = data['publication_status']['publication_status_code'];
-        data['status_uuid'] = data['publication_status']['uuid'];
+    this.showTable = false;
+
+    this.appSvc.listPaginatorParams(AppServiceType.PUBLICATIONS, undefined, undefined, this.tableDataPage).subscribe(successResponse => {
+      if (successResponse['data']) successResponse['data'] = successResponse['data'].map((data: any, dataIndex: number) => {
+        data['position']                  = dataIndex + 1;
+        data['publication_date_preview']  = (data['publication_date']) ? formatDate(data['publication_date'], 'fullDate', 'en') : null;
+        data['status']                    = this.setDataStatus(data['publication_status']);
 
         return data;
       });
-      this.tableDataSource = response['data'];
+
+      this.tableDataSource = successResponse['data'];
+      this.tableDataPage.length = successResponse['count'];
       this.showTable = true;
     });
+  }
+
+  private setDataStatus(data: any): { 'status_name': any, 'status_code': string, 'status_uuid': string, 'classes': Array<string> } {
+    let classes: Array<string>;
+
+    switch (data['publication_status_code']) {
+      case 'PRO':
+        classes = ['text-bg-info'];
+        break;
+
+      case 'RJT':
+        classes = ['text-bg-danger'];
+        break;
+
+      case 'VRF':
+        classes = ['text-bg-success'];
+        break;
+
+      case 'RVS':
+        classes = ['text-bg-warning'];
+        break;
+
+      default:
+        classes = ['text-bg-secondary'];
+        break;
+    }
+
+    return {
+      'status_name': data['publication_status_name'],
+      'status_code': data['publication_status_code'],
+      'status_uuid': data['uuid'],
+      'classes': classes
+    };
   }
 
   public onAddPublicationClick(): void {

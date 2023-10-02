@@ -31,6 +31,7 @@ export class DFFieldFileUploadComponent {
     private dialog: MatDialog,
   ) {
     this.formGroup = this.parentFormGroup.form;
+    this.value = this.value || null;
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
     this.isInUploadProcess = false;
@@ -40,6 +41,7 @@ export class DFFieldFileUploadComponent {
     let dialogConfig: MatDialogConfig = {
       width: '600px',
       data: {
+        field: this.field,
         backendService: this.backendService,
         appearance: 'outline',
         color: 'accent',
@@ -62,12 +64,11 @@ export class DFFieldFileUploadComponent {
         this.isInUploadProcess = false;
       }
     });
-
   }
 
-  private onSelected(files: FileList) {
-    this.value = files[0].name;
-    this.formGroup.get(this.field.field_name)?.setValue(files[0]);
+  private onSelected(result: any) {
+    this.formGroup.get(this.field.field_name)?.setValue(result.uuid);
+    this.value = result.files[0].name;
   }
 
   public clearInput() {

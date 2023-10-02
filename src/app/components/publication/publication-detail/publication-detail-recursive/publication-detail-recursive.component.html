@@ -144,6 +144,24 @@
 							</div>
 						</ng-container>
 
+						<ng-container *ngSwitchCase="'file-upload'">
+							<div>
+								<mat-label [innerHTML]="field.field_label"></mat-label>
+								<ngx-doc-viewer
+									[viewer]="ngxDocViewer"
+									[url]="field.other_value?.url"
+									style="width:100%;height:50vh;">
+								</ngx-doc-viewer>
+							</div>
+						</ng-container>
+	
+						<ng-container *ngSwitchCase="'image-upload'">
+							<div>
+								<mat-label [innerHTML]="field.field_label"></mat-label>
+								<img [src]="field.other_value?.url" alt="field.field_label">
+							</div>
+						</ng-container>
+	
 						<!-- Main Fields End -->
 
 						<!-- Group Fields Start -->

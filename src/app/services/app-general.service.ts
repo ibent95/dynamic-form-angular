@@ -141,10 +141,10 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
 };
 
 export interface Page {
-  pageNumber: number;
-  limit: number;
-  offset?: number;
-  count?: number;
+  length: number;
+  pageIndex: number;
+  pageSize: number;
+  previousPageIndex?: number;
 };
 
 export interface ResponseFormat {

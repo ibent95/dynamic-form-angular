@@ -1,10 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DFField } from 'src/app/components/shared/dynamic-form/dynamic-forms';
-import { AppService } from 'src/app/services/app.service';
 import { DFDialogFileUploadPromptComponent } from '../df-dialog-file-upload-prompt/df-dialog-file-upload-prompt.component';
 
 @Component({
@@ -34,6 +33,7 @@ export class DFFieldImageUploadComponent {
     private dialog: MatDialog,
   ) {
     this.formGroup = this.parentFormGroup.form;
+    this.value = this.value || null;
     this.fileReader = new FileReader();
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
@@ -44,6 +44,7 @@ export class DFFieldImageUploadComponent {
     let dialogConfig: MatDialogConfig = {
       width: '600px',
       data: {
+        field: this.field,
         backendService: this.backendService,
         appearance: 'outline',
         color: 'accent',
@@ -57,11 +58,11 @@ export class DFFieldImageUploadComponent {
     const dialogRef = this.dialog.open(DFDialogFileUploadPromptComponent, dialogConfig);
 
     // Subscribe to dialog closed event
-    dialogRef.afterClosed().subscribe((response: any) => {
-      if (response) {
+    dialogRef.afterClosed().subscribe((results: any) => {
+      if (results) {
         this.isInUploadProcess = true;
 
-        this.onSelected(response);
+        this.onSelected(results);
       } else {
         this.isInUploadProcess = false;
       }
@@ -69,11 +70,11 @@ export class DFFieldImageUploadComponent {
 
   }
 
-  onSelected(files: FileList) {
-    if (files && files[0] && files[0].type.match(/image\/*/) != null) {
-      this.formGroup.get(this.field.field_name)?.setValue(files[0]);
-      this.value = files[0].name;
-      this.setImagesPreviews(files);
+  onSelected(results: any) {
+    if (results.files && results.files[0] && results.files[0].type.match(/image\/*/) != null) {
+      this.formGroup.get(this.field.field_name)?.setValue(results.uuid);
+      this.value = results.files[0].name;
+      this.setImagesPreviews(results.files);
     }
     // For set error message when input files is not image
     // else if (files && files[0] && files[0].type.match(/image\/*/) == null) {
