@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://svc-dynamic-form-symfony.loc/api',
-  ngxDocViewer: 'url',
+  apiUrl: 'http://127.0.0.1:8080/public/api',
+  // apiUrl: 'https://svc-dynamic-form-symfony.loc/api',
   // apiUrl: 'https://service.ibent95.my.id/svc-dynamic-form-symfony/public/api'
+  ngxDocViewer: 'url',
 };
 
 /*

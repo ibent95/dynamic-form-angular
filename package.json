@@ -1,6 +1,6 @@
 {
   "name": "dynamic-form-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "ng": "node --max_old_space_size=20000 ./node_modules/@angular/cli/bin/ng",
     "start": "node --max_old_space_size=20000 ./node_modules/@angular/cli/bin/ng serve",
