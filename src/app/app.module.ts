@@ -135,6 +135,7 @@ import { DFWrapperAccordionComponent } from './components/shared/dynamic-form/df
 import { DFWrapperPanelComponent } from './components/shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component';
 import { DFWrapperMultipleComponent } from './components/shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
 import { DFCustomAlertInfoNoDataComponent } from './components/shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
+import { ConfigurationsComponent } from './components/configurations/configurations.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -235,6 +236,7 @@ registerLocaleData(localeId, 'id');
     DFWrapperPanelComponent,
     DFWrapperMultipleComponent,
     DFCustomAlertInfoNoDataComponent,
+    ConfigurationsComponent,
   ],
   imports: [
     BrowserModule,
