@@ -92,11 +92,11 @@
 						<ng-container *ngSwitchCase="'file-upload'">
 							<df-field-file-upload appearance="outline" color="accent" [field]="field" [backendService]="'publications'" (type)="onType($event, field, field.field_name, fieldIndex)" (change)="onChange($event, field, parentControlName + field.field_name, fieldIndex)"></df-field-file-upload>
 						</ng-container>
-	
+
 						<ng-container *ngSwitchCase="'image-upload'">
 							<df-field-image-upload appearance="outline" color="accent" [field]="field" [backendService]="'publications'" (type)="onType($event, field, field.field_name, fieldIndex)" (change)="onChange($event, field, parentControlName + field.field_name, fieldIndex)"></df-field-image-upload>
 						</ng-container>
-	
+
 						<!-- Main Fields End -->
 
 						<!-- Group Fields Start -->
@@ -417,7 +417,7 @@
 						<div class="border-custom m-0 p-0"> <!-- class:border-custom -->
 							<mat-label class="ml-1 mt-5">{{ field.field_label }}</mat-label>
 
-							<mat-stepper class="-z-10" [orientation]="field.field_configs?.orientation" [linear]="field.field_configs?.linear" [color]="'accent'" #stepper>
+							<mat-stepper class="-z-10" [orientation]="(stepperOrientation | async)!" [linear]="field.field_configs?.linear" [color]="'accent'" #stepper>
 
 								<ng-container *ngFor="let step of field.children; let stepIndex = index;">
 
@@ -483,6 +483,20 @@
 
 					<!-- Group Fields End -->
 
+				</ng-container>
+
+				<!-- Field`s default error -->
+				<ng-container *ngIf="(forms.get(field.field_name)?.hasError)">
+
+					<mat-error *ngIf="(forms.get(field.field_name)?.hasError('required'))">{{ 'Field is riquired. Please fill the field.' }}</mat-error>
+
+					<mat-error *ngIf="(forms.get(field.field_name)?.hasError('max'))">{{ 'Value is too big.' }}</mat-error>
+
+					<mat-error *ngIf="(forms.get(field.field_name)?.hasError('min'))">{{ 'Value is too small.' }}</mat-error>
+
+					<mat-error *ngIf="(forms.get(field.field_name)?.hasError('owlDateTimeParse'))">{{ 'The date is somehow error when parsed in the field.' }}</mat-error>
+
+					<br>
 				</ng-container>
 
 				<!-- Field`s unique error -->

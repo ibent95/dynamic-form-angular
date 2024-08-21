@@ -1,9 +1,12 @@
 import { Location } from "@angular/common";
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormGroup, FormArray } from "@angular/forms";
 import { setConsoleLog } from "src/app/services/app-general.service";
 import { AppService } from "src/app/services/app.service";
 import { DFMetadata, DFDataService, DFField } from "src/app/components/shared/dynamic-form/dynamic-forms";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Observable, map } from "rxjs";
+import { StepperOrientation } from "@angular/cdk/stepper";
 
 @Component({
   selector: 'app-publication-form-recursive',
@@ -18,18 +21,20 @@ export class PublicationFormRecursiveComponent implements OnInit {
   @Input() parentField?: DFField;
   @Input() parentControlName?: string;
   @Input() isDetails?: string;
-  
+
   @Output() onPublicationTypeSelected!: EventEmitter<any>;
   @Output() onFormCancelButtonClicked!: EventEmitter<any>;
   @Output() onFormSubmitButtonClicked!: EventEmitter<any>;
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;
-  
+
   fields!: Array<DFField>;
   selectedPublicationType!: { text: string; value: any };
   publicationTypeUuid!: string;
   publicationTypeCode!: string;
   loadingMessage!: string;
+
+  stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private location: Location,
@@ -37,6 +42,12 @@ export class PublicationFormRecursiveComponent implements OnInit {
     private dfDataSvc: DFDataService,
     private ref: ChangeDetectorRef,
   ) {
+    const breakpointObserver = inject(BreakpointObserver);
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+
+    // Output or event emitter
     this.onPublicationTypeSelected = new EventEmitter<any>(true);
     this.onFormCancelButtonClicked = new EventEmitter<any>(true);
     this.onFormSubmitButtonClicked = new EventEmitter<any>(true);
