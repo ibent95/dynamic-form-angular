@@ -1,10 +1,10 @@
 import { Location, formatDate } from "@angular/common";
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
-import { Subject } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { AppGeneralService, LUXON_DATE_FORMATS, ResponseFormat } from "src/app/services/app-general.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
@@ -254,58 +254,101 @@ export class PublicationFormComponent implements OnInit {
     let i = 0;
 
     array.forEach((element: any) => {
+
+      // Default configs for all type of fiels
       if (element.hasOwnProperty(attribute) && element[attribute]) {
 
-        // Set custom code here
-
+        /**
+         * Push element (field) to fieldInForms so we can use it as database or library of current form configs.
+         * Mostly it used to search field by type or name to access specifict handler
+         */
         this.fieldInForms?.push(element);
 
         // Set hidden and disabled config
         this.hiddenFields[element.field_name] = false;
         this.disabledFields[element.field_name] = false;
+
+        /**
+         * Set custom code here
+         */
+
       }
 
-      if ((element.field_type === 'wizard' || element.field_type === 'stepper') && (element.children.length > 0)) {
-        this.dfMetadata.wizards?.push({
-          field_label: element.field_label,
-          step: i,
-          active: (i === 0)
-        });
-        i++;
-      }
+      /**
+       * Custom configs seperated by type of fields
+       * Each type of fields has specifict handler
+       */
+      switch (element.field_type) {
+        case 'select':
+        case 'autoselect':
+        case 'autocomplete':
+        case 'multiple_select':
+        case 'multiple_autoselect':
 
-      if (element.field_type === 'select' || element.field_type === 'autoselect' || element.field_type === 'autocomplete' || element.field_type === 'multiple_select' || element.field_type === 'multiple_autoselect') {
-        this.selectOptions[element.field_name] = {
-          items: element.children || [],
-          defaultValue: element.default_value || [],
-          formControl: new FormControl()
-        };
-
-        this.selectURLParameters[element.field_name] = '';
-      }
-
-      if (element.field_type === 'panel_multiple' || element.field_type === 'multiple') {
-        element.children.forEach((value: any, key: any) => {
-          this.selectOptions[value.field_name] = {
-            items: value.children,
-            defaultValue: [],
+          this.selectOptions[element.field_name] = {
+            items: element.children || [],
+            defaultValue: element.default_value || [],
             formControl: new FormControl()
           };
 
-          // Set initial value for every select url params
-          //if (value.field_type === 'select' || value.field_type === 'autoselect' || value.field_type === 'autocomplete' || value.field_type === 'multiple_select' || value.field_type === 'multiple_autoselect') { }
+          this.selectURLParameters[element.field_name] = '';
 
-          // Set hidden and disabled config
-          if (value[attribute]) {
-            this.hiddenFields[value.field_name] = false;
-            this.disabledFields[value.field_name] = false;
+          break;
+
+        case 'multiple':
+        case 'panel_multiple':
+
+          element.children.forEach((value: any, key: any) => {
+
+            this.selectOptions[value.field_name] = {
+              items: value.children,
+              defaultValue: [],
+              formControl: new FormControl()
+            };
+
+            // Set initial value for every select url params
+            //if (value.field_type === 'select' || value.field_type === 'autoselect' || value.field_type === 'autocomplete' || value.field_type === 'multiple_select' || value.field_type === 'multiple_autoselect') { }
+
+            // Set hidden and disabled config
+            if (value[attribute]) {
+              this.hiddenFields[value.field_name] = false;
+              this.disabledFields[value.field_name] = false;
+            }
+
+          });
+
+          break;
+
+          // Main containers
+          case 'wizard':
+          case 'stepper':
+          case 'accordion':
+          // Children containers
+          case 'step':
+          case 'panel':
+
+          if (element?.children?.length > 0) {
+
+            // Just set this configs to Main Containers to control container (such activated step)
+            if (element?.field_type !== 'step' || element?.field_type !== 'panel') this.dfMetadata[element.field_id]?.push({
+              field_label: element.field_label,
+              step: i,
+              active: (i === 0)
+            });
+
+            // Set attribute to children of this type of field to minimize custom handler for all fields type
+            this.setFieldsByAttribute(attribute, element['children']);
+
+            i++; // Maybe we can use another method to handle order of multiple/stepper
           }
-        });
+
+          break;
+
+        default:
+          // code
+          break;
       }
 
-      if ((element.field_type !== 'panel_multiple' && element.field_type !== 'multiple') && Array.isArray(element['children']) && element['children'].length > 0) {
-        this.setFieldsByAttribute(attribute, element['children']);
-      }
     });
 
     this.dfMetadata.usedFields = this.fieldInForms;
@@ -315,7 +358,10 @@ export class PublicationFormComponent implements OnInit {
   private setDynamicFormValues(publicationTypeUuid: string, publicationTypeCode: string) {
     let fieldDataSets: any = {};
 
-    fieldDataSets['publication_type_uuid'] = publicationTypeUuid;
+    fieldDataSets['publication_type_uuid'] = [
+      { value: publicationTypeUuid, disabled: (this.formStatus === AppFormStatus.UPDATE) },
+      [Validators.required]
+    ];
     fieldDataSets['publication_type_code'] = publicationTypeCode;
 
     this.fieldInForms.forEach((element: any) => {
@@ -355,7 +401,7 @@ export class PublicationFormComponent implements OnInit {
           let selectedMultipleData = element?.value || [];
 
           /**
-           * Save support data 
+           * Save support data
            * 1. Master data of options for all variant of select types (select, autoselect, autocomplete).
            * 2. Url parameters for autoselect and autocomplete (when user search for a data, it will search trough an API with these url parameters).
            * 3. Selected data for backup.
@@ -380,7 +426,7 @@ export class PublicationFormComponent implements OnInit {
         case 'autoselect':
         case 'autocomplete':
           /**
-           * Save support data 
+           * Save support data
            * 1. Master data of options for all variant of select types (select, autoselect, autocomplete).
            * 2. Url parameters for autoselect and autocomplete (when user search for a data, it will search trough an API with these url parameters).
            */
@@ -506,7 +552,7 @@ export class PublicationFormComponent implements OnInit {
           break;
 
         default: // Handler for text or other field type
-          fieldDataSets[element.field_name] = (element.validation_config?.pattern) 
+          fieldDataSets[element.field_name] = (element.validation_config?.pattern)
             ? [element?.value, Validators.pattern(element.validation_config.pattern)]
             : element?.value;
           break;
@@ -542,12 +588,23 @@ export class PublicationFormComponent implements OnInit {
 
   // Function for check changes of form
   private subscribeToFormsChanges() {
+    // Status changes
     //this.forms.statusChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
     //  this.statusSvc.addEditMode = true;
     //});
-    //this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
-    //  this.updateGlobalDFMetadata();
-    //});
+
+    // Value changes
+    this.forms.valueChanges.pipe(takeUntil(this.subscription$)).subscribe(() => {
+      //this.updateGlobalDFMetadata();
+      Object.keys(this.forms?.controls).forEach(key => {
+        const controlErrors: ValidationErrors | null | undefined = this.forms.get(key)?.errors;
+        if (controlErrors != null) {
+          Object.keys(controlErrors).forEach(keyError => {
+            console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          });
+        }
+      });
+    });
   }
 
   public get forms_metadata(): Array<any> {
