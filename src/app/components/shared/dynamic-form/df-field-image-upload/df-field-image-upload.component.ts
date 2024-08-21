@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { DFDialogFileUploadPromptComponent } from '../df-dialog-file-upload-prom
   templateUrl: './df-field-image-upload.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldImageUploadComponent {
+export class DFFieldImageUploadComponent implements OnInit {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;
@@ -38,6 +38,12 @@ export class DFFieldImageUploadComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
     this.isInUploadProcess = false;
+  }
+
+  ngOnInit(): void {
+    if (!this.value && this.field?.value) {
+      this.value = this.field?.value;
+    }
   }
 
   public onPrepareButtonClick(): void {

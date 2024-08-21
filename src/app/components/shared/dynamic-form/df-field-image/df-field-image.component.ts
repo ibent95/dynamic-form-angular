@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
@@ -10,7 +10,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-image.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldImageComponent {
+export class DFFieldImageComponent implements OnInit {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;
@@ -35,6 +35,12 @@ export class DFFieldImageComponent {
     this.fileReader = new FileReader();
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
+  }
+
+  ngOnInit(): void {
+    if (!this.value && this.field?.value) {
+      this.value = this.field?.value;
+    }
   }
 
   onSelected(files: FileList | null) {

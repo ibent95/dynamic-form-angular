@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { DFDialogFileUploadPromptComponent } from '../df-dialog-file-upload-prom
   templateUrl: './df-field-file-upload.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DFFieldFileUploadComponent {
+export class DFFieldFileUploadComponent implements OnInit {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;
@@ -25,6 +25,7 @@ export class DFFieldFileUploadComponent {
 
   formGroup!: FormGroup;
   isInUploadProcess!: boolean;
+  fileHasChanged: boolean;
 
   constructor(
     private parentFormGroup: FormGroupDirective,
@@ -35,6 +36,14 @@ export class DFFieldFileUploadComponent {
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();
     this.isInUploadProcess = false;
+    this.fileHasChanged = false;
+  }
+
+  ngOnInit(): void {
+    if (!this.value && this.field?.value) {
+      this.value = this.field?.value;
+      this.fileHasChanged = false;
+    }
   }
 
   public onPrepareButtonClick(): void {
@@ -69,18 +78,22 @@ export class DFFieldFileUploadComponent {
   private onSelected(result: any) {
     this.formGroup.get(this.field.field_name)?.setValue(result.uuid);
     this.value = result.files[0].name;
+    this.fileHasChanged = true;
   }
 
   public clearInput() {
     this.formGroup.get(this.field?.field_name)?.patchValue(null);
     this.value = null;
+    this.fileHasChanged = true;
   }
 
   public onType(data: any) {
+    this.fileHasChanged = true;
     this.change.emit(data);
   }
 
   public onChange(data: any) {
+    this.fileHasChanged = true;
     this.change.emit(data);
   }
 
