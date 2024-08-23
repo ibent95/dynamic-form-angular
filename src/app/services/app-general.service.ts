@@ -140,6 +140,13 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
   },
 };
 
+export enum PageState {
+  LOADING = 'loading',
+  LOADED = 'loaded',
+  ERROR = 'error',
+  EMPTY = 'empty',
+}
+
 export interface Page {
   length: number;
   pageIndex: number;

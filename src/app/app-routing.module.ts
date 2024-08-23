@@ -6,6 +6,11 @@ import { PublicationComponent } from './components/publication/publication.compo
 import { PageComponentsComponent } from './components/shared/pages/page-components/page-components.component';
 import { PageNotFoundComponent } from './components/shared/pages/page-not-found/page-not-found.component';
 import { PublicationDetailComponent } from './components/publication/publication-detail/publication-detail.component';
+import { PublicationFormsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations.component';
+import { PublicationGeneralTypesMasterDataConfigurationsComponent } from './components/configurations/publication-general-types-master-data-configurations/publication-general-types-master-data-configurations.component';
+import { PublicationTypesMasterDataConfigurationsComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations.component';
+import { PublicationFormsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-form.component';
+import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
 
 const routes: Routes = [
   {
@@ -22,6 +27,8 @@ const routes: Routes = [
     component: PageNotFoundComponent,
     children: [],
   },
+
+  // Publications data menu
   {
     path: 'publication',
     component: PublicationComponent,
@@ -40,6 +47,8 @@ const routes: Routes = [
       }
     ],
   },
+
+  // Research data menu
   {
     path: 'research',
     component: PublicationComponent,
@@ -54,6 +63,64 @@ const routes: Routes = [
       }
     ],
   },
+
+  // Configurations menu
+  {
+    path: 'configurations-publication-forms',
+    component: PublicationFormsConfigurationsComponent,
+    children: [
+      {
+        path: 'create',
+        component: PublicationFormsConfigurationsFormComponent,
+      },
+      {
+        path: 'update',
+        component: PublicationFormsConfigurationsFormComponent
+      },
+      {
+        path: 'detail',
+        component: PublicationFormsConfigurationsDetailComponent
+      }
+    ],
+  },
+  {
+    path: 'configurations-master-data-publication-general-types',
+    component: PublicationGeneralTypesMasterDataConfigurationsComponent,
+    children: [
+      {
+        path: 'create',
+        component: PublicationFormComponent,
+      },
+      {
+        path: 'update',
+        component: PublicationFormComponent
+      },
+      {
+        path: 'detail',
+        component: PublicationDetailComponent
+      }
+    ],
+  },
+  {
+    path: 'configurations-master-data-publication-types',
+    component: PublicationTypesMasterDataConfigurationsComponent,
+    children: [
+      {
+        path: 'create',
+        component: PublicationFormComponent,
+      },
+      {
+        path: 'update',
+        component: PublicationFormComponent
+      },
+      {
+        path: 'detail',
+        component: PublicationDetailComponent
+      }
+    ],
+  },
+
+  // Others menu
   {
     path: 'components',
     component: PageComponentsComponent,

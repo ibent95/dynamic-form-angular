@@ -104,9 +104,9 @@
 					<!-- Footer with paginator -->
 					<ng-container matColumnDef="paginations">
 						<td mat-footer-cell *matFooterCellDef [attr.colspan]="100">
-						  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="tableDataPage.pageSize" [length]="tableDataPage.length" [pageIndex]="tableDataPage.pageIndex" showFirstLastButtons aria-label="Select page" (page)="getTableData($event)"></mat-paginator>
+							<mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="tableDataPage.pageSize" [length]="tableDataPage.length" [pageIndex]="tableDataPage.pageIndex" showFirstLastButtons aria-label="Select page" (page)="getTableData($event)"></mat-paginator>
 						</td>
-				   </ng-container>
+					</ng-container>
 
 				   <tr mat-footer-row *matFooterRowDef="['paginations'];"></tr>
 				</table>

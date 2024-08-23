@@ -17,6 +17,11 @@ export enum AppServiceType {
   PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES,
   PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES,
 
+  CONFIGURATION_PUBLICATIONS_FORM_MAIN,
+  CONFIGURATION_PUBLICATIONS_FORMS,
+  CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN,
+  CONFIGURATION_PUBLICATIONS_FORM_VERSIONS,
+
 }
 
 export enum AppFormStatus {
@@ -71,7 +76,7 @@ export class AppService {
       case AppServiceType.MAIN_UPLOADED_FILE:
         url = this.BASE_URL_API + '/v1/files';
         break;
-  
+
       /** =============================== PUBLICATION API =============================== */
 
       case AppServiceType.PUBLICATION_MAIN:
@@ -99,6 +104,24 @@ export class AppService {
         break;
 
       /** ================================= RESEARCH API ================================= */
+
+      /** =============================== CONFIGURATION API =============================== */
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_MAIN:
+        url = this.BASE_URL_API + '/v1/configurations/publication-form';
+        break;
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS:
+        url = this.BASE_URL_API + '/v1/configurations/publication-forms';
+        break;
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN:
+        url = this.BASE_URL_API + '/v1/configurations/publication-form-version';
+        break;
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS:
+        url = this.BASE_URL_API + '/v1/configurations/publication-form-versions';
+        break;
 
       /** ================================== DEFAULT API ================================== */
 

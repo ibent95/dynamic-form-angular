@@ -136,6 +136,14 @@ import { DFWrapperPanelComponent } from './components/shared/dynamic-form/df-wra
 import { DFWrapperMultipleComponent } from './components/shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component';
 import { DFCustomAlertInfoNoDataComponent } from './components/shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component';
 import { ConfigurationsComponent } from './components/configurations/configurations.component';
+import { PublicationFormsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations.component';
+import { PublicationTypesMasterDataConfigurationsComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations.component';
+import { PublicationGeneralTypesMasterDataConfigurationsComponent } from './components/configurations/publication-general-types-master-data-configurations/publication-general-types-master-data-configurations.component';
+import { PublicationFormVersionsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-form-versions-configurations.component';
+import { PublicationFormsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-form.component';
+import { PublicationFormsVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-form/publication-forms-versions-configurations-form.component';
+import { PublicationFormsVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-detail/publication-forms-versions-configurations-detail.component';
+import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -237,6 +245,14 @@ registerLocaleData(localeId, 'id');
     DFWrapperMultipleComponent,
     DFCustomAlertInfoNoDataComponent,
     ConfigurationsComponent,
+    PublicationFormsConfigurationsComponent,
+    PublicationTypesMasterDataConfigurationsComponent,
+    PublicationGeneralTypesMasterDataConfigurationsComponent,
+    PublicationFormVersionsConfigurationsComponent,
+    PublicationFormsConfigurationsFormComponent,
+    PublicationFormsVersionsConfigurationsFormComponent,
+    PublicationFormsVersionsConfigurationsDetailComponent,
+    PublicationFormsConfigurationsDetailComponent,
   ],
   imports: [
     BrowserModule,

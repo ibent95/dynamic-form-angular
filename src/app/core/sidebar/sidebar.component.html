@@ -8,6 +8,7 @@
 
 <mat-nav-list>
 
+	<!-- Data -->
 	<mat-list-item routerLink="/" [state]="{tracingId: 123}">
 		<mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
 		{{ 'Home' }}
@@ -18,8 +19,38 @@
 		{{ 'Publications' }}
 	</mat-list-item>
 
+	<!-- Configurations -->
+	<mat-divider></mat-divider>
+
+	<div mat-subheader [innerHTML]="'Configurations'"></div>
+
+	<mat-list-item routerLink="/configurations-publication-forms" [state]="{tracingId: 321}">
+		<mat-icon aria-hidden="false" aria-label="Publication Forms Configurations">exposure</mat-icon>
+		{{ 'Publication Forms' }}
+	</mat-list-item>
+
+	<!-- Master data -->
+	<mat-divider></mat-divider>
+
+	<div mat-subheader [innerHTML]="'Master Data'"></div>
+
+	<mat-list-item routerLink="/configurations-master-data-publication-general-types" [state]="{tracingId: 321}">
+		<mat-icon aria-hidden="false" aria-label="Publication General Types">format_list_bulleted</mat-icon>
+		{{ 'Publication General Types' }}
+	</mat-list-item>
+
+	<mat-list-item routerLink="/configurations-master-data-publication-types" [state]="{tracingId: 321}">
+		<mat-icon aria-hidden="false" aria-label="Publication Types">format_list_numbered</mat-icon>
+		{{ 'Publication Types' }}
+	</mat-list-item>
+
+	<!-- Others -->
+	<mat-divider></mat-divider>
+
+	<div mat-subheader [innerHTML]="'Others'"></div>
+
 	<mat-list-item routerLink="/components" [state]="{tracingId: 321}">
-		<mat-icon aria-hidden="false" aria-label="Component">view_compact_alt</mat-icon>
+		<mat-icon aria-hidden="false" aria-label="Component">pageview</mat-icon>
 		{{ 'Components' }}
 	</mat-list-item>
 

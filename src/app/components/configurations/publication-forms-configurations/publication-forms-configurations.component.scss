@@ -1,0 +1,7 @@
+.mat-table-action-column {
+	padding-top: 10px;
+}
+
+::ng-deep mat-slide-toggle .mdc-switch {
+	transform: scale(1.6) translatex(7px) translatey(-5px); //adjust the pixels to your scale size i
+}
