@@ -13,9 +13,18 @@ export enum AppServiceType {
   PUBLICATION_MAIN,
   PUBLICATIONS,
   PUBLICATIONS_FORM_META_DATA,
+
+  PUBLICATION_FORM_VERSION_MAIN,
+  PUBLICATION_FORM_VERSIONS,
+
+  PUBLICATION_FORM_MAIN,
+  PUBLICATION_FORMS,
+
   PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES,
   PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES,
   PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES,
+  DYNAMICFORM_MASTERDATA_FIELD_TYPES,
+  DYNAMICFORM_MASTERDATA_FIELD_OPTIONS,
 
   CONFIGURATION_PUBLICATIONS_FORM_MAIN,
   CONFIGURATION_PUBLICATIONS_FORMS,
@@ -91,6 +100,22 @@ export class AppService {
         url = this.BASE_URL_API + '/v1/publications/form-meta-data';
         break;
 
+      case AppServiceType.PUBLICATION_FORM_VERSION_MAIN:
+        url = this.BASE_URL_API + '/v1/publication-form-version';
+        break;
+
+      case AppServiceType.PUBLICATION_FORM_VERSIONS:
+        url = this.BASE_URL_API + '/v1/publication-form-versions';
+        break;
+
+      case AppServiceType.PUBLICATION_FORM_MAIN:
+        url = this.BASE_URL_API + '/v1/publication-form';
+        break;
+
+      case AppServiceType.PUBLICATION_FORMS:
+        url = this.BASE_URL_API + '/v1/publication-forms';
+        break;
+
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES:
         url = this.BASE_URL_API + '/v1/master/publication-general-types';
         break;
@@ -101,6 +126,14 @@ export class AppService {
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES:
         url = this.BASE_URL_API + '/v1/master/publication-statuses';
+        break;
+
+      case AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_TYPES:
+        url = this.BASE_URL_API + '/v1/master/dynamic-form/field-types';
+        break;
+
+      case AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_OPTIONS:
+        url = this.BASE_URL_API + '/v1/master/dynamic-form/field-options';
         break;
 
       /** ================================= RESEARCH API ================================= */

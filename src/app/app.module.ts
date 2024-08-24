@@ -144,6 +144,10 @@ import { PublicationFormsConfigurationsFormComponent } from './components/config
 import { PublicationFormsVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-form/publication-forms-versions-configurations-form.component';
 import { PublicationFormsVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-detail/publication-forms-versions-configurations-detail.component';
 import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
+import { PublicationFormsInitialConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-initial-configurations-form/publication-forms-initial-configurations-form.component';
+import { PublicationFormsGeneralConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-general-configurations-form/publication-forms-general-configurations-form.component';
+import { PublicationFormsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
+import { PublicationFormsConfigurationsOverviewFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -253,6 +257,10 @@ registerLocaleData(localeId, 'id');
     PublicationFormsVersionsConfigurationsFormComponent,
     PublicationFormsVersionsConfigurationsDetailComponent,
     PublicationFormsConfigurationsDetailComponent,
+    PublicationFormsInitialConfigurationsFormComponent,
+    PublicationFormsGeneralConfigurationsFormComponent,
+    PublicationFormsAdvancedConfigurationsFormComponent,
+    PublicationFormsConfigurationsOverviewFormComponent,
   ],
   imports: [
     BrowserModule,
