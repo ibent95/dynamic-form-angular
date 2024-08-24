@@ -1,0 +1,113 @@
+<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+
+	<!-- Row 1 -->
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Version of Publication Form' }}</mat-label>
+
+			<mat-select formControlName="uuid_form_version" placeholder="Please choose the publication form version...">
+				<!-- (selectionChange)="onFormVersionChange($event)" -->
+				<ng-container *ngFor="let option of selectOptions.formVersions; let optionIndex = index;">
+					<mat-option [value]="option.uuid" (click)="onFormVersionChange(option)">{{ '[' + option.publication_form_version_code + '] ' + option.publication_form_version_name }}</mat-option>
+				</ng-container>
+			</mat-select>
+
+			<mat-error *ngIf="formGroup?.get('uuid_form_version')?.invalid && (formGroup?.get('uuid_form_version')?.dirty || formGroup?.get('uuid_form_version')?.touched)">{{ 'Field is required' }}</mat-error>
+
+			<mat-hint>{{ 'The version of Publication Form for this field (Exp: Book 1 V1, Journal 1 V1).' }}</mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-6">
+		<ng-container *ngIf="selectedFormVersion">
+			<table class="table-detail border-separate border-spacing-2 border border-slate-500 table-fixed">
+				<tbody>
+					<tr>
+						<td class="w-1/4">Form Version</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFormVersion.publication_form_version_name"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Code</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFormVersion.publication_form_version_code"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Description</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFormVersion.description"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Grid System Configs</td>
+						<td class="w-1">:</td>
+						<td>{{ jsonParse(selectedFormVersion.grid_system) | json }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</ng-container>
+	</div>
+	<!-- Row 1 -->
+
+	<!-- Row 2 -->
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Type' }}</mat-label>
+			<mat-select formControlName="field_type" placeholder="Please fill the type...">
+				<!-- (selectionChange)="onFieldTypeChange($event)" -->
+				<ng-container *ngFor="let option of selectOptions.fieldTypes; let optionIndex = index;">
+					<mat-option [value]="option.dynamic_form_field_type_code" (click)="onFieldTypeChange(option)">{{ '[' + option.dynamic_form_field_type_code + '] ' + option.dynamic_form_field_type }}</mat-option>
+				</ng-container>
+			</mat-select>
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_type')?.invalid && (formGroup?.get('field_type')?.dirty || formGroup?.get('field_type')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The type of field (Exp: Text, Number, Select)'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-6">
+		<ng-container *ngIf="selectedFieldType">
+			<table class="table-detail border-separate border-spacing-2 border border-slate-500 table-fixed">
+				<tbody>
+					<tr>
+						<td class="w-1/4">Field Type</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFieldType.dynamic_form_field_type"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Code</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFieldType.dynamic_form_field_type_code"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Description</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedFieldType.description"></td>
+					</tr>
+				</tbody>
+			</table>
+		</ng-container>
+	</div>
+	<!-- Row 2 -->
+
+	<!-- Row 3 -->
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Parent of Publication Form Field' }}</mat-label>
+			<mat-select formControlName="uuid_form_parent" placeholder="Please choose the parent of publication form field..." (selectionChange)="onParentFormChange($event)">
+				<ng-container *ngFor="let option of selectOptions.forms; let optionIndex = index;">
+					<mat-option [value]="option.uuid">{{ '[' + option.field_type + '] ' + option.field_id }}</mat-option>
+				</ng-container>
+			</mat-select>
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('uuid_form_parent')?.invalid && (formGroup?.get('uuid_form_parent')?.dirty || formGroup?.get('uuid_form_parent')?.touched)"></mat-error>
+			<mat-hint
+				[innerHTML]="'The parent of publication form field for this field (Exp: Text 1, Select 1).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-6"></div>
+	<!-- Row 3 -->
+
+</form>

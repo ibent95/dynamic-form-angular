@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PublicationGeneralTypesMasterDataConfigurationsComponent } from './publication-general-types-master-data-configurations.component';
+import { PublicationGeneralTypesMasterDataConfigurationsComponent } from '../publication-general-types-master-data-configurations/publication-general-types-master-data-configurations.component';
 
 describe('PublicationGeneralTypesMasterDataConfigurationsComponent', () => {
   let component: PublicationGeneralTypesMasterDataConfigurationsComponent;

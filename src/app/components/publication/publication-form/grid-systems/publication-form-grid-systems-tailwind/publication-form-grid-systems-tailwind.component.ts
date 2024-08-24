@@ -41,7 +41,6 @@ export class PublicationFormGridSystemsTailwindComponent implements OnInit {
       (this.dfMetadata.gridSystems?.cols) ? 'grid-cols-' + (this.dfMetadata.gridSystems?.cols || 12) : '',
       'grid-flow-row gap-3'
     ];
-    console.log('formStatus', this.dfMetadata);
 
     this.ref.detectChanges();
   }
