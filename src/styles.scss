@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 // @danielmoncada/angular-datetime-picker
-@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+@import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
 
 *, ::before, ::after { border-style: none; }
 html, body { height: 100%; }
