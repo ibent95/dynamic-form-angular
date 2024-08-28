@@ -148,6 +148,7 @@ import { PublicationFormsInitialConfigurationsFormComponent } from './components
 import { PublicationFormsGeneralConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-general-configurations-form/publication-forms-general-configurations-form.component';
 import { PublicationFormsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
 import { PublicationFormsConfigurationsOverviewFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
+import { CodemirrorComponent } from "./components/shared/codemirror/codemirror.component";
 
 registerLocaleData(localeId, 'id');
 
@@ -262,22 +263,22 @@ registerLocaleData(localeId, 'id');
         PublicationFormsConfigurationsOverviewFormComponent,
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
-        LayoutModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        CoreModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        BootstrapModule,
-        LuxonModule,
-        NgxSelectModule,
-        NgxMatDatetimePickerModule,
-        NgxMatTimepickerModule,
-        NgxMatNativeDateModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
-        NgxDocViewerModule], providers: [
+    LayoutModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    BootstrapModule,
+    LuxonModule,
+    NgxSelectModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    NgxDocViewerModule, CodemirrorComponent], providers: [
         { provide: LOCALE_ID, useValue: 'id-ID' },
         { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
         { provide: OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },

@@ -53,6 +53,8 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
 
   stepperOrientation!: Observable<StepperOrientation>;
 
+  positionMinValue!: number;
+
   constructor(
 
     private router: Router,
@@ -80,6 +82,7 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
       fieldTypes: [{ value: 1, text: 'One' }],
       fieldOptions: [],
     };
+    this.positionMinValue = 0;
 
     const breakpointObserver = inject(BreakpointObserver);
     this.stepperOrientation = breakpointObserver
@@ -122,6 +125,11 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
     this.appSvc.list(AppServiceType.PUBLICATION_FORMS).subscribe(
       (response: any) => {
         this.selectOptions.forms = response['data'];
+        this.selectOptions.forms.unshift({
+          uuid: null,
+          field_type: 'none',
+          field_id: 'None',
+        });
 
         this.formStates.isMasterDataPublicationFormsLoaded = true;
         this.checkMasterDataAndFormAvailable();
@@ -149,7 +157,7 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
   private getMasterDataDynamicFormFieldOptions(): void {
     this.appSvc.list(AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_OPTIONS).subscribe(
       (response: any) => {
-        this.selectOptions.fieldTypes = response['data'];
+        this.selectOptions.fieldOptions = response['data'];
 
         this.formStates.isMasterDataDynamicFormFieldOptionsLoaded = true;
         this.checkMasterDataAndFormAvailable();
@@ -176,19 +184,19 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
       field_options: [this.data?.field_options || []],
       description: [this.data?.description || ''],
       error_message: [this.data?.error_message || ''],
-      order_position: [this.data?.order_position || 1, [Validators.required]],
+      order_position: [this.data?.order_position || 1, [Validators.required, Validators.min(0)]],
 
-      flag_required: [this.data?.flag_required || true, [Validators.required]],
       flag_field_form_type: [this.data?.flag_field_form_type || false, [Validators.required]],
       flag_field_title: [this.data?.flag_field_title || false, [Validators.required]],
       flag_field_publish_date: [this.data?.flag_field_publish_date || false, [Validators.required]],
+      flag_required: [this.data?.flag_required || false, [Validators.required]],
       flag_active: [this.data?.flag_active || true, [Validators.required]],
     });
     this.advancedForm = this.formBuilder.group({
-      field_configs: [this.data?.field_configs || ''], // Array || Object
-      validation_configs: [this.data?.validation_configs || ''], // Array || Object
-      dependency_child: [this.data?.dependency_child || ''], // Array || Object
-      dependency_parent: [this.data?.dependency_parent || ''], // Array || Object
+      field_configs: [{ value: this.data?.field_configs || '', disabled: true }], // Array || Object
+      validation_configs: [{ value: this.data?.validation_configs || '', disabled: true }], // Array || Object
+      dependency_child: [{ value: this.data?.dependency_child || '', disabled: true }], // Array || Object
+      dependency_parent: [{ value: this.data?.dependency_parent || '', disabled: true }], // Array || Object
     });
 
     this.formStates.isFormCreated = true;

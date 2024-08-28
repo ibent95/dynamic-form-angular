@@ -24,7 +24,7 @@
 
 		<ng-container *ngIf="(pageState === 'loaded')">
 
-			<mat-stepper linear [orientation]="(stepperOrientation | async)!" labelPosition="bottom" #stepper>
+			<mat-stepper [orientation]="(stepperOrientation | async)!" labelPosition="bottom" #stepper> <!-- linear -->
 				<mat-step [stepControl]="initialForm" [editable]="true" label="Initial Configurations">
 					<ng-template matStepContent>
 						<!-- Form in step -->
@@ -42,7 +42,7 @@
 				<mat-step [stepControl]="generalForm" [editable]="true" label="General Configurations">
 					<ng-template matStepContent>
 						<!-- Form in step -->
-						<app-publication-forms-general-configurations-form [formGroup]="generalForm" [selectOptions]="selectOptions"></app-publication-forms-general-configurations-form>
+						<app-publication-forms-general-configurations-form [formGroup]="generalForm" [selectOptions]="selectOptions" [positionMinValue]="positionMinValue"></app-publication-forms-general-configurations-form>
 
 						<!-- Step Control -->
 						<div class="flex justify-center gap-1 mt-3">

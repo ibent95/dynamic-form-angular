@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
@@ -18,10 +18,13 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
 
   constructor(
     private parentFormGroup: FormGroupDirective,
+    private ref: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
     this.formGroup = this.parentFormGroup.form;
+    console.log('select options', this.selectOptions);
+    this.ref.detectChanges();
   }
 
   public onFormVersionChange(data: any) {
@@ -38,6 +41,18 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
 
   public jsonParse(data: string): any {
     return JSON.parse(data);
+  }
+
+  public jsonStringify(data: any): string {
+    return JSON.stringify(data, null, 4);
+  }
+
+  /**
+   * test
+   */
+  public test(data: boolean) {
+    console.log('codeMirror', data);
+
   }
 
 }

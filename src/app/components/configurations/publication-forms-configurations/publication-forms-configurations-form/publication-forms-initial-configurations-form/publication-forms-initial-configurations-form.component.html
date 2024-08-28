@@ -6,21 +6,21 @@
 			<mat-label>{{ 'Version of Publication Form' }}</mat-label>
 
 			<mat-select formControlName="uuid_form_version" placeholder="Please choose the publication form version...">
-				<!-- (selectionChange)="onFormVersionChange($event)" -->
 				<ng-container *ngFor="let option of selectOptions.formVersions; let optionIndex = index;">
-					<mat-option [value]="option.uuid" (click)="onFormVersionChange(option)">{{ '[' + option.publication_form_version_code + '] ' + option.publication_form_version_name }}</mat-option>
+					<mat-option [value]="option.uuid" (click)="onFormVersionChange(option)" (keyPress)="onFormVersionChange(option)">{{ '[' + option.publication_form_version_code + '] ' + option.publication_form_version_name }}</mat-option>
 				</ng-container>
 			</mat-select>
 
-			<mat-error *ngIf="formGroup?.get('uuid_form_version')?.invalid && (formGroup?.get('uuid_form_version')?.dirty || formGroup?.get('uuid_form_version')?.touched)">{{ 'Field is required' }}</mat-error>
+			<mat-error [innerHTML]="'This field is required!'" *ngIf="formGroup.get('uuid_form_version')?.getError('required')"></mat-error>
 
 			<mat-hint>{{ 'The version of Publication Form for this field (Exp: Book 1 V1, Journal 1 V1).' }}</mat-hint>
 		</mat-form-field>
 	</div>
 
+	<!-- Publication Form Version Overview -->
 	<div class="col-span-6">
 		<ng-container *ngIf="selectedFormVersion">
-			<table class="table-detail border-separate border-spacing-2 border border-slate-500 table-fixed">
+			<table class="table-detail border border-separate border-spacing-2 border-slate-500 table-fixed">
 				<tbody>
 					<tr>
 						<td class="w-1/4">Form Version</td>
@@ -40,7 +40,10 @@
 					<tr>
 						<td class="w-1/4">Grid System Configs</td>
 						<td class="w-1">:</td>
-						<td>{{ jsonParse(selectedFormVersion.grid_system) | json }}</td>
+						<td>
+							<app-codemirror [doc]="selectedFormVersion.grid_system" [readOnly]="true" (changes)="test($event)"></app-codemirror>
+							<!--{{ jsonParse(selectedFormVersion.grid_system) | json }}-->
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -53,18 +56,17 @@
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Type' }}</mat-label>
 			<mat-select formControlName="field_type" placeholder="Please fill the type...">
-				<!-- (selectionChange)="onFieldTypeChange($event)" -->
 				<ng-container *ngFor="let option of selectOptions.fieldTypes; let optionIndex = index;">
-					<mat-option [value]="option.dynamic_form_field_type_code" (click)="onFieldTypeChange(option)">{{ '[' + option.dynamic_form_field_type_code + '] ' + option.dynamic_form_field_type }}</mat-option>
+					<mat-option [value]="option.dynamic_form_field_type_code" (click)="onFieldTypeChange(option)" (keyPress)="onFieldTypeChange(option)">{{ '[' + option.dynamic_form_field_type_code + '] ' + option.dynamic_form_field_type }}</mat-option>
 				</ng-container>
 			</mat-select>
 
-			<mat-error [innerHTML]="''"
-				*ngIf="formGroup?.get('field_type')?.invalid && (formGroup?.get('field_type')?.dirty || formGroup?.get('field_type')?.touched)"></mat-error>
+			<mat-error [innerHTML]="'This field is required!'" *ngIf="formGroup.get('field_type')?.getError('required')"></mat-error>
 			<mat-hint [innerHTML]="'The type of field (Exp: Text, Number, Select)'"></mat-hint>
 		</mat-form-field>
 	</div>
 
+	<!-- Field Type Overview -->
 	<div class="col-span-6">
 		<ng-container *ngIf="selectedFieldType">
 			<table class="table-detail border-separate border-spacing-2 border border-slate-500 table-fixed">
@@ -94,9 +96,9 @@
 	<div class="col-span-6">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Parent of Publication Form Field' }}</mat-label>
-			<mat-select formControlName="uuid_form_parent" placeholder="Please choose the parent of publication form field..." (selectionChange)="onParentFormChange($event)">
+			<mat-select formControlName="uuid_form_parent" placeholder="Please choose the parent of publication form field...">
 				<ng-container *ngFor="let option of selectOptions.forms; let optionIndex = index;">
-					<mat-option [value]="option.uuid">{{ '[' + option.field_type + '] ' + option.field_id }}</mat-option>
+					<mat-option [value]="option.uuid" (click)="onParentFormChange(option)" (keyPress)="onParentFormChange(option)">{{ '[' + option.field_type + '] ' + option.field_id }}</mat-option>
 				</ng-container>
 			</mat-select>
 
@@ -107,7 +109,60 @@
 		</mat-form-field>
 	</div>
 
-	<div class="col-span-6"></div>
+	<!-- Publication Form Parent Overview -->
+	<div class="col-span-6">
+		<ng-container *ngIf="selectedParentForm && selectedParentForm.uuid">
+			<table class="table-detail border-separate border-spacing-2 border border-slate-500 table-fixed">
+				<tbody>
+					<tr>
+						<td class="w-1/4">Field Type</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_type || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Label</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_label || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Name</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_name || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field ID</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_id || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Class</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_class || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Placeholder</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_placeholder || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Description</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.description || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Options</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_options || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Is Active</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="(selectedParentForm.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'"></td>
+					</tr>
+				</tbody>
+			</table>
+		</ng-container>
+	</div>
 	<!-- Row 3 -->
 
 </form>

@@ -11,6 +11,7 @@ export class PublicationFormsGeneralConfigurationsFormComponent implements OnIni
   formGroup!: FormGroup;
 
   @Input() selectOptions!: any;
+  @Input() positionMinValue: number = 0;
 
   constructor(
     private parentFormGroup: FormGroupDirective,
@@ -18,6 +19,30 @@ export class PublicationFormsGeneralConfigurationsFormComponent implements OnIni
 
   ngOnInit(): void {
     this.formGroup = this.parentFormGroup.form;
+  }
+
+  // Set main field check value just one or not multiple check
+  public setMainFieldCheck(fieldName: 'flag_field_form_type' | 'flag_field_title' | 'flag_field_publish_date') {
+    if (fieldName === 'flag_field_form_type') {
+      this.formGroup.patchValue({
+        flag_field_title: false,
+        flag_field_publish_date: false,
+      });
+    }
+
+    if (fieldName === 'flag_field_title') {
+      this.formGroup.patchValue({
+        flag_field_form_type: false,
+        flag_field_publish_date: false,
+      });
+    }
+
+    if (fieldName === 'flag_field_publish_date') {
+      this.formGroup.patchValue({
+        flag_field_title: false,
+        flag_field_form_type: false,
+      });
+    }
   }
 
 }
