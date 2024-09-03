@@ -56,7 +56,6 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
   positionMinValue!: number;
 
   constructor(
-
     private router: Router,
     private formBuilder: FormBuilder,
     private appSvc: AppService,

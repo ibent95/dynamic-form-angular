@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
 
 @Component({
   selector: 'app-publication-forms-initial-configurations-form',
@@ -10,7 +11,7 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
 
   formGroup!: FormGroup;
 
-  @Input() selectOptions!: any;
+  @Input() selectOptions!: SelectOptionsInterface;
 
   selectedFormVersion: any;
   selectedFieldType: any;
@@ -23,7 +24,6 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
 
   ngOnInit(): void {
     this.formGroup = this.parentFormGroup.form;
-    console.log('select options', this.selectOptions);
     this.ref.detectChanges();
   }
 
@@ -52,7 +52,6 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
    */
   public test(data: boolean) {
     console.log('codeMirror', data);
-
   }
 
 }

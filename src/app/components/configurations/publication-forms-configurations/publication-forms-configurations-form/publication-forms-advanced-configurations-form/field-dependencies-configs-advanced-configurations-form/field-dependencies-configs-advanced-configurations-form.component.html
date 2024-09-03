@@ -1,0 +1,139 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+<mat-divider></mat-divider>
+
+<mat-dialog-content>
+
+	<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+
+		@switch (data.selectedFieldType?.dynamic_form_field_type_code) {
+
+			@case ('wizard') {
+				<ng-container [ngTemplateOutlet]="wizardStepperLikeTemplate"></ng-container>
+			}
+
+			@case ('stepper') {
+				<ng-container [ngTemplateOutlet]="wizardStepperLikeTemplate"></ng-container>
+			}
+
+			@case ('accordion') {
+				<ng-container [ngTemplateOutlet]="accordionExpansionLikeTemplate"></ng-container>
+			}
+
+			@case ('expansion') {
+				<ng-container [ngTemplateOutlet]="accordionExpansionLikeTemplate"></ng-container>
+			}
+
+			@case ('nav') {
+				<ng-container [ngTemplateOutlet]="navTabsLikeTemplate"></ng-container>
+			}
+
+			@case ('tab-group') {
+				<ng-container [ngTemplateOutlet]="navTabsLikeTemplate"></ng-container>
+			}
+
+			@default {
+				<!-- Min -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Min (Minimal Data)' }}</mat-label>
+
+						<input matInput formControlName="min" placeholder="Please fill the minimal data of input..." />
+					</mat-form-field>
+				</div>
+
+				<!-- Min Length -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Minimal Character (Minimal Length)' }}</mat-label>
+
+						<input matInput type="number" formControlName="minLength" placeholder="Please fill the minimal length of character of input..." />
+					</mat-form-field>
+				</div>
+
+				<!-- Max -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Max (Maximal Data)' }}</mat-label>
+
+						<input matInput formControlName="max" placeholder="Please fill the maximal data of input..." />
+					</mat-form-field>
+				</div>
+
+				<!-- Max Length -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Maximal Character (Maximal Length)' }}</mat-label>
+
+						<input matInput type="number" formControlName="maxLength" placeholder="Please fill the maximal length of character of input..." />
+					</mat-form-field>
+				</div>
+
+				<!-- Mat Icon -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Material Icon' }}</mat-label>
+
+						<mat-select formControlName="mat_icon" placeholder="Please choose the Mat Icon...">
+							<mat-select-trigger>
+								<mat-icon [innerHTML]="formGroup.get('mat_icon')?.value"></mat-icon>
+								{{ formGroup.get('mat_icon')?.value | titlecase }}
+							</mat-select-trigger>
+
+							<!-- Options attribute: (click)="onFieldTypeChange(option)" (keyPress)="onFieldTypeChange(option)" -->
+							<ng-container *ngFor="let option of selectOptions.mat_icon; let optionIndex = index;">
+								<mat-option [value]="option.value">
+									<mat-icon>{{ option.value }}</mat-icon>
+									{{ option.text }}
+								</mat-option>
+							</ng-container>
+						</mat-select>
+
+						<mat-hint [innerHTML]="'See material icons for more details.'"></mat-hint>
+					</mat-form-field>
+				</div>
+			}
+
+		}
+
+		<ng-template #wizardStepperLikeTemplate>
+			<div class="col-span-6">
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>{{ 'Orientation' }}</mat-label>
+
+					<mat-select formControlName="orientation" placeholder="Please fill the orientation of wizard...">
+						<!-- Options attribute: (click)="onFieldTypeChange(option)" (keyPress)="onFieldTypeChange(option)" -->
+						<ng-container *ngFor="let option of selectOptions.orientation; let optionIndex = index;">
+							<mat-option [value]="option.value">{{ option.text }}</mat-option>
+						</ng-container>
+					</mat-select>
+
+					<mat-hint [innerHTML]="'The orientation of wizard (Horizontal or Vertical).'"></mat-hint>
+				</mat-form-field>
+			</div>
+
+			<div class="col-span-6">
+				<!-- (change)="setMainFieldCheck('flag_field_publish_date')" -->
+				<mat-checkbox formControlName="linear">
+					Is this wizard is <b>Linear</b>? (Check if the wizard is used for linear inputs)
+				</mat-checkbox>
+			</div>
+		</ng-template>
+
+		<ng-template #accordionExpansionLikeTemplate>
+			<app-page-under-construction></app-page-under-construction>
+		</ng-template>
+
+		<ng-template #navTabsLikeTemplate>
+			<app-page-under-construction></app-page-under-construction>
+		</ng-template>
+
+	</form>
+
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+	<button mat-raised-button (click)="onCloseForm(false)">Close</button> <!-- mat-dialog-close -->
+	<button mat-raised-button color="warn" (click)="onResetForm()">Reset</button>
+	<button mat-raised-button cdkFocusInitial color="accent" (click)="onSaveForm()" [disabled]="formState === 'submiting'">Save</button>
+</mat-dialog-actions>

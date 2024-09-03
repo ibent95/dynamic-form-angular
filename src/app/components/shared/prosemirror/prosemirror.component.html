@@ -1,0 +1,15 @@
+<div class="prose-mirror rounded border-4 border-slate-500">
+
+	@if (componentState === 'loading') {
+		<app-loader></app-loader>
+		<p class="text-center" [innerHTML]="'Loading the component.'"></p>
+	}
+
+	@if (componentState === 'error') {
+		<p class="text-center" [innerHTML]="'Sorry, this field has an error when load the component.'"></p>
+	}
+
+	<div #proseMirrorEditor id="prose-mirror-editor" [ngStyle]="{ 'display': (componentState === 'loaded') ? null : 'none' }"></div>
+	<div #proseMirrorContent id="prose-mirror-content" [ngStyle]="{ 'display': (componentState === 'loaded') ? null : 'none' }"></div>
+
+</div>

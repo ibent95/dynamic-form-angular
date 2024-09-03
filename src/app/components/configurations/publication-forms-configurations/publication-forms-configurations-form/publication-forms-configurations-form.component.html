@@ -24,7 +24,7 @@
 
 		<ng-container *ngIf="(pageState === 'loaded')">
 
-			<mat-stepper [orientation]="(stepperOrientation | async)!" labelPosition="bottom" #stepper> <!-- linear -->
+			<mat-stepper [orientation]="(stepperOrientation | async)!" labelPosition="bottom" [selectedIndex]="0" #stepper> <!-- linear -->
 				<mat-step [stepControl]="initialForm" [editable]="true" label="Initial Configurations">
 					<ng-template matStepContent>
 						<!-- Form in step -->
@@ -58,7 +58,7 @@
 				<mat-step [stepControl]="advancedForm" [editable]="true" label="Advanced Configurations">
 					<ng-template matStepContent>
 						<!-- Form in step -->
-						<app-publication-forms-advanced-configurations-form [formGroup]="advancedForm" [selectOptions]="selectOptions"></app-publication-forms-advanced-configurations-form>
+						<app-publication-forms-advanced-configurations-form [formGroup]="advancedForm" [initialForm]="initialForm" [selectOptions]="selectOptions"></app-publication-forms-advanced-configurations-form>
 
 						<!-- Step Control -->
 						<div class="flex justify-center gap-1 mt-3">

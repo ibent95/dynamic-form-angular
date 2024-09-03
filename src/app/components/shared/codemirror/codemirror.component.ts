@@ -2,11 +2,12 @@ import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Inject, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { basicSetup, minimalSetup } from 'codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { Compartment, EditorState, Extension, Text, Transaction } from '@codemirror/state';
+import { EditorState, Extension, Text } from '@codemirror/state';
 import { keymap, EditorView, ViewUpdate } from '@codemirror/view';
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 import { oneDark, oneDarkTheme, oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import { syntaxHighlighting, defaultHighlightStyle, } from '@codemirror/language';
+import { FormGroupDirective } from '@angular/forms';
 
 export interface DocTextReplacement {
   from: string;
@@ -34,7 +35,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
   codeMirrorElement!: Element;
   codeMirrorUpdateExtension!: Extension;
   codeMirrorReadOnlyExtension!: Extension;
-  codeMirrorExtension!: any; // To make it can be editable, this type is must be (any)
+  codeMirrorExtensions!: any; // To make it can be editable, this type is must be (any)
   codeMirrorState!: EditorState;
   codeMirrorView!: EditorView;
 
@@ -50,10 +51,10 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
   @Output() changes: EventEmitter<any> = new EventEmitter<any>(true);
 
   constructor(
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
   ) {
     // Set intial default extensions (make all array)
-    this.codeMirrorExtension = this.createExtensions(this.extensions);
+    this.codeMirrorExtensions = this.createExtensions(this.extensions);
 
     this.docTextReplacement = [
       { from: '{', to: '{' + this.docTextNewLine },
@@ -67,7 +68,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
   }
 
   /** Can return the value rightaway,
-   * or get the extensions from this.codeMirrorExtension global variable
+   * or get the extensions from this.codeMirrorExtensions global variable
    */
   private createExtensions(extensions?: any): Extension {
     /**
@@ -84,30 +85,31 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
     );
     this.codeMirrorReadOnlyExtension = EditorView.editable.of(this.readOnly); // EditorState.readOnly.of(this.readOnly);
 
-    this.codeMirrorExtension = this.updateExtensions(extensions);
+    this.codeMirrorExtensions = this.updateExtensions(extensions);
 
-    return this.codeMirrorExtension;
+    return this.codeMirrorExtensions;
   }
 
   /** Can return the value rightaway,
-   * or get the extensions from this.codeMirrorExtension global variable
+   * or get the extensions from this.codeMirrorExtensions global variable
    */
   private updateExtensions(extensions?: any): Extension {
-    let normalizeExtensions: any = extensions || this.codeMirrorExtension;
+    // Default plugins settings is [basicSetup, javascript(), oneDark]
+    let normalizeExtensions: any = extensions || this.codeMirrorExtensions;
 
     // Set intial default extensions (make all array)
-    this.codeMirrorExtension =
+    this.codeMirrorExtensions =
       (typeof normalizeExtensions === 'object')
         ? [normalizeExtensions]
         : normalizeExtensions;
 
     // Add specifict extensions to default extensions
-    this.codeMirrorExtension = normalizeExtensions.concat([
+    this.codeMirrorExtensions = normalizeExtensions.concat([
       this.codeMirrorUpdateExtension,
       this.codeMirrorReadOnlyExtension
     ]);
 
-    return this.codeMirrorExtension;
+    return this.codeMirrorExtensions;
   }
 
   /** Can return the value rightaway,
@@ -118,7 +120,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
 
       this.codeMirrorState = EditorState.create({
         doc: doc || this.doc,
-        extensions: extensions || this.codeMirrorExtension,
+        extensions: extensions || this.codeMirrorExtensions,
       });
 
       this.componentState = 'loaded';
@@ -142,7 +144,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
       this.codeMirrorView.setState(
         EditorState.create({
           doc: doc || this.doc,
-          extensions: extensions || this.codeMirrorExtension,
+          extensions: extensions || this.codeMirrorExtensions,
         })
       );
 
@@ -177,7 +179,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
 
     this.doc = this.replaceDocTextToLineEnter(this.doc)
 
-    this.createState(this.doc, this.codeMirrorExtension);
+    this.createState(this.doc, this.codeMirrorExtensions);
 
     this.codeMirrorView = new EditorView({
       state: this.codeMirrorState,
@@ -196,14 +198,14 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
     if (changes['extensions']) {
       this.extensions = changes['extensions'].currentValue;
 
-      this.codeMirrorExtension = this.updateExtensions(this.extensions);
+      this.codeMirrorExtensions = this.updateExtensions(this.extensions);
     }
 
     // Update editor view when it`s been created
     if (this.codeMirrorView !== undefined) {
       this.loaded.next(false);
 
-      this.updateState(this.doc, this.codeMirrorExtension);
+      this.updateState(this.doc, this.codeMirrorExtensions);
 
       this.loaded.next(true);
     }

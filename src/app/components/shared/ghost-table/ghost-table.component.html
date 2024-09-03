@@ -1,4 +1,4 @@
-<ng-container *ngIf="(gridType === 'material' && data.body.length > 0)">
+@if (gridType === 'material' && data.body.length > 0) {
 	<div class="ghost-element">
 		<!-- Header -->
 		<ng-container *ngFor="let row of data.header; let rowsIndex = index;">
@@ -18,9 +18,9 @@
 			</div>
 		</ng-container>
 	</div>
-</ng-container>
+}
 
-<ng-container *ngIf="(gridType === 'tailwind' && data.body.length > 0)">
+@if (gridType === 'tailwind' && data.body.length > 0) {
 	<div class="ghost-element">
 		<!-- Header -->
 		<ng-container *ngFor="let row of data.header; let rowsIndex = index;">
@@ -40,4 +40,4 @@
 			</div>
 		</ng-container>
 	</div>
-</ng-container>
+}

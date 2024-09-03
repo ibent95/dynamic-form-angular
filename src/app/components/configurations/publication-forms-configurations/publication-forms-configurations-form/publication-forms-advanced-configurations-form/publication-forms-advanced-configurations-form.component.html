@@ -1,36 +1,61 @@
 <form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
 
 	<!-- Row 1 -->
-	<div class="col-span-6">
-		<mat-form-field appearance="outline" color="accent">
-			<mat-label>{{ 'Field Configs' }}</mat-label>
-			<textarea matInput formControlName="field_configs" placeholder="Please fill the configs..."
-				rows="15"></textarea> <!-- (input)="onInput($event)" -->
+	<div class="col-span-6 grid grid-cols-12 gap-x-3">
+		<div class="col-span-10">
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>{{ 'Field Configs' }}</mat-label>
+				<textarea matInput formControlName="field_configs" placeholder="Please fill the configs..."
+					rows="15"></textarea> <!-- (input)="onInput($event)" -->
 
-			<mat-error [innerHTML]="''"
-				*ngIf="formGroup?.get('field_configs')?.invalid && (formGroup?.get('field_configs')?.dirty || formGroup?.get('field_configs')?.touched)"></mat-error>
-			<mat-hint [innerHTML]="'The configs of field (Exp: form-control).'"></mat-hint>
-		</mat-form-field>
+				<mat-error [innerHTML]="''"
+					*ngIf="formGroup?.get('field_configs')?.invalid && (formGroup?.get('field_configs')?.dirty || formGroup?.get('field_configs')?.touched)"></mat-error>
+				<mat-hint [innerHTML]="'The configs of field (Exp: form-control).'"></mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="col-span-2">
+			<button mat-mini-fab [color]="'accent'" aria-label="Change the field configurations." (click)="onChangeFieldConfigurations()">
+				<!--Change-->
+				<mat-icon>open_in_new</mat-icon>
+			</button>
+		</div>
 	</div>
 
-	<div class="col-span-6">
-		<mat-form-field appearance="outline" color="accent">
-			<mat-label>{{ 'Validation Configs' }}</mat-label>
-			<textarea matInput formControlName="validation_configs" placeholder="Please fill the validation configs..."
-				rows="15"></textarea> <!-- (input)="onInput($event)" -->
+	<div class="col-span-6 grid grid-cols-12 gap-x-3">
+		<div class="col-span-10">
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>{{ 'Validation Configs' }}</mat-label>
+				<textarea matInput formControlName="validation_configs" placeholder="Please fill the validation configs..."
+					rows="15"></textarea> <!-- (input)="onInput($event)" -->
 
-			<mat-error [innerHTML]="''"
-				*ngIf="formGroup?.get('validation_configs')?.invalid && (formGroup?.get('validation_configs')?.dirty || formGroup?.get('validation_configs')?.touched)"></mat-error>
-			<mat-hint [innerHTML]="'The configs of validation (Exp: min: 1, pattern: ^[0-9]*$).'"></mat-hint>
-		</mat-form-field>
+				<mat-error [innerHTML]="''"
+					*ngIf="formGroup?.get('validation_configs')?.invalid && (formGroup?.get('validation_configs')?.dirty || formGroup?.get('validation_configs')?.touched)"></mat-error>
+				<mat-hint [innerHTML]="'The configs of validation (Exp: min: 1, pattern: ^[0-9]*$).'"></mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="col-span-2">
+			<button mat-mini-fab [color]="'accent'" aria-label="Change the field validation configurations." (click)="onChangeFieldValidationConfigurations()">
+				<!--Change-->
+				<mat-icon>open_in_new</mat-icon>
+			</button>
+		</div>
 	</div>
 	<!-- Row 1 -->
 
 	<!-- Row 2 -->
+	<div class="col-span-12 flex justify-center">
+		<button mat-raised-button [color]="'accent'" aria-label="Change the field dependencies configurations." (click)="onChangeFieldDependenciesConfigurations()">
+			Change
+			<mat-icon>open_in_new</mat-icon>
+		</button>
+	</div>
+	<!-- Row 2 -->
+
+	<!-- Row 3 -->
 	<div class="col-span-6">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Dependency (Parent)' }}</mat-label>
-			<textarea matInput type="number" formControlName="dependency_parent"
+			<textarea matInput formControlName="dependency_parent"
 				placeholder="Please fill the dependency to a field from..." rows="15"></textarea>
 			<!-- (input)="onInput($event)" -->
 
@@ -43,7 +68,7 @@
 	<div class="col-span-6">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Dependency (Child)' }}</mat-label>
-			<textarea matInput type="number" formControlName="dependency_child"
+			<textarea matInput formControlName="dependency_child"
 				placeholder="Please fill the dependency to a field target..." rows="15"></textarea>
 			<!-- (input)="onInput($event)" -->
 
@@ -52,6 +77,6 @@
 			<mat-hint [innerHTML]="'The dependency configurations to a target field (child) (Exp: ...).'"></mat-hint>
 		</mat-form-field>
 	</div>
-	<!-- Row 2 -->
+	<!-- Row 3 -->
 
 </form>

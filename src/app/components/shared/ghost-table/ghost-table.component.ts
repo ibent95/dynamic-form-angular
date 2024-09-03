@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ghost-table',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './ghost-table.component.html',
   styleUrls: ['./ghost-table.component.scss']
 })

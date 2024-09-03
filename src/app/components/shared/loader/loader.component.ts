@@ -1,21 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-loader',
+  standalone: true,
+  imports: [CommonModule, MatProgressSpinner],
   template: `
     <mat-progress-spinner class="item-center" [color]="'accent'" [mode]="'indeterminate'"></mat-progress-spinner>
 
-    <ng-container *ngIf="!messages">
+    @if (!messages) {
       <span class="item-center" [innerHTML]="'Loading data...'"></span>
-    </ng-container>
+    }
 
-    <ng-container *ngIf="(messages && (messagesType !== 'array'))">
+    @if (messages && (messagesType !== 'array')) {
       <span class="item-center" [innerHTML]="messages"></span>
-    </ng-container>
+    }
 
-    <ng-container *ngIf="(messages && (messagesType === 'array'))">
+    @if (messages && (messagesType === 'array')) {
       <ul class="item-center"> <li *ngFor="let message of messages;" [innerHTML]="message"></li> </ul>
-    </ng-container>
+    }
   `,
   styles: ['mat-progress-spinner { margin-bottom: 8px; } .item-center { text-align: center; display: block; margin-left: auto; margin-right: auto; }'],
 })

@@ -1,9 +1,9 @@
 // Angular and other libraries
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeId from "@angular/common/locales/id";
@@ -149,10 +149,15 @@ import { PublicationFormsGeneralConfigurationsFormComponent } from './components
 import { PublicationFormsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
 import { PublicationFormsConfigurationsOverviewFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
 import { CodemirrorComponent } from "./components/shared/codemirror/codemirror.component";
+import { ProsemirrorComponent } from './components/shared/prosemirror/prosemirror.component';
+import { FieldConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/field-configs-advanced-configurations-form/field-configs-advanced-configurations-form.component';
+import { FieldDependenciesConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form.component';
+import { ValidationConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/validation-configs-advanced-configurations-form/validation-configs-advanced-configurations-form.component';
 
 registerLocaleData(localeId, 'id');
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         LoginComponent,
         PageBlankComponent,
@@ -184,8 +189,6 @@ registerLocaleData(localeId, 'id');
         CustomDialogPublicationRemoveConfirmComponent,
         CustomDialogPublicationSubmitConfirmComponent,
         CustomDialogPublicationExitFormConfirmComponent,
-        GhostTableComponent,
-        LoaderComponent,
         DatetimePickerComponent,
         DatePickerComponent,
         MonthPickerComponent,
@@ -261,29 +264,42 @@ registerLocaleData(localeId, 'id');
         PublicationFormsGeneralConfigurationsFormComponent,
         PublicationFormsAdvancedConfigurationsFormComponent,
         PublicationFormsConfigurationsOverviewFormComponent,
+        FieldConfigsAdvancedConfigurationsFormComponent,
+        FieldDependenciesConfigsAdvancedConfigurationsFormComponent,
+        ValidationConfigsAdvancedConfigurationsFormComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-    LayoutModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    BootstrapModule,
-    LuxonModule,
-    NgxSelectModule,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule,
-    NgxMatNativeDateModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
-    NgxDocViewerModule, CodemirrorComponent], providers: [
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        LayoutModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        BootstrapModule,
+        LuxonModule,
+        NgxSelectModule,
+        NgxMatDatetimePickerModule,
+        NgxMatTimepickerModule,
+        NgxMatNativeDateModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+        NgxDocViewerModule,
+        GhostTableComponent,
+        LoaderComponent,
+        CodemirrorComponent,
+        ProsemirrorComponent,
+    ],
+    providers: [
         { provide: LOCALE_ID, useValue: 'id-ID' },
         { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
         { provide: OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },
         { provide: ENV, useValue: CONFIG },
         AppService, AppGeneralService,
         provideHttpClient(withInterceptorsFromDi())
-    ] })
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Material Form Controls
@@ -137,6 +137,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
       useValue: { subscriptSizing: 'dynamic' }
     },
     MatDatepickerModule,
-  ]
+  ],
+  //schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MaterialModule { }
