@@ -5,7 +5,6 @@ import { Schema, DOMParser } from 'prosemirror-model';
 import { schema } from 'prosemirror-schema-basic';
 import { addListNodes } from 'prosemirror-schema-list';
 import { exampleSetup } from "prosemirror-example-setup";
-import { FormGroupDirective } from '@angular/forms';
 import { LoaderComponent } from '../loader/loader.component';
 import { CommonModule } from '@angular/common';
 
@@ -49,7 +48,6 @@ export class ProsemirrorComponent implements AfterViewInit, OnChanges {
   @Output() changes: EventEmitter<any> = new EventEmitter<any>(true);
 
   constructor(
-    private parentFormGroup: FormGroupDirective,
     private renderer: Renderer2,
     private elementRef: ElementRef,
     private changeDetectRef: ChangeDetectorRef

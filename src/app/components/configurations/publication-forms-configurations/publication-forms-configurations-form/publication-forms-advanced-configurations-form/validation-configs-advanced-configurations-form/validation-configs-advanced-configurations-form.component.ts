@@ -51,13 +51,20 @@ export class ValidationConfigsAdvancedConfigurationsFormComponent {
     ],
     mat_icon: [
       { value: 'open_in_new', text: '<mat_icon>open_in_new</mat_icon> Signal Cellular Alt' },
+      { value: 'add_box', text: '<mat_icon>add_box</mat_icon> Add Box' },
+      { value: 'add_circle', text: '<mat_icon>add_circle</mat_icon> Add Circle' },
+      { value: 'edit', text: '<mat_icon>edit</mat_icon> Edit' },
+      { value: 'edit_square', text: '<mat_icon>edit_square</mat_icon> Edit Square' },
+      { value: 'remove', text: '<mat_icon>remove</mat_icon> Remove' },
+      { value: 'delete', text: '<mat_icon>delete</mat_icon> Delete' },
+      { value: 'cancel', text: '<mat_icon>cancel</mat_icon> Cancel' },
       { value: 'signal_cellular_alt', text: '<mat_icon>signal_cellular_alt</mat_icon> Signal Cellular Alt' },
     ]
   };
 
   constructor() {
     this.parentFormGroup = this.data.parentFormGroup;
-    this.formGroup = this.initiateForm(this.data.selectedFieldType?.dynamic_form_field_configs);
+    this.formGroup = this.initiateForm(this.data.selectedFieldType?.dynamic_form_field_validation_configs);
   }
 
   private initiateForm(fieldConfigs: any): FormGroup {
@@ -118,7 +125,7 @@ export class ValidationConfigsAdvancedConfigurationsFormComponent {
 
     try {
       let values: string = this.getFormData();
-      this.parentFormGroup.get('field_configs')?.patchValue(values);
+      this.parentFormGroup.get('validation_configs')?.patchValue(values);
       this.onCloseForm(values);
     } catch (error) {
       this.formState = 'loaded';

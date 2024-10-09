@@ -60,7 +60,7 @@ export class DialogConfirmComponent implements OnInit {
       result: null,
     }
 
-    this.subscribeToBeforeClosedDialog();
+    //this.subscribeToBeforeClosedDialog();
   }
 
   public onNoBtnClick(): void {
@@ -69,6 +69,8 @@ export class DialogConfirmComponent implements OnInit {
       user_choice: false,
       result: false,
     }
+
+    this.dialogRef.close(this.result);
   }
 
   public onYesBtnClick(): void {
@@ -76,7 +78,9 @@ export class DialogConfirmComponent implements OnInit {
       response: true,
       user_choice: true,
       result: true,
-    }
+    };
+
+    this.dialogRef.close(this.result);
   }
 
   private subscribeToBeforeClosedDialog() {

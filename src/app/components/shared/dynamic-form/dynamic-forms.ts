@@ -101,8 +101,15 @@ export interface DFField {
 	order_position: number | null;
 	value?: any;
 	other_value?: any;
-	uuid: string;
+	uuid: string | null;
 	validation_configs: DFFieldValidationConfigs | any | null;
+}
+
+export interface DFFieldFieldOptions {
+	text: string | number | null;
+	code: string | number | null;
+	value: string | number | null;
+	uuid: string;
 }
 
 export interface DFFieldFieldConfigs {
@@ -116,16 +123,42 @@ export interface DFFieldFieldConfigs {
 	};
 }
 
-export interface DFFieldFieldOptions {
-	text: string | number | null;
-	code: string | number | null;
-	value: string | number | null;
-	uuid: string;
-}
-
 export interface DFFieldValidationConfigs {
 	min?: number;
 	max?: number;
+	pattern?: string;
+}
+
+export interface DFFieldDependencyConfigs {
+	action: 'disable' | 'hide' | 'clear' ;
+	logic_map: Array<DFFieldDependencyConfigsLogicMap>;
+}
+
+export interface DFFieldDependencyConfigsLogicMap {
+	logic: 'AND' | 'NAND' | 'OR' | 'NOR' | null;
+	parent_fields: Array<DFFieldDependencyConfigsLogicMapParentFields>;
+}
+
+export interface DFFieldDependencyConfigsLogicMapParentFields {
+	field: DFFieldDependencyConfigsLogicMapParentField;
+	comparison: 'EQUAL' | 'NOT_EQUAL' | 'GREATER_THAN' | 'SMALLER_THAN' | 'IN' | 'NOT_IN' | 'BETWEEN' | 'NOT_BETWEEN';
+	value: any;
+}
+
+export interface DFFieldDependencyConfigsLogicMapParentField {
+	field_type: DFField['field_type'];
+	field_name: DFField['field_name'];
+	field_id: DFField['field_id'];
+	field_class: DFField['field_class'];
+	uuid: DFField['uuid'];
+}
+
+export interface DFFieldDependencyParentConfigs {
+	[index: number]: DFFieldDependencyConfigsLogicMapParentField;
+}
+
+export interface DFFieldDependencyChildConfigs {
+	[index: number]: DFFieldDependencyConfigs;
 }
 
 export interface DFMetadata {
@@ -159,6 +192,14 @@ export interface DFMetadata {
 	wizardsCount?: number | null;
 	stepperCount?: number | null;
 	currentDate?: Date | null;
+}
+
+export enum DFGridSystemsType {
+	NO_GRID_SYSTEM = 'no_grid_system',
+	DEFAULT = 'default',
+	MATERIAL = 'material',
+	BOOTSTRAP = 'bootstrap',
+	TAILWIND = 'tailwind',
 }
 
 export interface DFGridSystems {
@@ -201,14 +242,6 @@ export enum DFFieldOwlDatetimeMode {
 	DATE_RANGE = "date-range",
 	TIME_RANGE = "time-range",
 	DATE_TIME_RANGE = "date-time-range",
-}
-
-export enum DFGridSystemsType {
-	NO_GRID_SYSTEM = 'no_grid_system',
-	DEFAULT = 'default',
-	MATERIAL = 'material',
-	BOOTSTRAP = 'bootstrap',
-	TAILWIND = 'tailwind',
 }
 
 /**

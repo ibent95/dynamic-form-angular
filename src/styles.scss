@@ -147,6 +147,22 @@ mat-stepper {
 // mat-accordion
 mat-accordion mat-expansion-panel .mat-expansion-panel-body { padding: 10px 14px; }
 
+// mat-tab-group
+mat-tab-group {
+
+	mat-tab-body {
+		padding: 1rem 0;
+	}
+
+	.mat-tab-body-content {
+		overflow: hidden !important;
+	}
+
+	.mat-tab-body-wrapper {
+		height: 100% !important;
+	}
+}
+
 // mat-grid-list, mat-grid-tile
 mat-grid-list mat-grid-tile {
 

@@ -4,18 +4,13 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-publication-forms-configurations-overview-form',
   templateUrl: './publication-forms-configurations-overview-form.component.html',
-  styles: ['table { text-align: justify; tbody tr td { vertical-align: top; } td:nth-child(1) { width: 20%; padding-right: 10px; } td:nth-child(2) { width: 1px; } }']
+  styleUrls: ['./publication-forms-configurations-overview-form.component.scss']
 })
 export class PublicationFormsConfigurationsOverviewFormComponent implements OnInit {
 
   @Input() initialForm!: FormGroup;
   @Input() generalForm!: FormGroup;
   @Input() advancedForm!: FormGroup;
-  @Input() otherData!: {
-    selectedPublicationFormVersion: any,
-    selectedPublicationFieldType: any,
-    selectedPublicationFormParent: any,
-  };
 
   @Input() selectOptions!: any;
 

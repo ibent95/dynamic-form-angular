@@ -23,6 +23,8 @@ export enum AppServiceType {
   PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES,
   PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES,
   PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_FORM_VERSIONS,
+  PUBLICATIONS_MASTERDATA_PUBLICATION_FORMS,
   DYNAMICFORM_MASTERDATA_FIELD_TYPES,
   DYNAMICFORM_MASTERDATA_FIELD_OPTIONS,
 
@@ -128,6 +130,14 @@ export class AppService {
         url = this.BASE_URL_API + '/v1/master/publication-statuses';
         break;
 
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_FORM_VERSIONS:
+        url = this.BASE_URL_API + '/v1/master/publication-form-versions';
+        break;
+
+      case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_FORMS:
+        url = this.BASE_URL_API + '/v1/master/publication-forms';
+        break;
+
       case AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_TYPES:
         url = this.BASE_URL_API + '/v1/master/dynamic-form/field-types';
         break;
@@ -171,6 +181,10 @@ export class AppService {
   //    callback(result);
   //  });
   //}
+
+  detail(serviceType: AppServiceType, params: { [param: string]: any } | HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
+  }
 
   list(serviceType: AppServiceType): Observable<any> {
     return this.http.get(this.getUrl(serviceType), { headers: this.HEADERS });

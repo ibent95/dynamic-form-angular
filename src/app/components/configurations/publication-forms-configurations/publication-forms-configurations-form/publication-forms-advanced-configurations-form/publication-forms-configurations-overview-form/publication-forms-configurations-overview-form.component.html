@@ -1,0 +1,17 @@
+<div>
+
+	<div>
+		<span>Attention before submitting the form:</span>
+
+		<ol>
+			<li>Make sure you validate the contents in each section (<b>Initial</b>, <b>General</b> and <b>Advanced</b>) of the form.</li>
+			<li>If you submit the contents of this form, then you are sure to <b>Agree to the contents in the form</b>.</li>
+			<li>If there are specific dynamic needs, please contact the <b>Administrators</b> and or the <b>Developers</b> of this <b>Dynamic Form</b> application.</li>
+		</ol>
+
+		<mat-checkbox [(ngModel)]="acceptTermsConditions" (change)="onAcceptTermsConditionsCheck($event)">
+			Yes, I am sure and agree with the statement above.
+		</mat-checkbox>
+	</div>
+
+</div>

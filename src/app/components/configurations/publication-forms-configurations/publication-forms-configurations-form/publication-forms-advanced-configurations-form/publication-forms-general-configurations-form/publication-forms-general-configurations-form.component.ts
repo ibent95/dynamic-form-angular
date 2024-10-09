@@ -4,7 +4,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 @Component({
   selector: 'app-publication-forms-general-configurations-form',
   templateUrl: './publication-forms-general-configurations-form.component.html',
-  styles: ['']
+  styleUrls: ['./publication-forms-general-configurations-form.component.scss']
 })
 export class PublicationFormsGeneralConfigurationsFormComponent implements OnInit {
 

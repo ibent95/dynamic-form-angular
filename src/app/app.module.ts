@@ -153,6 +153,9 @@ import { ProsemirrorComponent } from './components/shared/prosemirror/prosemirro
 import { FieldConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/field-configs-advanced-configurations-form/field-configs-advanced-configurations-form.component';
 import { FieldDependenciesConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form.component';
 import { ValidationConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/validation-configs-advanced-configurations-form/validation-configs-advanced-configurations-form.component';
+import { PublicationFormsInitialConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-initial-configurations-detail/publication-forms-initial-configurations-detail.component';
+import { PublicationFormsGeneralConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-general-configurations-detail/publication-forms-general-configurations-detail.component';
+import { PublicationFormsAdvancedConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-advanced-configurations-detail/publication-forms-advanced-configurations-detail.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -267,6 +270,11 @@ registerLocaleData(localeId, 'id');
         FieldConfigsAdvancedConfigurationsFormComponent,
         FieldDependenciesConfigsAdvancedConfigurationsFormComponent,
         ValidationConfigsAdvancedConfigurationsFormComponent,
+        PublicationFormsVersionsConfigurationsDetailComponent,
+        PublicationFormsConfigurationsDetailComponent,
+        PublicationFormsInitialConfigurationsDetailComponent,
+        PublicationFormsGeneralConfigurationsDetailComponent,
+        PublicationFormsAdvancedConfigurationsDetailComponent,
     ],
     bootstrap: [AppComponent],
     imports: [

@@ -3,131 +3,316 @@
 
 <mat-dialog-content>
 
-	<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+	@if (formState === 'loading') {
+		<app-loader></app-loader>
+	}
 
-		@switch (data.selectedFieldType?.dynamic_form_field_type_code) {
+	@if (formState === 'empty') {
+		<app-page-not-found></app-page-not-found>
+	}
 
-			@case ('wizard') {
-				<ng-container [ngTemplateOutlet]="wizardStepperLikeTemplate"></ng-container>
-			}
+	@if (formState === 'error') {
+		<p class="text-center">Error on load page data. Please contact the administrator...</p>
+	}
 
-			@case ('stepper') {
-				<ng-container [ngTemplateOutlet]="wizardStepperLikeTemplate"></ng-container>
-			}
+	@if (formState === 'loaded') {
 
-			@case ('accordion') {
-				<ng-container [ngTemplateOutlet]="accordionExpansionLikeTemplate"></ng-container>
-			}
+		<form [formGroup]="formGroup">
 
-			@case ('expansion') {
-				<ng-container [ngTemplateOutlet]="accordionExpansionLikeTemplate"></ng-container>
-			}
+			<div class="grid grid-cols-12 gap-y-7">
 
-			@case ('nav') {
-				<ng-container [ngTemplateOutlet]="navTabsLikeTemplate"></ng-container>
-			}
+				<ng-container formArrayName="dependency_child_configs">
 
-			@case ('tab-group') {
-				<ng-container [ngTemplateOutlet]="navTabsLikeTemplate"></ng-container>
-			}
+					@for (formChild of formGroup.get('dependency_child_configs')?.getRawValue(); track $index; let formChildIndex = $index) {
 
-			@default {
-				<!-- Min -->
-				<div class="col-span-6">
-					<mat-form-field appearance="outline" color="accent">
-						<mat-label>{{ 'Min (Minimal Data)' }}</mat-label>
+						<div class="col-span-12 grid grid-cols-12 gap-x-3 gap-y-7 border-solid rounded border-2 border-emerald-300 p-3">
 
-						<input matInput formControlName="min" placeholder="Please fill the minimal data of input..." />
-					</mat-form-field>
-				</div>
+							<ng-container [formGroupName]="formChildIndex">
 
-				<!-- Min Length -->
-				<div class="col-span-6">
-					<mat-form-field appearance="outline" color="accent">
-						<mat-label>{{ 'Minimal Character (Minimal Length)' }}</mat-label>
+								<div class="col-span-12 flex my-auto gap-3">
+									<span class="flex-initial my-auto ms-1">Dependency in <b>Child Field</b> - <b>Action {{ formChildIndex + 1 }}</b></span>
 
-						<input matInput type="number" formControlName="minLength" placeholder="Please fill the minimal length of character of input..." />
-					</mat-form-field>
-				</div>
+									<mat-divider class="border-solid border-2 border-emerald-300 flex-auto my-auto"></mat-divider>
+								</div>
 
-				<!-- Max -->
-				<div class="col-span-6">
-					<mat-form-field appearance="outline" color="accent">
-						<mat-label>{{ 'Max (Maximal Data)' }}</mat-label>
+								<!-- Action -->
+								<div class="col-span-12">
+									<mat-form-field appearance="outline" color="accent">
+										<mat-label>{{ 'Action' }}</mat-label>
 
-						<input matInput formControlName="max" placeholder="Please fill the maximal data of input..." />
-					</mat-form-field>
-				</div>
+										<mat-select formControlName="action" placeholder="Please choose the action...">
+											<ng-container *ngFor="let option of data.selectOptions.actions; let optionIndex = index;">
+												<!-- (click)="onFormFieldParentChange(option)" (keyPress)="onFormFieldParentChange(option)" -->
+												<mat-option [value]="option.value">{{ option.text }}</mat-option>
+											</ng-container>
+										</mat-select>
 
-				<!-- Max Length -->
-				<div class="col-span-6">
-					<mat-form-field appearance="outline" color="accent">
-						<mat-label>{{ 'Maximal Character (Maximal Length)' }}</mat-label>
+										<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
+									</mat-form-field>
+								</div>
 
-						<input matInput type="number" formControlName="maxLength" placeholder="Please fill the maximal length of character of input..." />
-					</mat-form-field>
-				</div>
+								<ng-container formArrayName="logic_map">
 
-				<!-- Mat Icon -->
-				<div class="col-span-6">
-					<mat-form-field appearance="outline" color="accent">
-						<mat-label>{{ 'Material Icon' }}</mat-label>
+									@for (formChildLogicMap of formChild.logic_map; track $index; let formChildLogicMapIndex = $index) {
 
-						<mat-select formControlName="mat_icon" placeholder="Please choose the Mat Icon...">
-							<mat-select-trigger>
-								<mat-icon [innerHTML]="formGroup.get('mat_icon')?.value"></mat-icon>
-								{{ formGroup.get('mat_icon')?.value | titlecase }}
-							</mat-select-trigger>
+										<div class="col-span-12 grid grid-cols-12 gap-x-3 gap-y-7 border-solid rounded border-2 border-amber-300 p-3">
 
-							<!-- Options attribute: (click)="onFieldTypeChange(option)" (keyPress)="onFieldTypeChange(option)" -->
-							<ng-container *ngFor="let option of selectOptions.mat_icon; let optionIndex = index;">
-								<mat-option [value]="option.value">
-									<mat-icon>{{ option.value }}</mat-icon>
-									{{ option.text }}
-								</mat-option>
+											<ng-container [formGroupName]="formChildLogicMapIndex">
+
+												<div class="col-span-12 flex my-auto gap-3">
+													<span class="flex-initial my-auto ms-1">Dependency in <b>Child Field</b> - <b>Logic {{ formChildLogicMapIndex + 1 }}</b></span>
+
+													<mat-divider class="border-solid border-2 border-amber-300 flex-auto my-auto"></mat-divider>
+												</div>
+
+												<!-- Logic -->
+												<div class="col-span-12">
+													<mat-form-field appearance="outline" color="accent">
+														<mat-label>{{ 'Logic' }}</mat-label>
+
+														<mat-select formControlName="logic" placeholder="Please choose the action...">
+															<ng-container *ngFor="let option of data.selectOptions.logics; let optionIndex = index;">
+																<!-- (click)="onFormFieldParentChange(option)" (keyPress)="onFormFieldParentChange(option)" -->
+																<mat-option [value]="option.value">{{ option.text }}</mat-option>
+															</ng-container>
+														</mat-select>
+
+														<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
+													</mat-form-field>
+												</div>
+
+												<ng-container formArrayName="parent_fields">
+
+													@for (formChildLogicMapParentField of formChildLogicMap.parent_fields; track $index; let formChildLogicMapParentFieldIndex = $index) {
+
+														<div class="col-span-12 grid grid-cols-12 gap-x-3 gap-y-7 border-solid rounded border-2 border-indigo-500 p-3">
+
+															<ng-container [formGroupName]="formChildLogicMapParentFieldIndex">
+
+																<div class="col-span-12 flex my-auto gap-3">
+																	<span class="flex-initial my-auto ms-1">
+																		Dependency in <b>Child Field</b> - <b>Parent field {{ formChildLogicMapParentFieldIndex + 1 }}</b>
+																	</span>
+
+																	<mat-divider class="border-solid rounded border-2 border-indigo-500 flex-auto my-auto"></mat-divider>
+																</div>
+
+																<!-- Field -->
+																<div class="col-span-6">
+																	<mat-form-field appearance="outline" color="accent" formGroupName="field">
+																		<mat-label>{{ 'Field' }}</mat-label>
+
+																		<mat-select formControlName="uuid" placeholder="Please choose the action...">
+																			<ng-container *ngFor="let option of data.selectOptions.forms; let optionIndex = index;">
+																				<mat-option [value]="option.uuid"
+																					(click)="onFormFieldParentChange(option, formChildIndex, formChildLogicMapIndex, formChildLogicMapParentFieldIndex)"
+																					(keyPress)="onFormFieldParentChange(option, formChildIndex, formChildLogicMapIndex, formChildLogicMapParentFieldIndex)">{{ '[ ' + option.field_type + ' - ' + option.field_id + ' ] ' + option.field_label }}</mat-option>
+																			</ng-container>
+																		</mat-select>
+
+																		<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
+																	</mat-form-field>
+																</div>
+
+																<!-- Comparison -->
+																<div class="col-span-3">
+																	<mat-form-field appearance="outline" color="accent">
+																		<mat-label>{{ 'Comparison' }}</mat-label>
+
+																		<mat-select formControlName="comparison" placeholder="Please choose the action...">
+																			<!--(click)="onParentFieldChange(option)" (keyPress)="onParentFieldChange(option)" -->
+																			<ng-container *ngFor="let option of data.selectOptions.comparisons; let optionIndex = index;">
+																				<mat-option [value]="option.value">{{ option.text }}</mat-option>
+																			</ng-container>
+																		</mat-select>
+
+																		<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
+																	</mat-form-field>
+																</div>
+
+																<!-- Value -->
+																<div class="col-span-3">
+																	<mat-form-field appearance="outline" color="accent">
+																		<mat-label>{{ 'Value' }}</mat-label>
+
+																		@if (
+																			formChildLogicMapParentField.field?.field_type === 'select'
+																			|| formChildLogicMapParentField.field?.field_type === 'autoselect'
+																			|| formChildLogicMapParentField.field?.field_type === 'autocomplete'
+																		) {
+
+																			<mat-select formControlName="value" placeholder="Please choose the action...">
+																				<!--(click)="onParentFieldChange(option)" (keyPress)="onParentFieldChange(option)" -->
+																				<ng-container *ngFor="let option of data.selectOptions.comparisons; let optionIndex = index;">
+																					<mat-option [value]="option.value">{{ option.text }}</mat-option>
+																				</ng-container>
+																			</mat-select>
+
+																		}
+
+																		@else {
+																			<input matInput formControlName="value" placeholder="Please fill the value to check in comparison..." />
+																		}
+
+																		<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
+																	</mat-form-field>
+																</div>
+
+																<div class="col-span-12 flex my-auto gap-3">
+																	<mat-divider class="border-solid border-2 border-indigo-500 flex-auto my-auto"></mat-divider>
+
+																	<span class="flex-initial my-auto ms-1">
+																		The end of dependency in <b>Child Field</b> - <b>Parent field {{ formChildLogicMapParentFieldIndex + 1 }}</b>.
+																		{{ (formChildIndex !== 0) ? 'Want to remove this parent field or more parent field?' : 'Want more parent field?' }}
+																	</span>
+
+																	<!-- Action Button -->
+																	<div class="flex-initial flex my-auto gap-3">
+
+																		@if (formChildLogicMapParentFieldIndex !== 0) {
+
+																			<button mat-mini-fab
+																				class="flex-auto my-auto mx-0"
+																				color="warn"
+																				(click)="onRemoveChildDependencyActionLogicMapParentField(formChildIndex, formChildLogicMapIndex, formChildLogicMapParentFieldIndex)"
+																				aria-label="Remove this parent field"
+																			>
+																				<mat-icon>remove</mat-icon>
+																			</button>
+
+																		}
+
+																		<button mat-mini-fab
+																			class="flex-auto my-auto mx-0"
+																			color="primary"
+																			(click)="onAddChildDependencyActionLogicMapParentField(formChildIndex, formChildLogicMapIndex, formChildLogicMapParentFieldIndex)"
+																			aria-label="Add new parent field"
+																		>
+																			<mat-icon>add</mat-icon>
+																		</button>
+
+																	</div>
+																</div>
+
+															</ng-container>
+
+														</div>
+
+													}
+
+												</ng-container>
+
+												<div class="col-span-12 flex my-auto gap-3">
+													<mat-divider class="border-solid border-2 border-amber-300 flex-auto my-auto"></mat-divider>
+
+													<span class="flex-initial my-auto ms-1">
+														The end of dependency in <b>Child Field</b> - <b>Logic {{ formChildLogicMapIndex + 1 }}</b>.
+														{{ (formChildIndex !== 0) ? 'Want to remove this logic or more logic?' : 'Want more logic?' }}
+													</span>
+
+													<!-- Action Button -->
+													<div class="flex-initial flex my-auto gap-3">
+
+														@if (formChildLogicMapIndex !== 0) {
+
+															<button mat-mini-fab
+																class="flex-auto my-auto mx-0"
+																color="warn"
+																(click)="onRemoveChildDependencyActionLogicMap(formChildIndex, formChildLogicMapIndex)"
+																aria-label="Remove this logic"
+															>
+																<mat-icon>remove</mat-icon>
+															</button>
+
+														}
+
+														<button mat-mini-fab
+															class="flex-auto my-auto mx-0"
+															color="primary"
+															(click)="onAddChildDependencyActionLogicMap(formChildIndex, formChildLogicMapIndex)"
+															aria-label="Add new logic"
+														>
+															<mat-icon>add</mat-icon>
+														</button>
+
+													</div>
+												</div>
+
+											</ng-container>
+
+										</div>
+
+									}
+
+								</ng-container>
+
+								<div class="col-span-12 flex my-auto gap-3">
+									<mat-divider class="border-solid border-2 border-emerald-300 flex-auto my-auto"></mat-divider>
+
+									<span class="flex-initial my-auto me-1">
+										The end of dependency in <b>Child Field</b> - <b>Action {{ formChildIndex + 1 }}</b>.
+										{{ (formChildIndex !== 0) ? 'Want to remove this action or more action?' : 'Want more action?' }}
+									</span>
+
+									<!-- Action Button -->
+									<div class="flex-initial flex my-auto gap-3">
+
+										@if (formChildIndex !== 0) {
+
+											<button mat-mini-fab
+												class="flex-auto my-auto mx-0"
+												color="warn"
+												(click)="onRemoveChildDependency(formChildIndex)"
+												aria-label="Remove this action"
+											>
+												<mat-icon>remove</mat-icon>
+											</button>
+
+										}
+
+										<button mat-mini-fab
+											class="flex-auto my-auto mx-0"
+											color="primary"
+											(click)="onAddChildDependency(formChildIndex)"
+											aria-label="Add new action"
+										>
+											<mat-icon>add</mat-icon>
+										</button>
+
+									</div>
+								</div>
+
 							</ng-container>
-						</mat-select>
 
-						<mat-hint [innerHTML]="'See material icons for more details.'"></mat-hint>
-					</mat-form-field>
-				</div>
-			}
+						</div>
 
-		}
+					}
 
-		<ng-template #wizardStepperLikeTemplate>
-			<div class="col-span-6">
+				</ng-container>
+
+			</div>
+
+			<!--Mat Icon
+			<div class="col-span-12">
 				<mat-form-field appearance="outline" color="accent">
-					<mat-label>{{ 'Orientation' }}</mat-label>
+					<mat-label>{{ 'Material Icon' }}</mat-label>
 
-					<mat-select formControlName="orientation" placeholder="Please fill the orientation of wizard...">
-						<!-- Options attribute: (click)="onFieldTypeChange(option)" (keyPress)="onFieldTypeChange(option)" -->
-						<ng-container *ngFor="let option of selectOptions.orientation; let optionIndex = index;">
-							<mat-option [value]="option.value">{{ option.text }}</mat-option>
+					<mat-select formControlName="mat_icon" placeholder="Please choose the Mat Icon...">
+						<ng-container *ngFor="let option of data.selectOptions.forms; let optionIndex = index;">
+							<mat-option [value]="option.field_name" (click)="onFormFieldParentChange(option)" (keyPress)="onFormFieldParentChange(option)">
+								{{ '[' + option.field_type + ' - ' + option.field_name + '] ' + option.field_label }}
+							</mat-option>
 						</ng-container>
 					</mat-select>
 
-					<mat-hint [innerHTML]="'The orientation of wizard (Horizontal or Vertical).'"></mat-hint>
+					<mat-hint [innerHTML]="'Nothing I can explain, maybe later.'"></mat-hint>
 				</mat-form-field>
-			</div>
+			</div>-->
 
-			<div class="col-span-6">
-				<!-- (change)="setMainFieldCheck('flag_field_publish_date')" -->
-				<mat-checkbox formControlName="linear">
-					Is this wizard is <b>Linear</b>? (Check if the wizard is used for linear inputs)
-				</mat-checkbox>
-			</div>
-		</ng-template>
+		</form>
 
-		<ng-template #accordionExpansionLikeTemplate>
-			<app-page-under-construction></app-page-under-construction>
-		</ng-template>
+	}
 
-		<ng-template #navTabsLikeTemplate>
-			<app-page-under-construction></app-page-under-construction>
-		</ng-template>
-
-	</form>
 
 </mat-dialog-content>
 

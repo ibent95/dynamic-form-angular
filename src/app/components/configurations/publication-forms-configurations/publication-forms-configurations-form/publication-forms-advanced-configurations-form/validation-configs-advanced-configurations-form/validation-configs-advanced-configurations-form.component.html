@@ -7,6 +7,18 @@
 
 		@switch (data.selectedFieldType?.dynamic_form_field_type_code) {
 
+			@case ('email') {
+				<ng-container [ngTemplateOutlet]="emailUrlLikeTemplate"></ng-container>
+			}
+
+			@case ('url') {
+				<ng-container [ngTemplateOutlet]="emailUrlLikeTemplate"></ng-container>
+			}
+
+			@case ('number') {
+				<ng-container [ngTemplateOutlet]="numberLikeTemplate"></ng-container>
+			}
+
 			@case ('wizard') {
 				<ng-container [ngTemplateOutlet]="wizardStepperLikeTemplate"></ng-container>
 			}
@@ -94,6 +106,42 @@
 			}
 
 		}
+
+		<ng-template #emailUrlLikeTemplate>
+			<!-- Pattern -->
+			<div class="col-span-12">
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>{{ 'Pattern (Regular Expression)' }}</mat-label>
+
+					<textarea matInput formControlName="pattern" placeholder="Please fill the pattern of validation in regular expression..." rows="10"></textarea>
+
+					<mat-hint [innerHTML]="'Regular Expression: `^[0-9]*$`. See details about regular expression learn more pattern.'"></mat-hint>
+				</mat-form-field>
+			</div>
+		</ng-template>
+
+		<ng-template #numberLikeTemplate>
+			<!-- Min -->
+			<div class="col-span-6">
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>{{ 'Min (Minimal Data)' }}</mat-label>
+
+					<input matInput type="number" formControlName="min" placeholder="Please fill the minimal data of input..." />
+				</mat-form-field>
+			</div>
+
+			<!-- Pattern -->
+			<div class="col-span-6">
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>{{ 'Pattern (Regular Expression)' }}</mat-label>
+
+					<textarea matInput formControlName="pattern" placeholder="Please fill the pattern of validation in regular expression..." rows="10"></textarea>
+
+
+					<mat-hint [innerHTML]="'Regular Expression: `^[0-9]*$`. See details about regular expression learn more pattern.'"></mat-hint>
+				</mat-form-field>
+			</div>
+		</ng-template>
 
 		<ng-template #wizardStepperLikeTemplate>
 			<div class="col-span-6">

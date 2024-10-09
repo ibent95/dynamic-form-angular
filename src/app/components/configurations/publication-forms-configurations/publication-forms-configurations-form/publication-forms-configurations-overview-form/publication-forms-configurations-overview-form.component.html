@@ -1,1 +1,121 @@
-<p>publication-forms-configurations-overview-form works!</p>
+<div class="flex flex-column gap-4">
+
+	<div>
+		<table class="table-fixed border-separate border-spacing-2">
+			<thead><tr><th></th></tr></thead>
+			<tbody>
+				<!-- Initial Form -->
+				<tr>
+					<td>Version of Publication Form</td>
+					<td>:</td>
+					<td [innerHTML]="otherData.selectedPublicationFormVersion?.publication_form_version_name"></td>
+				</tr>
+				<tr>
+					<td>Field Type</td>
+					<td>:</td>
+					<td [innerHTML]="otherData.selectedPublicationFieldType?.dynamic_form_field_type"></td>
+				</tr>
+				<tr>
+					<td>Field Parent</td>
+					<td>:</td>
+					<td [innerHTML]="otherData.selectedPublicationFormParent?.field_label"></td>
+				</tr>
+				<tr>
+					<td>Field Label</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_label"></td>
+				</tr>
+				<tr>
+					<td>Field Placeholder</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_placeholder"></td>
+				</tr>
+				<tr>
+					<td>Field Description</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.description"></td>
+				</tr>
+				<tr>
+					<td>Field Name</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_name"></td>
+				</tr>
+				<tr>
+					<td>Field Class</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_class"></td>
+				</tr>
+				<tr>
+					<td>Field ID</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_id"></td>
+				</tr>
+				<tr>
+					<td>Field Options</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.field_options"></td>
+				</tr>
+				<tr>
+					<td>Field Order / Position</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.order_position"></td>
+				</tr>
+				<tr>
+					<td>Field Error Message</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.error_message"></td>
+				</tr>
+				<tr>
+					<td>
+						Is this <b>Publication Type</b> field?
+					</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.flag_field_form_type"></td>
+				</tr>
+				<tr>
+					<td>
+						Is this <b>Title</b> field?
+					</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.flag_field_title"></td>
+				</tr>
+				<tr>
+					<td>
+						Is this <b>Publish Date</b> field?
+					</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.flag_field_publish_date"></td>
+				</tr>
+				<tr>
+					<td>
+						Is this <b>Required</b> field?
+					</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.flag_required"></td>
+				</tr>
+				<tr>
+					<td>
+						Is Active?
+					</td>
+					<td>:</td>
+					<td [innerHTML]="generalFormValue.flag_active"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div>
+		<span>Attention before submitting the form :</span>
+
+		<ol class="list-decimal list-inside pl-3">
+			<li>Make sure you validate the contents in each section (<b>Initial</b>, <b>General</b> and <b>Advanced</b>) of the form.</li>
+			<li>If you submit the contents of this form, then you are sure to <b>Agree to the contents in the form</b>.</li>
+			<li>If there are specific dynamic needs, please contact the <b>Administrators</b> and or the <b>Developers</b> of this <b>Dynamic Form</b> application.</li>
+		</ol>
+
+		<mat-checkbox [(ngModel)]="acceptTermsConditions" (change)="onAcceptTermsConditionsCheck($event)">
+			Yes, I am sure and agree with the statement above.
+		</mat-checkbox>
+	</div>
+
+</div>

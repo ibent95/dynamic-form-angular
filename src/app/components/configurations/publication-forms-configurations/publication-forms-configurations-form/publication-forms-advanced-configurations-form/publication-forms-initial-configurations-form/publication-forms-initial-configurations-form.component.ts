@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
 
@@ -7,23 +7,21 @@ import { SelectOptionsInterface } from '../publication-forms-configurations-form
   templateUrl: './publication-forms-initial-configurations-form.component.html',
   styleUrls: ['./publication-forms-initial-configurations-form.component.scss']
 })
-export class PublicationFormsInitialConfigurationsFormComponent implements OnInit, OnChanges {
+export class PublicationFormsInitialConfigurationsFormComponent implements OnInit {
 
   formGroup!: FormGroup;
 
   @Input() selectOptions!: SelectOptionsInterface;
-  @Input() publicationFormParentSelectOptionsLoaded: boolean = true;
 
   selectedFormVersion: any;
   selectedFormVersionLoading: boolean = true;
   selectedFieldType: any;
   selectedFieldTypeLoading: boolean = true;
   selectedParentForm: any;
-  selectedParentFormLoading: boolean = false; // Set value to false first because it will be trigger by form version changes
+  selectedParentFormLoading: boolean = true;
 
   @Output() onPublicationFormVersionChange: EventEmitter<any> = new EventEmitter<any>(true);
   @Output() onPublicationFieldTypeChange: EventEmitter<any> = new EventEmitter<any>(true);
-  @Output() onPublicationFormParentChange: EventEmitter<any> = new EventEmitter<any>(true);
 
   constructor(
     private parentFormGroup: FormGroupDirective,
@@ -52,22 +50,11 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
     this.ref.detectChanges();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['publicationFormParentSelectOptionsLoaded']) {
-      /**
-       * Set this.selectedParentFormLoading to negation of this.formParentSelectOptionsLoaded
-       * because the this.selectedParentFormLoading has oposite condition
-       */
-      this.selectedParentFormLoading = !this.publicationFormParentSelectOptionsLoaded;
-    }
-  }
-
   public onFormVersionChange(data: any) {
     this.selectedFormVersionLoading = true;
     this.selectedFormVersion = data;
 
     this.selectedFormVersionLoading = false;
-    this.selectedParentForm = null; // Remove the selected form parent
     this.onPublicationFormVersionChange.next(data);
   }
 
@@ -80,11 +67,7 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
   }
 
   public onParentFormChange(data: any) {
-    this.selectedParentFormLoading = true;
     this.selectedParentForm = data;
-
-    this.selectedParentFormLoading = false;
-    this.onPublicationFormParentChange.next(data);
   }
 
   public jsonParse(data: string): any {

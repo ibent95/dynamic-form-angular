@@ -99,89 +99,76 @@
 	<!-- Row 2 -->
 
 	<!-- Row 3 -->
-	@if (selectedParentFormLoading) {
-		<div class="col-span-12">
-			<app-loader></app-loader>
-		</div>
-	}
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Parent of Publication Form Field' }}</mat-label>
+			<mat-select formControlName="uuid_form_parent" placeholder="Please choose the parent of publication form field...">
+				<ng-container *ngFor="let option of selectOptions.forms; let optionIndex = index;">
+					<mat-option [value]="option.uuid" (click)="onParentFormChange(option)" (keyPress)="onParentFormChange(option)">{{ '[' + option.field_type + '] ' + option.field_id }}</mat-option>
+				</ng-container>
+			</mat-select>
 
-	@if (!selectedParentFormLoading) {
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('uuid_form_parent')?.invalid && (formGroup?.get('uuid_form_parent')?.dirty || formGroup?.get('uuid_form_parent')?.touched)"></mat-error>
+			<mat-hint
+				[innerHTML]="'The parent of publication form field for this field (Exp: Text 1, Select 1).'"></mat-hint>
+		</mat-form-field>
+	</div>
 
-		<div class="col-span-6">
-			<mat-form-field appearance="outline" color="accent">
-				<mat-label>{{ 'Parent of Publication Form Field' }}</mat-label>
-				<mat-select formControlName="uuid_form_parent" placeholder="Please choose the parent of publication form field...">
-					<ng-container *ngFor="let option of selectOptions.forms; let optionIndex = index;">
-						<mat-option [value]="option.uuid" (click)="onParentFormChange(option)" (keyPress)="onParentFormChange(option)">{{ '[' + option.field_type + '] ' + option.field_id }}</mat-option>
-					</ng-container>
-				</mat-select>
-
-				<mat-error [innerHTML]="''"
-					*ngIf="formGroup?.get('uuid_form_parent')?.invalid && (formGroup?.get('uuid_form_parent')?.dirty || formGroup?.get('uuid_form_parent')?.touched)"></mat-error>
-				<mat-hint
-					[innerHTML]="'The parent of publication form field for this field (Exp: Text 1, Select 1).'"></mat-hint>
-			</mat-form-field>
-		</div>
-
-		<!-- Publication Form Parent Overview -->
-		<div class="col-span-6">
-
-			@if (selectedParentForm && selectedParentForm.uuid) {
-
-				<table class="table-detail border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
-					<tbody>
-						<tr>
-							<td class="w-1/4">Field Type</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_type || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Field Label</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_label || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Field Name</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_name || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Field ID</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_id || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Field Class</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_class || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Placeholder</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_placeholder || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Description</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.description || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Field Options</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="selectedParentForm.field_options || '-'"></td>
-						</tr>
-						<tr>
-							<td class="w-1/4">Is Active</td>
-							<td class="w-1">:</td>
-							<td [innerHTML]="(selectedParentForm.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'"></td>
-						</tr>
-					</tbody>
-				</table>
-
-			}
-
-		</div>
-	}
+	<!-- Publication Form Parent Overview -->
+	<div class="col-span-6">
+		<ng-container *ngIf="selectedParentForm && selectedParentForm.uuid">
+			<table class="table-detail border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
+				<tbody>
+					<tr>
+						<td class="w-1/4">Field Type</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_type || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Label</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_label || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Name</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_name || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field ID</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_id || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Class</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_class || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Placeholder</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_placeholder || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Description</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.description || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Field Options</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="selectedParentForm.field_options || '-'"></td>
+					</tr>
+					<tr>
+						<td class="w-1/4">Is Active</td>
+						<td class="w-1">:</td>
+						<td [innerHTML]="(selectedParentForm.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'"></td>
+					</tr>
+				</tbody>
+			</table>
+		</ng-container>
+	</div>
 	<!-- Row 3 -->
 
 </form>

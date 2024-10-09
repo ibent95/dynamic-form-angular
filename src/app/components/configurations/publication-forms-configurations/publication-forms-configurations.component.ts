@@ -27,6 +27,8 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
     private generalSvc: AppGeneralService,
     private dialog: MatDialog,
   ) {
+    localStorage.removeItem('stateConfigurationsPublicationFormsDetail');
+
     this.serverResponse = null;
     this.showTable = false;
 
@@ -59,10 +61,10 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
 
   private tableInit(): void {
     this.tableDisplayedColumns = {
-      label: ['No.', 'Form Version', 'Label', 'Type', 'Name', 'Status', 'Actions'],
-      type: ['number', 'text', 'text', 'text', 'text', 'text', 'any'],
-      originalProperty: ['position', 'form_version_preview', 'field_label', 'field_type', 'field_name', 'flag_active_preview', 'actions'],
-      property: ['position', 'form_version_preview', 'field_label', 'field_type', 'field_name'],
+      label: ['No.', 'Publication General / Type', 'Form Version', 'Form Parent', 'Label', 'Type', 'Name', 'Status', 'Actions'],
+      type: ['number', 'text', 'text', 'text', 'text', 'text', 'text', 'text', 'any'],
+      originalProperty: ['position', 'publication_type_preview', 'form_version_preview', 'form_parent_preview', 'field_label', 'field_type', 'field_name', 'flag_active_preview', 'actions'],
+      property: ['position', 'publication_type_preview', 'form_version_preview', 'form_parent_preview', 'field_label', 'field_type', 'field_name'],
     };
 
     //this.tableDisplayedColumns = [
@@ -85,6 +87,9 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
     this.appSvc.listPaginatorParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS, undefined, undefined, this.tableDataPage).subscribe(successResponse => {
       if (successResponse['data']) successResponse['data'] = successResponse['data'].map((data: any, dataIndex: number) => {
         data['position'] = dataIndex + 1;
+        data['publication_type_preview'] = (data['form_version']) ? `<b>[${data.form_version.publication_type.publication_general_type?.publication_general_type_name}]</b> ${data.form_version.publication_type?.publication_type_code}` : null;
+        data['form_version_preview'] = (data['form_version']) ? `<b>[${data.form_version?.publication_form_version_code}]</b> ${data.form_version?.publication_form_version_name}` : null;
+        data['form_parent_preview'] = (data['form_parent']) ? `${data.form_parent?.field_id} - ${data.form_parent?.field_type}` : null;
         data['created_at_preview'] = (data['created_at']) ? formatDate(data['created_at'], 'fullDate', 'en') : null;
         data['updated_at_preview'] = (data['updated_at']) ? formatDate(data['updated_at'], 'fullDate', 'en') : null;
         data['flag_active_preview'] = this.setDataStatus(data);
@@ -99,17 +104,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
   }
 
   private setDataStatus(data: any): { 'status_label': any, 'status_code': string, 'classes': Array<string> } {
-    let classes: Array<string>;
-
-    switch (data['flag_active']) {
-      case 1:
-        classes = ['text-bg-success'];
-        break;
-
-      default:
-        classes = ['text-bg-secondary'];
-        break;
-    }
+    let classes: Array<string> = (data['flag_active'] == 1) ? ['text-bg-success'] : ['text-bg-secondary'];
 
     return {
       'status_label': (data['flag_active']) ? 'Active' : 'Non Active' ,

@@ -5,6 +5,7 @@ import { FieldConfigsAdvancedConfigurationsFormComponent } from './field-configs
 import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
 import { ValidationConfigsAdvancedConfigurationsFormComponent } from './validation-configs-advanced-configurations-form/validation-configs-advanced-configurations-form.component';
 import { FieldDependenciesConfigsAdvancedConfigurationsFormComponent } from './field-dependencies-configs-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form.component';
+import { AppFormStatus } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-publication-forms-advanced-configurations-form',
@@ -17,6 +18,7 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
 
   @Input() initialForm!: FormGroup;
   @Input() selectOptions!: SelectOptionsInterface;
+  @Input() formStatus!: AppFormStatus;
 
   selectedFieldType!: any;
 
@@ -50,6 +52,13 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
   }
 
   private subscribeInitialFormChanges(): void {
+    this.initialForm.get('uuid_form_version')?.valueChanges?.subscribe((value: any) => {
+      this.formGroup.patchValue({
+        'dependency_parent': null,
+        'dependency_child': null,
+      });
+    });
+
     this.initialForm.get('field_type')?.valueChanges?.subscribe((value: any) => {
       this.selectedFieldType = this.getSelectedType();
 
@@ -72,7 +81,8 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
     this.fieldConfigsForm = this.dialog.open(FieldConfigsAdvancedConfigurationsFormComponent, {
       data: {
         parentFormGroup: this.formGroup,
-        selectedFieldType: this.selectedFieldType
+        selectedFieldType: this.selectedFieldType,
+        formStatus: this.formStatus,
       },
       width: '750px',
       maxWidth: '750px',
@@ -91,7 +101,8 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
     this.validationConfigsForm = this.dialog.open(ValidationConfigsAdvancedConfigurationsFormComponent, {
       data: {
         parentFormGroup: this.formGroup,
-        selectedFieldType: this.selectedFieldType
+        selectedFieldType: this.selectedFieldType,
+        formStatus: this.formStatus,
       },
       width: '750px',
       maxWidth: '750px',
@@ -110,10 +121,12 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
     this.fieldDependenciesConfigsForm = this.dialog.open(FieldDependenciesConfigsAdvancedConfigurationsFormComponent, {
       data: {
         parentFormGroup: this.formGroup,
-        selectedFieldType: this.selectedFieldType
+        selectedFieldType: this.selectedFieldType,
+        selectOptions: this.selectOptions,
+        formStatus: this.formStatus,
       },
-      width: '1000px',
-      maxWidth: '1000px',
+      width: '1200px',
+      maxWidth: '1200px',
       enterAnimationDuration: this.dialogEnterAnimationDuration,
       exitAnimationDuration: this.dialogExitAnimationDuration,
       closeOnNavigation: false,

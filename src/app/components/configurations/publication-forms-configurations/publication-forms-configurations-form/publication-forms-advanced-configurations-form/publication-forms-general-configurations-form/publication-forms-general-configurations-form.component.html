@@ -1,0 +1,167 @@
+<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+
+	<!-- Row 1 -->
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Label' }}</mat-label>
+			<input matInput formControlName="field_label" placeholder="Please fill the label..." />
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_label')?.invalid && (formGroup?.get('field_label')?.dirty || formGroup?.get('field_status')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The label of field (Exp: Publication`s Title).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-6">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Placeholder' }}</mat-label>
+			<input matInput formControlName="field_placeholder" placeholder="Please fill the placeholder..." />
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_placeholder')?.invalid && (formGroup?.get('field_placeholder')?.dirty || formGroup?.get('field_status')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The placeholder of field (Exp: Please fill the placeholder...).'"></mat-hint>
+		</mat-form-field>
+	</div>
+	<!-- Row 1 -->
+
+	<!-- Row 2 -->
+	<div class="col-span-12">
+		<!--<mat-form-field appearance="outline" color="accent">-->
+			<mat-label>{{ 'Description' }}</mat-label>
+			<!--<textarea matInput formControlName="description" placeholder="Please fill the description..."></textarea>-->
+			<app-prosemirror [doc]="formGroup.get('description')?.value" [readOnly]="true"></app-prosemirror>
+
+			<mat-error [innerHTML]="'This field is required!'" *ngIf="formGroup.get('description')?.getError('required')"></mat-error>
+			<mat-hint [innerHTML]="'The description of field (Exp: This form is used to add a description to add more information to the users.).'"></mat-hint>
+		<!--</mat-form-field>-->
+
+	</div>
+	<!-- Row 2 -->
+
+	<!-- Row 3 -->
+	<div class="col-span-3">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Name' }}</mat-label>
+			<input matInput formControlName="field_name" placeholder="Please fill the name..." />
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_name')?.invalid && (formGroup?.get('field_name')?.dirty || formGroup?.get('field_status')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The name of field (Exp: field_name).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-3">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Class' }}</mat-label>
+			<input matInput formControlName="field_class" placeholder="Please fill the class..." />
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_class')?.invalid && (formGroup?.get('field_class')?.dirty || formGroup?.get('field_status')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The class of field (Exp: form-control).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-3">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'ID' }}</mat-label>
+			<input matInput formControlName="field_id" placeholder="Please fill the id..." />
+
+			<mat-error [innerHTML]="'This field is required!'" *ngIf="formGroup.get('field_id')?.getError('required')"></mat-error>
+			<mat-hint [innerHTML]="'The id of field (Exp: field-id).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-3">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Options' }}</mat-label>
+			<mat-select formControlName="field_options" placeholder="Please fill the options...">
+				<ng-container *ngFor="let option of selectOptions.fieldOptions; let optionIndex = index;">
+					<mat-option
+						[value]="option.dynamic_form_field_options_code">{{ option.dynamic_form_field_options }}</mat-option>
+				</ng-container>
+			</mat-select>
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('field_options')?.invalid && (formGroup?.get('field_options')?.dirty || formGroup?.get('field_status')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The options of field (Exp: [Andorra, Berlin, Cape Town]).'"></mat-hint>
+		</mat-form-field>
+	</div>
+	<!-- Row 3 -->
+
+	<!-- Row 4 -->
+	<div class="col-span-2">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Order / Position' }}</mat-label>
+			<input matInput type="number" formControlName="order_position" [min]="positionMinValue" placeholder="Please fill the order/position..." />
+
+			<mat-error [innerHTML]="'The minimal value is ' + positionMinValue + '.'" *ngIf="formGroup.get('order_position')?.getError('min')"></mat-error>
+			<mat-error [innerHTML]="'This field is required!'" *ngIf="formGroup.get('order_position')?.getError('required')"></mat-error>
+			<mat-hint [innerHTML]="'The order/position of field (Exp: 0 or 1 or 2 ...).'"></mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div class="col-span-10">
+		<mat-form-field appearance="outline" color="accent">
+			<mat-label>{{ 'Error Message' }}</mat-label>
+			<input matInput formControlName="error_message" placeholder="Please fill the configs..." />
+
+			<mat-error [innerHTML]="''"
+				*ngIf="formGroup?.get('error_message')?.invalid && (formGroup?.get('error_message')?.dirty || formGroup?.get('error_message')?.touched)"></mat-error>
+			<mat-hint [innerHTML]="'The error message of field (Exp: Fill in the field with numbers greater than 0).'"></mat-hint>
+		</mat-form-field>
+	</div>
+	<!-- Row 4 -->
+
+	<!-- Row 5 -->
+	<div class="col-span-6">
+		<mat-checkbox formControlName="flag_field_form_type" (change)="setMainFieldCheck('flag_field_form_type')">
+			Is this <b>Publication Type</b> field? (Check if the field is used to fill <b>Publication Type</b>)
+		</mat-checkbox>
+
+		<mat-checkbox formControlName="flag_field_title" (change)="setMainFieldCheck('flag_field_title')">
+			Is this <b>Title</b> field? (Check if the field is used to fill the <b>Publication Title</b>)
+		</mat-checkbox>
+
+		<mat-checkbox formControlName="flag_field_publish_date" (change)="setMainFieldCheck('flag_field_publish_date')">
+			Is this <b>Publish Date</b> field? (Check if the field is used to fill the <b>Publish Date / Publication Date</b>)
+		</mat-checkbox>
+
+		<!-- Fields error info -->
+		<div *ngIf="formGroup?.get('flag_field_form_type')?.invalid && (formGroup?.get('flag_field_form_type')?.dirty || formGroup?.get('flag_field_form_type')?.touched)">
+			<mat-error [innerHTML]="''"></mat-error>
+		</div>
+
+		<div *ngIf="formGroup?.get('flag_field_title')?.invalid && (formGroup?.get('flag_field_title')?.dirty || formGroup?.get('flag_field_title')?.touched)">
+			<mat-error [innerHTML]="''"></mat-error>
+		</div>
+
+		<div *ngIf="formGroup?.get('flag_field_publish_date')?.invalid && (formGroup?.get('flag_field_publish_date')?.dirty || formGroup?.get('flag_field_publish_date')?.touched)">
+			<mat-error [innerHTML]="''"></mat-error>
+		</div>
+		<!-- Fields error info -->
+	</div>
+
+	<div class="col-span-6">
+		<div class="grid grid-rows-2 gap-3 pt-2">
+			<mat-slide-toggle formControlName="flag_required">
+				Is this <b>Required</b> field? (Check if the field is a mandatory field / required)
+			</mat-slide-toggle>
+
+			<mat-slide-toggle formControlName="flag_active">
+				Is Active? (Check if the field is require to active)
+			</mat-slide-toggle>
+		</div>
+
+		<!-- Fields error info -->
+		<ng-container *ngIf="formGroup?.get('flag_required')?.invalid && (formGroup?.get('flag_required')?.dirty || formGroup?.get('flag_required')?.touched)">
+			<mat-error [innerHTML]="''"></mat-error>
+		</ng-container>
+
+		<ng-container *ngIf="formGroup?.get('flag_active')?.invalid && (formGroup?.get('flag_active')?.dirty || formGroup?.get('flag_active')?.touched)">
+			<mat-error [innerHTML]="''"></mat-error>
+		</ng-container>
+		<!-- Fields error info -->
+	</div>
+	<!-- Row 5 -->
+
+</form>

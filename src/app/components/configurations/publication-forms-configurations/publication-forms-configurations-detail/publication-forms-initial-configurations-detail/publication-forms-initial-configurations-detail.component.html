@@ -1,0 +1,168 @@
+<div class="content">
+
+	<!--<cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50">-->
+
+		<ng-container *ngIf="(pageState === 'loading')">
+			<app-loader></app-loader>
+		</ng-container>
+
+		<ng-container *ngIf="(pageState === 'empty')">
+			<app-page-not-found></app-page-not-found>
+		</ng-container>
+
+		<ng-container *ngIf="(pageState === 'error')">
+			<p class="text-center">Error on load page data. Please contact the administrator...</p>
+
+			<div class="flex justify-center">
+				<button mat-stroked-button class="flex-initial w-32" (click)="windowHistoryBack()">Back</button>
+			</div>
+		</ng-container>
+
+		<ng-container *ngIf="(pageState === 'loaded')">
+
+			<table class="table-detail table-detail-custom-row">
+				<thead><tr><th colspan="4"></th></tr></thead>
+				<tbody>
+					<!-- Publication Form Version -->
+					<tr>
+						<td class="w-1/4">{{ 'Version of Publication Form' }}</td>
+						<td class="w-1">:</td>
+						<td>{{ data.form_version?.publication_form_version_name }}</td>
+						<td>
+							<!-- Publication Form Version Overview -->
+							<ng-container *ngIf="data?.form_version">
+								<table class="table-detail table-detail-show border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
+									<thead><tr><th colspan="3"></th></tr></thead>
+									<tbody>
+										<tr>
+											<td class="w-1/4">Form Version</td>
+											<td class="w-fit">:</td>
+											<td [innerHTML]="data.form_version?.publication_form_version_name"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Code</td>
+											<td class="w-fit">:</td>
+											<td [innerHTML]="data.form_version?.publication_form_version_code"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Description</td>
+											<td class="w-fit">:</td>
+											<td [innerHTML]="data.form_version?.description"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Grid System Configs</td>
+											<td class="w-fit">:</td>
+											<td>
+												<app-codemirror [doc]="jsonStringify(data.form_version?.grid_system)" [readOnly]="true"></app-codemirror>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</ng-container>
+						</td>
+					</tr>
+
+					<!-- Publication Form Field Type -->
+					<tr>
+						<td>{{ 'Type of Publication Form Field' }}</td>
+						<td>:</td>
+						<td>{{ selectedFieldType?.dynamic_form_field_type }}</td>
+						<td>
+							<!-- Field Type Overview -->
+							<ng-container *ngIf="selectedFieldType">
+								<table class="table-detail table-detail-show border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
+									<thead><tr><th colspan="3"></th></tr></thead>
+									<tbody>
+										<tr>
+											<td class="w-1/4">Field Type</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="selectedFieldType.dynamic_form_field_type"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Code</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="selectedFieldType.dynamic_form_field_type_code"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Description</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="selectedFieldType.description"></td>
+										</tr>
+									</tbody>
+								</table>
+							</ng-container>
+						</td>
+					</tr>
+
+					<!-- Publication Form Parent -->
+					<tr>
+						<td>{{ 'Parent of Publication Form Field' }}</td>
+						<td>:</td>
+						<td>
+							{{ '[' + data.form_parent.form_version?.publication_form_version_code + ' - ' + data.form_parent.form_version?.publication_form_version_name + '] ' + data.form_parent?.field_type + ' - ' + data.form_parent?.field_id + ' - ' + data.form_parent?.field_label }}
+						</td>
+						<td>
+							<!-- Publication Form Parent Overview -->
+							<ng-container *ngIf="data.form_parent && data.form_parent?.uuid">
+								<table class="table-detail table-detail-show border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
+									<thead><tr><th colspan="3"></th></tr></thead>
+									<tbody>
+										<tr>
+											<td class="w-1/4">Field Type</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_type || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Field Label</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_label || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Field Name</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_name || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Field ID</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_id || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Field Class</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_class || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Placeholder</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_placeholder || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Description</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.description || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Field Options</td>
+											<td class="w-1">:</td>
+											<td [innerHTML]="data.form_parent.field_options || '-'"></td>
+										</tr>
+										<tr>
+											<td class="w-1/4">Is Active</td>
+											<td class="w-1">:</td>
+											<td
+												[innerHTML]="(data.form_parent.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</ng-container>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</ng-container>
+
+	<!--</cdk-virtual-scroll-viewport>-->
+</div>
