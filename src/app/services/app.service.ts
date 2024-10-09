@@ -30,6 +30,7 @@ export enum AppServiceType {
 
   CONFIGURATION_PUBLICATIONS_FORM_MAIN,
   CONFIGURATION_PUBLICATIONS_FORMS,
+  CONFIGURATION_PUBLICATIONS_FORMS_DISABLE,
   CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN,
   CONFIGURATION_PUBLICATIONS_FORM_VERSIONS,
 
@@ -158,6 +159,10 @@ export class AppService {
         url = this.BASE_URL_API + '/v1/configurations/publication-forms';
         break;
 
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS_DISABLE:
+        url = this.BASE_URL_API + '/v1/configurations/publication-forms';
+        break;
+
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN:
         url = this.BASE_URL_API + '/v1/configurations/publication-form-version';
         break;
@@ -225,6 +230,10 @@ export class AppService {
 
   delete(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
     return this.http.delete(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
+  }
+
+  deleteParams(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.post(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
   }
 
   getIPAddress(params: string = ""): Observable<any> {

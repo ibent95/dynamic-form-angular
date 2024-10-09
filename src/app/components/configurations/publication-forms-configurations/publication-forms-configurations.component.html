@@ -79,7 +79,7 @@
 							</button>
 
 							<!-- Show active toggle when status code is not 'PRO', 'VRF' or 'RVS' -->
-							<mat-slide-toggle [checked]="element.flag_active"></mat-slide-toggle>
+							<mat-slide-toggle [checked]="element.flag_active" (click)="onDisableDataClick(element)"></mat-slide-toggle>
 
 						</td>
 					</ng-container>

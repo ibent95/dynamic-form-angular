@@ -156,10 +156,35 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
     });
   }
 
+  public onDisableDataClick(data: any): void {
+
+    let dialogConfig: MatDialogConfig = {
+      width: '600px',
+      data: {
+        title: 'Are you sure to remove this publication forms with number of order: ' + data?.position + '?',
+        messages: 'Please check again before you remove this publication.',
+        cancelButtonText: 'Cancel',
+        proceedButtonText: 'Proceed',
+      }
+    };
+
+    // Dialog initial configuration and open
+    const dialogRef = this.dialog.open(CustomDialogPublicationRemoveConfirmComponent, dialogConfig);
+
+    // Subscribe to dialog closed event
+    dialogRef.afterClosed().subscribe((response: any) => {
+      if (response) {
+        const stringParameter = (data?.uuid) ? '/' + data?.uuid + '/disable' : '';
+
+        this.sendData(null, stringParameter);
+      }
+    });
+  }
+
   private sendData(parameter: any = null, stringParams: string = '', formData?: FormData): void {
 
     // Access delete API
-    this.appSvc.delete(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS, formData, parameter, stringParams).subscribe(
+    this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS_DISABLE, formData, parameter, stringParams).subscribe(
       (successResponse: ResponseFormat) => {
         this.handleResponse(successResponse);
         this.router.navigate(['/configurations-publication-forms']);
