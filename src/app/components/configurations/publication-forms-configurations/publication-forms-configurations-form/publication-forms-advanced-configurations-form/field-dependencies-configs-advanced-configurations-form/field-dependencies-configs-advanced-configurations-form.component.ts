@@ -100,15 +100,21 @@ export class FieldDependenciesConfigsAdvancedConfigurationsFormComponent {
     this.formStatus = this.data.formStatus;
     this.parentFormGroup = this.data.parentFormGroup;
 
-    this.dependencyParentConfigs = (this.formStatus === AppFormStatus.UPDATE)
+    this.dependencyParentConfigs = (
+      this.formStatus === AppFormStatus.UPDATE
+      && this.parentFormGroup.get('dependency_parent')?.getRawValue()
+    )
       ? JSON.parse(
         this.parentFormGroup.get('dependency_parent')?.getRawValue()
       )
       : this.data.selectedFieldType?.dynamic_form_field_dependency_parent_configs;
 
-    this.dependencyChildConfigs = (this.formStatus === AppFormStatus.UPDATE)
+    this.dependencyChildConfigs = (
+      this.formStatus === AppFormStatus.UPDATE
+      && this.parentFormGroup.get('dependency_child')?.getRawValue()
+    )
       ? JSON.parse(
-        this.parentFormGroup.get('dependency_child')?.getRawValue()
+        this.parentFormGroup.get('dependency_child')?.getRawValue() || "[]"
       )
       : this.data.selectedFieldType?.dynamic_form_field_dependency_child_configs;
 

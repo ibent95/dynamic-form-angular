@@ -415,7 +415,7 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
     }
 
     if (this.formStatus === AppFormStatus.UPDATE) {
-      this.appSvc.update(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS, formData, parameters).subscribe(
+      this.appSvc.create(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS, formData, parameters).subscribe(
         (response: any) => {
           this.router.navigate(['configurations-publication-forms']);
 
