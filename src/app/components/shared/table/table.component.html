@@ -1,0 +1,139 @@
+<div class="mat-elevation-z8">
+
+	@if (showCaption) {
+		<span class="italic p-3" id="tableCaption" [innerHTML]="caption"></span>
+	}
+
+	<div class="mat-table-container">
+
+		<!-- Table Start -->
+		<table mat-table recycleRows matSort [dataSource]="dataSource"
+			class="app-mat-table mat-elevation-z10"
+			aria-describedby="tableCaption">
+
+			<!-- Addition of order number column (header & content) -->
+			@if (showDataExpansion) {
+				<ng-container matColumnDef="expansion">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header
+						[innerHTML]="expansionColumn.label || 'No.'"></th>
+					<td mat-cell *matCellDef="let element">
+						<span>Check</span>
+					</td>
+				</ng-container>
+			}
+
+			<!-- Addition of order number column (header & content) -->
+			@if (showDataOrderNumber) {
+				<ng-container matColumnDef="orderNumber">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header
+						[innerHTML]="orderNumberColumn.label || 'No.'"></th>
+					<td mat-cell *matCellDef="let element">
+						<span [innerHTML]="(orderNumberColumn.property) ? element[orderNumberColumn.property] : '-'"></span>
+					</td>
+				</ng-container>
+			}
+
+			<!-- Other data columns (header & content) -->
+			@for (column of displayedColumns; track $index; let columnIndex = $index;) {
+				<ng-container [matColumnDef]="column.property || ''">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header
+						[innerHTML]="column.label"></th>
+					<td mat-cell *matCellDef="let element"
+						[innerHTML]="(column.property) ? element[column.property] : null"></td>
+				</ng-container>
+			}
+
+
+			<!-- Addition of status column (header & content) -->
+			@if (showDataStatus) {
+				<ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef
+						[innerHTML]="statusColumn.label || 'No.'"></th>
+					<td mat-cell *matCellDef="let element">
+						<span class="badge"
+							[ngClass]="(statusColumn.property) ? element[statusColumn.property].classes : null"
+							[innerHTML]="(statusColumn.property) ? element[statusColumn.property].status_label : '-'"></span>
+					</td>
+				</ng-container>
+			}
+
+			<!-- Addition of actions column (header & content) -->
+			@if (showDataActions && actions) {
+				<ng-container matColumnDef="actions">
+					<th mat-header-cell *matHeaderCellDef>Actions</th>
+					<td mat-cell class="mat-table-action-column" *matCellDef="let element">
+
+						<!-- Show detail button to all status code -->
+						@if (actions.includes('detail')) {
+							<button mat-mini-fab color="primary"
+								(click)="onDataDetailClick(element)">
+								<mat-icon>remove_red_eye</mat-icon>
+							</button>
+						}
+
+						<!-- Show edit button when status code is not 'PRO' or 'RJT' -->
+						@if (actions.includes('edit')) {
+							<button mat-mini-fab color="accent"
+								(click)="onDataEditClick(element)">
+								<mat-icon>edit</mat-icon>
+							</button>
+						}
+
+						<!-- Show delete button when status code is not 'PRO', 'VRF' or 'RVS' -->
+						@if (actions.includes('delete')) {
+							<button mat-mini-fab color="warn"
+								(click)="onDataDeleteClick(element)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						}
+
+						<!-- Show active toggle when status code is not 'PRO', 'VRF' or 'RVS' -->
+						@if (actions.includes('activation')) {
+							<mat-slide-toggle [checked]="element.flag_active"
+								(click)="onDataDisableClick(element)"></mat-slide-toggle>
+						}
+
+					</td>
+				</ng-container>
+			}
+
+			<!-- Show data when exist -->
+			<tr mat-header-row *matHeaderRowDef="displayedColumnsProperties"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumnsProperties;"></tr>
+
+			<!-- Row shown when there is no matching data that will be provided to the wrapper table. -->
+			<tr class="mat-row" *matNoDataRow>
+				<td class="mat-cell text-center"
+					[attr.colspan]="displayedColumnsProperties.length"
+					[innerHTML]="'There is no data yet.'"></td>
+			</tr>
+
+			<!-- Footer -->
+			@if (showFooter && footer) {
+				<ng-container matColumnDef="footer">
+					<td
+						mat-footer-cell
+						*matFooterCellDef
+						[attr.colspan]="100"
+						[innerHTML]="footer">
+					</td>
+				</ng-container>
+
+				<tr mat-footer-row *matFooterRowDef="['footer'];"></tr>
+			}
+
+		</table>
+		<!-- Table End -->
+	</div>
+
+	@if (showPagination) {
+		<mat-paginator aria-label="Select page"
+			[pageSizeOptions]="pageSizeOptions"
+			[pageSize]="page.pageSize"
+			[length]="page.length"
+			[pageIndex]="page.pageIndex"
+			(page)="onPageChange($event)"
+			showFirstLastButtons></mat-paginator>
+	}
+
+</div>

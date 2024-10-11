@@ -156,6 +156,7 @@ import { ValidationConfigsAdvancedConfigurationsFormComponent } from './componen
 import { PublicationFormsInitialConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-initial-configurations-detail/publication-forms-initial-configurations-detail.component';
 import { PublicationFormsGeneralConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-general-configurations-detail/publication-forms-general-configurations-detail.component';
 import { PublicationFormsAdvancedConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-advanced-configurations-detail/publication-forms-advanced-configurations-detail.component';
+import { TableComponent } from './components/shared/table/table.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -299,6 +300,7 @@ registerLocaleData(localeId, 'id');
         LoaderComponent,
         CodemirrorComponent,
         ProsemirrorComponent,
+        TableComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'id-ID' },

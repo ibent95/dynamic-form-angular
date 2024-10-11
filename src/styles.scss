@@ -191,6 +191,13 @@ mat-dialog-actions.custom-mat-dialog-actions, mat-dialog-actions.mat-mdc-dialog-
 
 .text-tile { margin-right: 10px; margin-bottom: 10px !important; }
 
+.mat-table-container {
+	position: relative;
+	min-height: 200px;
+	max-height: 600px; // 100%
+	overflow: auto;
+}
+
 table.table-detail {
 	width: 100%;
 	td { vertical-align: top; }

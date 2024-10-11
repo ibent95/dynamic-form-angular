@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
     <footer class="max-w-none m-7">
       <div class="footer-content center-content">
         <!-- © -->
-        Copyright 2022, made by <a class="text-white" href="https://github.com/ibent95">ibent95</a>
+        Copyright {{ year }}, made by <a class="text-white ps-1" href="https://github.com/ibent95">ibent95</a>
       </div>
     </footer>
   `,
@@ -18,4 +18,5 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FooterComponent {
   @Input() routeMap!: string[];
+  year: number = new Date().getFullYear();
 }

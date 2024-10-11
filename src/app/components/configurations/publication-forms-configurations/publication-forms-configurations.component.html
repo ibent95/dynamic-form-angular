@@ -33,78 +33,20 @@
 			</div>
 		</div>
 
-		<ng-container *ngIf="!showTable">
+		@if (!showTable) {
 			<app-ghost-table [rowCount]="3" [columnCount]="3"></app-ghost-table>
-		</ng-container>
+		}
 
-		<ng-container *ngIf="showTable">
-			<div class="mat-elevation-z8">
-				<span id="tableCaption">Publication data</span>
-
-				<!-- Table Start -->
-				<table mat-table recycleRows matSort [dataSource]="tableDataSource" class="mat-elevation-z10" aria-describedby="tableCaption">
-
-					<!-- Header columns -->
-					<ng-container [matColumnDef]="column" *ngFor="let column of tableDisplayedColumns.property; let columnIndex = index;">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header [innerHTML]="tableDisplayedColumns.label[columnIndex]"></th>
-						<td mat-cell *matCellDef="let element" [innerHTML]="element[tableDisplayedColumns.property[columnIndex]]"></td>
-					</ng-container>
-
-					<!-- Addition of status column (header & content) -->
-					<ng-container matColumnDef="flag_active_preview">
-						<th mat-header-cell *matHeaderCellDef>Status</th>
-						<td mat-cell *matCellDef="let element">
-							<span class="badge" [ngClass]="element.flag_active_preview?.classes" [innerHTML]="element.flag_active_preview?.status_label"></span>
-						</td>
-					</ng-container>
-
-					<!-- Addition of actions column (header & content) -->
-					<ng-container matColumnDef="actions">
-						<th mat-header-cell *matHeaderCellDef>Actions</th>
-						<td mat-cell class="mat-table-action-column" *matCellDef="let element">
-
-							<!-- Show detail button to all status code -->
-							<button mat-mini-fab color="primary" (click)="onDetailsDataClick(element)">
-								<mat-icon>remove_red_eye</mat-icon>
-							</button>
-
-							<!-- Show edit button when status code is not 'PRO' or 'RJT' -->
-							<button mat-mini-fab color="accent" (click)="onEditDataClick(element)">
-								<mat-icon>edit</mat-icon>
-							</button>
-
-							<!-- Show delete button when status code is not 'PRO', 'VRF' or 'RVS' -->
-							<button mat-mini-fab color="warn" (click)="onRemoveDataClick(element)">
-								<mat-icon>delete</mat-icon>
-							</button>
-
-							<!-- Show active toggle when status code is not 'PRO', 'VRF' or 'RVS' -->
-							<mat-slide-toggle [checked]="element.flag_active" (click)="onDisableDataClick(element)"></mat-slide-toggle>
-
-						</td>
-					</ng-container>
-
-					<!-- Show data when exist -->
-					<tr mat-header-row *matHeaderRowDef="tableDisplayedColumns.originalProperty"></tr>
-					<tr mat-row *matRowDef="let row; columns: tableDisplayedColumns.originalProperty;"></tr>
-
-					<!-- Row shown when there is no matching data that will be provided to the wrapper table. -->
-					<tr class="mat-row" *matNoDataRow>
-						<td class="mat-cell text-center" [attr.colspan]="tableDisplayedColumns.originalProperty.length" [innerHTML]="'There is no data yet.'"></td>
-					</tr>
-
-					<!-- Footer with paginator -->
-					<ng-container matColumnDef="paginations">
-						<td mat-footer-cell *matFooterCellDef [attr.colspan]="100">
-							<mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="tableDataPage.pageSize" [length]="tableDataPage.length" [pageIndex]="tableDataPage.pageIndex" showFirstLastButtons aria-label="Select page" (page)="getTableData($event)"></mat-paginator>
-						</td>
-					</ng-container>
-
-				   <tr mat-footer-row *matFooterRowDef="['paginations'];"></tr>
-				</table>
-				<!-- Table End -->
-			</div>
-		</ng-container>
+		@if (showTable) {
+			<app-table
+				[columns]="tableDisplayedColumnsV2"
+				[dataSource]="tableDataSource"
+				[page]="tableDataPage"
+				(dataDetail)="onDetailsDataClick($event)"
+				(dataEdit)="onEditDataClick($event)"
+				(dataDelete)="onRemoveDataClick($event)"
+				></app-table>
+		}
 
 	</mat-card-content>
 </mat-card>

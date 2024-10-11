@@ -5,6 +5,7 @@ import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-ge
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
 import { formatDate } from '@angular/common';
+import { AppTableColumns } from '../../shared/table/table.component';
 
 @Component({
   selector: 'app-publication-forms-configurations',
@@ -18,6 +19,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
   showTable!: boolean;
 
   tableDisplayedColumns!: { label: Array<string>, type: Array<string>, property: Array<string>, originalProperty: Array<string> };
+  tableDisplayedColumnsV2!: AppTableColumns;
   tableDataSource!: Array<any>;
   tableDataPage!: Page;
 
@@ -67,12 +69,17 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
       property: ['position', 'publication_type_preview', 'form_version_preview', 'form_parent_preview', 'field_label', 'field_type', 'field_name'],
     };
 
-    //this.tableDisplayedColumns = [
-    //  { label: 'Position', property: 'position', },
-    //  { label: 'Name', property: 'name', },
-    //  { label: 'Weight', property: 'weight', },
-    //  { label: 'Symbol', property: 'symbol', },
-    //];
+    this.tableDisplayedColumnsV2 = [
+      { type: 'orderNumber', label: 'No.', property: 'position' },
+      { type: 'text', label: 'Publication General / Type', property: 'publication_type_preview' },
+      { type: 'text', label: 'Form Version', property: 'form_version_preview' },
+      { type: 'text', label: 'Form Parent', property: 'form_parent_preview' },
+      { type: 'text', label: 'Label', property: 'field_label' },
+      { type: 'text', label: 'Type', property: 'field_type' },
+      { type: 'text', label: 'Name', property: 'field_name' },
+      { type: 'status', label: 'Status', property: 'flag_active_preview' },
+      { type: 'actions', label: 'Actions' },
+    ];
 
     this.getTableData();
   }
