@@ -45,4 +45,10 @@ export class PublicationFormsGeneralConfigurationsFormComponent implements OnIni
     }
   }
 
+  public onDescriptionFieldChange(data: any) {
+    console.log('onDescriptionFieldChange data', data);
+
+    this.formGroup.patchValue({description: data});
+  }
+
 }

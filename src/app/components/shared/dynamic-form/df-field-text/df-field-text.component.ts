@@ -16,7 +16,7 @@ export class DFFieldTextComponent {
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
   @Input() value!: any;
-  @Input() isShowDetail: boolean = false;
+  @Input() readOnly: boolean = false;
 
   @Output() type!: EventEmitter<any>;
   @Output() change!: EventEmitter<any>;

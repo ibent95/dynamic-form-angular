@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatStepper, StepperOrientation } from '@angular/material/stepper';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
@@ -39,6 +39,10 @@ export interface SelectOptionsInterface {
   styles: ['']
 })
 export class PublicationFormsConfigurationsFormComponent implements OnInit {
+
+  activeRouteSegments!: Array<UrlSegment>;
+  lastActiveRoute!: string;
+  breakpointObserver = inject(BreakpointObserver);
 
   pageState!: PageState;
   @ViewChild('stepper') stepper!: MatStepper;
@@ -80,7 +84,17 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
 
     const state: any = localStorage.getItem('stateConfigurationsPublicationFormsDetail');
     this.stateData = (state) ? JSON.parse(state) : null;
-    this.formStatus = (this.stateData?.uuid) ? AppFormStatus.UPDATE : AppFormStatus.CREATE;
+    this.activeRouteSegments = this.router
+      .parseUrl(this.router.url)
+      .root
+      .children['primary']
+      ?.segments;
+    this.lastActiveRoute = this.activeRouteSegments[this.activeRouteSegments.length - 1]
+      ?.path;
+
+    this.formStatus = (this.lastActiveRoute === 'update' && this.stateData?.uuid)
+      ? AppFormStatus.UPDATE
+      : AppFormStatus.CREATE;
 
     this.formStates = {
       isFormCreated: false,
@@ -126,12 +140,19 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
     this.positionMinValue = 0;
     this.accepttermsConditions = false;
 
-    const breakpointObserver = inject(BreakpointObserver);
-    this.stepperOrientation = breakpointObserver
+    this.stepperOrientation = this.breakpointObserver
       .observe('(min-width: 800px)')
-      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+      .pipe(
+        map(
+          ({ matches }) => (matches ? 'horizontal' : 'vertical')
+        )
+      );
 
     if (this.formStatus === AppFormStatus.UPDATE) {
+
+      if (!this.stateData) {
+        this.windowHistoryBack();
+      }
       this.getDataPublicationForm(this.stateData?.uuid);
     } else {
       this.initiateForm();

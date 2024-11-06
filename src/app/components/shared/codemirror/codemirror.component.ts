@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Inject, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { basicSetup, minimalSetup } from 'codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { EditorState, Extension, Text } from '@codemirror/state';
@@ -52,6 +52,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    private changeDetectRef: ChangeDetectorRef
   ) {
     // Set intial default extensions (make all array)
     this.codeMirrorExtensions = this.createExtensions(this.extensions);
@@ -220,6 +221,7 @@ export class CodemirrorComponent implements AfterViewInit, OnChanges {
     }
 
     this.changes.next(results);
+    this.changeDetectRef.detectChanges();
   }
 
 }

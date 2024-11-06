@@ -49,7 +49,7 @@ export type AppTableActions = Array<
   standalone: true,
   imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSlideToggleModule, MatIconModule, MatButtonModule],
   templateUrl: './table.component.html',
-  styles: ['::ng-deep table.mat-mdc-table.app-mat-table tbody td { padding: 16px !important; }']
+  styles: ['::ng-deep table.mat-mdc-table.app-mat-table tbody td { padding: 16px !important; } ::ng-deep div.mat-mdc-paginator-range-actions button { margin-top: 10px; }']
 })
 export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -94,9 +94,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
    */
 
   // Global event
-  change: EventEmitter<any> = new EventEmitter<any>(true);
-  changes: EventEmitter<any> = new EventEmitter<any>(true);
-  pageChange: EventEmitter<any> = new EventEmitter<any>(true);
+  @Output() change: EventEmitter<any> = new EventEmitter<any>(true);
+  @Output() changes: EventEmitter<any> = new EventEmitter<any>(true);
+  @Output() pageChange: EventEmitter<any> = new EventEmitter<any>(true);
 
   @Output() dataDetail: EventEmitter<any> = new EventEmitter<any>(true); // Edit button event
   @Output() dataEdit: EventEmitter<any> = new EventEmitter<any>(true); // Edit button event
@@ -109,7 +109,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() dataCollapse: EventEmitter<any> = new EventEmitter<any>(true); // Collapse in table row event
 
   constructor() {
-    console.log('constructor showDataOrderNumber', this.showDataOrderNumber);
+    //console.log('constructor showDataOrderNumber', this.showDataOrderNumber);
     //console.log('constructor displayedColumnsProperties', this.displayedColumnsProperties);
     //console.log('constructor keyof typeof AppTableColumnType', typeof AppTableColumnType);
   }
@@ -117,7 +117,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit(): void {
     // Filters columns for displayed columns
     this.displayedColumns = this.columns.filter((column: AppTableColumn) => {
-      console.log(column);
+      //console.log(column);
 
       /**
        * Separate or save the spesific column
@@ -177,14 +177,14 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     //console.log('onInit displayedColumnsProperties', this.displayedColumnsProperties);
-    console.log('onInit displayedColumns', this.displayedColumns);
-    console.log(
-      'onInit AppTableColumnType',
-      AppTableColumnType.expansion.valueOf(),
-      AppTableColumnType.orderNumber.valueOf(),
-      AppTableColumnType.status.valueOf(),
-      AppTableColumnType.actions.valueOf()
-    );
+    //console.log('onInit displayedColumns', this.displayedColumns);
+    //console.log(
+    //  'onInit AppTableColumnType',
+    //  AppTableColumnType.expansion.valueOf(),
+    //  AppTableColumnType.orderNumber.valueOf(),
+    //  AppTableColumnType.status.valueOf(),
+    //  AppTableColumnType.actions.valueOf()
+    //);
   }
 
   ngAfterViewInit(): void {
@@ -192,7 +192,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('App table changes', changes);
+    //console.log('App table changes', changes);
   }
 
   // Before form view

@@ -39,12 +39,13 @@
 
 		@if (showTable) {
 			<app-table
-				[columns]="tableDisplayedColumnsV2"
+				[columns]="tableDisplayedColumns"
 				[dataSource]="tableDataSource"
 				[page]="tableDataPage"
 				(dataDetail)="onDetailsDataClick($event)"
 				(dataEdit)="onEditDataClick($event)"
 				(dataDelete)="onRemoveDataClick($event)"
+				(pageChange)="getTableData($event)"
 				></app-table>
 		}
 

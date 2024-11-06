@@ -9,7 +9,12 @@
 		<p class="text-center" [innerHTML]="'Sorry, this field has an error when load the component.'"></p>
 	}
 
-	<div #proseMirrorEditor id="prose-mirror-editor" [ngStyle]="{ 'display': (componentState === 'loaded') ? null : 'none' }"></div>
-	<div #proseMirrorContent id="prose-mirror-content" [ngStyle]="{ 'display': (componentState === 'loaded') ? null : 'none' }"></div>
+	<div #proseMirrorEditor id="prose-mirror-editor" [ngStyle]="{ 'display': (!readOnly && componentState === 'loaded') ? null : 'none' }"></div>
+
+	<div #proseMirrorContent id="prose-mirror-content" [ngStyle]="{ 'display': (!readOnly && componentState === 'loaded') ? null : 'none' }" [innerHTML]="doc"></div>
+
+	@if (readOnly) {
+		<div [innerHTML]="doc"></div>
+	}
 
 </div>

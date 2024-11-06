@@ -18,8 +18,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
 
   showTable!: boolean;
 
-  tableDisplayedColumns!: { label: Array<string>, type: Array<string>, property: Array<string>, originalProperty: Array<string> };
-  tableDisplayedColumnsV2!: AppTableColumns;
+  tableDisplayedColumns!: AppTableColumns;
   tableDataSource!: Array<any>;
   tableDataPage!: Page;
 
@@ -33,13 +32,6 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
 
     this.serverResponse = null;
     this.showTable = false;
-
-    this.tableDisplayedColumns = {
-      label: [],
-      type: [],
-      property: [],
-      originalProperty: [],
-    };
 
     this.tableDataSource = [];
     this.tableDataPage = {
@@ -62,14 +54,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit {
   }
 
   private tableInit(): void {
-    this.tableDisplayedColumns = {
-      label: ['No.', 'Publication General / Type', 'Form Version', 'Form Parent', 'Label', 'Type', 'Name', 'Status', 'Actions'],
-      type: ['number', 'text', 'text', 'text', 'text', 'text', 'text', 'text', 'any'],
-      originalProperty: ['position', 'publication_type_preview', 'form_version_preview', 'form_parent_preview', 'field_label', 'field_type', 'field_name', 'flag_active_preview', 'actions'],
-      property: ['position', 'publication_type_preview', 'form_version_preview', 'form_parent_preview', 'field_label', 'field_type', 'field_name'],
-    };
-
-    this.tableDisplayedColumnsV2 = [
+    this.tableDisplayedColumns = [
       { type: 'orderNumber', label: 'No.', property: 'position' },
       { type: 'text', label: 'Publication General / Type', property: 'publication_type_preview' },
       { type: 'text', label: 'Form Version', property: 'form_version_preview' },

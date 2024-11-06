@@ -4,14 +4,14 @@
 	<div class="col-span-6">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Label' }}</mat-label>
-			<input matInput placeholder="Please fill the label..." />
+			<input matInput [value]="data?.field_label" [readonly]="true" />
 		</mat-form-field>
 	</div>
 
 	<div class="col-span-6">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Placeholder' }}</mat-label>
-			<input matInput placeholder="Please fill the placeholder..." />
+			<input matInput [value]="data?.field_placeholder" [readonly]="true" />
 		</mat-form-field>
 	</div>
 	<!-- Row 1 -->
@@ -28,28 +28,28 @@
 	<div class="col-span-3">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Name' }}</mat-label>
-			<input matInput placeholder="Please fill the name..." />
+			<input matInput [value]="data?.field_name" [readonly]="true" />
 		</mat-form-field>
 	</div>
 
 	<div class="col-span-3">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Class' }}</mat-label>
-			<input matInput placeholder="Please fill the class..." />
+			<input matInput [value]="data?.field_class" [readonly]="true" />
 		</mat-form-field>
 	</div>
 
 	<div class="col-span-3">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'ID' }}</mat-label>
-			<input matInput placeholder="Please fill the id..." />
+			<input matInput [value]="data?.field_id" [readonly]="true" />
 		</mat-form-field>
 	</div>
 
 	<div class="col-span-3">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Options' }}</mat-label>
-			<mat-select placeholder="Please fill the options...">
+			<mat-select placeholder="Please fill the options..." [disabled]="true">
 				<ng-container *ngFor="let option of selectOptions.fieldOptions; let optionIndex = index;">
 					<mat-option [value]="option.dynamic_form_field_options_code">{{ option.dynamic_form_field_options }}</mat-option>
 				</ng-container>
@@ -62,37 +62,37 @@
 	<div class="col-span-2">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Order / Position' }}</mat-label>
-			<input matInput type="number" [min]="positionMinValue" placeholder="Please fill the order/position..." />
+			<input matInput type="number" [min]="positionMinValue" [value]="data?.order_position" [readonly]="true" />
 		</mat-form-field>
 	</div>
 
 	<div class="col-span-10">
 		<mat-form-field appearance="outline" color="accent">
 			<mat-label>{{ 'Error Message' }}</mat-label>
-			<input matInput placeholder="Please fill the configs..." />
+			<input matInput [value]="data?.error_message" [readonly]="true" />
 		</mat-form-field>
 	</div>
 	<!-- Row 4 -->
 
 	<!-- Row 5 -->
 	<div class="col-span-6">
-		<mat-checkbox>
+		<mat-checkbox [disabled]="true">
 			Is this <b>Publication Type</b> field? (Check if the field is used to fill <b>Publication Type</b>)
 		</mat-checkbox>
 
-		<mat-checkbox>
+		<mat-checkbox [disabled]="true">
 			Is this <b>Title</b> field? (Check if the field is used to fill the <b>Publication Title</b>)
 		</mat-checkbox>
 
-		<mat-checkbox>
+		<mat-checkbox [disabled]="true">
 			Is this <b>Publish Date</b> field? (Check if the field is used to fill the <b>Publish Date / Publication Date</b>)
 		</mat-checkbox>
 	</div>
 
 	<div class="col-span-6">
 		<div class="grid grid-rows-2 gap-3 pt-2">
-			<mat-slide-toggle>Is this <b>Required</b> field? (Check if the field is a mandatory field / required)</mat-slide-toggle>
-			<mat-slide-toggle>Is Active? (Check if the field is require to active)</mat-slide-toggle>
+			<mat-slide-toggle [disabled]="true">Is this <b>Required</b> field? (Check if the field is a mandatory field / required)</mat-slide-toggle>
+			<mat-slide-toggle [disabled]="true">Is Active? (Check if the field is require to active)</mat-slide-toggle>
 		</div>
 	</div>
 	<!-- Row 5 -->
