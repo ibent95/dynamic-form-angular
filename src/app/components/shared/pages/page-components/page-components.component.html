@@ -313,7 +313,7 @@
 				<!-- Slider -->
 				<div class="mb-3">
 					<div class="text-title text-sm mb-2">Slider</div>
-					<mat-slider [max]="100" [min]="0" [step]="1" discrete showTickMarks [(ngModel)]="sliderField" [ngModelOptions]="{ standalone: true }">
+					<mat-slider [max]="100" [min]="0" [step]="1" discrete showTickMarks name="sliderField" ngDefaultControl [(ngModel)]="sliderField" [ngModelOptions]="{ standalone: true }">
 						<input matSliderThumb>
 					</mat-slider>
 				</div>
@@ -379,7 +379,7 @@
 					<div class="text-title text-sm mb-2">Date picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date picker</mat-label>
-						<input matInput [type]="'datetime-local'" [(ngModel)]="owlDateField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date picker'">
+						<input matInput [type]="'datetime-local'" name="owlDateField" ngDefaultControl [(ngModel)]="owlDateField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date picker'">
 					</mat-form-field>
 				</div>
 
@@ -412,7 +412,7 @@
 						<mat-label>Time picker</mat-label>-->
 						<!--<input matInput [ngxMatDatetimePicker]="matTimePicker" [(ngModel)]="owlTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Choose a time'">-->
 						<!--<mat-datepicker-toggle matSuffix [for]="$any(matTimePicker)"></mat-datepicker-toggle>-->
-						<ngx-mat-timepicker [(ngModel)]="owlTimeField" [ngModelOptions]="{ standalone: true }" [showSpinners]="true" [showSeconds]="true" [color]="'accent'" #matTimePicker></ngx-mat-timepicker>
+						<ngx-mat-timepicker name="owlTimeField" ngDefaultControl [(ngModel)]="owlTimeField" [ngModelOptions]="{ standalone: true }" [showSpinners]="true" [showSeconds]="true" [color]="'accent'" #matTimePicker></ngx-mat-timepicker>
 					<!--</mat-form-field>-->
 				</div>
 
@@ -421,7 +421,7 @@
 					<div class="text-title text-sm mb-2">Date and time picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date time picker</mat-label>
-						<input matInput [ngxMatDatetimePicker]="matDateTimePicker" [(ngModel)]="owlDateTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Choose a date and time'">
+						<input matInput [ngxMatDatetimePicker]="matDateTimePicker" name="owlDateTimeField" ngDefaultControl [(ngModel)]="owlDateTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Choose a date and time'">
 						<mat-datepicker-toggle matSuffix [for]="$any(matDateTimePicker)"></mat-datepicker-toggle>
 						<ngx-mat-datetime-picker [showSpinners]="true" [showSeconds]="true" [color]="'accent'" [hideTime]="false" #matDateTimePicker></ngx-mat-datetime-picker>
 					</mat-form-field>
@@ -478,7 +478,7 @@
 					<div class="text-title text-sm mb-2">Date picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date picker</mat-label>
-						<input matInput [owlDateTime]="dt1" [(ngModel)]="owlDateField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date picker'">
+						<input matInput [owlDateTime]="dt1" name="owlDateField" ngDefaultControl [(ngModel)]="owlDateField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt1"><mat-icon>calendar_month</mat-icon></button>
 						<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
 					</mat-form-field>
@@ -489,7 +489,7 @@
 					<div class="text-title text-sm mb-2">Month and year picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Month picker</mat-label>
-						<input matInput [owlDateTime]="dt2" [(ngModel)]="owlMonthField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Month picker'">
+						<input matInput [owlDateTime]="dt2" name="owlMonthField" ngDefaultControl [(ngModel)]="owlMonthField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Month picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt2"><mat-icon>calendar_view_month</mat-icon></button>
 						<owl-date-time [pickerType]="'calendar'" [startView]="owlDateTimeMonthStartView" (monthSelected)="setOwlDateTimeMonthYear($event, dt2)" #dt2></owl-date-time>
 					</mat-form-field>
@@ -500,7 +500,7 @@
 					<div class="text-title text-sm mb-2">Year picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Year picker</mat-label>
-						<input matInput [owlDateTime]="dt3" [(ngModel)]="owlYearField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Year picker'">
+						<input matInput [owlDateTime]="dt3" name="owlYearField" ngDefaultControl [(ngModel)]="owlYearField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Year picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt3"><mat-icon>calendar_month</mat-icon></button>
 						<owl-date-time [pickerType]="'calendar'" [startView]="owlDateTimeYearStartView" (yearSelected)="setOwlDateTimeYear($event, dt3)" #dt3></owl-date-time>
 					</mat-form-field>
@@ -511,7 +511,7 @@
 					<div class="text-title text-sm mb-2">Time picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Time picker</mat-label>
-						<input matInput [owlDateTime]="dt4" [(ngModel)]="owlTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Time picker'">
+						<input matInput [owlDateTime]="dt4" name="owlTimeField" ngDefaultControl [(ngModel)]="owlTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Time picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt4"><mat-icon>access_time_filled</mat-icon></button>
 						<owl-date-time [pickerType]="'timer'" [showSecondsTimer]="true" #dt4></owl-date-time>
 					</mat-form-field>
@@ -522,7 +522,7 @@
 					<div class="text-title text-sm mb-2">Date and time picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date time picker</mat-label>
-						<input matInput [owlDateTime]="dt5" [(ngModel)]="owlDateTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date time picker'">
+						<input matInput [owlDateTime]="dt5" name="owlDateTimeField" ngDefaultControl [(ngModel)]="owlDateTimeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date time picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt5"><mat-icon>calendar_month</mat-icon></button>
 						<owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt5></owl-date-time>
 					</mat-form-field>
@@ -533,7 +533,7 @@
 					<div class="text-title text-sm mb-2">Date range picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date range picker</mat-label>
-						<input matInput [owlDateTime]="dt6" [selectMode]="'range'" [(ngModel)]="owlDateRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date range picker'">
+						<input matInput [owlDateTime]="dt6" name="owlDateRangeField" ngDefaultControl [selectMode]="'range'" [(ngModel)]="owlDateRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date range picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt6"><mat-icon>date_range</mat-icon></button>
 						<owl-date-time [pickerType]="'calendar'" #dt6></owl-date-time>
 					</mat-form-field>
@@ -544,7 +544,7 @@
 					<div class="text-title text-sm mb-2">Time range picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Time range picker</mat-label>
-						<input matInput [owlDateTime]="dt7" [selectMode]="'range'" [(ngModel)]="owlTimeRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Time range picker'">
+						<input matInput [owlDateTime]="dt7" name="owlTimeRangeField" ngDefaultControl [selectMode]="'range'" [(ngModel)]="owlTimeRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Time range picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt7"><mat-icon>av_timer</mat-icon></button>
 						<owl-date-time [pickerType]="'timer'" [showSecondsTimer]="true" #dt7></owl-date-time>
 					</mat-form-field>
@@ -555,7 +555,7 @@
 					<div class="text-title text-sm mb-2">Date time range picker</div>
 					<mat-form-field appearance="fill" [color]="'accent'">
 						<mat-label>Date time range picker</mat-label>
-						<input matInput [owlDateTime]="dt8" [selectMode]="'range'" [(ngModel)]="owlDateTimeRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date time range picker'">
+						<input matInput [owlDateTime]="dt8" [selectMode]="'range'" name="owlDateTimeRangeField" ngDefaultControl [(ngModel)]="owlDateTimeRangeField" [ngModelOptions]="{ standalone: true }" [placeholder]="'Date time range picker'">
 						<button mat-icon-button matSuffix [owlDateTimeTrigger]="dt8"><mat-icon>date_range</mat-icon></button>
 						<owl-date-time [pickerType]="'both'" [showSecondsTimer]="true" #dt8></owl-date-time>
 					</mat-form-field>

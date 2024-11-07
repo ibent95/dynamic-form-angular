@@ -1,13 +1,10 @@
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { basicSetup, minimalSetup } from 'codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { EditorState, Extension, Text } from '@codemirror/state';
-import { keymap, EditorView, ViewUpdate } from '@codemirror/view';
-import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
-import { oneDark, oneDarkTheme, oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
-import { syntaxHighlighting, defaultHighlightStyle, } from '@codemirror/language';
-import { FormGroupDirective } from '@angular/forms';
+import { EditorView, ViewUpdate } from '@codemirror/view';
+import { oneDark } from '@codemirror/theme-one-dark';
 
 export interface DocTextReplacement {
   from: string;
@@ -17,7 +14,7 @@ export interface DocTextReplacement {
 @Component({
   selector: 'app-codemirror',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './codemirror.component.html',
   styleUrl: './codemirror.component.scss'
 })

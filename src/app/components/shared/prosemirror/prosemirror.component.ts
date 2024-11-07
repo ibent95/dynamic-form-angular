@@ -2,13 +2,12 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, 
 import { EditorState, Plugin, Transaction } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { DOMParser, DOMSerializer, Schema } from 'prosemirror-model';
-import { defaultMarkdownParser, defaultMarkdownSerializer } from 'prosemirror-markdown';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
-import { history, redo, undo } from 'prosemirror-history';
-import { MenuItem, MenuElement, menuBar } from 'prosemirror-menu';
+import { redo, undo } from 'prosemirror-history';
+import { MenuItem, MenuElement } from 'prosemirror-menu';
 import { schema as basicSchema } from 'prosemirror-schema-basic';
-import { addListNodes, liftListItem, sinkListItem, splitListItem, wrapInList, listItem } from 'prosemirror-schema-list';
+import { addListNodes, liftListItem, sinkListItem, splitListItem, wrapInList } from 'prosemirror-schema-list';
 import { buildMenuItems, exampleSetup } from "prosemirror-example-setup";
 import { LoaderComponent } from '../loader/loader.component';
 import { CommonModule } from '@angular/common';
