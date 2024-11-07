@@ -37,11 +37,11 @@ export class PageComponentsComponent implements OnInit {
   owlDateTimeMonthStartView: DateView = DateView.MULTI_YEARS;
   owlDateTimeYearStartView: DateView = DateView.MULTI_YEARS;
 
-  owlDateField: any = null;
-  owlMonthField: any = null;
-  owlYearField: any = null;
+  owlDateField: any = formatDate(this.nowDate, 'yyyy-MM-dd hh:mm', 'id');
+  owlMonthField: any = formatDate(this.nowDate, 'yyyy-MM-dd hh:mm', 'id');
+  owlYearField: any = formatDate(this.nowDate, 'yyyy-MM-dd hh:mm', 'id');
   owlTimeField: any = null;
-  owlDateTimeField: any = null;
+  owlDateTimeField: any = formatDate(this.nowDate, 'yyyy-MM-dd hh:mm', 'id');
   owlDateRangeField: any = null;
   owlTimeRangeField: any = null;
   owlDateTimeRangeField: any = null;
