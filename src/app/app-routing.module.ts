@@ -130,6 +130,7 @@ const routes: Routes = [
 
 const config: ExtraOptions = {
   // enableTracing: true,
+  scrollPositionRestoration: 'enabled'
 };
 
 @NgModule({

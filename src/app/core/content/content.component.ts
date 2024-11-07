@@ -77,12 +77,18 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		// If route is exist
 		if (isRouteExists) {
 
-			// Remove content in dynamic reference container
-			this.dynamicRef?.remove();
+			if (!isRootRoute) {
 
-			// Add content in dynamic reference container if the route is not root route ('/')
-			if (!isRootRoute) this.dynamicRef?.createComponent(this.routeConfig['component']);
+				// Remove content in dynamic reference container
+				this.dynamicRef?.remove();
+
+				// Add content in dynamic reference container if the route is not root route ('/')
+				this.dynamicRef?.createComponent(this.routeConfig['component']);
+
+			}
+
 		}
+
 	}
 
 	private checkRouteExists(routeMap: string[]): boolean {
