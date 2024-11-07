@@ -72,7 +72,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-	private setDynamicReferenceContainerContent(isRouteExists: boolean, isRootRoute: boolean, routeConfig?: any) {
+	private setDynamicReferenceContainerContent(isRouteExists: boolean, isRootRoute: boolean) {
 
 		// If route is exist
 		if (isRouteExists && !isRootRoute) {
