@@ -5,7 +5,7 @@ import { PageState } from 'src/app/services/app-general.service';
 @Component({
   selector: 'app-publication-forms-initial-configurations-detail',
   templateUrl: './publication-forms-initial-configurations-detail.component.html',
-  styles: ['ng-deep table.table-detail { opacity: 0; visibility: hidden; -webkit-transition: opacity 600ms, visibility 600ms; transition: opacity 600ms, visibility 600ms; } table.table-detail-show { visibility: visible !important; opacity: 1 !important; } table.table-detail.table-detail-custom-row tbody tr td { padding: 10px 0 ; table.table-detail.table-detail-show tbody tr td { padding: 0 ; } }']
+  styles: ``
 })
 export class PublicationFormsInitialConfigurationsDetailComponent implements OnInit {
 

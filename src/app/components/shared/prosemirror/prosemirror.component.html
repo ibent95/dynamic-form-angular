@@ -1,4 +1,4 @@
-<div class="prose-mirror rounded border-4 border-slate-500">
+<div class="prose-mirror rounded border-[1px] border-gray-500">
 
 	@if (componentState === 'loading') {
 		<app-loader></app-loader>
@@ -14,7 +14,7 @@
 	<div #proseMirrorContent id="prose-mirror-content" [ngStyle]="{ 'display': (!readOnly && componentState === 'loaded') ? null : 'none' }" [innerHTML]="doc"></div>
 
 	@if (readOnly) {
-		<div [innerHTML]="doc"></div>
+		<div class="p-3" [innerHTML]="doc"></div>
 	}
 
 </div>

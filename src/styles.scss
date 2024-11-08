@@ -196,9 +196,32 @@ mat-dialog-actions.custom-mat-dialog-actions, mat-dialog-actions.mat-mdc-dialog-
 	min-height: 200px;
 	max-height: 600px; // 100%
 	overflow: auto;
+
+	scrollbar-color: #555 transparent;
+	scrollbar-width: 5px; // makes the scrollbar thinner
+	scrollbar-gutter: 10px;
+
+	&:hover {
+		scrollbar-color: #888 transparent; // thumb color and track color
+	}
+
 }
 
 table.table-detail {
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 600ms, visibility 600ms;
+	-ms-transition: opacity 600ms, visibility 600ms;
+	transition: opacity 600ms, visibility 600ms;
 	width: 100%;
-	td { vertical-align: top; }
+
+	tbody tr td {
+		vertical-align: top;
+		//padding: 10px 0;
+	}
+
+	&.table-detail-show {
+		visibility: visible;
+		opacity: 1;
+	}
 }

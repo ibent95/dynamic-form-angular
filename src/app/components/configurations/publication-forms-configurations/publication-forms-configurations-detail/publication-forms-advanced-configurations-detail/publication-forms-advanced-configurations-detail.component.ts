@@ -26,4 +26,8 @@ export class PublicationFormsAdvancedConfigurationsDetailComponent implements On
     this.ref.detectChanges();
   }
 
+  public jsonStringify(data: any): string {
+    return JSON.stringify(data, null, 4);
+  }
+
 }
