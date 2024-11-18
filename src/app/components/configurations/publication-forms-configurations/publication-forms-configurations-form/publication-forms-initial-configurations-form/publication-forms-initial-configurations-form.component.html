@@ -127,8 +127,10 @@
 		<div class="col-span-6">
 
 			@if (selectedParentForm && selectedParentForm.uuid) {
-
-				<table class="table-detail border rounded border-separate border-spacing-2 border-slate-500 table-fixed">
+				<table
+					class="table-detail border rounded border-separate border-spacing-2 border-slate-500 table-fixed"
+					[ngClass]="{ 'table-detail-show': (!selectedParentFormLoading && selectedParentForm.uuid) }"
+				>
 					<tbody>
 						<tr>
 							<td class="w-1/4">Field Type</td>

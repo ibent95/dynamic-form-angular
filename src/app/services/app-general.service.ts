@@ -44,6 +44,10 @@ export class AppGeneralService {
     this.snackBar.open(response.message, undefined, this.matSnackBarConfig);
   }
 
+  public windowHistoryBack(): void {
+    window.history.back();
+  }
+
 }
 
 /** Angular date and time format
@@ -139,6 +143,10 @@ export const LUXON_YEAR_FORMATS: MatDateFormats = {
     monthYearA11yLabel: 'yyyy'
   },
 };
+
+export const APP_DIALOG_ENTER_ANIMATION_DURATION: string = '100ms';
+
+export const APP_DIALOG_EXIT_ANIMATION_DURATION: string = '100ms';
 
 export enum PageState {
   LOADING = 'loading',

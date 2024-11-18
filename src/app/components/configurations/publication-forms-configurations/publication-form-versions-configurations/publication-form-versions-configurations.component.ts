@@ -1,24 +1,24 @@
-import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { AppServiceType, AppService } from "../../../services/app.service";
-import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
 import { formatDate } from '@angular/common';
-import { AppTableColumns } from '../../shared/table/table.component';
+import { Component, Input } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router, NavigationExtras } from '@angular/router';
+import { CustomDialogPublicationRemoveConfirmComponent } from 'src/app/components/publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
+import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
+import { AppTableColumns } from 'src/app/components/shared/table/table.component';
+import { Page, AppGeneralService, ResponseFormat } from 'src/app/services/app-general.service';
+import { AppService, AppServiceBaseAPI, AppServiceType } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'app-publication-forms-configurations',
-  templateUrl: './publication-forms-configurations.component.html',
-  styleUrls: ['./publication-forms-configurations.component.scss']
+  selector: 'app-publication-form-versions-configurations',
+  templateUrl: './publication-form-versions-configurations.component.html',
+  styles: ``
 })
-export class PublicationFormsConfigurationsComponent implements OnInit, AfterViewInit {
+export class PublicationFormVersionsConfigurationsComponent {
 
-  private changeDetector: ChangeDetectorRef = inject(ChangeDetectorRef);
+  @Input() activeTab: number = 0;
 
   serverResponse!: { message: string | null, date: string | null } | null;
 
-  activeTab: number = 0;
   showTable!: boolean;
 
   tableDisplayedColumns!: AppTableColumns;
@@ -31,11 +31,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
     private generalSvc: AppGeneralService,
     private dialog: MatDialog,
   ) {
-    localStorage.removeItem('stateConfigurationsPublicationFormsDetail');
-
-    if (window.history?.state) {
-      this.activeTab = window.history.state?.activeTab;
-    }
+    localStorage.removeItem('stateConfigurationsPublicationFormVersionsDetail');
 
     this.serverResponse = null;
     this.showTable = false;
@@ -54,12 +50,11 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
     this.tableInit();
   }
 
-  ngAfterViewInit(): void {
-    this.changeDetector.detectChanges();
-  }
-
   private getServerInfo(): void {
-    this.appSvc.list(AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_MAIN).subscribe(response => {
+    this.appSvc.advanceList(
+      AppServiceBaseAPI.SVC_DYNAMIC_FORM_LUMEN,
+      AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN
+    ).subscribe(response => {
       this.serverResponse = response['data'];
     });
   }
@@ -69,10 +64,6 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
       { type: 'orderNumber', label: 'No.', property: 'position' },
       { type: 'text', label: 'Publication General / Type', property: 'publication_type_preview' },
       { type: 'text', label: 'Form Version', property: 'form_version_preview' },
-      { type: 'text', label: 'Form Parent', property: 'form_parent_preview' },
-      { type: 'text', label: 'Label', property: 'field_label' },
-      { type: 'text', label: 'Type', property: 'field_type' },
-      { type: 'text', label: 'Name', property: 'field_name' },
       { type: 'status', label: 'Status', property: 'flag_active_preview' },
       { type: 'actions', label: 'Actions' },
     ];
@@ -87,14 +78,27 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
 
     this.showTable = false;
 
-    this.appSvc.listPaginatorParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS, undefined, undefined, this.tableDataPage).subscribe(successResponse => {
+    this.appSvc.advanceListPaginatorParams(
+      AppServiceBaseAPI.SVC_DYNAMIC_FORM_LUMEN,
+      AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS,
+      undefined,
+      undefined,
+      this.tableDataPage
+    ).subscribe(successResponse => {
       if (successResponse['data']) successResponse['data'] = successResponse['data'].map((data: any, dataIndex: number) => {
         data['position'] = dataIndex + 1;
-        data['publication_type_preview'] = (data['form_version']) ? `<b>[${data.form_version.publication_type.publication_general_type?.publication_general_type_name}]</b> ${data.form_version.publication_type?.publication_type_code}` : null;
-        data['form_version_preview'] = (data['form_version']) ? `<b>[${data.form_version?.publication_form_version_code}]</b> ${data.form_version?.publication_form_version_name}` : null;
-        data['form_parent_preview'] = (data['form_parent']) ? `${data.form_parent?.field_id} - ${data.form_parent?.field_type}` : null;
-        data['created_at_preview'] = (data['created_at']) ? formatDate(data['created_at'], 'fullDate', 'en') : null;
-        data['updated_at_preview'] = (data['updated_at']) ? formatDate(data['updated_at'], 'fullDate', 'en') : null;
+        data['publication_type_preview'] = (data['publication_type'])
+          ? `<b>[${data.publication_type.publication_general_type?.publication_general_type_name}]</b> ${data.publication_type?.publication_type_code}`
+          : null;
+        data['form_version_preview'] = (data['publication_form_version_name'] || data['publication_form_version_code'])
+          ? `<b>[${data.publication_form_version_code}]</b> - ${data.publication_form_version_name}`
+          : null;
+        data['created_at_preview'] = (data['created_at'])
+          ? formatDate(data['created_at'], 'fullDate', 'en')
+          : null;
+        data['updated_at_preview'] = (data['updated_at'])
+          ? formatDate(data['updated_at'], 'fullDate', 'en')
+          : null;
         data['flag_active_preview'] = this.setDataStatus(data);
 
         return data;
@@ -184,10 +188,36 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
     });
   }
 
+  public onManageDataClick(data: any): void {
+
+    let dialogConfig: MatDialogConfig = {
+      width: '600px',
+      data: {
+        title: 'Are you sure to manage this publication form version with number of order: ' + data?.position + '?',
+        messages: 'Please check again before you manage this publication.',
+        cancelButtonText: 'Cancel',
+        proceedButtonText: 'Proceed',
+      }
+    };
+
+    // Dialog initial configuration and open
+    const dialogRef = this.dialog.open(DialogConfirmComponent, dialogConfig);
+
+    // Subscribe to dialog closed event
+    dialogRef.afterClosed().subscribe((response: any) => {
+      if (response?.result) {
+        data['activeTab'] = this.activeTab;
+        this.router.navigate([this.router.url + '/manage'], {
+          state: data
+        });
+      }
+    });
+  }
+
   private sendData(parameter: any = null, stringParams: string = '', formData?: FormData): void {
 
     // Access delete API
-    this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS_DISABLE, formData, parameter, stringParams).subscribe(
+    this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS_DISABLE, formData, parameter, stringParams).subscribe(
       (successResponse: ResponseFormat) => {
         this.handleResponse(successResponse);
         this.router.navigate(['/configurations-publication-forms']);

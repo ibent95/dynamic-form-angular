@@ -1,0 +1,117 @@
+<section>
+
+	<!-- Dialog title -->
+	<h1 mat-dialog-title>Publication Form</h1>
+
+	<!-- Dialog content -->
+	<mat-dialog-content>
+
+		@if (pageState === 'loading') {
+			<app-loader></app-loader>
+		}
+
+		@if (pageState === 'empty') {
+			<app-page-not-found></app-page-not-found>
+		}
+
+		@if (pageState === 'error') {
+			<p class="text-center">Error on load page data. Please contact the administrator...</p>
+
+			<div class="flex justify-center">
+				<button mat-stroked-button class="flex-initial w-32" (click)="windowHistoryBack()">Back</button>
+			</div>
+		}
+
+		@if (pageState === 'loaded') {
+
+			<!-- The form stepper is must be set to `linear` to prevent skipping the form inputs, it can be disable for development purpose : linear -->
+			<mat-stepper [orientation]="(stepperOrientation | async)!" labelPosition="bottom" color="accent" [selectedIndex]="stepperSelectedIndex" (selectedIndexChange)="onSelectedStepIndexChange($event)" linear #stepper>
+				<mat-step [stepControl]="initialForm" [editable]="true" label="Initial Configurations">
+					<ng-template matStepContent>
+						<!-- Form in step -->
+						<app-publication-forms-initial-configurations-form
+							class="pb-10" [formGroup]="initialForm" [selectOptions]="selectOptions"
+							(onPublicationFormVersionChange)="onPublicationFormVersionChange($event)"
+							(onPublicationFieldTypeChange)="onPublicationFieldTypeChange($event)"
+							(onPublicationFormParentChange)="onPublicationFormParentChange($event)"
+							[publicationFormParentSelectOptionsLoaded]="publicationFormParentSelectOptionsLoaded"
+						></app-publication-forms-initial-configurations-form>
+
+						<!-- Step Control -->
+						<div class="flex justify-center gap-1 mt-3">
+							<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()"
+								[disabled]="formStates.isFormCancelButtonDisabled">Cancel</button>
+							<button mat-raised-button color="accent" class="flex-initial w-32" matStepperNext>Next</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step [stepControl]="generalForm" [editable]="true" label="General Configurations">
+					<ng-template matStepContent>
+						<!-- Form in step -->
+						<app-publication-forms-general-configurations-form [formGroup]="generalForm" [selectOptions]="selectOptions" [positionMinValue]="positionMinValue"></app-publication-forms-general-configurations-form>
+
+						<!-- Step Control -->
+						<div class="flex justify-center gap-1 mt-3">
+							<button mat-stroked-button class="flex-initial w-32" matStepperPrevious>Back</button>
+							<button mat-raised-button color="accent" class="flex-initial w-32" matStepperNext>Next</button>
+						</div>
+						<div class="flex justify-center">
+							<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="formStates.isFormCancelButtonDisabled">Cancel</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step [stepControl]="advancedForm" [editable]="true" label="Advanced Configurations">
+					<ng-template matStepContent>
+						<!-- Form in step -->
+						<app-publication-forms-advanced-configurations-form [formGroup]="advancedForm" [initialForm]="initialForm" [formStatus]="formStatus" [selectOptions]="selectOptions"></app-publication-forms-advanced-configurations-form>
+
+						<!-- Step Control -->
+						<div class="flex justify-center gap-1 mt-3">
+							<button mat-stroked-button class="flex-initial w-32" matStepperPrevious>Back</button>
+							<button mat-raised-button color="accent" class="flex-initial w-32" matStepperNext>Next</button>
+						</div>
+						<div class="flex justify-center">
+							<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="formStates.isFormCancelButtonDisabled">Cancel</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step [editable]="true" label="Configurations Overview">
+					<ng-template matStepContent>
+						<!-- Form in step -->
+						<app-publication-forms-configurations-overview-form [initialForm]="initialForm" [generalForm]="generalForm" [advancedForm]="advancedForm" [otherData]="{selectedPublicationFormVersion: selectedPublicationFormVersion, selectedPublicationFieldType: selectedPublicationFieldType, selectedPublicationFormParent: selectedPublicationFormParent}" [selectOptions]="selectOptions" (onAcceptTermsConditionsChange)="onAcceptTermsConditionsChange($event)"></app-publication-forms-configurations-overview-form>
+
+						<!-- Step Control -->
+						<div class="flex justify-center gap-1 mt-3">
+							<button mat-stroked-button class="flex-initial w-32" matStepperPrevious>Back</button>
+							<button mat-raised-button color="warn" class="flex-initial w-32" (click)="onFormResetButtonClick()">Reset</button>
+							<button mat-raised-button
+								color="accent"
+								class="flex-initial w-32"
+								(click)="onFormSubmitButtonClick()"
+								[disabled]="(((initialForm.invalid || generalForm.invalid || advancedForm.invalid) || !accepttermsConditions) || formStates.isSubmited)"
+								>Submit</button>
+						</div>
+						<div class="flex justify-center">
+							<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()" [disabled]="formStates.isFormCancelButtonDisabled">Cancel</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+			</mat-stepper>
+
+		}
+
+
+	</mat-dialog-content>
+
+	<!-- Dialog action button -->
+	<!--<mat-dialog-actions>
+		<button mat-stroked-button mat-dialog-close (click)="onFormCancelButtonClick()">Cancel</button>
+		<button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onFormSubmitButtonClick()">Submit</button>
+	</mat-dialog-actions>-->
+
+</section>
+

@@ -1,8 +1,17 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { inject, Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ENV } from '../app.config';
 import { Page } from './app-general.service';
+
+export enum AppServiceBaseAPI {
+
+  SVC_DYNAMIC_FORM_SYMFONY,
+  SVC_DYNAMIC_FORM_LUMEN,
+  SVC_DYNAMIC_FORM_SPRING,
+  SVC_DYNAMIC_FORM_MICRONAUT,
+
+}
 
 export enum AppServiceType {
 
@@ -33,6 +42,7 @@ export enum AppServiceType {
   CONFIGURATION_PUBLICATIONS_FORMS_DISABLE,
   CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN,
   CONFIGURATION_PUBLICATIONS_FORM_VERSIONS,
+  CONFIGURATION_PUBLICATIONS_FORM_VERSIONS_DISABLE,
 
 }
 
@@ -46,13 +56,13 @@ export enum AppFormStatus {
 })
 export class AppService {
 
+  private config: any = inject(ENV);
+  private http: any = inject(HttpClient);
+
   private BASE_URL_API: string | undefined;
   private HEADERS: HttpHeaders;
 
-  constructor(
-    @Inject(ENV) private config: any,
-    private http: HttpClient
-  ) {
+  constructor() {
     this.BASE_URL_API = this.config.apiUrl;
     this.HEADERS = new HttpHeaders()
       .set('Access-Control-Allow-Credentials', 'false')
@@ -73,78 +83,106 @@ export class AppService {
 
   }
 
-  getUrl(serviceType: AppServiceType) {
+  private getBaseAPI(serviceBaseAPI: AppServiceBaseAPI): string {
+    let baseAPI: string;
+
+    switch (serviceBaseAPI) {
+
+      case AppServiceBaseAPI.SVC_DYNAMIC_FORM_LUMEN:
+        baseAPI = this.config.lumenApiUrl;
+        break;
+
+      case AppServiceBaseAPI.SVC_DYNAMIC_FORM_SPRING:
+        baseAPI = this.config.springApiUrl;
+        break;
+
+      case AppServiceBaseAPI.SVC_DYNAMIC_FORM_MICRONAUT:
+        baseAPI = this.config.micronautApiUrl;
+        break;
+
+      case AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY:
+      default:
+        baseAPI = this.config.symfonyApiUrl;
+        break;
+
+    }
+
+    return baseAPI;
+  }
+
+  getUrl(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType) {
     let url: string;
+    const baseURL: string = this.getBaseAPI(serviceBaseAPI);
 
     switch (serviceType) {
       case AppServiceType.MAIN:
-        url = this.BASE_URL_API + '/v1';
+        url = baseURL + '/v1';
         break;
 
       case AppServiceType.MAIN_UPLOAD_FILE:
-        url = this.BASE_URL_API + '/v1/files/upload';
+        url = baseURL + '/v1/files/upload';
         break;
 
       case AppServiceType.MAIN_UPLOADED_FILE:
-        url = this.BASE_URL_API + '/v1/files';
+        url = baseURL + '/v1/files';
         break;
 
       /** =============================== PUBLICATION API =============================== */
 
       case AppServiceType.PUBLICATION_MAIN:
-        url = this.BASE_URL_API + '/v1/publication';
+        url = baseURL + '/v1/publication';
         break;
 
       case AppServiceType.PUBLICATIONS:
-        url = this.BASE_URL_API + '/v1/publications';
+        url = baseURL + '/v1/publications';
         break;
 
       case AppServiceType.PUBLICATIONS_FORM_META_DATA:
-        url = this.BASE_URL_API + '/v1/publications/form-meta-data';
+        url = baseURL + '/v1/publications/form-meta-data';
         break;
 
       case AppServiceType.PUBLICATION_FORM_VERSION_MAIN:
-        url = this.BASE_URL_API + '/v1/publication-form-version';
+        url = baseURL + '/v1/publication-form-version';
         break;
 
       case AppServiceType.PUBLICATION_FORM_VERSIONS:
-        url = this.BASE_URL_API + '/v1/publication-form-versions';
+        url = baseURL + '/v1/publication-form-versions';
         break;
 
       case AppServiceType.PUBLICATION_FORM_MAIN:
-        url = this.BASE_URL_API + '/v1/publication-form';
+        url = baseURL + '/v1/publication-form';
         break;
 
       case AppServiceType.PUBLICATION_FORMS:
-        url = this.BASE_URL_API + '/v1/publication-forms';
+        url = baseURL + '/v1/publication-forms';
         break;
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_GENERAL_TYPES:
-        url = this.BASE_URL_API + '/v1/master/publication-general-types';
+        url = baseURL + '/v1/master/publication-general-types';
         break;
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_TYPES:
-        url = this.BASE_URL_API + '/v1/master/publication-types';
+        url = baseURL + '/v1/master/publication-types';
         break;
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_STATUSES:
-        url = this.BASE_URL_API + '/v1/master/publication-statuses';
+        url = baseURL + '/v1/master/publication-statuses';
         break;
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_FORM_VERSIONS:
-        url = this.BASE_URL_API + '/v1/master/publication-form-versions';
+        url = baseURL + '/v1/master/publication-form-versions';
         break;
 
       case AppServiceType.PUBLICATIONS_MASTERDATA_PUBLICATION_FORMS:
-        url = this.BASE_URL_API + '/v1/master/publication-forms';
+        url = baseURL + '/v1/master/publication-forms';
         break;
 
       case AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_TYPES:
-        url = this.BASE_URL_API + '/v1/master/dynamic-form/field-types';
+        url = baseURL + '/v1/master/dynamic-form/field-types';
         break;
 
       case AppServiceType.DYNAMICFORM_MASTERDATA_FIELD_OPTIONS:
-        url = this.BASE_URL_API + '/v1/master/dynamic-form/field-options';
+        url = baseURL + '/v1/master/dynamic-form/field-options';
         break;
 
       /** ================================= RESEARCH API ================================= */
@@ -152,23 +190,23 @@ export class AppService {
       /** =============================== CONFIGURATION API =============================== */
 
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_MAIN:
-        url = this.BASE_URL_API + '/v1/configurations/publication-form';
+        url = baseURL + '/v1/configurations/publication-form';
         break;
 
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS:
-        url = this.BASE_URL_API + '/v1/configurations/publication-forms';
+        url = baseURL + '/v1/configurations/publication-forms';
         break;
 
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS_DISABLE:
-        url = this.BASE_URL_API + '/v1/configurations/publication-forms';
+        url = baseURL + '/v1/configurations/publication-forms';
         break;
 
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN:
-        url = this.BASE_URL_API + '/v1/configurations/publication-form-version';
+        url = baseURL + '/v1/configurations/publication-form-version';
         break;
 
       case AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS:
-        url = this.BASE_URL_API + '/v1/configurations/publication-form-versions';
+        url = baseURL + '/v1/configurations/publication-form-versions';
         break;
 
       /** ================================== DEFAULT API ================================== */
@@ -188,15 +226,15 @@ export class AppService {
   //}
 
   detail(serviceType: AppServiceType, params: { [param: string]: any } | HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
+    return this.http.get(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
   list(serviceType: AppServiceType): Observable<any> {
-    return this.http.get(this.getUrl(serviceType), { headers: this.HEADERS });
+    return this.http.get(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType), { headers: this.HEADERS });
   }
 
   listParams(serviceType: AppServiceType, params: {[param: string]: any} | HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
+    return this.http.get(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
   listPaginatorParams(serviceType: AppServiceType, params: {[param: string]: any} | HttpParams = {}, stringParams: string = '', page?: Page): Observable<any> {
@@ -209,31 +247,56 @@ export class AppService {
       };
     }
 
-    return this.http.get(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS });
+    return this.http.get(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
   post(serviceType: AppServiceType, body: any): Observable<any> {
-    return this.http.post(this.getUrl(serviceType), body, { headers: this.HEADERS });
+    return this.http.post(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType), body, { headers: this.HEADERS });
   }
 
   create(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.post(this.getUrl(serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
+    return this.http.post(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
   }
 
   put(serviceType: AppServiceType, body: any): Observable<any> {
-    return this.http.put(this.getUrl(serviceType), body, { headers: this.HEADERS });
+    return this.http.put(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType), body, { headers: this.HEADERS });
   }
 
   update(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.put(this.getUrl(serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
+    return this.http.put(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
   }
 
   delete(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.delete(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
+    return this.http.delete(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
   }
 
   deleteParams(serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
-    return this.http.post(this.getUrl(serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
+    return this.http.post(this.getUrl(AppServiceBaseAPI.SVC_DYNAMIC_FORM_SYMFONY, serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
+  }
+
+  advanceDetail(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, params: { [param: string]: any } | HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.get(this.getUrl(serviceBaseAPI, serviceType) + stringParams, { params: params, headers: this.HEADERS });
+  }
+
+  advanceList(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType): Observable<any> {
+    return this.http.get(this.getUrl(serviceBaseAPI, serviceType), { headers: this.HEADERS });
+  }
+
+  advanceListParams(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, params: {[param: string]: any} | HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.get(this.getUrl(serviceBaseAPI, serviceType) + stringParams, { params: params, headers: this.HEADERS });
+  }
+
+  advanceListPaginatorParams(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, params: {[param: string]: any} | HttpParams = {}, stringParams: string = '', page?: Page): Observable<any> {
+    if (page) {
+      params = { ...params, ...{
+        'page_index': page.pageIndex,
+        'limit': page.pageSize,
+        'offset': page.pageSize * page.pageIndex,
+        }
+      };
+    }
+
+    return this.http.get(this.getUrl(serviceBaseAPI, serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
   getIPAddress(params: string = ""): Observable<any> {

@@ -3,5 +3,10 @@
 }
 
 ::ng-deep mat-slide-toggle .mdc-switch {
+	-webkit-transform: scale(1.6) translatex(7px) translatey(-5px); //adjust the pixels to your scale size i
+	-moz-transform: scale(1.6) translatex(7px) translatey(-5px); //adjust the pixels to your scale size i
+	-ms-transform: scale(1.6) translatex(7px) translatey(-5px); //adjust the pixels to your scale size i
 	transform: scale(1.6) translatex(7px) translatey(-5px); //adjust the pixels to your scale size i
 }
+
+::ng-deep mat-card.custom-card mat-card.m-7 { margin: 0; }

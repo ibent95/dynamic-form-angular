@@ -1,10 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Location } from '@angular/common';
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatStepper, StepperOrientation } from '@angular/material/stepper';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { Router, UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
@@ -36,7 +36,7 @@ export interface SelectOptionsInterface {
 @Component({
   selector: 'app-publication-forms-configurations-form',
   templateUrl: './publication-forms-configurations-form.component.html',
-  styles: ['']
+  styles: ``,
 })
 export class PublicationFormsConfigurationsFormComponent implements OnInit {
 
@@ -409,7 +409,7 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
     this.selectedPublicationFormParent = data;
   }
 
-  public onAcceptTermsConditionsChange(data: boolean): void {
+  public onAcceptTermsConditionsChange(data: any): void {
     this.accepttermsConditions = data;
   }
 

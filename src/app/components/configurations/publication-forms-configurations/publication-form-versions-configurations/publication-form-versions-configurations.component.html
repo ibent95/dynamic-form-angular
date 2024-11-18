@@ -1,0 +1,55 @@
+<mat-card class="max-w-none m-7">
+	<mat-card-title>Publication Form Versions Configurations</mat-card-title>
+	<mat-card-subtitle>Overview information and table of publication form versions comfigurations</mat-card-subtitle>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		<div class="grid grid-cols-2 mb-4">
+			<div align="start">
+				<ng-container *ngIf="serverResponse">
+					<table class="table-auto w-full">
+						<tbody>
+							<tr>
+								<td>Server messages</td>
+								<td>:</td>
+								<td>"{{ serverResponse.message }}"</td>
+							</tr>
+							<tr>
+								<td>Server date</td>
+								<td>:</td>
+								<td>{{ serverResponse.date | date: 'fullDate' }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</ng-container>
+			</div>
+			<div align="end">
+				<button mat-raised-button class="content-center" color="accent" (click)="onAddDataClick()">
+					<mat-icon>add</mat-icon>
+					Add
+				</button>
+			</div>
+		</div>
+
+		@if (!showTable) {
+			<app-ghost-table [rowCount]="3" [columnCount]="3"></app-ghost-table>
+		}
+
+		@if (showTable) {
+			<app-table
+				[columns]="tableDisplayedColumns"
+				[dataSource]="tableDataSource"
+				[page]="tableDataPage"
+				[actions]="['detail', 'edit', 'delete', 'manage']"
+				(dataDetail)="onDetailsDataClick($event)"
+				(dataEdit)="onEditDataClick($event)"
+				(dataDelete)="onRemoveDataClick($event)"
+				(dataManage)="onManageDataClick($event)"
+				(pageChange)="getTableData($event)"
+				></app-table>
+		}
+
+	</mat-card-content>
+</mat-card>

@@ -34,7 +34,8 @@ export enum AppTableGlobalActions {
   delete,
   activation,
   checkbox,
-  expansion
+  expansion,
+  manage,
 };
 
 export type AppTableActions = Array<
@@ -43,6 +44,8 @@ export type AppTableActions = Array<
   ((data?: any) => () => any) |
   false
 >;
+
+export type AppTableShadow = 'z5' | 'z10' | 'z15' | 'z20' | 'z25' | 'z30' | string ;
 
 @Component({
   selector: 'app-table',
@@ -59,12 +62,13 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() showLoaderInLoadingData: boolean = false;
   @Input() showCaption: boolean = false;
-  @Input() showPagination: boolean = true;
-  @Input() showFooter: boolean = true;
   @Input() showDataExpansion: boolean = false;
   @Input() showDataOrderNumber: boolean = true;
   @Input() showDataStatus: boolean = true;
   @Input() showDataActions: boolean = true;
+  @Input() showShadow: boolean = true;
+  @Input() showPagination: boolean = true;
+  @Input() showFooter: boolean = true;
 
   /**
    * External data variables
@@ -74,6 +78,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() columns: AppTableColumns = [];
   @Input() dataSource!: Array<any>;
   @Input() actions: AppTableActions = ['detail', 'edit', 'delete'];
+  @Input() shadow: AppTableShadow = 'z8';
   @Input() page!: Page;
   @Input() pageSizeOptions: Array<number> = [10, 25, 50, 100];
   @Input() footer!: string;
@@ -88,6 +93,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   orderNumberColumn!: AppTableColumn;
   statusColumn!: AppTableColumn;
   actionsColumn!: AppTableColumn;
+  displayedShadow!: AppTableShadow;
 
   /**
    * Event emitters
@@ -107,6 +113,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() dataUncheck: EventEmitter<any> = new EventEmitter<any>(true); // Uncheck in checkbox button event
   @Output() dataExpand: EventEmitter<any> = new EventEmitter<any>(true); // Expand in table row event
   @Output() dataCollapse: EventEmitter<any> = new EventEmitter<any>(true); // Collapse in table row event
+  @Output() dataManage: EventEmitter<any> = new EventEmitter<any>(true); // Manage in table row event
 
   constructor() {
     //console.log('constructor showDataOrderNumber', this.showDataOrderNumber);
@@ -176,6 +183,12 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
       this.displayedColumnsProperties.push('actions');
     }
 
+    if (this.showShadow) {
+      this.displayedShadow = (['z5', 'z10', 'z15', 'z20', 'z25', 'z30'].includes(this.shadow))
+        ? 'mat-elevation-' + this.shadow
+        : this.shadow ;
+    }
+
     //console.log('onInit displayedColumnsProperties', this.displayedColumnsProperties);
     //console.log('onInit displayedColumns', this.displayedColumns);
     //console.log(
@@ -236,6 +249,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   public onDataCollapseClick(data: any): void {
     this.dataCollapse.next(data);
+  }
+
+  public onDataManageClick(data: any): void {
+    this.dataManage.next(data);
   }
 
 }

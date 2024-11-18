@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+  styles: ``
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(
-    private location: Location,
-  ) { }
+  private location: Location = inject(Location);
+
+  constructor() { }
 
   ngOnInit(): void { }
 

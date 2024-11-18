@@ -23,7 +23,7 @@ interface DialogData {
       <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()" [innerHTML]="dialogData.yesButtonText"></button>
     </mat-dialog-actions>
   `,
-  styles: [''],
+  styles: ``,
 })
 export class DialogConfirmComponent implements OnInit {
 

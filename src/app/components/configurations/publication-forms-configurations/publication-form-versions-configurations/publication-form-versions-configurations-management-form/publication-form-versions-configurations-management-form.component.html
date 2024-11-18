@@ -1,0 +1,124 @@
+<mat-card class="max-w-none m-7">
+	<mat-card-title>Publication Form Versions Configurations</mat-card-title>
+	<mat-card-subtitle>Overview information and table of publication form versions comfigurations</mat-card-subtitle>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		<div class="grid grid-cols-2 mb-4">
+			<div align="start">
+				<table class="table-fixed">
+					<tbody>
+						<tr>
+							<td>Form Version Name</td>
+							<td>&nbsp;:&nbsp;</td>
+							<td [innerHTML]="stateData.publication_form_version_name"></td>
+						</tr>
+						<tr>
+							<td>Form Version Code</td>
+							<td>&nbsp;:&nbsp;</td>
+							<td [innerHTML]="stateData.publication_form_version_code"></td>
+						</tr>
+						<tr>
+							<td>Publication General Type / Publication Type</td>
+							<td>&nbsp;:&nbsp;</td>
+							<td [innerHTML]="stateData.publication_type_preview"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div align="end">
+				<button mat-raised-button class="content-center" color="accent" (click)="onAddDataClick()">
+					<mat-icon>add</mat-icon>
+					Add
+				</button>
+			</div>
+		</div>
+
+		<!-- Expansions - Content -->
+		<mat-accordion class="">
+
+			<!-- 1 -->
+			<mat-expansion-panel [expanded]="expansionStep === 0" (opened)="setStep(0)" hideToggle>
+
+				<mat-expansion-panel-header>
+					<mat-panel-title> Form Inputs </mat-panel-title>
+					<mat-panel-description>
+						Manage all the inputs in this form version category
+						<mat-icon>account_circle</mat-icon>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+
+
+				<!-- Content 1 -->
+				@if (!showTable) {
+					<app-ghost-table [rowCount]="3" [columnCount]="3"></app-ghost-table>
+				}
+
+				@if (showTable) {
+					<app-table
+						[columns]="tableDisplayedColumns"
+						[dataSource]="tableDataSource"
+						[page]="tableDataPage"
+						[showShadow]="false"
+						(dataDetail)="onDetailsDataClick($event)"
+						(dataEdit)="onEditDataClick($event)"
+						(dataDelete)="onRemoveDataClick($event)"
+						(pageChange)="getTableData($event)"
+						></app-table>
+				}
+
+				<mat-action-row>
+					<button mat-button (click)="nextStep()">Next</button>
+				</mat-action-row>
+
+			</mat-expansion-panel>
+
+			<!-- 2 -->
+			<mat-expansion-panel [expanded]="true" (opened)="setStep(1)" hideToggle>
+
+				<mat-expansion-panel-header>
+					<mat-panel-title> Order Managements </mat-panel-title>
+					<mat-panel-description>
+						Manage all the order of inputs in this form version category
+						<mat-icon>date_range</mat-icon>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+
+				<!-- Content -->
+				@if (!showTable) {
+					<app-loader></app-loader>
+				}
+
+				@if (showTable) {
+					<app-drag-drop [data]="tableDataSource" textColumnName="field_type">
+						<ng-template let-element>
+							<span>
+								<b [innerHTML]="'[' + element.field_type + ' - ' + element.field_id + ']'"></b>
+								{{ element.field_label }}
+							</span>
+						</ng-template>
+					</app-drag-drop>
+				}
+
+				<mat-action-row>
+					<button mat-button (click)="prevStep()">Previous</button>
+					<button mat-button (click)="nextStep()">End</button>
+				</mat-action-row>
+
+			</mat-expansion-panel>
+
+		</mat-accordion>
+
+		<div class="flex flex-col justify-center mt-4">
+
+			<button class="self-center btn btn-secondary" (click)="onBackClick()" matRipple>
+				Back
+			</button>
+
+		</div>
+
+	</mat-card-content>
+</mat-card>

@@ -145,7 +145,22 @@ mat-stepper {
 }
 
 // mat-accordion
-mat-accordion mat-expansion-panel .mat-expansion-panel-body { padding: 10px 14px; }
+mat-accordion mat-expansion-panel {
+
+	.mat-expansion-panel-body {
+		padding: 10px 14px;
+	}
+
+	.mat-expansion-panel-header-description {
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.mat-mdc-form-field+.mat-mdc-form-field {
+		margin-left: 8px;
+	}
+
+}
 
 // mat-tab-group
 mat-tab-group {
@@ -224,4 +239,22 @@ table.table-detail {
 		visibility: visible;
 		opacity: 1;
 	}
+}
+
+mat-dialog-content.mat-mdc-dialog-content {
+	position: relative;
+	overflow: auto;
+
+	scrollbar-color: #555 transparent;
+	scrollbar-width: 5px; // makes the scrollbar thinner
+	scrollbar-gutter: 10px;
+
+	&:hover {
+		scrollbar-color: #888 transparent; // thumb color and track color
+	}
+
+}
+
+.secondary-color {
+	background-color: rgb(211, 209, 209);
 }

@@ -11,6 +11,7 @@ import { PublicationGeneralTypesMasterDataConfigurationsComponent } from './comp
 import { PublicationTypesMasterDataConfigurationsComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations.component';
 import { PublicationFormsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
+import { PublicationFormVersionsConfigurationsManagementFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form.component';
 
 const routes: Routes = [
   {
@@ -80,7 +81,11 @@ const routes: Routes = [
       {
         path: 'detail',
         component: PublicationFormsConfigurationsDetailComponent
-      }
+      },
+      {
+        path: 'manage',
+        component: PublicationFormVersionsConfigurationsManagementFormComponent
+      },
     ],
   },
   {

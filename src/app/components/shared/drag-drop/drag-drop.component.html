@@ -1,0 +1,25 @@
+<section class="drag-drop-boundary">
+
+	<div class="drag-drop-list" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)">
+
+		@for (item of data; track item) {
+			<div class="drag-drop-box" cdkDrag>
+
+				<div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
+
+				@if (!templateRef) {
+					{{item[textColumnName] || 'Empty text.' }}
+				}
+
+				@if (templateRef) {
+					<ng-container
+						*ngTemplateOutlet="templateRef; context: { $implicit: item }"
+					></ng-container>
+				}
+
+			</div>
+		}
+
+	</div>
+
+</section>

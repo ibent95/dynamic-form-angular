@@ -139,15 +139,15 @@ import { ConfigurationsComponent } from './components/configurations/configurati
 import { PublicationFormsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations.component';
 import { PublicationTypesMasterDataConfigurationsComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations.component';
 import { PublicationGeneralTypesMasterDataConfigurationsComponent } from './components/configurations/publication-general-types-master-data-configurations/publication-general-types-master-data-configurations.component';
-import { PublicationFormVersionsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-form-versions-configurations.component';
 import { PublicationFormsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-form.component';
-import { PublicationFormsVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-form/publication-forms-versions-configurations-form.component';
-import { PublicationFormsVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-versions-configurations/publication-forms-versions-configurations-detail/publication-forms-versions-configurations-detail.component';
 import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
 import { PublicationFormsInitialConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-initial-configurations-form/publication-forms-initial-configurations-form.component';
 import { PublicationFormsGeneralConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-general-configurations-form/publication-forms-general-configurations-form.component';
 import { PublicationFormsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
 import { PublicationFormsConfigurationsOverviewFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
+import { PublicationFormVersionsConfigurationsComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations.component';
+import { PublicationFormVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-form/publication-form-versions-configurations-form.component';
+import { PublicationFormVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-detail/publication-form-versions-configurations-detail.component';
 import { CodemirrorComponent } from "./components/shared/codemirror/codemirror.component";
 import { ProsemirrorComponent } from './components/shared/prosemirror/prosemirror.component';
 import { FieldConfigsAdvancedConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-advanced-configurations-form/field-configs-advanced-configurations-form/field-configs-advanced-configurations-form.component';
@@ -157,6 +157,9 @@ import { PublicationFormsInitialConfigurationsDetailComponent } from './componen
 import { PublicationFormsGeneralConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-general-configurations-detail/publication-forms-general-configurations-detail.component';
 import { PublicationFormsAdvancedConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-advanced-configurations-detail/publication-forms-advanced-configurations-detail.component';
 import { TableComponent } from './components/shared/table/table.component';
+import { PublicationFormVersionsConfigurationsManagementFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form.component';
+import { PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form-publication-form-modal/publication-form-versions-configurations-management-form-publication-form-modal.component';
+import { DragDropComponent } from './components/shared/drag-drop/drag-drop.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -261,21 +264,22 @@ registerLocaleData(localeId, 'id');
         PublicationGeneralTypesMasterDataConfigurationsComponent,
         PublicationFormVersionsConfigurationsComponent,
         PublicationFormsConfigurationsFormComponent,
-        PublicationFormsVersionsConfigurationsFormComponent,
-        PublicationFormsVersionsConfigurationsDetailComponent,
+        PublicationFormVersionsConfigurationsFormComponent,
+        PublicationFormVersionsConfigurationsDetailComponent,
+        PublicationFormVersionsConfigurationsManagementFormComponent,
+        PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent,
         PublicationFormsConfigurationsDetailComponent,
         PublicationFormsInitialConfigurationsFormComponent,
         PublicationFormsGeneralConfigurationsFormComponent,
         PublicationFormsAdvancedConfigurationsFormComponent,
         PublicationFormsConfigurationsOverviewFormComponent,
-        FieldConfigsAdvancedConfigurationsFormComponent,
-        FieldDependenciesConfigsAdvancedConfigurationsFormComponent,
-        ValidationConfigsAdvancedConfigurationsFormComponent,
-        PublicationFormsVersionsConfigurationsDetailComponent,
         PublicationFormsConfigurationsDetailComponent,
         PublicationFormsInitialConfigurationsDetailComponent,
         PublicationFormsGeneralConfigurationsDetailComponent,
         PublicationFormsAdvancedConfigurationsDetailComponent,
+        FieldConfigsAdvancedConfigurationsFormComponent,
+        FieldDependenciesConfigsAdvancedConfigurationsFormComponent,
+        ValidationConfigsAdvancedConfigurationsFormComponent,
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -300,7 +304,8 @@ registerLocaleData(localeId, 'id');
         LoaderComponent,
         CodemirrorComponent,
         ProsemirrorComponent,
-        TableComponent
+        TableComponent,
+        DragDropComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'id-ID' },

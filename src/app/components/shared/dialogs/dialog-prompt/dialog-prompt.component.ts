@@ -24,6 +24,7 @@ interface DialogData {
     <mat-dialog-actions class="custom-mat-dialog-actions text-center">
       <button mat-stroked-button mat-dialog-close (click)="onNoBtnClick()" [innerHTML]="dialogData.noButtonText"></button>
       <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial (click)="onYesBtnClick()" [innerHTML]="dialogData.yesButtonText"></button>
+    </mat-dialog-actions>
   `,
   styles: [''],
 })

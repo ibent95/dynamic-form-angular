@@ -39,27 +39,44 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
 
     if (formVersionValue) {
       this.selectedFormVersion = this.selectOptions.formVersions?.find((item: any) => item.uuid === formVersionValue);
+
+      this.onFormVersionChange(this.selectedFormVersion);
     }
 
     if (formFieldTypeValue) {
       this.selectedFieldType = this.selectOptions.fieldTypes?.find((item: any) => item.dynamic_form_field_type_code === formFieldTypeValue);
+
+      this.onFieldTypeChange(this.selectedFieldType);
     }
 
     if (formParentValue) {
       this.selectedParentForm = this.selectOptions.forms?.find((item: any) => item.uuid === formParentValue);
+
+      this.onParentFormChange(this.selectedParentForm);
     }
 
     this.ref.detectChanges();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
     if (changes['publicationFormParentSelectOptionsLoaded']) {
       /**
        * Set this.selectedParentFormLoading to negation of this.formParentSelectOptionsLoaded
        * because the this.selectedParentFormLoading has oposite condition
        */
       this.selectedParentFormLoading = !this.publicationFormParentSelectOptionsLoaded;
+
+      if (this.formGroup && !this.selectedParentFormLoading) {
+        let formParentValue: string = this.formGroup.get('uuid_form_parent')?.value;
+
+        if (formParentValue) {
+          this.selectedParentForm = this.selectOptions.forms?.find((item: any) => item.uuid === formParentValue);
+          this.onParentFormChange(this.selectedParentForm);
+        }
+      }
     }
+
   }
 
   public onFormVersionChange(data: any) {

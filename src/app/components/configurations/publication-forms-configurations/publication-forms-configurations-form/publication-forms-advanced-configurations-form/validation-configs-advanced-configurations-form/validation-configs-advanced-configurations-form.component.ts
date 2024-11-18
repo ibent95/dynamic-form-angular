@@ -30,7 +30,7 @@ export interface ValidationConfigsInjectData {
 @Component({
   selector: 'app-validation-configs-advanced-configurations-form',
   templateUrl: './validation-configs-advanced-configurations-form.component.html',
-  styles: [''],
+  styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidationConfigsAdvancedConfigurationsFormComponent {

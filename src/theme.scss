@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+// Define a custom color palette (e.g., a custom "info" palette)
+$custom-info: mat-palette($mat-blue, 500, 100, 700);
+$custom-theme: mat-light-theme((color: (
+	info: $custom-info // Add your custom color here
+)));
+
+// Apply the theme
+@include angular-material-theme($custom-theme);
+
+
+.info-color {
+	background-color: mat-color($custom-info);
+	color: mat-color($custom-info, contrast);
+}

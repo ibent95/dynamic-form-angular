@@ -49,6 +49,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
+// Drag & Drop
+import { DragDropModule, CdkDrag, CdkDropList, CdkDragPlaceholder } from '@angular/cdk/drag-drop';
+
+
 @NgModule({
   declarations: [],
   imports: [
@@ -88,7 +92,10 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    DragDropModule,
+    CdkDrag,
+    CdkDragPlaceholder,
   ],
   exports: [
     MatAutocompleteModule,
@@ -126,6 +133,10 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    DragDropModule,
+    CdkDrag,
+    CdkDropList,
+    CdkDragPlaceholder,
   ],
   providers: [
     {

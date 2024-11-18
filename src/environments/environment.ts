@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   //apiUrl: 'http://127.0.0.1:8000/public/api',
   apiUrl: 'https://svc-dynamic-form-symfony.loc/api',
-  // apiUrl: 'https://service.ibent95.my.id/svc-dynamic-form-symfony/public/api'
+  symfonyApiUrl: 'https://svc-dynamic-form-symfony.loc/api',
+  lumenApiUrl: 'https://svc-dynamic-form-lumen.loc/api',
+  springApiUrl: 'https://svc-dynamic-form-spring.loc/api',
+  micronautApiUrl: 'https://svc-dynamic-form-micronaut.loc/api',
   ngxDocViewer: 'url',
 };
 

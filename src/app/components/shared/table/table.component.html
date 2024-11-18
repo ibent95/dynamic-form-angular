@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<div [ngClass]="displayedShadow">
 
 	@if (showCaption) {
 		<span class="italic p-3" id="tableCaption" [innerHTML]="caption"></span>
@@ -8,7 +8,7 @@
 
 		<!-- Table Start -->
 		<table mat-table recycleRows matSort [dataSource]="dataSource"
-			class="app-mat-table mat-elevation-z10"
+			class="app-mat-table"
 			aria-describedby="tableCaption">
 
 			<!-- Addition of order number column (header & content) -->
@@ -91,6 +91,13 @@
 						@if (actions.includes('activation')) {
 							<mat-slide-toggle [checked]="element.flag_active"
 								(click)="onDataDisableClick(element)"></mat-slide-toggle>
+						}
+
+						<!-- Show active toggle when status code is not 'PRO', 'VRF' or 'RVS' -->
+						@if (actions.includes('manage')) {
+							<button type="button" class="btn btn-warning" mat-mini-fab (click)="onDataManageClick(element)">
+								<mat-icon>checklist</mat-icon>
+							</button>
 						}
 
 					</td>
