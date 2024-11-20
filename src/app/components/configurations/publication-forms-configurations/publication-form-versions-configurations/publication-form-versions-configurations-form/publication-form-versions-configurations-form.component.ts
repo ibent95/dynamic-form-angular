@@ -1,10 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { Location } from '@angular/common';
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MatStepper } from '@angular/material/stepper';
 import { Router, UrlSegment } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
@@ -145,7 +144,6 @@ export class PublicationFormVersionsConfigurationsFormComponent {
     }
 
     this.getMasterDataPublicationTypes();
-    console.log('formStatue', this.formStatus, this.stateData);
   }
 
   /**

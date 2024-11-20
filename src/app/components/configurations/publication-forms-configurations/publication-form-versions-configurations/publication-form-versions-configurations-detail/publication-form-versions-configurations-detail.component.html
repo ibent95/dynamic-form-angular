@@ -1,1 +1,83 @@
-<p>publication-forms-versions-configurations-detail works!</p>
+<mat-card class=" m-7">
+	<mat-card-title>Publication Form Versions Configurations details</mat-card-title>
+	<!--<mat-card-subtitle>Form of publication</mat-card-subtitle>-->
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		@if (pageState === 'loading') {
+			<app-loader></app-loader>
+		}
+
+		@if (pageState === 'empty') {
+			<app-page-not-found></app-page-not-found>
+		}
+
+		@if (pageState === 'error') {
+			<p class="text-center">Error on load page data. Please contact the administrator...</p>
+
+			<div class="flex justify-center">
+				<button mat-stroked-button class="flex-initial w-32" (click)="windowHistoryBack()">Back</button>
+			</div>
+		}
+
+		@if (pageState === 'loaded') {
+
+			<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+
+				<!-- Row 1 -->
+				<div class="col-span-12">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Publication Type' }}</mat-label>
+						<mat-select formControlName="uuid_publication_type" placeholder="Please fill the options...">
+							<ng-container *ngFor="let option of selectOptions.publicationTypes; let optionIndex = index;">
+								<mat-option [value]="option.uuid">{{ option.publication_type_name }}</mat-option>
+							</ng-container>
+						</mat-select>
+
+						<mat-error [innerHTML]="''"
+							*ngIf="formGroup?.get('uuid_publication_type')?.invalid && (formGroup?.get('uuid_publication_type')?.dirty || formGroup?.get('uuid_publication_type')?.touched)"></mat-error>
+						<mat-hint [innerHTML]="'The Publication Type of Form Version.'"></mat-hint>
+					</mat-form-field>
+				</div>
+				<!-- Row 1 -->
+
+				<!-- Row 2 -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Form Version Name' }}</mat-label>
+						<input matInput formControlName="publication_form_version_name" placeholder="Please fill the Form Version name..." />
+
+						<mat-error [innerHTML]="''"
+							*ngIf="formGroup?.get('publication_form_version_name')?.invalid && (formGroup?.get('publication_form_version_name')?.dirty || formGroup?.get('publication_form_version_name')?.touched)"></mat-error>
+						<mat-hint [innerHTML]="'The name of Form Version.'"></mat-hint>
+					</mat-form-field>
+				</div>
+
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'Form Version Code' }}</mat-label>
+						<input matInput formControlName="publication_form_version_code" placeholder="Please fill the Form Version code..." />
+
+						<mat-error [innerHTML]="''"
+							*ngIf="formGroup?.get('publication_form_version_code')?.invalid && (formGroup?.get('publication_form_version_code')?.dirty || formGroup?.get('publication_form_version_code')?.touched)"></mat-error>
+						<mat-hint [innerHTML]="'The code of Form Version.'"></mat-hint>
+					</mat-form-field>
+				</div>
+				<!-- Row 2 -->
+
+				<div class="col-span-12">
+					<div class="flex justify-center">
+						<button mat-stroked-button class="flex-initial w-32" (click)="windowHistoryBack()"
+							[disabled]="formStates.isFormCancelButtonDisabled">Back</button>
+					</div>
+				</div>
+
+			</form>
+
+		}
+
+	</mat-card-content>
+
+</mat-card>
