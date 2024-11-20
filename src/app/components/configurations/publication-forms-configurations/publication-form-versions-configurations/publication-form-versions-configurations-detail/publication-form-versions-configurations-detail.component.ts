@@ -128,7 +128,6 @@ export class PublicationFormVersionsConfigurationsDetailComponent {
     }
 
     this.getMasterDataPublicationTypes();
-    console.log('formStatus', this.formStatus, this.stateData);
   }
 
   /**
