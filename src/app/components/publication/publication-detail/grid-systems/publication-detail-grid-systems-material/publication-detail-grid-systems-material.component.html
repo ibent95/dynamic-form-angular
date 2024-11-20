@@ -4,15 +4,8 @@
 
 		<mat-grid-tile [colspan]="12" [rowspan]="1">
 			<div class="mat-grid-tile-container">
-				<mat-form-field appearance="outline" [color]="'accent'">
-					<mat-label>Publication type</mat-label>
-					<mat-select [formControlName]="'publication_type_uuid'">
-						<ng-container
-							*ngFor="let publicationType of dfMetadata.selectOptions.publication_type?.items; let publicationTypeIndex = index;">
-							<mat-option [value]="publicationType.uuid">{{ publicationType.publication_type_name + ' [ ' + publicationType.publication_type_code + ' ]' }}</mat-option>
-						</ng-container>
-					</mat-select>
-				</mat-form-field>
+				<mat-label class="col-span-5">Publication type</mat-label>
+				<span class="col-span-7" [innerHTML]="': ' + userData.publication_type?.publication_type_name"></span>
 			</div>
 		</mat-grid-tile>
 
@@ -54,7 +47,7 @@
 	<!-- Show forms recursively -->
 	<ng-container *ngIf="(!dfMetadata.noData && dfMetadata.isFormTypeSelected && dfMetadata.isMetadataLoaded)">
 
-		<app-publication-form-recursive [dfMetadata]="dfMetadata" [gridSystemsClassConfig]="gridSystemsClassConfig" (onFormBackButtonClicked)="onFormBackButtonClick()"></app-publication-form-recursive>
+		<app-publication-detail-recursive [dfMetadata]="dfMetadata" [gridSystemsClassConfig]="gridSystemsClassConfig" (onFormBackButtonClicked)="onFormBackButtonClick()"></app-publication-detail-recursive>
 
 	</ng-container>
 

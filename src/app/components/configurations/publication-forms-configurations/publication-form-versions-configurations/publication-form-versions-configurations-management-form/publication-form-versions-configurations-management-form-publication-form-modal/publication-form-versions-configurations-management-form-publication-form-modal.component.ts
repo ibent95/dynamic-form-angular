@@ -198,11 +198,11 @@ export class PublicationFormVersionsConfigurationsManagementFormPublicationFormM
           field_label: 'None',
         });
 
-        let selectedParentForm = this.selectOptions.forms?.find((item: any) => item.uuid === this.data.form_parent?.uuid);
+        let selectedParentForm = this.selectOptions.forms?.find((item: any) => item.uuid === this.data?.form_parent?.uuid);
 
         // Insert parent form if it not found in master data
-        if (!selectedParentForm && this.data.form_parent) {
-          this.selectOptions.forms.push(this.data.form_parent);
+        if (!selectedParentForm && this.data?.form_parent) {
+          this.selectOptions.forms.push(this.data?.form_parent);
         }
 
         this.formStates.isMasterDataPublicationFormsLoaded = true;
@@ -338,8 +338,8 @@ export class PublicationFormVersionsConfigurationsManagementFormPublicationFormM
   public patchFormValue() {
 
     this.initialForm.patchValue({
-      uuid_form_version: this.stateData.form_version?.uuid,
-      uuid_parent_form: this.data.parent_form?.uuid
+      uuid_form_version: this.stateData?.form_version?.uuid,
+      uuid_parent_form: this.data?.parent_form?.uuid
     });
 
   }
