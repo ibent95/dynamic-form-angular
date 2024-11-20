@@ -299,6 +299,12 @@ export class AppService {
     return this.http.get(this.getUrl(serviceBaseAPI, serviceType) + stringParams, { params: params, headers: this.HEADERS });
   }
 
+
+  advanceCreate(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.post(this.getUrl(serviceBaseAPI, serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
+  }
+
+
   getIPAddress(params: string = ""): Observable<any> {
     return this.http.get("http://ip-api.com/json/" + (params || ""), { headers: this.HEADERS });
   }

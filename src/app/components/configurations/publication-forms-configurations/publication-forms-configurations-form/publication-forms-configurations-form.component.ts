@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatStepper, StepperOrientation } from '@angular/material/stepper';
@@ -40,6 +40,13 @@ export interface SelectOptionsInterface {
 })
 export class PublicationFormsConfigurationsFormComponent implements OnInit {
 
+  private router: Router = inject(Router);
+  private formBuilder: FormBuilder = inject(FormBuilder);
+  private appSvc: AppService = inject(AppService);
+  private generalSvc: AppGeneralService = inject(AppGeneralService);
+  private location: Location = inject(Location);
+  private dialog: MatDialog = inject(MatDialog);
+
   activeRouteSegments!: Array<UrlSegment>;
   lastActiveRoute!: string;
   breakpointObserver = inject(BreakpointObserver);
@@ -67,14 +74,7 @@ export class PublicationFormsConfigurationsFormComponent implements OnInit {
   positionMinValue!: number;
   accepttermsConditions!: boolean;
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private appSvc: AppService,
-    private generalSvc: AppGeneralService,
-    private location: Location,
-    private dialog: MatDialog,
-  ) {
+  constructor() {
     if (window.history?.state) {
       localStorage.setItem(
         'stateConfigurationsPublicationFormsDetail',

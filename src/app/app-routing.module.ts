@@ -12,6 +12,8 @@ import { PublicationTypesMasterDataConfigurationsComponent } from './components/
 import { PublicationFormsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PublicationFormsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-forms-configurations-detail/publication-forms-configurations-detail.component';
 import { PublicationFormVersionsConfigurationsManagementFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form.component';
+import { PublicationFormVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-detail/publication-form-versions-configurations-detail.component';
+import { PublicationFormVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-form/publication-form-versions-configurations-form.component';
 
 const routes: Routes = [
   {
@@ -81,6 +83,18 @@ const routes: Routes = [
       {
         path: 'detail',
         component: PublicationFormsConfigurationsDetailComponent
+      },
+      {
+        path: 'form-version-create',
+        component: PublicationFormVersionsConfigurationsFormComponent,
+      },
+      {
+        path: 'form-version-update',
+        component: PublicationFormVersionsConfigurationsFormComponent
+      },
+      {
+        path: 'form-version-detail',
+        component: PublicationFormVersionsConfigurationsDetailComponent
       },
       {
         path: 'manage',

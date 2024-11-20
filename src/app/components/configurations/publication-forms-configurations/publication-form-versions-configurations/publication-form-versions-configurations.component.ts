@@ -121,21 +121,21 @@ export class PublicationFormVersionsConfigurationsComponent {
   }
 
   public onAddDataClick(): void {
-    this.router.navigate([this.router.url + '/create']);
+    this.router.navigate([this.router.url + '/form-version-create']);
   }
 
   public onDetailsDataClick(data: any): void {
     let extras: NavigationExtras = {
       state: data
     };
-    this.router.navigate([this.router.url + '/detail'], extras);
+    this.router.navigate([this.router.url + '/form-version-detail'], extras);
   }
 
   public onEditDataClick(data: any): void {
     let extras: NavigationExtras = {
       state: data
     };
-    this.router.navigate([this.router.url + '/update'], extras);
+    this.router.navigate([this.router.url + '/form-version-update'], extras);
   }
 
   public onRemoveDataClick(data: any): void {
