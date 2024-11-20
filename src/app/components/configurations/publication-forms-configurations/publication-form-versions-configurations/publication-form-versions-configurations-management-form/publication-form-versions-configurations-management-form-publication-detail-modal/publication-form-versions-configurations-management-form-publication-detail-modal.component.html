@@ -1,0 +1,76 @@
+<section>
+
+	<!-- Dialog title -->
+	<h1 mat-dialog-title>Publication Form Detail</h1>
+
+	<!-- Dialog content -->
+	<mat-dialog-content>
+
+		@if (pageState === 'loading') {
+			<app-loader></app-loader>
+		}
+
+		@if (pageState === 'empty') {
+			<app-page-not-found></app-page-not-found>
+		}
+
+		@if (pageState === 'error') {
+			<p class="text-center">Error on load page data. Please contact the administrator...</p>
+
+			<div class="flex justify-center">
+				<button mat-stroked-button class="flex-initial w-32" (click)="onCloseButtonClick()">Close</button>
+			</div>
+		}
+
+		@if (pageState === 'loaded') {
+
+			<mat-tab-group stretchTabs dynamicHeight color="accent" alignTabs="center" animationDuration="500ms" [selectedIndex]="selectedTabIndex" (selectedIndexChange)="onTabChange($event)">
+				<mat-tab label="Initial Configurations">
+					<ng-template matTabContent>
+						<app-publication-forms-initial-configurations-detail [data]="data"
+							[selectOptions]="selectOptions"></app-publication-forms-initial-configurations-detail>
+
+						<mat-action-row class="mt-3">
+							<button mat-button role="button" (click)="onTabChange(1)">Next</button>
+						</mat-action-row>
+					</ng-template>
+
+				</mat-tab>
+
+				<mat-tab label="General Configurations">
+					<ng-template matTabContent>
+						<app-publication-forms-general-configurations-detail [data]="data"
+							[selectOptions]="selectOptions"></app-publication-forms-general-configurations-detail>
+
+						<mat-action-row class="mt-3">
+							<button mat-button role="button" (click)="onTabChange(0)">Previous</button>
+							<button mat-button role="button" (click)="onTabChange(2)">Next</button>
+						</mat-action-row>
+					</ng-template>
+
+				</mat-tab>
+
+				<mat-tab label="Advanced Configurations">
+					<ng-template matTabContent>
+						<app-publication-forms-advanced-configurations-detail [data]="data"
+							[selectOptions]="selectOptions"></app-publication-forms-advanced-configurations-detail>
+
+						<mat-action-row class="mt-3">
+							<button mat-button role="button" (click)="onTabChange(1)">Previous</button>
+						</mat-action-row>
+					</ng-template>
+
+				</mat-tab>
+
+			</mat-tab-group>
+
+		}
+
+	</mat-dialog-content>
+
+	<!-- Dialog action button -->
+	<mat-dialog-actions>
+		<button mat-stroked-button mat-dialog-close (click)="onCloseButtonClick()">Close</button>
+	</mat-dialog-actions>
+
+</section>

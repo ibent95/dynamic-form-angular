@@ -9,7 +9,8 @@
 		<!-- Table Start -->
 		<table mat-table recycleRows matSort [dataSource]="dataSource"
 			class="app-mat-table"
-			aria-describedby="tableCaption">
+			aria-describedby="tableCaption"
+			matSort>
 
 			<!-- Addition of order number column (header & content) -->
 			@if (showDataExpansion) {

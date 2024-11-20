@@ -58,6 +58,7 @@
 				}
 
 				@if (showTable) {
+					<!-- Client Side rendering -->
 					<app-table
 						[columns]="tableDisplayedColumns"
 						[dataSource]="tableDataSource"
@@ -66,7 +67,6 @@
 						(dataDetail)="onDetailsDataClick($event)"
 						(dataEdit)="onEditDataClick($event)"
 						(dataDelete)="onRemoveDataClick($event)"
-						(pageChange)="getTableData($event)"
 						></app-table>
 				}
 
@@ -77,7 +77,7 @@
 			</mat-expansion-panel>
 
 			<!-- 2 -->
-			<mat-expansion-panel [expanded]="true" (opened)="setStep(1)" hideToggle>
+			<mat-expansion-panel [expanded]="expansionStep === 1" (opened)="setStep(1)" hideToggle>
 
 				<mat-expansion-panel-header>
 					<mat-panel-title> Order Managements </mat-panel-title>

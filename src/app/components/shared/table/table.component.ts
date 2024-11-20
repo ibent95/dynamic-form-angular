@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatTableModule } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Page } from 'src/app/services/app-general.service';
 
 export enum AppTableColumnType {
@@ -56,6 +57,9 @@ export type AppTableShadow = 'z5' | 'z10' | 'z15' | 'z20' | 'z25' | 'z30' | stri
 })
 export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   /**
    * Configuration variables
    */
@@ -76,7 +80,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() caption!: string;
   @Input() columns: AppTableColumns = [];
-  @Input() dataSource!: Array<any>;
+  @Input() dataSource!: Array<any> | MatTableDataSource<any> | any;
   @Input() actions: AppTableActions = ['detail', 'edit', 'delete'];
   @Input() shadow: AppTableShadow = 'z8';
   @Input() page!: Page;
@@ -115,16 +119,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() dataCollapse: EventEmitter<any> = new EventEmitter<any>(true); // Collapse in table row event
   @Output() dataManage: EventEmitter<any> = new EventEmitter<any>(true); // Manage in table row event
 
-  constructor() {
-    //console.log('constructor showDataOrderNumber', this.showDataOrderNumber);
-    //console.log('constructor displayedColumnsProperties', this.displayedColumnsProperties);
-    //console.log('constructor keyof typeof AppTableColumnType', typeof AppTableColumnType);
-  }
+  constructor() { }
 
   ngOnInit(): void {
     // Filters columns for displayed columns
     this.displayedColumns = this.columns.filter((column: AppTableColumn) => {
-      //console.log(column);
 
       /**
        * Separate or save the spesific column
@@ -189,24 +188,16 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
         : this.shadow ;
     }
 
-    //console.log('onInit displayedColumnsProperties', this.displayedColumnsProperties);
-    //console.log('onInit displayedColumns', this.displayedColumns);
-    //console.log(
-    //  'onInit AppTableColumnType',
-    //  AppTableColumnType.expansion.valueOf(),
-    //  AppTableColumnType.orderNumber.valueOf(),
-    //  AppTableColumnType.status.valueOf(),
-    //  AppTableColumnType.actions.valueOf()
-    //);
+    this.dataSource = new MatTableDataSource<any>(this.dataSource);
+
   }
 
   ngAfterViewInit(): void {
-    //console.log('afterViewInit displayedColumnsProperties', this.displayedColumnsProperties);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    //console.log('App table changes', changes);
-  }
+  ngOnChanges(changes: SimpleChanges): void { }
 
   // Before form view
 

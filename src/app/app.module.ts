@@ -160,6 +160,7 @@ import { TableComponent } from './components/shared/table/table.component';
 import { PublicationFormVersionsConfigurationsManagementFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form.component';
 import { PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form-publication-form-modal/publication-form-versions-configurations-management-form-publication-form-modal.component';
 import { DragDropComponent } from './components/shared/drag-drop/drag-drop.component';
+import { PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form-publication-detail-modal/publication-form-versions-configurations-management-form-publication-detail-modal.component';
 
 registerLocaleData(localeId, 'id');
 
@@ -268,6 +269,7 @@ registerLocaleData(localeId, 'id');
         PublicationFormVersionsConfigurationsDetailComponent,
         PublicationFormVersionsConfigurationsManagementFormComponent,
         PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent,
+        PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent,
         PublicationFormsConfigurationsDetailComponent,
         PublicationFormsInitialConfigurationsFormComponent,
         PublicationFormsGeneralConfigurationsFormComponent,

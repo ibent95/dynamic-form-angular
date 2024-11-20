@@ -143,7 +143,7 @@ export class PublicationFormVersionsConfigurationsComponent {
     let dialogConfig: MatDialogConfig = {
       width: '600px',
       data: {
-        title: 'Are you sure to remove this publication forms with number of order: ' + data?.position + '?',
+        title: 'Are you sure to remove this publication form with number of order: ' + data?.position + '?',
         messages: 'Please check again before you remove this publication.',
         cancelButtonText: 'Cancel',
         proceedButtonText: 'Proceed',
@@ -156,7 +156,7 @@ export class PublicationFormVersionsConfigurationsComponent {
     // Subscribe to dialog closed event
     dialogRef.afterClosed().subscribe((response: any) => {
       if (response) {
-        const stringParameter = (data?.uuid) ? '/' + data?.uuid : '';
+        const stringParameter = (data?.uuid) ? '/' + data?.uuid + '/disable' : '';
 
         this.sendData(null, stringParameter);
       }
@@ -220,7 +220,8 @@ export class PublicationFormVersionsConfigurationsComponent {
     this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS_DISABLE, formData, parameter, stringParams).subscribe(
       (successResponse: ResponseFormat) => {
         this.handleResponse(successResponse);
-        this.router.navigate(['/configurations-publication-forms']);
+        //this.router.navigate(['/configurations-publication-forms']);
+        this.getTableData(this.tableDataPage);
       },
       (errorResponse: ResponseFormat) => {
         this.handleResponse(errorResponse);

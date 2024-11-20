@@ -1,14 +1,13 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
-import { UrlSegment, Router } from '@angular/router';
+import { UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
-import { PageState, AppGeneralService } from 'src/app/services/app-general.service';
+import { PageState } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { FormStatesInterface, SelectOptionsInterface } from '../../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 
@@ -22,12 +21,8 @@ export class PublicationFormVersionsConfigurationsManagementFormPublicationFormM
   private dialog: MatDialog = inject(MatDialog);
   private dialogRef: MatDialogRef<PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent> = inject(MatDialogRef);
   private dialogData: any = inject(MAT_DIALOG_DATA);
-  private router: Router = inject(Router);
   private formBuilder: FormBuilder = inject(FormBuilder);
   private appSvc: AppService = inject(AppService);
-  private generalSvc: AppGeneralService = inject(AppGeneralService);
-  private location: Location = inject(Location);
-  private changeDetector: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   activeRouteSegments!: Array<UrlSegment>;
   lastActiveRoute!: string;
@@ -125,7 +120,7 @@ export class PublicationFormVersionsConfigurationsManagementFormPublicationFormM
     if (this.formStatus === AppFormStatus.UPDATE) {
 
       if (!this.stateData) {
-        this.windowHistoryBack();
+        this.onCloseButtonClick();
       }
 
       this.getDataPublicationForm(this.stateData.form?.uuid);
@@ -521,8 +516,8 @@ export class PublicationFormVersionsConfigurationsManagementFormPublicationFormM
     });
   }
 
-  public windowHistoryBack(): void {
-    window.history.back();
+  public onCloseButtonClick(): void {
+    this.dialogRef.close();
   }
 
 }

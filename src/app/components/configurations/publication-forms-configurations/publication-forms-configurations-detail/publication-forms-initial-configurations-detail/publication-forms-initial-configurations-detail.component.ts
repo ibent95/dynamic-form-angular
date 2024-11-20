@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { SelectOptionsInterface } from '../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PageState } from 'src/app/services/app-general.service';
 
@@ -9,10 +9,12 @@ import { PageState } from 'src/app/services/app-general.service';
 })
 export class PublicationFormsInitialConfigurationsDetailComponent implements OnInit {
 
-  pageState: PageState = PageState.LOADING;
+  private changeDetector: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Input() data!: any;
   @Input() selectOptions!: SelectOptionsInterface;
+
+  pageState: PageState = PageState.LOADING;
 
   selectedFormVersion: any;
   selectedFormVersionLoading: boolean = true;
@@ -24,17 +26,15 @@ export class PublicationFormsInitialConfigurationsDetailComponent implements OnI
   @Output() onPublicationFormVersionChange: EventEmitter<any> = new EventEmitter<any>(true);
   @Output() onPublicationFieldTypeChange: EventEmitter<any> = new EventEmitter<any>(true);
 
-  constructor(
-    private ref: ChangeDetectorRef,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.selectedFormVersion = this.data?.form_version;
     this.selectedFieldType   = this.selectOptions.fieldTypes?.find((item: any) => item.dynamic_form_field_type_code === this.data?.field_type);
     this.selectedParentForm  = this.data?.form_parent;
 
+    this.changeDetector.detectChanges();
     this.pageState = PageState.LOADED;
-    this.ref.detectChanges();
   }
 
   public onFormVersionChange(data: any) {

@@ -19,13 +19,9 @@ export class DragDropComponent implements OnInit, AfterViewInit {
   }];
   @Input() textColumnName: string = 'text';
 
-  ngOnInit(): void {
-    console.log('data', this.data);
-  }
+  ngOnInit(): void { }
 
-  ngAfterViewInit(): void {
-    console.log('data', this.data);
-  }
+  ngAfterViewInit(): void { }
 
   public drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.data, event.previousIndex, event.currentIndex);

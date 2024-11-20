@@ -8,6 +8,7 @@ import { APP_DIALOG_ENTER_ANIMATION_DURATION, APP_DIALOG_EXIT_ANIMATION_DURATION
 import { AppFormStatus, AppService, AppServiceBaseAPI, AppServiceType } from 'src/app/services/app.service';
 import { PublicationFormsConfigurationsFormComponent } from '../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent } from './publication-form-versions-configurations-management-form-publication-form-modal/publication-form-versions-configurations-management-form-publication-form-modal.component';
+import { PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent } from './publication-form-versions-configurations-management-form-publication-detail-modal/publication-form-versions-configurations-management-form-publication-detail-modal.component';
 
 @Component({
   selector: 'app-publication-form-versions-configurations-management-form',
@@ -193,8 +194,11 @@ export class PublicationFormVersionsConfigurationsManagementFormComponent implem
     };
     //this.router.navigate([this.router.url + '/detail'], extras);
 
-    const form: MatDialogRef<PublicationFormsConfigurationsFormComponent> = this.dialog.open(PublicationFormsConfigurationsFormComponent, {
-      data: data,
+    const form: MatDialogRef<PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent> = this.dialog.open(PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent, {
+      data: {
+        form: data,
+        form_version: this.stateData
+      },
       width: '1200px',
       maxWidth: '1200px',
       enterAnimationDuration: APP_DIALOG_ENTER_ANIMATION_DURATION,
@@ -251,7 +255,7 @@ export class PublicationFormVersionsConfigurationsManagementFormComponent implem
     // Subscribe to dialog closed event
     dialogRef.afterClosed().subscribe((response: any) => {
       if (response) {
-        const stringParameter = (data?.uuid) ? '/' + data?.uuid : '';
+        const stringParameter = (data?.uuid) ? '/' + data?.uuid + '/disable' : '';
 
         this.sendData(null, stringParameter);
       }
@@ -311,10 +315,11 @@ export class PublicationFormVersionsConfigurationsManagementFormComponent implem
   private sendData(parameter: any = null, stringParams: string = '', formData?: FormData): void {
 
     // Access delete API
-    this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORM_VERSIONS_DISABLE, formData, parameter, stringParams).subscribe(
+    this.appSvc.deleteParams(AppServiceType.CONFIGURATION_PUBLICATIONS_FORMS_DISABLE, formData, parameter, stringParams).subscribe(
       (successResponse: ResponseFormat) => {
         this.handleResponse(successResponse);
-        this.router.navigate(['/configurations-publication-forms']);
+        //this.router.navigate(['/configurations-publication-forms']);
+        this.getTableData(this.tableDataPage);
       },
       (errorResponse: ResponseFormat) => {
         this.handleResponse(errorResponse);

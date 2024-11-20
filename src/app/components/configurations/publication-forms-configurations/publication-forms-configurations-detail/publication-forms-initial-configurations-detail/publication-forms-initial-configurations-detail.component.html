@@ -76,17 +76,17 @@
 										<tr>
 											<td class="w-1/4">Field Type</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="selectedFieldType.dynamic_form_field_type"></td>
+											<td class="w-full" [innerHTML]="selectedFieldType?.dynamic_form_field_type"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Code</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="selectedFieldType.dynamic_form_field_type_code"></td>
+											<td class="w-full" [innerHTML]="selectedFieldType?.dynamic_form_field_type_code"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Description</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="selectedFieldType.description"></td>
+											<td class="w-full" [innerHTML]="selectedFieldType?.description"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -98,10 +98,8 @@
 					<tr>
 						<td class="w-1/5">{{ 'Parent of Publication Form Field' }}</td>
 						<td class="w-px">:</td>
-						<td class="w-1/4">
-							{{ '[' + data.form_parent.form_version?.publication_form_version_code + ' - ' + data.form_parent.form_version?.publication_form_version_name + '] ' + data.form_parent?.field_type + ' - ' + data.form_parent?.field_id + ' - ' + data.form_parent?.field_label }}
-						</td>
-						<td class="w-dull">
+						<td class="w-1/4" [innerHTML]="(data?.form_parent) ? '[' + data.form_parent?.form_version?.publication_form_version_code + ' - ' + data.form_parent?.form_version?.publication_form_version_name + '] ' + data.form_parent?.field_type + ' - ' + data.form_parent?.field_id + ' - ' + data.form_parent?.field_label : ''"></td>
+						<td class="w-full">
 							<!-- Publication Form Parent Overview -->
 							<ng-container *ngIf="data.form_parent && data.form_parent?.uuid">
 								<table class="table-detail border rounded border-separate border-spacing-2 border-slate-500" [ngClass]="{ 'table-detail-show': data.form_parent && data.form_parent?.uuid }">
@@ -110,48 +108,48 @@
 										<tr>
 											<td class="w-1/4">Field Type</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_type || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_type || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Field Label</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_label || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_label || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Field Name</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_name || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_name || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Field ID</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_id || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_id || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Field Class</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_class || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_class || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Placeholder</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_placeholder || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_placeholder || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Description</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.description || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.description || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Field Options</td>
 											<td class="w-px">:</td>
-											<td class="w-full" [innerHTML]="data.form_parent.field_options || '-'"></td>
+											<td class="w-full" [innerHTML]="data.form_parent?.field_options || '-'"></td>
 										</tr>
 										<tr>
 											<td class="w-1/4">Is Active</td>
 											<td class="w-px">:</td>
 											<td
-												class="w-full" [innerHTML]="(data.form_parent.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'">
+												class="w-full" [innerHTML]="(data.form_parent?.flag_active) ? '<span class=\'text-green-400\'>Active</span>' : '<span class=\'text-red-400\'>Non Active (Inactive)</span>'">
 											</td>
 										</tr>
 									</tbody>
