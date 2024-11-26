@@ -1,9 +1,12 @@
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { CommonModule, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { AppService, AppServiceType } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-overview',
+  standalone: true,
+  imports: [CommonModule, MatCardModule],
   templateUrl: './overview.component.html', providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
   styleUrls: ['./overview.component.scss']
 })

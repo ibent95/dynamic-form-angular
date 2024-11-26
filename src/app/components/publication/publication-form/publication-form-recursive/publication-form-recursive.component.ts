@@ -11,7 +11,7 @@ import { StepperOrientation } from "@angular/cdk/stepper";
 @Component({
   selector: 'app-publication-form-recursive',
   templateUrl: './publication-form-recursive.component.html',
-  styles: ['']
+  styles: ``
 })
 export class PublicationFormRecursiveComponent implements OnInit {
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
+  standalone: true,
   template: `
     <footer class="max-w-none m-7">
       <div class="footer-content center-content">

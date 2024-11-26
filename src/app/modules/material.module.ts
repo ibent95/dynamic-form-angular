@@ -149,6 +149,6 @@ import { DragDropModule, CdkDrag, CdkDropList, CdkDragPlaceholder } from '@angul
     },
     MatDatepickerModule,
   ],
-  //schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MaterialModule { }

@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, ThemePalette } from '@angular/material/core';
-import { MatDatepicker } from '@angular/material/datepicker';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DateTime } from 'luxon';
 import { DFField } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { LUXON_MONTH_FORMATS } from 'src/app/services/app-general.service';
@@ -11,6 +13,8 @@ import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'df-field-month',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './df-field-month.component.html',
   styleUrls: ['./../dynamic-form.component.scss'],
   providers: [
@@ -43,12 +47,12 @@ export class DFFieldMonthComponent {
 
   setMonthAndYear(normalizedMonthAndYear: DateTime, datepicker: MatDatepicker<DateTime>) {
     datepicker.close();
-    
+
     const CTRL_VALUE = DateTime.fromObject({
       month: normalizedMonthAndYear.month,
       year: normalizedMonthAndYear.year
     });
-    
+
     this.formGroup.get(this.field?.field_name)?.setValue(CTRL_VALUE);
   }
 

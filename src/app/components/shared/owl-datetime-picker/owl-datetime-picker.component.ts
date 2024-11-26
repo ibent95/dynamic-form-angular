@@ -1,11 +1,21 @@
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { Subject, takeUntil } from 'rxjs';
+import { OwlDatePickerComponent } from './owl-date-picker/owl-date-picker.component';
+import { OwlDateRangePickerComponent } from './owl-date-range-picker/owl-date-range-picker.component';
+import { OwlDateTimePickerComponent } from './owl-date-time-picker/owl-date-time-picker.component';
+import { OwlDateTimeRangePickerComponent } from './owl-date-time-range-picker/owl-date-time-range-picker.component';
+import { OwlMonthPickerComponent } from './owl-month-picker/owl-month-picker.component';
+import { OwlTimePickerComponent } from './owl-time-picker/owl-time-picker.component';
+import { OwlTimeRangePickerComponent } from './owl-time-range-picker/owl-time-range-picker.component';
+import { OwlYearPickerComponent } from './owl-year-picker/owl-year-picker.component';
 
 @Component({
   selector: 'app-owl-datetime-picker',
+  standalone: true,
+  imports: [CommonModule, OwlDatePickerComponent, OwlDateRangePickerComponent, OwlDateTimePickerComponent, OwlDateTimeRangePickerComponent, OwlMonthPickerComponent, OwlTimePickerComponent, OwlTimeRangePickerComponent, OwlYearPickerComponent],
   templateUrl: './owl-datetime-picker.component.html',
   styleUrls: ['./owl-datetime-picker.component.scss']
 })

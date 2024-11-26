@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, ThemePalette } from '@angular/material/core';
-import { MatDatepicker } from '@angular/material/datepicker';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
 import { DateTime } from 'luxon';
 import { DFField } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { LUXON_YEAR_FORMATS } from 'src/app/services/app-general.service';
@@ -11,6 +12,8 @@ import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'df-field-year',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatDatepickerModule],
   templateUrl: './df-field-year.component.html',
   styleUrls: ['./../dynamic-form.component.scss'],
   providers: [
@@ -47,7 +50,7 @@ export class DFFieldYearComponent {
     const CTRL_VALUE = DateTime.fromObject({
       year: normalizedMonthAndYear.year
     });
-    
+
     this.formGroup.get(this.field?.field_name)?.setValue(CTRL_VALUE);
   }
 

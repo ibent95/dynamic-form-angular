@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { AsyncPipe, CommonModule, registerLocaleData } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeId from "@angular/common/locales/id";
@@ -18,7 +18,6 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './modules/material.module';
 import { BootstrapModule } from './modules/bootstrap.module';
-import { AppComponent } from './app.component';
 import { CONFIG, ENV } from './app.config';
 import { AppService } from './services/app.service';
 import { AppGeneralService } from './services/app-general.service';
@@ -161,12 +160,39 @@ import { PublicationFormVersionsConfigurationsManagementFormComponent } from './
 import { PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form-publication-form-modal/publication-form-versions-configurations-management-form-publication-form-modal.component';
 import { DragDropComponent } from './components/shared/drag-drop/drag-drop.component';
 import { PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form-publication-detail-modal/publication-form-versions-configurations-management-form-publication-detail-modal.component';
+import { AutoCompleteComponent } from './components/shared/auto-complete/auto-complete.component';
 
 registerLocaleData(localeId, 'id');
 
 @NgModule({
-    declarations: [
-        AppComponent,
+    declarations: [],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        LayoutModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        BootstrapModule,
+        AsyncPipe,
+        LuxonModule,
+        NgxSelectModule,
+        NgxMatDatetimePickerModule,
+        NgxMatTimepickerModule,
+        NgxMatNativeDateModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+        NgxDocViewerModule,
+        GhostTableComponent,
+        LoaderComponent,
+        CodemirrorComponent,
+        ProsemirrorComponent,
+        TableComponent,
+        DragDropComponent,
+        AutoCompleteComponent,
         LoginComponent,
         PageBlankComponent,
         PageComponentsComponent,
@@ -283,39 +309,13 @@ registerLocaleData(localeId, 'id');
         FieldDependenciesConfigsAdvancedConfigurationsFormComponent,
         ValidationConfigsAdvancedConfigurationsFormComponent,
     ],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        LayoutModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        CoreModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        BootstrapModule,
-        LuxonModule,
-        NgxSelectModule,
-        NgxMatDatetimePickerModule,
-        NgxMatTimepickerModule,
-        NgxMatNativeDateModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
-        NgxDocViewerModule,
-        GhostTableComponent,
-        LoaderComponent,
-        CodemirrorComponent,
-        ProsemirrorComponent,
-        TableComponent,
-        DragDropComponent
-    ],
     providers: [
         { provide: LOCALE_ID, useValue: 'id-ID' },
         { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
         { provide: OWL_DATE_TIME_LOCALE, useValue: 'id-ID' },
         { provide: ENV, useValue: CONFIG },
         AppService, AppGeneralService,
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,14 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
-import { OWL_DATE_TIME_FORMATS, DateView, OwlDateTimeComponent } from '@danielmoncada/angular-datetime-picker';
+import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { OWL_DATE_TIME_FORMATS, DateView, OwlDateTimeComponent, OwlDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { DFField } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { OWL_NATIVE_DATE_FORMATS } from 'src/app/services/app-general.service';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'df-field-owl-date-time-range',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, OwlDateTimeModule, MatIconModule],
   templateUrl: './df-field-owl-date-time-range.component.html',
   styleUrls: ['./../../dynamic-form.component.scss'],
   providers: [

@@ -1,8 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Location } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-page-not-found',
+  standalone: true,
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './page-not-found.component.html',
   styles: ``
 })

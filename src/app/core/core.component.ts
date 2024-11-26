@@ -1,10 +1,17 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { HeaderComponent } from './header/header.component';
+import { ContentComponent } from './content/content.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
 	selector: 'app-core',
+	standalone: true,
+	imports: [CommonModule, MatSidenavModule, SidebarComponent, HeaderComponent, ContentComponent, FooterComponent],
 	template: `
 		<mat-drawer-container class="drawer-container">
 			<mat-drawer mode="side">

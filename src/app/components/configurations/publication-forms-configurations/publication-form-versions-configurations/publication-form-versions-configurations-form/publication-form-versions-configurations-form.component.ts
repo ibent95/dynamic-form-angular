@@ -9,6 +9,7 @@ import { map, Observable } from 'rxjs';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppService, AppFormStatus, AppServiceType, AppServiceBaseAPI } from 'src/app/services/app.service';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
+import { AutoCompleteComponent } from "../../../../shared/auto-complete/auto-complete.component";
 
 export interface FormStatesInterface {
   isFormCreated: boolean;
@@ -30,7 +31,7 @@ export interface SelectOptionsInterface {
 @Component({
   selector: 'app-publication-form-versions-configurations-form',
   templateUrl: './publication-form-versions-configurations-form.component.html',
-  styles: ``
+  styles: ``,
 })
 export class PublicationFormVersionsConfigurationsFormComponent {
 

@@ -1,12 +1,19 @@
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DateTime } from 'luxon';
 import { Subject, takeUntil } from 'rxjs';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { MonthPickerComponent } from './month-picker/month-picker.component';
+import { TimePickerComponent } from './time-picker/time-picker.component';
+import { YearPickerComponent } from './year-picker/year-picker.component';
 
 @Component({
   selector: 'app-datetime-picker',
+  standalone: true,
+  imports: [CommonModule, DatePickerComponent, DateTimePickerComponent, MonthPickerComponent, TimePickerComponent, YearPickerComponent],
   templateUrl: './datetime-picker.component.html',
   styleUrls: ['./datetime-picker.component.scss']
 })

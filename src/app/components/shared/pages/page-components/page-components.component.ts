@@ -1,14 +1,31 @@
+import { NgxMatDatetimePickerModule } from '@angular-material-components/datetime-picker';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { CommonModule, formatDate } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DateView, OwlDateTimeComponent } from '@danielmoncada/angular-datetime-picker';
+import { MatTableModule } from '@angular/material/table';
+import { DateView, OwlDateTimeComponent, OwlDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 
 @Component({
   selector: 'app-page-components',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatCardModule, MatDividerModule, MatButtonModule, MatButtonToggleModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatCheckboxModule, MatRadioModule, MatChipsModule, NgxMatDatetimePickerModule, OwlDateTimeModule, MatTableModule],
   templateUrl: './page-components.component.html',
-  styleUrls: ['./page-components.component.scss']
+  styleUrls: ['./page-components.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PageComponentsComponent implements OnInit {
 

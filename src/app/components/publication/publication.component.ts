@@ -4,10 +4,19 @@ import { AppServiceType, AppService } from "../../services/app.service";
 import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomDialogPublicationRemoveConfirmComponent } from './custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { GhostTableComponent } from '../shared/ghost-table/ghost-table.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-publication',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule, MatIconModule, MatTableModule, MatPaginatorModule, GhostTableComponent],
   templateUrl: './publication.component.html',
   styleUrls: ['./publication.component.scss']
 })
@@ -149,7 +158,7 @@ export class PublicationComponent implements OnInit {
   }
 
   public onRemovePublicationClick(data: any): void {
-    
+
     let dialogConfig: MatDialogConfig = {
       width: '600px',
       data: {

@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 interface DialogData {
   title: string;
@@ -10,6 +12,8 @@ interface DialogData {
 
 @Component({
   selector: 'app-dialog-prompt',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   template: `
     <!-- Dialog title -->
     <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>

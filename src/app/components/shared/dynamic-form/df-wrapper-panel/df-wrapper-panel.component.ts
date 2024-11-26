@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
@@ -7,6 +8,8 @@ import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'df-wrapper-panel',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './df-wrapper-panel.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })

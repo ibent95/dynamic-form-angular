@@ -1,11 +1,14 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
 import { AppGeneralService, ResponseFormat } from 'src/app/services/app-general.service';
 import { AppService, AppServiceType } from 'src/app/services/app.service';
 import { DFField } from '../dynamic-forms';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 interface DialogData {
   field: DFField | null,
@@ -19,6 +22,8 @@ interface DialogData {
 
 @Component({
   selector: 'df-dialog-file-upload-prompt',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatButtonModule, MatIconModule],
   template: `
     <!-- Dialog title -->
     <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>
@@ -66,7 +71,7 @@ export class DFDialogFileUploadPromptComponent {
   };
 
   isInUploadProcess!: boolean;
-  
+
   result!: {
     files: FileList | any,
     uuid: string

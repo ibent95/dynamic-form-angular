@@ -1,6 +1,6 @@
-import { Location, formatDate } from "@angular/common";
+import { CommonModule, Location, formatDate } from "@angular/common";
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { Router } from '@angular/router';
@@ -13,9 +13,22 @@ import { DFDataService, DFMetadata, NUMBER_VALIDATION_CONFIG_PATTERN, URL_VALIDA
 import { BsModalService } from "ngx-bootstrap/modal";
 import { CustomDialogPublicationSubmitConfirmComponent } from "./custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component";
 import { HttpParams } from "@angular/common/http";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { LoaderComponent } from "../../shared/loader/loader.component";
+import { PublicationFormGridSystemsDefaultComponent } from "./grid-systems/publication-form-grid-systems-default/publication-form-grid-systems-default.component";
+import { PublicationFormGridSystemsMaterialComponent } from "./grid-systems/publication-form-grid-systems-material/publication-form-grid-systems-material.component";
+import { PublicationFormGridSystemsBootstrapComponent } from "./grid-systems/publication-form-grid-systems-bootstrap/publication-form-grid-systems-bootstrap.component";
+import { PublicationFormGridSystemsTailwindComponent } from "./grid-systems/publication-form-grid-systems-tailwind/publication-form-grid-systems-tailwind.component";
+import { MatCardModule } from "@angular/material/card";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatButtonModule } from "@angular/material/button";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-publication-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatButtonModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, LoaderComponent, PublicationFormGridSystemsDefaultComponent, PublicationFormGridSystemsMaterialComponent, PublicationFormGridSystemsBootstrapComponent, PublicationFormGridSystemsTailwindComponent],
   templateUrl: './publication-form.component.html',
   styleUrls: ['./publication-form.component.scss'],
   providers: [

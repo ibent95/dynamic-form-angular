@@ -1,11 +1,14 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { OverviewComponent } from 'src/app/components/overview/overview.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
 
 @Component({
 	selector: 'app-content',
+	standalone: true,
+	imports: [PageNotFoundComponent, OverviewComponent],
 	templateUrl: './content.component.html',
-	//template: '<router-outlet></router-outlet>',
 	styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit, AfterViewInit {

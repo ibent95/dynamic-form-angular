@@ -1,8 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, MatToolbarModule, MatIconModule],
   template: `
     <header>
       <mat-toolbar>
