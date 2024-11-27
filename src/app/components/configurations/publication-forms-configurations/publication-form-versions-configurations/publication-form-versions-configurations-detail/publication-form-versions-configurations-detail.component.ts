@@ -1,20 +1,30 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppService, AppFormStatus, AppServiceBaseAPI, AppServiceType } from 'src/app/services/app.service';
 import { FormStatesInterface, SelectOptionsInterface } from '../publication-form-versions-configurations-form/publication-form-versions-configurations-form.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-publication-form-versions-configurations-detail',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent],
   templateUrl: './publication-form-versions-configurations-detail.component.html',
-  styles: ['']
+  styles: ``
 })
 export class PublicationFormVersionsConfigurationsDetailComponent {
 

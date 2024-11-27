@@ -1,6 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { PageUnderConstructionComponent } from 'src/app/components/shared/pages/page-under-construction/page-under-construction.component';
 
 export interface FieldConfigs {
   min?: number;
@@ -29,9 +36,11 @@ export interface FieldConfigsInjectData {
 
 @Component({
   selector: 'app-field-configs-advanced-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule, PageUnderConstructionComponent],
   templateUrl: './field-configs-advanced-configurations-form.component.html',
-  styles: [''],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FieldConfigsAdvancedConfigurationsFormComponent {
   readonly dialogRef: MatDialogRef<FieldConfigsAdvancedConfigurationsFormComponent, any> = inject(MatDialogRef<FieldConfigsAdvancedConfigurationsFormComponent>);

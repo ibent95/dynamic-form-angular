@@ -1,11 +1,19 @@
-import { Location } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
+import { FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { AppService } from 'src/app/services/app.service';
 import { DFMetadata, DFDataService } from 'src/app/components/shared/dynamic-form/dynamic-forms';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { DFCustomAlertInfoNoDataComponent } from "src/app/components/shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component";
+import { LoaderComponent } from "src/app/components/shared/loader/loader.component";
+import { PublicationFormRecursiveComponent } from "../../publication-form-recursive/publication-form-recursive.component";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @Component({
   selector: 'app-publication-form-grid-systems-material',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatGridListModule, MatFormFieldModule, MatSelectModule, LoaderComponent, DFCustomAlertInfoNoDataComponent, PublicationFormRecursiveComponent],
   templateUrl: './publication-form-grid-systems-material.component.html',
   styles: ['']
 })

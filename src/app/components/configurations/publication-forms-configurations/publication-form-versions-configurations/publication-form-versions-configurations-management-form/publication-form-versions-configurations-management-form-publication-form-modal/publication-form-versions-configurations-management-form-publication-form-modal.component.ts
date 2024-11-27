@@ -1,20 +1,33 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { MatStepper } from '@angular/material/stepper';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
 import { PageState } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { FormStatesInterface, SelectOptionsInterface } from '../../../publication-forms-configurations-form/publication-forms-configurations-form.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PublicationFormsAdvancedConfigurationsFormComponent } from '../../../publication-forms-configurations-form/publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
+import { PublicationFormsConfigurationsOverviewFormComponent } from '../../../publication-forms-configurations-form/publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
+import { PublicationFormsGeneralConfigurationsFormComponent } from '../../../publication-forms-configurations-form/publication-forms-general-configurations-form/publication-forms-general-configurations-form.component';
+import { PublicationFormsInitialConfigurationsFormComponent } from '../../../publication-forms-configurations-form/publication-forms-initial-configurations-form/publication-forms-initial-configurations-form.component';
 
 @Component({
   selector: 'app-publication-form-versions-configurations-management-form-publication-form-modal',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatStepperModule, MatDividerModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsFormComponent, PublicationFormsGeneralConfigurationsFormComponent, PublicationFormsAdvancedConfigurationsFormComponent, PublicationFormsConfigurationsOverviewFormComponent],
   templateUrl: './publication-form-versions-configurations-management-form-publication-form-modal.component.html',
-  styles: ``
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent implements OnInit {
 

@@ -14,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-tel.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DfFieldTelComponent {
+export class DFFieldTelComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

@@ -1,18 +1,32 @@
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { FormStatesInterface, SelectOptionsInterface } from '../../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { PublicationFormsAdvancedConfigurationsDetailComponent } from '../../../publication-forms-configurations-detail/publication-forms-advanced-configurations-detail/publication-forms-advanced-configurations-detail.component';
+import { PublicationFormsGeneralConfigurationsDetailComponent } from '../../../publication-forms-configurations-detail/publication-forms-general-configurations-detail/publication-forms-general-configurations-detail.component';
+import { PublicationFormsInitialConfigurationsDetailComponent } from '../../../publication-forms-configurations-detail/publication-forms-initial-configurations-detail/publication-forms-initial-configurations-detail.component';
 
 @Component({
   selector: 'app-publication-form-versions-configurations-management-form-publication-detail-modal',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatTabsModule, MatDividerModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsDetailComponent, PublicationFormsGeneralConfigurationsDetailComponent, PublicationFormsAdvancedConfigurationsDetailComponent],
   templateUrl: './publication-form-versions-configurations-management-form-publication-detail-modal.component.html',
-  styles: ``
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent {
 

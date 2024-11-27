@@ -14,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-search.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DfFieldSearchComponent {
+export class DFFieldSearchComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

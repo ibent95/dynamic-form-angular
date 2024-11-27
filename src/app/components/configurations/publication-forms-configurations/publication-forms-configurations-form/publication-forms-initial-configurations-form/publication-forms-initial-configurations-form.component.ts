@@ -1,11 +1,19 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { CodemirrorComponent } from 'src/app/components/shared/codemirror/codemirror.component';
 
 @Component({
   selector: 'app-publication-forms-initial-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, LoaderComponent, CodemirrorComponent],
   templateUrl: './publication-forms-initial-configurations-form.component.html',
-  styleUrls: ['./publication-forms-initial-configurations-form.component.scss']
+  styleUrls: ['./publication-forms-initial-configurations-form.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormsInitialConfigurationsFormComponent implements OnInit, OnChanges {
 

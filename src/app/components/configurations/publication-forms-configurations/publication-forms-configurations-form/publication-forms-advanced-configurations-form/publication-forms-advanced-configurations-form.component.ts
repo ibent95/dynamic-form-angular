@@ -1,14 +1,22 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FieldConfigsAdvancedConfigurationsFormComponent } from './field-configs-advanced-configurations-form/field-configs-advanced-configurations-form.component';
 import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
 import { ValidationConfigsAdvancedConfigurationsFormComponent } from './validation-configs-advanced-configurations-form/validation-configs-advanced-configurations-form.component';
 import { FieldDependenciesConfigsAdvancedConfigurationsFormComponent } from './field-dependencies-configs-advanced-configurations-form/field-dependencies-configs-advanced-configurations-form.component';
 import { AppFormStatus } from 'src/app/services/app.service';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-publication-forms-advanced-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule],
   templateUrl: './publication-forms-advanced-configurations-form.component.html',
   styleUrls: ['./publication-forms-advanced-configurations-form.component.scss'],
 })

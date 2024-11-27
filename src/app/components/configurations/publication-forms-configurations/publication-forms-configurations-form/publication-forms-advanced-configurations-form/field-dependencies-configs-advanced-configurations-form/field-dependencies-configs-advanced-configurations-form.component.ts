@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { DFField, DFFieldDependencyChildConfigs, DFFieldDependencyConfigs, DFFieldDependencyConfigsLogicMap, DFFieldDependencyConfigsLogicMapParentField, DFFieldDependencyConfigsLogicMapParentFields, DFFieldDependencyParentConfigs } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { SelectOptionsInterface } from '../../publication-forms-configurations-form.component';
 import { AppFormStatus } from 'src/app/services/app.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
 
 export interface FieldDependenciesConfigs {
   min?: number;
@@ -36,6 +44,8 @@ export interface FieldDependenciesConfigsInjectData {
 
 @Component({
   selector: 'app-field-dependencies-configs-advanced-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDividerModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatSelectModule, LoaderComponent, PageNotFoundComponent],
   templateUrl: './field-dependencies-configs-advanced-configurations-form.component.html',
   styles: ['::ng-deep mat-divider.custom-border { /** border-top-width: 2px !important; border-color: #808080de; */ }'],
   changeDetection: ChangeDetectionStrategy.OnPush,

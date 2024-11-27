@@ -1,6 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { CodemirrorComponent } from 'src/app/components/shared/codemirror/codemirror.component';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageUnderConstructionComponent } from 'src/app/components/shared/pages/page-under-construction/page-under-construction.component';
 
 export interface ValidationConfigs {
   min?: number;
@@ -29,9 +39,11 @@ export interface ValidationConfigsInjectData {
 
 @Component({
   selector: 'app-validation-configs-advanced-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDividerModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatSelectModule, PageUnderConstructionComponent],
   templateUrl: './validation-configs-advanced-configurations-form.component.html',
   styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ValidationConfigsAdvancedConfigurationsFormComponent {
   readonly dialogRef: MatDialogRef<ValidationConfigsAdvancedConfigurationsFormComponent, any> = inject(MatDialogRef<ValidationConfigsAdvancedConfigurationsFormComponent>);

@@ -1,10 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-publication-forms-configurations-overview-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatCheckboxModule],
   templateUrl: './publication-forms-configurations-overview-form.component.html',
-  styles: ['table { text-align: justify; tbody tr td { vertical-align: top; } td:nth-child(1) { width: 20%; padding-right: 10px; } td:nth-child(2) { width: 1px; } }']
+  styles: ['table { text-align: justify; tbody tr td { vertical-align: top; } td:nth-child(1) { width: 20%; padding-right: 10px; } td:nth-child(2) { width: 1px; } }'],
 })
 export class PublicationFormsConfigurationsOverviewFormComponent implements OnInit {
 

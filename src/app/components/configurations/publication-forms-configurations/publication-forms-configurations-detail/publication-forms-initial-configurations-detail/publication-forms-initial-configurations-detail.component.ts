@@ -1,11 +1,19 @@
-import { ChangeDetectorRef, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { SelectOptionsInterface } from '../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PageState } from 'src/app/services/app-general.service';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
 
 @Component({
   selector: 'app-publication-forms-initial-configurations-detail',
+  standalone: true,
+  imports: [CommonModule, MatTabsModule, MatButtonModule, LoaderComponent, PageNotFoundComponent],
   templateUrl: './publication-forms-initial-configurations-detail.component.html',
-  styles: ``
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormsInitialConfigurationsDetailComponent implements OnInit {
 

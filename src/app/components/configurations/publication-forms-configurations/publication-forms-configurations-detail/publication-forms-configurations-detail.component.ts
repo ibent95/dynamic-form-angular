@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -10,11 +10,23 @@ import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { FormStatesInterface, SelectOptionsInterface } from '../publication-forms-configurations-form/publication-forms-configurations-form.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { PublicationFormsAdvancedConfigurationsDetailComponent } from './publication-forms-advanced-configurations-detail/publication-forms-advanced-configurations-detail.component';
+import { PublicationFormsGeneralConfigurationsDetailComponent } from './publication-forms-general-configurations-detail/publication-forms-general-configurations-detail.component';
+import { PublicationFormsInitialConfigurationsDetailComponent } from './publication-forms-initial-configurations-detail/publication-forms-initial-configurations-detail.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-publication-forms-configurations-detail',
+  standalone: true,
+  imports: [CommonModule, MatDividerModule, MatCardModule, MatTabsModule, MatButtonModule, MatFormFieldModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsDetailComponent, PublicationFormsGeneralConfigurationsDetailComponent, PublicationFormsAdvancedConfigurationsDetailComponent],
   templateUrl: './publication-forms-configurations-detail.component.html',
-  styles: ['']
+  styles: ``
 })
 export class PublicationFormsConfigurationsDetailComponent {
 

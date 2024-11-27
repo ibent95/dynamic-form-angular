@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { CustomDialogPublicationSubmitConfirmComponent } from '../custom-dialog-publication-submit-confirm/custom-dialog-publication-submit-confirm.component';
+import { CommonModule } from '@angular/common';
 
 interface DialogData {
   title: string;
@@ -12,6 +13,8 @@ interface DialogData {
 
 @Component({
   selector: 'app-custom-dialog-publication-exit-form-confirm',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule],
   template: `
     <!-- Dialog title -->
     <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>

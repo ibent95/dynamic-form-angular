@@ -13,7 +13,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-url.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DfFieldUrlComponent {
+export class DFFieldUrlComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

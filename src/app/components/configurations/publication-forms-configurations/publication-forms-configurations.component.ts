@@ -1,16 +1,25 @@
-import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AppServiceType, AppService } from "../../../services/app.service";
 import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
-import { formatDate } from '@angular/common';
-import { AppTableColumns } from '../../shared/table/table.component';
+import { CommonModule, formatDate } from '@angular/common';
+import { AppTableColumns, TableComponent } from '../../shared/table/table.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { GhostTableComponent } from '../../shared/ghost-table/ghost-table.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-publication-forms-configurations',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatIconModule, MatTabsModule, PublicationFormsConfigurationsComponent, GhostTableComponent, TableComponent],
   templateUrl: './publication-forms-configurations.component.html',
-  styleUrls: ['./publication-forms-configurations.component.scss']
+  styleUrls: ['./publication-forms-configurations.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormsConfigurationsComponent implements OnInit, AfterViewInit {
 

@@ -1,9 +1,14 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { SelectOptionsInterface } from '../../publication-forms-configurations-form.component';
 
 @Component({
   selector: 'app-publication-forms-initial-configurations-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './publication-forms-initial-configurations-form.component.html',
   styleUrls: ['./publication-forms-initial-configurations-form.component.scss']
 })

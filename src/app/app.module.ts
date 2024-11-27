@@ -111,11 +111,11 @@ import { DFFieldRadioComponent } from './components/shared/dynamic-form/df-field
 import { DFFieldSliderComponent } from './components/shared/dynamic-form/df-field-slider/df-field-slider.component';
 import { DFFieldSelectComponent } from './components/shared/dynamic-form/df-field-select/df-field-select.component';
 import { DFFieldNGXSelectComponent } from './components/shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component';
-import { DfFieldEmailComponent } from './components/shared/dynamic-form/df-field-email/df-field-email.component';
-import { DfFieldTelComponent } from './components/shared/dynamic-form/df-field-tel/df-field-tel.component';
-import { DfFieldUrlComponent } from './components/shared/dynamic-form/df-field-url/df-field-url.component';
-import { DfFieldPasswordComponent } from './components/shared/dynamic-form/df-field-password/df-field-password.component';
-import { DfFieldSearchComponent } from './components/shared/dynamic-form/df-field-search/df-field-search.component';
+import { DFFieldEmailComponent } from './components/shared/dynamic-form/df-field-email/df-field-email.component';
+import { DFFieldTelComponent } from './components/shared/dynamic-form/df-field-tel/df-field-tel.component';
+import { DFFieldUrlComponent } from './components/shared/dynamic-form/df-field-url/df-field-url.component';
+import { DFFieldPasswordComponent } from './components/shared/dynamic-form/df-field-password/df-field-password.component';
+import { DFFieldSearchComponent } from './components/shared/dynamic-form/df-field-search/df-field-search.component';
 import { DFFieldMonthComponent } from './components/shared/dynamic-form/df-field-month/df-field-month.component';
 import { DFFieldOwlDatetimeComponent } from './components/shared/dynamic-form/df-field-owl-datetime/df-field-owl-datetime.component';
 import { DFFieldOwlDateComponent } from './components/shared/dynamic-form/df-field-owl-datetime/df-field-owl-date/df-field-owl-date.component';
@@ -262,11 +262,11 @@ registerLocaleData(localeId, 'id');
         DFFieldSliderComponent,
         DFFieldSelectComponent,
         DFFieldNGXSelectComponent,
-        DfFieldEmailComponent,
-        DfFieldTelComponent,
-        DfFieldUrlComponent,
-        DfFieldPasswordComponent,
-        DfFieldSearchComponent,
+        DFFieldEmailComponent,
+        DFFieldTelComponent,
+        DFFieldUrlComponent,
+        DFFieldPasswordComponent,
+        DFFieldSearchComponent,
         DFFieldMonthComponent,
         DFFieldOwlDatetimeComponent,
         DFFieldOwlDateComponent,

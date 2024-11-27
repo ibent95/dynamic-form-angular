@@ -1,15 +1,24 @@
-import { Location } from "@angular/common";
-import { ChangeDetectorRef, Component, Inject, Input, OnInit } from '@angular/core';
-import { FormGroup, FormArray } from "@angular/forms";
+import { CommonModule, Location } from "@angular/common";
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, Inject, Input, OnInit } from '@angular/core';
 import { AppService } from "src/app/services/app.service";
 import { DFMetadata, DFDataService, DFField } from "src/app/components/shared/dynamic-form/dynamic-forms";
 import { ENV } from "src/app/app.config";
-import { viewerType } from "ngx-doc-viewer";
+import { NgxDocViewerModule, viewerType } from "ngx-doc-viewer";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { DFFieldTimeComponent } from "src/app/components/shared/dynamic-form/df-field-time/df-field-time.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
+import { MatStepperModule } from "@angular/material/stepper";
 
 @Component({
   selector: 'app-publication-detail-recursive',
+  standalone: true,
+  imports: [CommonModule, MatGridListModule, MatExpansionModule, MatStepperModule, MatDividerModule, MatButtonModule, MatIconModule, NgxDocViewerModule, DFFieldTimeComponent],
   templateUrl: './publication-detail-recursive.component.html',
-  styles: ['']
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationDetailRecursiveComponent implements OnInit {
 

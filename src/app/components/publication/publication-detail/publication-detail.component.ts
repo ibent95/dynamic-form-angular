@@ -1,4 +1,4 @@
-import { Location, formatDate } from "@angular/common";
+import { CommonModule, Location, formatDate } from "@angular/common";
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,9 +9,19 @@ import { AppGeneralService } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
 import { DFMetadata, DFDataService } from '../../shared/dynamic-form/dynamic-forms';
 import { HttpParams } from "@angular/common/http";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatCardModule } from "@angular/material/card";
+import { LoaderComponent } from "../../shared/loader/loader.component";
+import { PublicationDetailGridSystemsBootstrapComponent } from "./grid-systems/publication-detail-grid-systems-bootstrap/publication-detail-grid-systems-bootstrap.component";
+import { PublicationDetailGridSystemsDefaultComponent } from "./grid-systems/publication-detail-grid-systems-default/publication-detail-grid-systems-default.component";
+import { PublicationDetailGridSystemsMaterialComponent } from "./grid-systems/publication-detail-grid-systems-material/publication-detail-grid-systems-material.component";
+import { PublicationDetailGridSystemsTailwindComponent } from "./grid-systems/publication-detail-grid-systems-tailwind/publication-detail-grid-systems-tailwind.component";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-publication-detail',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule, LoaderComponent, PublicationDetailGridSystemsDefaultComponent, PublicationDetailGridSystemsMaterialComponent, PublicationDetailGridSystemsBootstrapComponent, PublicationDetailGridSystemsTailwindComponent],
   templateUrl: './publication-detail.component.html',
   styleUrls: ['./publication-detail.component.scss']
 })
@@ -86,7 +96,7 @@ export class PublicationDetailComponent implements OnInit {
       },
       initialFields: [],
       usedFields: [],
-      
+
       uniqueFalseCheckFields: null,
 
       wizardsCount: 0,

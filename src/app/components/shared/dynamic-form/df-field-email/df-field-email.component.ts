@@ -14,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-email.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DfFieldEmailComponent {
+export class DFFieldEmailComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

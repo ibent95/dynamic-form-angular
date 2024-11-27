@@ -1,12 +1,16 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
 import { SelectOptionsInterface } from '../../publication-forms-configurations-form/publication-forms-configurations-form.component';
-import { AppFormStatus } from 'src/app/services/app.service';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { CodemirrorComponent } from 'src/app/components/shared/codemirror/codemirror.component';
 
 @Component({
   selector: 'app-publication-forms-advanced-configurations-detail',
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, CodemirrorComponent],
   templateUrl: './publication-forms-advanced-configurations-detail.component.html',
-  styles: [''],
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormsAdvancedConfigurationsDetailComponent implements OnInit {
 

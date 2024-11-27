@@ -1,15 +1,22 @@
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 import { Router, NavigationExtras } from '@angular/router';
 import { CustomDialogPublicationRemoveConfirmComponent } from 'src/app/components/publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
-import { AppTableColumns } from 'src/app/components/shared/table/table.component';
+import { GhostTableComponent } from 'src/app/components/shared/ghost-table/ghost-table.component';
+import { AppTableColumns, TableComponent } from 'src/app/components/shared/table/table.component';
 import { Page, AppGeneralService, ResponseFormat } from 'src/app/services/app-general.service';
 import { AppService, AppServiceBaseAPI, AppServiceType } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-publication-form-versions-configurations',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule, MatIconModule, GhostTableComponent, TableComponent],
   templateUrl: './publication-form-versions-configurations.component.html',
   styles: ``
 })

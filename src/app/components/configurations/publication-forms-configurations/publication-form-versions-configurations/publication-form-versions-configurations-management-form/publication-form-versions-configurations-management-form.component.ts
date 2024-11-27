@@ -1,17 +1,27 @@
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { NavigationExtras, Router, UrlSegment } from '@angular/router';
 import { CustomDialogPublicationRemoveConfirmComponent } from 'src/app/components/publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
-import { AppTableColumns } from 'src/app/components/shared/table/table.component';
+import { AppTableColumns, TableComponent } from 'src/app/components/shared/table/table.component';
 import { APP_DIALOG_ENTER_ANIMATION_DURATION, APP_DIALOG_EXIT_ANIMATION_DURATION, AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceBaseAPI, AppServiceType } from 'src/app/services/app.service';
 import { PublicationFormsConfigurationsFormComponent } from '../../publication-forms-configurations-form/publication-forms-configurations-form.component';
 import { PublicationFormVersionsConfigurationsManagementFormPublicationFormModalComponent } from './publication-form-versions-configurations-management-form-publication-form-modal/publication-form-versions-configurations-management-form-publication-form-modal.component';
 import { PublicationFormVersionsConfigurationsManagementFormPublicationDetailModalComponent } from './publication-form-versions-configurations-management-form-publication-detail-modal/publication-form-versions-configurations-management-form-publication-detail-modal.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { GhostTableComponent } from 'src/app/components/shared/ghost-table/ghost-table.component';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { DragDropComponent } from 'src/app/components/shared/drag-drop/drag-drop.component';
 
 @Component({
   selector: 'app-publication-form-versions-configurations-management-form',
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatButtonModule, MatIconModule, GhostTableComponent, TableComponent, LoaderComponent, DragDropComponent],
   templateUrl: './publication-form-versions-configurations-management-form.component.html',
   styleUrl: './publication-form-versions-configurations-management-form.component.scss'
 })

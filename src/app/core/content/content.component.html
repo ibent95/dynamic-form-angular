@@ -7,7 +7,9 @@
 
 	@if (isRouteExists) {
 		<!-- Default content (home) -->
-		<app-overview *ngIf="isRootRoute"></app-overview>
+		@if (isRootRoute) {
+			<app-overview></app-overview>
+		}
 
 		<!-- Other content if route is exist -->
 		<ng-container #dynamicRef></ng-container>

@@ -14,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
   templateUrl: './df-field-password.component.html',
   styleUrls: ['./../dynamic-form.component.scss']
 })
-export class DfFieldPasswordComponent {
+export class DFFieldPasswordComponent {
 
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;

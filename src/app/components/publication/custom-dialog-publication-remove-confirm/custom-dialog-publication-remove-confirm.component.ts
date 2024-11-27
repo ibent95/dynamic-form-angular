@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 interface DialogData {
   title: string;
@@ -10,6 +11,8 @@ interface DialogData {
 
 @Component({
   selector: 'app-custom-dialog-publication-remove-confirm',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule],
   template: `
     <!-- Dialog title -->
     <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>
@@ -23,7 +26,7 @@ interface DialogData {
       <button mat-flat-button color="warn" cdkFocusInitial (click)="onActionBtnClick(true)" [innerHTML]="dialogData.proceedButtonText"></button>
     </mat-dialog-actions>
   `,
-  styles: ['']
+  styles: ``
 })
 export class CustomDialogPublicationRemoveConfirmComponent {
 

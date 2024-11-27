@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-custom-modal-publication-submit-confirm',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <div class="modal-body text-center">
       <h4 class="modal-title mt-2" [innerHTML]="title"></h4>

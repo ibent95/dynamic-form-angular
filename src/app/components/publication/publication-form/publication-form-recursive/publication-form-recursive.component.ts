@@ -1,17 +1,56 @@
-import { Location } from "@angular/common";
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { StepperOrientation } from "@angular/cdk/stepper";
+import { CommonModule, Location } from "@angular/common";
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormGroup, FormArray } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatStepperModule } from "@angular/material/stepper";
+import { Observable, map } from "rxjs";
+import { DFAlertComponent } from "src/app/components/shared/dynamic-form/df-alert/df-alert.component";
+import { DFCustomAlertInfoNoDataComponent } from "src/app/components/shared/dynamic-form/df-custom-alert-info-no-data/df-custom-alert-info-no-data.component";
+import { DFDialogFileUploadPromptComponent } from "src/app/components/shared/dynamic-form/df-dialog-file-upload-prompt/df-dialog-file-upload-prompt.component";
+import { DFFieldCheckboxComponent } from "src/app/components/shared/dynamic-form/df-field-checkbox/df-field-checkbox.component";
+import { DFFieldColorComponent } from "src/app/components/shared/dynamic-form/df-field-color/df-field-color.component";
+import { DFFieldDateComponent } from "src/app/components/shared/dynamic-form/df-field-date/df-field-date.component";
+import { DFFieldDatetimeComponent } from "src/app/components/shared/dynamic-form/df-field-datetime/df-field-datetime.component";
+import { DFFieldEmailComponent } from "src/app/components/shared/dynamic-form/df-field-email/df-field-email.component";
+import { DFFieldFileUploadComponent } from "src/app/components/shared/dynamic-form/df-field-file-upload/df-field-file-upload.component";
+import { DFFieldFileComponent } from "src/app/components/shared/dynamic-form/df-field-file/df-field-file.component";
+import { DFFieldImageUploadComponent } from "src/app/components/shared/dynamic-form/df-field-image-upload/df-field-image-upload.component";
+import { DFFieldImageComponent } from "src/app/components/shared/dynamic-form/df-field-image/df-field-image.component";
+import { DFFieldMonthComponent } from "src/app/components/shared/dynamic-form/df-field-month/df-field-month.component";
+import { DFFieldMultipleComponent } from "src/app/components/shared/dynamic-form/df-field-multiple/df-field-multiple.component";
+import { DFFieldNGXSelectComponent } from "src/app/components/shared/dynamic-form/df-field-ngx-select/df-field-ngx-select.component";
+import { DFFieldNumberComponent } from "src/app/components/shared/dynamic-form/df-field-number/df-field-number.component";
+import { DFFieldOwlDatetimeComponent } from "src/app/components/shared/dynamic-form/df-field-owl-datetime/df-field-owl-datetime.component";
+import { DFFieldPasswordComponent } from "src/app/components/shared/dynamic-form/df-field-password/df-field-password.component";
+import { DFFieldRadioComponent } from "src/app/components/shared/dynamic-form/df-field-radio/df-field-radio.component";
+import { DFFieldSearchComponent } from "src/app/components/shared/dynamic-form/df-field-search/df-field-search.component";
+import { DFFieldSelectComponent } from "src/app/components/shared/dynamic-form/df-field-select/df-field-select.component";
+import { DFFieldSliderComponent } from "src/app/components/shared/dynamic-form/df-field-slider/df-field-slider.component";
+import { DFFieldTelComponent } from "src/app/components/shared/dynamic-form/df-field-tel/df-field-tel.component";
+import { DFFieldTextComponent } from "src/app/components/shared/dynamic-form/df-field-text/df-field-text.component";
+import { DFFieldTextareaComponent } from "src/app/components/shared/dynamic-form/df-field-textarea/df-field-textarea.component";
+import { DFFieldTimeComponent } from "src/app/components/shared/dynamic-form/df-field-time/df-field-time.component";
+import { DFFieldUrlComponent } from "src/app/components/shared/dynamic-form/df-field-url/df-field-url.component";
+import { DFFieldYearComponent } from "src/app/components/shared/dynamic-form/df-field-year/df-field-year.component";
+import { DFWrapperAccordionComponent } from "src/app/components/shared/dynamic-form/df-wrapper-accordion/df-wrapper-accordion.component";
+import { DFWrapperMultipleComponent } from "src/app/components/shared/dynamic-form/df-wrapper-multiple/df-wrapper-multiple.component";
+import { DFWrapperPanelComponent } from "src/app/components/shared/dynamic-form/df-wrapper-panel/df-wrapper-panel.component";
+import { DFWrapperStepperComponent } from "src/app/components/shared/dynamic-form/df-wrapper-stepper/df-wrapper-stepper.component";
+import { DFMetadata, DFField, DFDataService } from "src/app/components/shared/dynamic-form/dynamic-forms";
 import { setConsoleLog } from "src/app/services/app-general.service";
 import { AppService } from "src/app/services/app.service";
-import { DFMetadata, DFDataService, DFField } from "src/app/components/shared/dynamic-form/dynamic-forms";
-import { BreakpointObserver } from "@angular/cdk/layout";
-import { Observable, map } from "rxjs";
-import { StepperOrientation } from "@angular/cdk/stepper";
 
 @Component({
   selector: 'app-publication-form-recursive',
+  standalone: true,
+  imports: [CommonModule, MatGridListModule, MatExpansionModule, MatButtonModule, MatStepperModule, DFAlertComponent, DFCustomAlertInfoNoDataComponent, DFDialogFileUploadPromptComponent, DFFieldCheckboxComponent, DFFieldColorComponent, DFFieldDateComponent, DFFieldDatetimeComponent, DFFieldEmailComponent, DFFieldFileComponent, DFFieldFileUploadComponent, DFFieldImageComponent, DFFieldImageUploadComponent, DFFieldMonthComponent, DFFieldMultipleComponent, DFFieldNGXSelectComponent, DFFieldNumberComponent, DFFieldOwlDatetimeComponent, DFFieldPasswordComponent, DFFieldRadioComponent, DFFieldSearchComponent, DFFieldSelectComponent, DFFieldSliderComponent, DFFieldTelComponent, DFFieldTextComponent, DFFieldTextareaComponent, DFFieldTimeComponent, DFFieldUrlComponent, DFFieldYearComponent, DFWrapperAccordionComponent, DFWrapperMultipleComponent, DFWrapperPanelComponent, DFWrapperStepperComponent],
   templateUrl: './publication-form-recursive.component.html',
-  styles: ``
+  styles: ``,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormRecursiveComponent implements OnInit {
 

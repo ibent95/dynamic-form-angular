@@ -1,15 +1,23 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router, UrlSegment } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppService, AppFormStatus, AppServiceType, AppServiceBaseAPI } from 'src/app/services/app.service';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
-import { AutoCompleteComponent } from "../../../../shared/auto-complete/auto-complete.component";
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { AutoCompleteComponent } from 'src/app/components/shared/auto-complete/auto-complete.component';
 
 export interface FormStatesInterface {
   isFormCreated: boolean;
@@ -30,6 +38,8 @@ export interface SelectOptionsInterface {
 
 @Component({
   selector: 'app-publication-form-versions-configurations-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, AutoCompleteComponent],
   templateUrl: './publication-form-versions-configurations-form.component.html',
   styles: ``,
 })
