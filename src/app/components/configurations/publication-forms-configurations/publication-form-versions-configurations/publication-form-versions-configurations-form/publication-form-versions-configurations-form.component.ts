@@ -208,6 +208,7 @@ export class PublicationFormVersionsConfigurationsFormComponent {
   private initiateForm(): void {
     this.formGroup = this.formBuilder.group({
       uuid: [this.data?.uuid || '', (this.formStatus === AppFormStatus.UPDATE) ? [Validators.required] : []],
+      flag: [this.data?.flag || '', [Validators.required]],
       uuid_publication_type: [this.data?.publication_type?.uuid || '', [Validators.required]],
       publication_form_version_name: [this.data?.publication_form_version_name || '', [Validators.required]],
       publication_form_version_code: [this.data?.publication_form_version_code || '', [Validators.required]],

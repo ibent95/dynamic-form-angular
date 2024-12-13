@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatListModule],
+  imports: [CommonModule, RouterModule, MatIconModule, MatListModule],
   templateUrl: './sidebar.component.html',
   styles: [
     'div.top-sidebar-content { margin-top: 10px !important; }',

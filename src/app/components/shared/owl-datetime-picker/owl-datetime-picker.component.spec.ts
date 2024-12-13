@@ -8,8 +8,8 @@ describe('OwlDatetimePickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OwlDatetimePickerComponent ]
-    })
+    imports: [OwlDatetimePickerComponent]
+})
     .compileComponents();
   });
 

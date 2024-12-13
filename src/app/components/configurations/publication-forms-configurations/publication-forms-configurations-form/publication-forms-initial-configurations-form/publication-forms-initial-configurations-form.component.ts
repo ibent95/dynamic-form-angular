@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectOptionsInterface } from '../publication-forms-configurations-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
 import { CodemirrorComponent } from 'src/app/components/shared/codemirror/codemirror.component';
+import { AppControlValueAccessor } from 'src/app/services/app-general.service';
 
 @Component({
   selector: 'app-publication-forms-initial-configurations-form',
@@ -15,7 +16,10 @@ import { CodemirrorComponent } from 'src/app/components/shared/codemirror/codemi
   styleUrls: ['./publication-forms-initial-configurations-form.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PublicationFormsInitialConfigurationsFormComponent implements OnInit, OnChanges {
+export class PublicationFormsInitialConfigurationsFormComponent implements OnInit, OnChanges, AppControlValueAccessor {
+
+  private parentFormGroup: FormGroupDirective = inject(FormGroupDirective);
+  private ref: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   formGroup!: FormGroup;
 
@@ -33,10 +37,7 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
   @Output() onPublicationFieldTypeChange: EventEmitter<any> = new EventEmitter<any>(true);
   @Output() onPublicationFormParentChange: EventEmitter<any> = new EventEmitter<any>(true);
 
-  constructor(
-    private parentFormGroup: FormGroupDirective,
-    private ref: ChangeDetectorRef,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.formGroup = this.parentFormGroup.form;
@@ -86,6 +87,14 @@ export class PublicationFormsInitialConfigurationsFormComponent implements OnIni
     }
 
   }
+
+  writeValue(data: any): void { }
+
+	registerOnChange(data: any): void { }
+
+	registerOnTouched(data: any): void { }
+
+	setDisabledState(data: boolean): void { }
 
   public onFormVersionChange(data: any) {
     this.selectedFormVersionLoading = true;

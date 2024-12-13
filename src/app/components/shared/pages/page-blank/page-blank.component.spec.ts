@@ -8,8 +8,8 @@ describe('PageBlankComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageBlankComponent ]
-    })
+    imports: [PageBlankComponent]
+})
     .compileComponents();
   });
 

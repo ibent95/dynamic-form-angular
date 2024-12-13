@@ -2,7 +2,7 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { StepperOrientation } from "@angular/cdk/stepper";
 import { CommonModule, Location } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
-import { FormGroup, FormArray } from "@angular/forms";
+import { FormGroup, FormArray, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatGridListModule } from "@angular/material/grid-list";
@@ -47,12 +47,17 @@ import { AppService } from "src/app/services/app.service";
 @Component({
   selector: 'app-publication-form-recursive',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, MatExpansionModule, MatButtonModule, MatStepperModule, DFAlertComponent, DFCustomAlertInfoNoDataComponent, DFDialogFileUploadPromptComponent, DFFieldCheckboxComponent, DFFieldColorComponent, DFFieldDateComponent, DFFieldDatetimeComponent, DFFieldEmailComponent, DFFieldFileComponent, DFFieldFileUploadComponent, DFFieldImageComponent, DFFieldImageUploadComponent, DFFieldMonthComponent, DFFieldMultipleComponent, DFFieldNGXSelectComponent, DFFieldNumberComponent, DFFieldOwlDatetimeComponent, DFFieldPasswordComponent, DFFieldRadioComponent, DFFieldSearchComponent, DFFieldSelectComponent, DFFieldSliderComponent, DFFieldTelComponent, DFFieldTextComponent, DFFieldTextareaComponent, DFFieldTimeComponent, DFFieldUrlComponent, DFFieldYearComponent, DFWrapperAccordionComponent, DFWrapperMultipleComponent, DFWrapperPanelComponent, DFWrapperStepperComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatGridListModule, MatExpansionModule, MatButtonModule, MatStepperModule, DFFieldDateComponent, DFFieldEmailComponent, DFFieldFileComponent, DFFieldFileUploadComponent, DFFieldImageComponent, DFFieldImageUploadComponent, DFFieldMonthComponent, DFFieldNumberComponent, DFFieldOwlDatetimeComponent, DFFieldSelectComponent, DFFieldTextComponent, DFFieldTimeComponent, DFFieldUrlComponent, DFFieldYearComponent],
   templateUrl: './publication-form-recursive.component.html',
   styles: ``,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormRecursiveComponent implements OnInit {
+
+  private location: Location = inject(Location);
+  private appSvc: AppService = inject(AppService);
+  private dfDataSvc: DFDataService = inject(DFDataService);
+  private ref: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Input() dfMetadata: DFMetadata | any;
   @Input('parentForms') forms!: FormGroup;
@@ -75,12 +80,7 @@ export class PublicationFormRecursiveComponent implements OnInit {
 
   stepperOrientation: Observable<StepperOrientation>;
 
-  constructor(
-    private location: Location,
-    private appSvc: AppService,
-    private dfDataSvc: DFDataService,
-    private ref: ChangeDetectorRef,
-  ) {
+  constructor() {
     const breakpointObserver = inject(BreakpointObserver);
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -97,6 +97,7 @@ export class PublicationFormRecursiveComponent implements OnInit {
   public ngOnInit(): void {
     this.fields = this.parentField?.children ?? this.dfMetadata.initialFields.forms ;
     this.parentControlName = this.parentControlName ?? '';
+
     this.ref.detectChanges();
   }
 

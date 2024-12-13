@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,9 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class DFFieldTextComponent {
 
+  private parentFormGroup: FormGroupDirective = inject(FormGroupDirective);
+  private appSvc: AppService = inject(AppService);
+
   @Input() field!: DFField;
   @Input() appearance!: MatFormFieldAppearance;
   @Input() color!: ThemePalette;
@@ -27,10 +30,7 @@ export class DFFieldTextComponent {
 
   formGroup!: FormGroup;
 
-  constructor(
-    private parentFormGroup: FormGroupDirective,
-    private appSvc: AppService,
-  ) {
+  constructor() {
     this.formGroup = this.parentFormGroup.form;
     this.type = new EventEmitter<any>();
     this.change = new EventEmitter<any>();

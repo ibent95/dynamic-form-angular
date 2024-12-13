@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule, Location } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, ViewChild, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, NO_ERRORS_SCHEMA, OnInit, ViewChild, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -10,13 +10,14 @@ import { Router, UrlSegment } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { DialogConfirmComponent } from 'src/app/components/shared/dialogs/dialog-confirm/dialog-confirm.component';
 import { LoaderComponent } from 'src/app/components/shared/loader/loader.component';
+import { MatDividerModule } from '@angular/material/divider';
 import { PageNotFoundComponent } from 'src/app/components/shared/pages/page-not-found/page-not-found.component';
 import { AppGeneralService, PageState } from 'src/app/services/app-general.service';
 import { AppFormStatus, AppService, AppServiceType } from 'src/app/services/app.service';
+import { PublicationFormsInitialConfigurationsFormComponent } from './publication-forms-initial-configurations-form/publication-forms-initial-configurations-form.component';
 import { PublicationFormsAdvancedConfigurationsFormComponent } from './publication-forms-advanced-configurations-form/publication-forms-advanced-configurations-form.component';
 import { PublicationFormsConfigurationsOverviewFormComponent } from './publication-forms-configurations-overview-form/publication-forms-configurations-overview-form.component';
 import { PublicationFormsGeneralConfigurationsFormComponent } from './publication-forms-general-configurations-form/publication-forms-general-configurations-form.component';
-import { PublicationFormsInitialConfigurationsFormComponent } from './publication-forms-initial-configurations-form/publication-forms-initial-configurations-form.component';
 
 export interface FormStatesInterface {
   isFormCreated: boolean;
@@ -44,7 +45,7 @@ export interface SelectOptionsInterface {
 @Component({
   selector: 'app-publication-forms-configurations-form',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatStepperModule, MatButtonModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsFormComponent, PublicationFormsGeneralConfigurationsFormComponent, PublicationFormsAdvancedConfigurationsFormComponent, PublicationFormsConfigurationsOverviewFormComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatStepperModule, MatButtonModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsFormComponent, PublicationFormsGeneralConfigurationsFormComponent, PublicationFormsAdvancedConfigurationsFormComponent, PublicationFormsConfigurationsOverviewFormComponent],
   templateUrl: './publication-forms-configurations-form.component.html',
   styles: ``,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

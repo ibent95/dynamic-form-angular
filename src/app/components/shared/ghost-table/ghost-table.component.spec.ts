@@ -8,8 +8,8 @@ describe('GhostTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GhostTableComponent ]
-    })
+    imports: [GhostTableComponent]
+})
     .compileComponents();
   });
 

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
@@ -12,7 +12,7 @@ import { LUXON_YEAR_FORMATS } from 'src/app/services/app-general.service';
 @Component({
   selector: 'app-year-picker',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './year-picker.component.html',
   styleUrls: ['./year-picker.component.scss'],
   providers: [
@@ -35,7 +35,7 @@ export class YearPickerComponent implements OnInit {
   // `placeholderText` Input from datetime main component
   @Input() placeholderText!: any;
 
-  @Input() fieldControl!: UntypedFormControl;
+  @Input() fieldControl: UntypedFormControl = new UntypedFormControl();
 
   result!: string;
 

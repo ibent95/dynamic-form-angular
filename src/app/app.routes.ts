@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PublicationFormComponent } from './components/publication/publication-form/publication-form.component';
 import { PublicationComponent } from './components/publication/publication.component';
@@ -15,10 +14,10 @@ import { PublicationFormVersionsConfigurationsManagementFormComponent } from './
 import { PublicationFormVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-detail/publication-form-versions-configurations-detail.component';
 import { PublicationFormVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-form/publication-form-versions-configurations-form.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('../app/core/core.module').then(m => m.CoreModule)
+    loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
   },
   {
     path: 'login',
@@ -151,9 +150,3 @@ const config: ExtraOptions = {
   // enableTracing: true,
   scrollPositionRestoration: 'enabled'
 };
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes, config)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

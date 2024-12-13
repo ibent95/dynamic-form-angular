@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
+import { CommonModule, formatDate } from '@angular/common';
 import { NavigationExtras, Router } from '@angular/router';
 import { AppServiceType, AppService } from "../../../services/app.service";
 import { AppGeneralService, Page, ResponseFormat } from 'src/app/services/app-general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
-import { CommonModule, formatDate } from '@angular/common';
+import { PublicationFormVersionsConfigurationsComponent } from './publication-form-versions-configurations/publication-form-versions-configurations.component';
 import { AppTableColumns, TableComponent } from '../../shared/table/table.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -12,17 +12,22 @@ import { MatDividerModule } from '@angular/material/divider';
 import { GhostTableComponent } from '../../shared/ghost-table/ghost-table.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
 
 @Component({
   selector: 'app-publication-forms-configurations',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatIconModule, MatTabsModule, PublicationFormsConfigurationsComponent, GhostTableComponent, TableComponent],
+  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatIconModule, MatTabsModule, PublicationFormVersionsConfigurationsComponent, GhostTableComponent, TableComponent],
   templateUrl: './publication-forms-configurations.component.html',
   styleUrls: ['./publication-forms-configurations.component.scss'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  //schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormsConfigurationsComponent implements OnInit, AfterViewInit {
 
+  private router: Router = inject(Router);
+  private appSvc: AppService = inject(AppService);
+  private generalSvc: AppGeneralService = inject(AppGeneralService);
+  private dialog: MatDialog = inject(MatDialog);
   private changeDetector: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   serverResponse!: { message: string | null, date: string | null } | null;
@@ -34,12 +39,7 @@ export class PublicationFormsConfigurationsComponent implements OnInit, AfterVie
   tableDataSource!: Array<any>;
   tableDataPage!: Page;
 
-  constructor(
-    private router: Router,
-    private appSvc: AppService,
-    private generalSvc: AppGeneralService,
-    private dialog: MatDialog,
-  ) {
+  constructor() {
     localStorage.removeItem('stateConfigurationsPublicationFormsDetail');
 
     if (window.history?.state) {

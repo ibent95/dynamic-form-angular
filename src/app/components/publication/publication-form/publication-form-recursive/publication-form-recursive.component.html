@@ -419,9 +419,9 @@
 
 							<mat-stepper class="-z-10" [orientation]="(stepperOrientation | async)!" [linear]="field.field_configs?.linear" [color]="'accent'" #stepper>
 
-								<ng-container *ngFor="let step of field.children; let stepIndex = index;">
+								@for (step of field.children; track $index; let stepIndex = $index;) {
 
-									<mat-step [label]="step.field_label">
+									<mat-step [label]="step.field_label" [stepControl]="forms">
 
 										<!-- Field children -->
 										<app-publication-form-recursive [dfMetadata]="dfMetadata" [parentForms]="forms" [parentField]="step" [gridSystemsClassConfig]="gridSystemsClassConfig" (onPublicationTypeSelected)="onPublicationTypeSlctSelect($event)" (onFormCancelButtonClicked)="onFormCancelButtonClick()" (onFormSubmitButtonClicked)="onFormSubmitButtonClick()"></app-publication-form-recursive>
@@ -429,26 +429,26 @@
 										<!-- Direction button -->
 										<div class="flex justify-center gap-4">
 
-											<ng-container *ngIf="((stepIndex + 1) === 1)">
+											@if ((stepIndex + 1) === 1) {
 												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
-											</ng-container>
+											}
 
-											<ng-container *ngIf="((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length))">
+											@if ((stepIndex + 1) !== 1 && ((stepIndex + 1) !== field.children.length)) {
 												<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
 												<button mat-stroked-button class="flex-initial w-32" [color]="'accent'" matStepperNext>Next</button>
-											</ng-container>
+											}
 
-											<ng-container *ngIf="((stepIndex + 1) === field.children.length)">
+											@if ((stepIndex + 1) === field.children.length) {
 												<button mat-stroked-button class="flex-initial w-32" [color]="'default'" matStepperPrevious>Back</button>
 												<!--<button mat-raised-button class="flex-initial w-32" [color]="'warn'" (click)="stepper.reset()">Reset</button>-->
 												<!--<button mat-raised-button class="flex-initial w-32" [color]="'accent'">Save</button>-->
-											</ng-container>
+											}
 
 										</div>
 
 									</mat-step>
 
-								</ng-container>
+								}
 
 							</mat-stepper>
 

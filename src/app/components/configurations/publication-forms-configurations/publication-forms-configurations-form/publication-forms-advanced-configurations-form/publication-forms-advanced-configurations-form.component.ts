@@ -22,6 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class PublicationFormsAdvancedConfigurationsFormComponent implements OnInit, OnChanges {
 
+  private parentFormGroup: FormGroupDirective = inject(FormGroupDirective);
+  readonly dialog = inject(MatDialog);
+
   formGroup!: FormGroup;
 
   @Input() initialForm!: FormGroup;
@@ -30,18 +33,13 @@ export class PublicationFormsAdvancedConfigurationsFormComponent implements OnIn
 
   selectedFieldType!: any;
 
-  readonly dialog = inject(MatDialog);
   fieldConfigsForm!: MatDialogRef<FieldConfigsAdvancedConfigurationsFormComponent, any>;
   validationConfigsForm!: MatDialogRef<ValidationConfigsAdvancedConfigurationsFormComponent, any>;
   fieldDependenciesConfigsForm!: MatDialogRef<FieldDependenciesConfigsAdvancedConfigurationsFormComponent, any>;
   dialogEnterAnimationDuration: string = '100ms';
   dialogExitAnimationDuration: string = '100ms';
 
-  constructor(
-    private parentFormGroup: FormGroupDirective,
-  ) {
-    // code
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.formGroup = this.parentFormGroup.form;

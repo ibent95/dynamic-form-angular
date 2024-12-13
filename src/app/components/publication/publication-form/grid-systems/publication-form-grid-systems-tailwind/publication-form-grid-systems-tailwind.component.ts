@@ -1,6 +1,6 @@
 import { CommonModule, Location } from "@angular/common";
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormArray, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppService } from 'src/app/services/app.service';
 import { DFMetadata, DFDataService } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -12,9 +12,10 @@ import { PublicationFormRecursiveComponent } from "../../publication-form-recurs
 @Component({
   selector: 'app-publication-form-grid-systems-tailwind',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, LoaderComponent, DFCustomAlertInfoNoDataComponent, PublicationFormRecursiveComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, LoaderComponent, DFCustomAlertInfoNoDataComponent, PublicationFormRecursiveComponent],
   templateUrl: './publication-form-grid-systems-tailwind.component.html',
-  styles: ['']
+  styles: [''],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicationFormGridSystemsTailwindComponent implements OnInit {
 

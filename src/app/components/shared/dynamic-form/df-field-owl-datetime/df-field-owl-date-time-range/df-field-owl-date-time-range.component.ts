@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,7 +13,7 @@ import { AppService } from 'src/app/services/app.service';
 @Component({
   selector: 'df-field-owl-date-time-range',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, OwlDateTimeModule, MatIconModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, OwlDateTimeModule, MatIconModule],
   templateUrl: './df-field-owl-date-time-range.component.html',
   styleUrls: ['./../../dynamic-form.component.scss'],
   providers: [

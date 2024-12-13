@@ -1,5 +1,5 @@
 import { CommonModule, formatDate } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -22,6 +22,11 @@ import { AppService, AppServiceBaseAPI, AppServiceType } from 'src/app/services/
 })
 export class PublicationFormVersionsConfigurationsComponent {
 
+  private router: Router = inject(Router);
+  private appSvc: AppService = inject(AppService);
+  private generalSvc: AppGeneralService = inject(AppGeneralService);
+  private dialog: MatDialog = inject(MatDialog);
+
   @Input() activeTab: number = 0;
 
   serverResponse!: { message: string | null, date: string | null } | null;
@@ -32,12 +37,7 @@ export class PublicationFormVersionsConfigurationsComponent {
   tableDataSource!: Array<any>;
   tableDataPage!: Page;
 
-  constructor(
-    private router: Router,
-    private appSvc: AppService,
-    private generalSvc: AppGeneralService,
-    private dialog: MatDialog,
-  ) {
+  constructor() {
     localStorage.removeItem('stateConfigurationsPublicationFormVersionsDetail');
 
     this.serverResponse = null;

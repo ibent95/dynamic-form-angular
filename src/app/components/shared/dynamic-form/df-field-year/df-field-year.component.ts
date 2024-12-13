@@ -5,6 +5,7 @@ import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/mater
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, ThemePalette } from '@angular/material/core';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DateTime } from 'luxon';
 import { DFField } from 'src/app/components/shared/dynamic-form/dynamic-forms';
 import { LUXON_YEAR_FORMATS } from 'src/app/services/app-general.service';
@@ -13,7 +14,7 @@ import { AppService } from 'src/app/services/app.service';
 @Component({
   selector: 'df-field-year',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatDatepickerModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule],
   templateUrl: './df-field-year.component.html',
   styleUrls: ['./../dynamic-form.component.scss'],
   providers: [

@@ -8,8 +8,8 @@ describe('PublicationTypesMasterDataConfigurationsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PublicationTypesMasterDataConfigurationsComponent]
-    });
+    imports: [PublicationTypesMasterDataConfigurationsComponent]
+});
     fixture = TestBed.createComponent(PublicationTypesMasterDataConfigurationsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

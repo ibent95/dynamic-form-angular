@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 import { MatDateFormats } from '@angular/material/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { OwlDateTimeFormats } from '@danielmoncada/angular-datetime-picker';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppGeneralService {
 
+  private snackBar: MatSnackBar = inject(MatSnackBar);
   matSnackBarConfig!: MatSnackBarConfig;
 
-  constructor(
-    private snackBar: MatSnackBar
-  ) {
+  constructor() {
     this.matSnackBarConfig = {
       horizontalPosition: 'right',
       verticalPosition: 'top',
@@ -169,6 +168,13 @@ export interface ResponseFormat {
   message?: any;
   messages?: Array<any>;
 };
+
+export interface AppControlValueAccessor extends ControlValueAccessor {
+	writeValue(data: any): void;
+	registerOnChange(data: any): void;
+	registerOnTouched(data: any): void;
+	setDisabledState(data: boolean): void;
+}
 
 export function setConsoleLog(data: any, message?: string): void {
   if (message) {
