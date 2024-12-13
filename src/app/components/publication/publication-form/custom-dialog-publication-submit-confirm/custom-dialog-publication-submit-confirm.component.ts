@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 interface DialogData {
@@ -13,7 +14,7 @@ interface DialogData {
 @Component({
   selector: 'app-custom-dialog-publication-submit-confirm',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   template: `
     <!-- Dialog title -->
     <h1 mat-dialog-title class="text-center" [innerHTML]="dialogData.title"></h1>
