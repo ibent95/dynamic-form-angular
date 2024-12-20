@@ -43,6 +43,9 @@ export enum AppServiceType {
   CONFIGURATION_PUBLICATIONS_FORM_VERSION_MAIN,
   CONFIGURATION_PUBLICATIONS_FORM_VERSIONS,
   CONFIGURATION_PUBLICATIONS_FORM_VERSIONS_DISABLE,
+  CONFIGURATION_PUBLICATIONS_GENERAL_TYPE_MAIN,
+  CONFIGURATION_PUBLICATIONS_GENERAL_TYPES,
+  CONFIGURATION_PUBLICATIONS_GENERAL_TYPES_DISABLE,
 
 }
 
@@ -209,6 +212,18 @@ export class AppService {
         url = baseURL + '/v1/configurations/publication-form-versions';
         break;
 
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_GENERAL_TYPE_MAIN:
+        url = baseURL + '/v1/configurations/publication-general-type';
+        break;
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_GENERAL_TYPES:
+        url = baseURL + '/v1/configurations/publication-general-types';
+        break;
+
+      case AppServiceType.CONFIGURATION_PUBLICATIONS_GENERAL_TYPES_DISABLE:
+        url = baseURL + '/v1/configurations/publication-general-types';
+        break;
+
       /** ================================== DEFAULT API ================================== */
 
       default:
@@ -301,6 +316,10 @@ export class AppService {
 
   advanceCreate(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
     return this.http.post(this.getUrl(serviceBaseAPI, serviceType) + stringParams, body, { params: params, headers: this.HEADERS });
+  }
+
+  advanceDeleteParams(serviceBaseAPI: AppServiceBaseAPI, serviceType: AppServiceType, body: any, params: HttpParams, stringParams: string = ''): Observable<any> {
+    return this.http.post(this.getUrl(serviceBaseAPI, serviceType) + stringParams, { params: params, headers: this.HEADERS, body: body });
   }
 
   getIPAddress(params: string = ""): Observable<any> {

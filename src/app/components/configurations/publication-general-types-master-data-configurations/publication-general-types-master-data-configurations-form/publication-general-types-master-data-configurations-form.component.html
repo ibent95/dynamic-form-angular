@@ -1,0 +1,71 @@
+<mat-card class=" m-7">
+	<mat-card-title>Publication Form Versions Configurations form</mat-card-title>
+	<!--<mat-card-subtitle>Form of publication</mat-card-subtitle>-->
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+
+		@if (pageState === 'loading') {
+			<app-loader></app-loader>
+		}
+
+		@if (pageState === 'empty') {
+			<app-page-not-found></app-page-not-found>
+		}
+
+		@if (pageState === 'error') {
+			<p class="text-center">Error on load page data. Please contact the administrator...</p>
+
+			<div class="flex justify-center">
+				<button mat-stroked-button class="flex-initial w-32" (click)="windowHistoryBack()">Back</button>
+			</div>
+		}
+
+		@if (pageState === 'loaded') {
+
+			<form class="grid grid-cols-12 gap-x-3 gap-y-7" [formGroup]="formGroup">
+
+				<!-- Row 1 -->
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'General Type Name' }}</mat-label>
+						<input matInput formControlName="publication_general_type_name" placeholder="Please fill the General Type name..." />
+
+						<mat-error [innerHTML]="''"
+							*ngIf="formGroup?.get('publication_general_type_name')?.invalid && (formGroup?.get('publication_general_type_name')?.dirty || formGroup?.get('publication_general_type_name')?.touched)"></mat-error>
+						<mat-hint [innerHTML]="'The name of General Type.'"></mat-hint>
+					</mat-form-field>
+				</div>
+
+				<div class="col-span-6">
+					<mat-form-field appearance="outline" color="accent">
+						<mat-label>{{ 'General Type Code' }}</mat-label>
+						<input matInput formControlName="publication_general_type_code" placeholder="Please fill the General Type code..." />
+
+						<mat-error [innerHTML]="''"
+							*ngIf="formGroup?.get('publication_general_type_code')?.invalid && (formGroup?.get('publication_general_type_code')?.dirty || formGroup?.get('publication_general_type_code')?.touched)"></mat-error>
+						<mat-hint [innerHTML]="'The code of General Type.'"></mat-hint>
+					</mat-form-field>
+				</div>
+				<!-- Row 1 -->
+
+				<div class="col-span-12">
+					<div class="flex justify-center gap-1 mt-3">
+						<button mat-raised-button color="warn" class="flex-initial w-32" (click)="onFormResetButtonClick()">Reset</button>
+						<button mat-raised-button color="accent" class="flex-initial w-32" (click)="onFormSubmitButtonClick()"
+							[disabled]="(formGroup.invalid || formStates.isSubmited)">Submit</button>
+					</div>
+					<div class="flex justify-center">
+						<button mat-stroked-button class="flex-initial w-32" [color]="'warn'" (click)="onFormCancelButtonClick()"
+							[disabled]="formStates.isFormCancelButtonDisabled">Cancel</button>
+					</div>
+				</div>
+
+			</form>
+
+		}
+
+	</mat-card-content>
+
+</mat-card>

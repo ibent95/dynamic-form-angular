@@ -39,7 +39,7 @@ export interface SelectOptionsInterface {
 @Component({
   selector: 'app-publication-form-versions-configurations-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, AutoCompleteComponent],
+  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatDividerModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent],
   templateUrl: './publication-form-versions-configurations-form.component.html',
   styles: ``,
 })

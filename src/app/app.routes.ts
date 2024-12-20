@@ -13,6 +13,10 @@ import { PublicationFormsConfigurationsDetailComponent } from './components/conf
 import { PublicationFormVersionsConfigurationsManagementFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-management-form/publication-form-versions-configurations-management-form.component';
 import { PublicationFormVersionsConfigurationsDetailComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-detail/publication-form-versions-configurations-detail.component';
 import { PublicationFormVersionsConfigurationsFormComponent } from './components/configurations/publication-forms-configurations/publication-form-versions-configurations/publication-form-versions-configurations-form/publication-form-versions-configurations-form.component';
+import { PublicationGeneralTypesMasterDataConfigurationsFormComponent } from './components/configurations/publication-general-types-master-data-configurations/publication-general-types-master-data-configurations-form/publication-general-types-master-data-configurations-form.component';
+import { PublicationGeneralTypesMasterDataConfigurationsDetailComponent } from './components/configurations/publication-general-types-master-data-configurations/publication-general-types-master-data-configurations-detail/publication-general-types-master-data-configurations-detail.component';
+import { PublicationTypesMasterDataConfigurationsFormComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations-form/publication-types-master-data-configurations-form.component';
+import { PublicationTypesMasterDataConfigurationsDetailComponent } from './components/configurations/publication-types-master-data-configurations/publication-types-master-data-configurations-detail/publication-types-master-data-configurations-detail.component';
 
 export const routes: Routes = [
   {
@@ -107,15 +111,15 @@ export const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: PublicationFormComponent,
+        component: PublicationGeneralTypesMasterDataConfigurationsFormComponent,
       },
       {
         path: 'update',
-        component: PublicationFormComponent
+        component: PublicationGeneralTypesMasterDataConfigurationsFormComponent
       },
       {
         path: 'detail',
-        component: PublicationDetailComponent
+        component: PublicationGeneralTypesMasterDataConfigurationsDetailComponent
       }
     ],
   },
@@ -125,15 +129,15 @@ export const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: PublicationFormComponent,
+        component: PublicationTypesMasterDataConfigurationsFormComponent,
       },
       {
         path: 'update',
-        component: PublicationFormComponent
+        component: PublicationTypesMasterDataConfigurationsFormComponent
       },
       {
         path: 'detail',
-        component: PublicationDetailComponent
+        component: PublicationTypesMasterDataConfigurationsDetailComponent
       }
     ],
   },
