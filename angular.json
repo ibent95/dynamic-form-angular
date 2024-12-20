@@ -20,12 +20,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/",
+            "deployUrl": "/",
             "allowedCommonJsDependencies": [
               "lodash"
             ],
-            "outputPath": {
-              "base": "dist/dynamic-form-app"
-            },
+            "outputPath": "dist/dynamic-form-app",
             "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts",
@@ -34,6 +34,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
@@ -46,8 +50,6 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "https://apps.ibent95.my.id/dynamic-form-angular/",
-              "deployUrl": "https://apps.ibent95.my.id/dynamic-form-angular/",
               "optimization": {
                 "scripts": true,
                 "styles": {
