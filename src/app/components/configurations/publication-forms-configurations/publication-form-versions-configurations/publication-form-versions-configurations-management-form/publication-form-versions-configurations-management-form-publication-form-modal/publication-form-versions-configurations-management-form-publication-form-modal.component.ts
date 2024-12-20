@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { UrlSegment } from '@angular/router';
@@ -24,7 +24,7 @@ import { PublicationFormsInitialConfigurationsFormComponent } from '../../../pub
 @Component({
   selector: 'app-publication-form-versions-configurations-management-form-publication-form-modal',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatStepperModule, MatDividerModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsFormComponent, PublicationFormsGeneralConfigurationsFormComponent, PublicationFormsAdvancedConfigurationsFormComponent, PublicationFormsConfigurationsOverviewFormComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, MatStepperModule, MatDividerModule, MatButtonModule, MatIconModule, LoaderComponent, PageNotFoundComponent, PublicationFormsInitialConfigurationsFormComponent, PublicationFormsGeneralConfigurationsFormComponent, PublicationFormsAdvancedConfigurationsFormComponent, PublicationFormsConfigurationsOverviewFormComponent],
   templateUrl: './publication-form-versions-configurations-management-form-publication-form-modal.component.html',
   styles: ``,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
