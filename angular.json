@@ -24,7 +24,7 @@
               "lodash"
             ],
             "outputPath": {
-              "base": "dist/dynamic-form-angular"
+              "base": "dist/dynamic-form-app"
             },
             "index": "src/index.html",
             "polyfills": [
