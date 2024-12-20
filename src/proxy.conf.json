@@ -1,7 +1,31 @@
 {
-	"^/api": {
+	"https://svc-dynamic-form-symfony.loc/api": {
 		"target": "https://svc-dynamic-form-symfony.loc/api",
-		"secure": false,
+		"secure": true,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"^/api": ""
+		}
+	},
+	"https://svc-dynamic-form-lumen.loc/api": {
+		"target": "https://svc-dynamic-form-lumen.loc/api",
+		"secure": true,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"^/api": ""
+		}
+	},
+	"https://services.ibent95.my.id/svc-dynamic-form-symfony/public/api": {
+		"target": "https://services.ibent95.my.id/svc-dynamic-form-symfony/public/api",
+		"secure": true,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"^/api": ""
+		}
+	},
+	"https://services.ibent95.my.id/svc-dynamic-form-lumen/public/api": {
+		"target": "https://services.ibent95.my.id/svc-dynamic-form-lumen/public/api",
+		"secure": true,
 		"changeOrigin": true,
 		"pathRewrite": {
 			"^/api": ""

@@ -23,8 +23,10 @@
             "allowedCommonJsDependencies": [
               "lodash"
             ],
+            "baseHref": "https://apps.ibent95.my.id/dynamic-form-angular/",
+            "deployUrl": "https://apps.ibent95.my.id/dynamic-form-angular/",
             "outputPath": {
-              "base": "dist/dynamic-form-app"
+              "base": "dist/dynamic-form-angular"
             },
             "index": "src/index.html",
             "polyfills": [
