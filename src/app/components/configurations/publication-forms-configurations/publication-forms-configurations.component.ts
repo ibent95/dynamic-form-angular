@@ -13,11 +13,12 @@ import { GhostTableComponent } from '../../shared/ghost-table/ghost-table.compon
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CustomDialogPublicationRemoveConfirmComponent } from './../../publication/custom-dialog-publication-remove-confirm/custom-dialog-publication-remove-confirm.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-publication-forms-configurations',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatIconModule, MatTabsModule, PublicationFormVersionsConfigurationsComponent, GhostTableComponent, TableComponent],
+  imports: [CommonModule, MatCardModule, MatExpansionModule, MatDividerModule, MatButtonModule, MatIconModule, MatTabsModule, PublicationFormVersionsConfigurationsComponent, GhostTableComponent, TableComponent],
   templateUrl: './publication-forms-configurations.component.html',
   styleUrls: ['./publication-forms-configurations.component.scss'],
   //schemas: [CUSTOM_ELEMENTS_SCHEMA]
